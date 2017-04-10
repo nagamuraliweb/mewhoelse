@@ -1,0 +1,93 @@
+/* Empty. Add your own CSS if you like */
+/* landing page */
+body
+{
+    font-family: 'openSans' !important;
+}
+@font-face {
+    font-family:'openSans';
+    src: url('../fonts/opensans-regular.eot');
+    src: url('../fonts/opensans-regular.eot') format('embedded-opentype'),
+         url('../fonts/opensans-regular.woff') format('woff'),
+         url('../fonts/opensans-regular.ttf') format('truetype'),
+         url('../fonts/opensans-regular.svg#OpenSansRegular') format('svg');
+}
+@font-face {
+    font-family: 'OpenSansBold';
+    src: url('../fonts/opensans-bold.eot');
+    src: url('../fonts/opensans-bold.eot') format('embedded-opentype'),
+         url('../fonts/opensans-bold.woff') format('woff'),
+         url('../fonts/opensans-bold.ttf') format('truetype'),
+         url('../fonts/opensans-bold.svg#OpenSansBold') format('svg');
+}
+@font-face {
+    font-family: 'OpenSansSemibold';
+    src: url('../fonts/opensans-semibold.eot');
+    src: url('../fonts/opensans-semibold.eot') format('embedded-opentype'),
+         url('../fonts/opensans-semibold.woff') format('woff'),
+         url('../fonts/opensans-semibold.ttf') format('truetype'),
+         url('../fonts/opensans-semibold.svg#OpenSansSemibold') format('svg');
+}
+.pull-left{float: left;}
+.pull-right{float: right;}
+.bottom_30{margin-bottom: 30px !important;}
+#landing{width: 100%;height: 100%;}
+#landing_header{margin-top: 30px;}
+#landing_header img{width: 75%;}
+.pane {
+        background: url('../img/landing_bg.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
+#landing_footer{position: fixed;bottom: 60px;padding: 0 30px 0 20px;}
+#landing_footer h2{color: #f836ff;font-family:'openSans';text-transform: uppercase;}
+#landing_footer h5{color: #ffae20;font-family:'openSans';text-transform: uppercase;line-height: 20px;
+margin-bottom: 20px;}
+#landing_footer .button{color: #ffffff;text-transform: uppercase;border: 1px solid #ffffff;border-radius: 0;
+width: 100px;min-height: 32px;line-height: 32px;font-family:'openSans';}
+form {
+    width: 100%;
+}
+/* login page */
+.img-responsive{max-width: 100%;height: auto;}
+.login {
+        background: url('../img/login_bg.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
+.dashboard {
+        background: url('../img/bg.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
+.inputbox{width: 100%;float: left;background: none;border-bottom: 1px solid #ffffff !important;
+    color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;}
+.dropdown{width: 100%;float: left;background: none;border:0;border-bottom: 1px solid #ffffff !important;
+    color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;padding-bottom: 8px;
+ -webkit-appearance: none;-moz-appearance: none;text-indent: 1px;text-overflow: '';
+background: url('../img/dropdown.png') no-repeat top 10px right;}
+.loginbtn{color: #ffffff !important;text-transform: uppercase;border: 1px solid #ffffff !important;
+	border-radius: 0;width: 100px;min-height: 28px;line-height: 28px;font-family:'openSans';
+display: table;margin: auto;margin-bottom: 20px;font-size: 14px;}
+.forgot{color: #ffae20;font-family:'openSans';width: 100%;}
+.signup{color: #ffffff;font-family:'openSans';font-size: 16px;}
+.signup span{color: #ffae20;font-family:'openSans';}
+.login_grid{margin-top: 20px;color: #ffffff;}
+
+/* dashboard page */ 
+.list_artist{background-color:rgba(255,255,255, 0.1);}
+.list_artist h4{color: #f836ff;font-family: 'openSans';text-transform: capitalize;margin-top: 0;}
+.list_artist p{color: #ffae20;font-family: 'openSans';text-transform: capitalize;margin-bottom: 0;}
+.list_artist img{max-width: 100%;height: auto;}
+
+/* overview page */
+.list_overview p{color: #f836ff;font-family: 'openSans';border-bottom: 1px solid #666666;
+padding-bottom: 10px;}
+.list_overview span{color: #ffae20;}
+.bar-header {background: none !important;border-bottom: 1px solid #ffffff;}
+.bar .title{color: #ffae20 !important;}
+.bar .back-button.hide, .bar .buttons .hide{display: block;color: #ffffff;}
+.previous-title{display: none;}

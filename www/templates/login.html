@@ -1,0 +1,27 @@
+<ion-view view-title="Landing" class="login" hide-nav-bar="true">
+  <ion-content class="padding">
+
+	<div id="landing_header" class="text-center">
+		<img src="img/logo.png" alt="Logo_Meapp" class="img-responsive">
+	</div>    
+
+	<div class="row login_grid">
+		<form>
+			<input type="email" name="email" placeholder="Email" class="inputbox">
+			<input type="password" name="password" placeholder="Password" class="inputbox bottom_30">
+			<button class="button button-outline loginbtn" ng-click="login()">
+			  login
+			</button>
+		</form>
+	</div>
+
+	<div class="row text-center">
+		<p ui-sref="forgot" class="forgot">Forgot Password?</p>
+	</div>
+
+	<div class="row">
+		<h4 class="signup">Don't have an account ? <span ui-sref="signup">Signup</span></h4>
+	</div>
+
+  </ion-content>
+</ion-view>
