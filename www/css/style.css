@@ -65,6 +65,8 @@ form {
     }
 .inputbox{width: 100%;float: left;background: none;border-bottom: 1px solid #ffffff !important;
     color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;}
+.textareabox{width: 100%;float: left;background: none;border: 1px solid #ffffff !important;
+    color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;min-height: 100px;}
 .dropdown{width: 100%;float: left;background: none;border:0;border-bottom: 1px solid #ffffff !important;
     color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;padding-bottom: 8px;
  -webkit-appearance: none;-moz-appearance: none;text-indent: 1px;text-overflow: '';
@@ -76,7 +78,7 @@ display: table;margin: auto;margin-bottom: 20px;font-size: 14px;}
 .signup{color: #ffffff;font-family:'openSans';font-size: 16px;}
 .signup span{color: #ffae20;font-family:'openSans';}
 .login_grid{margin-top: 20px;color: #ffffff;}
-
+.login_grid h4{color: #ffffff;font-family:'openSans';}
 /* dashboard page */ 
 .list_artist{background-color:rgba(255,255,255, 0.1);}
 .list_artist h4{color: #f836ff;font-family: 'openSans';text-transform: capitalize;margin-top: 0;}

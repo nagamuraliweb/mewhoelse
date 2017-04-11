@@ -11,10 +11,9 @@
 				<option value="">Select your profession</option>
 				<option value="artists">Artists</option>
 				<option value="technicians">Technicians</option>
-				<option value="clients">Directors/Producers</option>
+				<option value="clients">Clients</option>
 			</select>
-
-			<div id="artists">
+			<div id="artists" ng-show="profession == 'artists'">
 				<input type="text" name="name" placeholder="Name" class="inputbox">
 				<input type="email" name="email" placeholder="Email" class="inputbox">
 				<input type="password" name="password" placeholder="Password" class="inputbox">
@@ -24,9 +23,9 @@
 				<label><input type="radio" name="gender"> Female</label></div>
 				<input type="date" name="dob" placeholder="Date of birth" class="inputbox">
 				<label>Add Profile picture <input type="file" name="profile"></label><br><br>
-				<label>Add Profile videos <input type="file" name="profile_videos"></label><br><br>
+				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox">
 				<select name="skills" class="dropdown">
-					<option value="0">Skills</option>
+					<option value="">Skills</option>
 					<option value="Horse Riding">Horse Riding</option>
 					<option value="Swimming">Swimming</option>
 					<option value="Singing">Singing</option>
@@ -38,28 +37,28 @@
 				</select>
 				<input type="text" name="otherskills" class="inputbox" placeholder="Enter your skills">
 				<select name="experince" class="dropdown">
-					<option value="0">Experience</option>
+					<option value="">Experience</option>
 					<option value="Fresher">Fresher</option>
 					<option value="Experinced">Experinced</option>
 					<option value="Fresher/Experinced">both</option>
 				</select>
 				<input type="text" name="city" placeholder="City" class="inputbox">
 				<select name="ethnicity" class="dropdown">
-					<option value="0">Ethnicity</option>
+					<option value="">Ethnicity</option>
 					<option value="Indian">Indian</option>
 					<option value="English">English</option>
 					<option value="Others">Others</option>
 				</select>
 				<input type="text" name="other_ethnicity" class="inputbox" placeholder="Enter your ethnicity">
 				<select name="body_type" class="dropdown">
-					<option value="0">Body Type</option>
+					<option value="">Body Type</option>
 					<option value="Slim">Slim</option>
 					<option value="Average">Average</option>
 					<option value="Athletic">Athletic</option>
 					<option value="Plus Size">Plus Size</option>
 				</select>
 				<select name="hair_type" class="dropdown">
-					<option value="0">Hair Type</option>
+					<option value="">Hair Type</option>
 					<option value="Long">Long</option>
 					<option value="Short">Short</option>
 					<option value="Curly">Curly</option>
@@ -69,14 +68,14 @@
 				<input type="text" name="others_hairtype" class="inputbox" placeholder="Enter your hair type">
 				<input type="text" name="weight" class="inputbox" placeholder="Enter your weight">
 				<select name="skin_color" class="dropdown">
-					<option value="0">Skin Color</option>
+					<option value="">Skin Color</option>
 					<option value="Light">Light</option>
 					<option value="Dusky">Dusky</option>
 					<option value="Olive">Olive</option>
 					<option value="Mix">Mix</option>
 				</select>
 				<select name="hair_color" class="dropdown">
-					<option value="0">Hair Color</option>
+					<option value="">Hair Color</option>
 					<option value="Light Brown">Light Brown</option>
 					<option value="Red">Red</option>
 					<option value="Blonde">Blonde</option>
@@ -89,7 +88,7 @@
 					<label><input type="radio" name="training" value="No"> No</label>
 				</div><br>
 				<select name="languages" class="dropdown">
-					<option value="0">Languages</option>
+					<option value="">Languages</option>
 					<option value="Tamil">Tamil</option>
 					<option value="Hindi">Hindi</option>
 					<option value="English">English</option>
@@ -106,7 +105,7 @@
 			</div>
 
 			<!-- technicians -->
-			<div id="technicians" ng-show="technicians_list">
+			<div id="technicians" ng-show="profession == 'technicians'">
 				<input type="text" name="name" placeholder="Name" class="inputbox">
 				<input type="email" name="email" placeholder="Email" class="inputbox">
 				<input type="password" name="password" placeholder="Password" class="inputbox">
@@ -116,72 +115,28 @@
 				<label><input type="radio" name="gender"> Female</label></div>
 				<input type="date" name="dob" placeholder="Date of birth" class="inputbox">
 				<label>Add Profile picture <input type="file" name="profile"></label><br><br>
-				<label>Add Profile videos <input type="file" name="profile_videos"></label><br><br>
-				<select name="skills" class="dropdown">
-					<option value="0">Skills</option>
-					<option value="Horse Riding">Horse Riding</option>
-					<option value="Swimming">Swimming</option>
-					<option value="Singing">Singing</option>
-					<option value="Dancing">Dancing</option>
-					<option value="Ramp">Ramp</option>
-					<option value="Host / Hostess">Host / Hostess</option>
-					<option value="Theater">Theater</option>
-					<option value="Others">Others</option>
-				</select>
-				<input type="text" name="otherskills" class="inputbox" placeholder="Enter your skills">
+				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox">
+				<textarea name="skills" class="textareabox" placeholder="Skills"></textarea>
 				<select name="experince" class="dropdown">
-					<option value="0">Experience</option>
+					<option value="">Experience</option>
 					<option value="Fresher">Fresher</option>
 					<option value="Experinced">Experinced</option>
 					<option value="Fresher/Experinced">both</option>
 				</select>
 				<input type="text" name="city" placeholder="City" class="inputbox">
 				<select name="ethnicity" class="dropdown">
-					<option value="0">Ethnicity</option>
+					<option value="">Ethnicity</option>
 					<option value="Indian">Indian</option>
 					<option value="English">English</option>
 					<option value="Others">Others</option>
 				</select>
 				<input type="text" name="other_ethnicity" class="inputbox" placeholder="Enter your ethnicity">
-				<select name="body_type" class="dropdown">
-					<option value="0">Body Type</option>
-					<option value="Slim">Slim</option>
-					<option value="Average">Average</option>
-					<option value="Athletic">Athletic</option>
-					<option value="Plus Size">Plus Size</option>
-				</select>
-				<select name="hair_type" class="dropdown">
-					<option value="0">Hair Type</option>
-					<option value="Long">Long</option>
-					<option value="Short">Short</option>
-					<option value="Curly">Curly</option>
-					<option value="Bald">Bald</option>
-					<option value="Others">Others</option>
-				</select>
-				<input type="text" name="others_hairtype" class="inputbox" placeholder="Enter your hair type">
-				<input type="text" name="weight" class="inputbox" placeholder="Enter your weight">
-				<select name="skin_color" class="dropdown">
-					<option value="0">Skin Color</option>
-					<option value="Light">Light</option>
-					<option value="Dusky">Dusky</option>
-					<option value="Olive">Olive</option>
-					<option value="Mix">Mix</option>
-				</select>
-				<select name="hair_color" class="dropdown">
-					<option value="0">Hair Color</option>
-					<option value="Light Brown">Light Brown</option>
-					<option value="Red">Red</option>
-					<option value="Blonde">Blonde</option>
-					<option value="Silver / Grey">Silver / Grey</option>
-					<option value="Colored">Colored</option>
-					<option value="Black">Black</option>
-				</select>
 				<div>
 					Professional training <label><input type="radio" name="training" value="Yes"> Yes</label>
 					<label><input type="radio" name="training" value="No"> No</label>
 				</div><br>
 				<select name="languages" class="dropdown">
-					<option value="0">Languages</option>
+					<option value="">Languages</option>
 					<option value="Tamil">Tamil</option>
 					<option value="Hindi">Hindi</option>
 					<option value="English">English</option>
@@ -198,75 +153,61 @@
 			</div>
 
 			<!-- clients -->
-			<div id="clients" ng-show="clients_list">
+			<div id="clients" ng-show="profession == 'clients'">
 				<input type="text" name="name" placeholder="Name" class="inputbox">
 				<input type="email" name="email" placeholder="Email" class="inputbox">
 				<input type="password" name="password" placeholder="Password" class="inputbox">
 				<input type="password" name="confirm_password" placeholder="Confirm Password" class="inputbox">
 				<input type="number" name="mobile" placeholder="Mobile no" class="inputbox">
 				<div><label><input type="radio" name="gender"> Male</label>
-				<label><input type="radio" name="gender"> Female</label></div>
-				<input type="date" name="dob" placeholder="Date of birth" class="inputbox">
-				<label>Add Profile picture <input type="file" name="profile"></label><br><br>
-				<label>Add Profile videos <input type="file" name="profile_videos"></label><br><br>
-				<select name="skills" class="dropdown">
-					<option value="0">Skills</option>
-					<option value="Horse Riding">Horse Riding</option>
-					<option value="Swimming">Swimming</option>
-					<option value="Singing">Singing</option>
-					<option value="Dancing">Dancing</option>
-					<option value="Ramp">Ramp</option>
-					<option value="Host / Hostess">Host / Hostess</option>
+				<label><input type="radio" name="gender"> Female</label></div><br>
+				<select name="project" class="dropdown">
+					<option value="">Project</option>
+					<option value="New">New</option>
+					<option value="Existing">Existing</option>
+				</select>
+				<input type="text" name="projectname" class="inputbox" placeholder="Enter your project name">
+				<select name="project_type" class="dropdown">
+					<option value="">Project type</option>
+					<option value="Feature Film">Feature Film</option>
+					<option value="Ad Film">Ad Film</option>
+					<option value="Short Film">Short Film</option>
+					<option value="TV Seria">TV Seria</option>
+					<option value="Documentary">Documentary</option>
 					<option value="Theater">Theater</option>
-					<option value="Others">Others</option>
+					<option value="Photoshoot">Photoshoot</option>
 				</select>
-				<input type="text" name="otherskills" class="inputbox" placeholder="Enter your skills">
-				<select name="experince" class="dropdown">
-					<option value="0">Experience</option>
-					<option value="Fresher">Fresher</option>
-					<option value="Experinced">Experinced</option>
-					<option value="Fresher/Experinced">both</option>
+				<textarea name="project_description" placeholder="Project description" class="textareabox"></textarea>
+				<select name="roll_type" class="dropdown">
+					<option value="">Roll type</option>
+					<option value="Lead">Lead</option>
+					<option value="Lead Support">Lead Support</option>
+					<option value="Supporting">Supporting</option>
+					<option value="Character">Character</option>
+					<option value="Cameo">Cameo</option>
+					<option value="Junior">Junior</option>
 				</select>
-				<input type="text" name="city" placeholder="City" class="inputbox">
-				<select name="ethnicity" class="dropdown">
-					<option value="0">Ethnicity</option>
-					<option value="Indian">Indian</option>
-					<option value="English">English</option>
-					<option value="Others">Others</option>
+				<select name="skin_color" class="dropdown">
+					<option value="">Looking for</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
 				</select>
-				<input type="text" name="other_ethnicity" class="inputbox" placeholder="Enter your ethnicity">
+				<input type="text" name="character_name" class="inputbox" placeholder="Character name">
+				<textarea name="character_description" placeholder="Character description" class="textareabox"></textarea>
+				<h4>Requirements</h4>
 				<select name="body_type" class="dropdown">
-					<option value="0">Body Type</option>
+					<option value="">Body Type</option>
 					<option value="Slim">Slim</option>
 					<option value="Average">Average</option>
 					<option value="Athletic">Athletic</option>
+					<option value="Muscular">Muscular</option>
 					<option value="Plus Size">Plus Size</option>
 				</select>
-				<select name="hair_type" class="dropdown">
-					<option value="0">Hair Type</option>
-					<option value="Long">Long</option>
-					<option value="Short">Short</option>
-					<option value="Curly">Curly</option>
-					<option value="Bald">Bald</option>
-					<option value="Others">Others</option>
-				</select>
-				<input type="text" name="others_hairtype" class="inputbox" placeholder="Enter your hair type">
-				<input type="text" name="weight" class="inputbox" placeholder="Enter your weight">
-				<select name="skin_color" class="dropdown">
-					<option value="0">Skin Color</option>
-					<option value="Light">Light</option>
-					<option value="Dusky">Dusky</option>
-					<option value="Olive">Olive</option>
-					<option value="Mix">Mix</option>
-				</select>
-				<select name="hair_color" class="dropdown">
-					<option value="0">Hair Color</option>
-					<option value="Light Brown">Light Brown</option>
-					<option value="Red">Red</option>
-					<option value="Blonde">Blonde</option>
-					<option value="Silver / Grey">Silver / Grey</option>
-					<option value="Colored">Colored</option>
-					<option value="Black">Black</option>
+				<select name="experince" class="dropdown">
+					<option value="">Experience</option>
+					<option value="Fresher">Fresher</option>
+					<option value="Experinced">Experinced</option>
+					<option value="Fresher/Experinced">both</option>
 				</select>
 				<div>
 					Professional training <label><input type="radio" name="training" value="Yes"> Yes</label>
@@ -282,10 +223,10 @@
 					<option value="Kannada">Kannada</option>
 					<option value="Others">Others</option>
 				</select>
-				<input type="text" name="others_languages" class="inputbox bottom_30" placeholder="Enter your language">
+				<input type="text" name="production_housename" class="inputbox bottom_30" placeholder="Production house name">
 
 				<button class="button button-outline loginbtn" ng-click="register()">
-				  register
+				  proceed
 				</button>
 			</div>
 
