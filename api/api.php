@@ -351,55 +351,121 @@ class me_api extends db_config {
 		echo json_encode($result);
 	}
 
-	public function saveDetails() {
+	public function saveArtistDetails() {
 
 		try {
 
-			if (!ctype_digit($_POST['profession'])) {
+			if (empty($_SESSION['user_id']))) {
+				throw new Exception('Invalid user');
+			}
+
+			if (! ctype_digit($_POST['profession'])) {
 				throw new Exception('Invalid profession');
 			}
 
-			if (empty($_POST['name'])) {
-				throw new Exception('Name is required');
+			if (empty($_POST['gender'])) {
+				throw new Exception('Choose gender');
 			}
 
-			if (empty($_POST['email'])) {
-				throw new Exception('Email is required');
+			if (empty($_POST['dob'])) {
+				throw new Exception('Choose DOB');
 			}
 
-			if (empty($_POST['mobile'])) {
-				throw new Exception('Mobile is required');
+			if (empty($_POST['videos'])) {
+				throw new Exception('Enter videos');
 			}
 
-			if (empty($_POST['password'])) {
-				throw new Exception('Password is required');
+			if (empty($_POST['skills'])) {
+				throw new Exception('Choose skills');
 			}
 
-			if (empty($_POST['confirm_password'])) {
-				throw new Exception('Confirm password is required');
+			if ($_POST['skills'] === 0) {
+				if (empty($_POST['otherskills'])) {
+					throw new Exception('Enter skills');
+				}
 			}
 
-			if ($_POST['password'] !== $_POST['confirm_password']) {
-				throw new Exception('Password and Confirm password does not match');
+			if (empty($_POST['experince'])) {
+				throw new Exception('Choose experince');
+			}
+
+			if (empty($_POST['city'])) {
+				throw new Exception('Choose city');
+			}
+			
+			if (empty($_POST['other_ethnicity'])) {
+				throw new Exception('Enter ethnicity');
+			}
+
+			if (empty($_POST['body_type'])) {
+				throw new Exception('Choose body type');
+			}
+
+			if (empty($_POST['hair_type'])) {
+				throw new Exception('Choose hair type');
+			}
+
+			if ($_POST['hair_type'] === 0) {
+				if (empty($_POST['others_hairtype'])) {
+					throw new Exception('Enter hair type');
+				}
+			}
+
+			if (empty($_POST['weight'])) {
+				throw new Exception('Enter weight');
+			}
+
+			if (empty($_POST['skin_color'])) {
+				throw new Exception('Choose skin color');
+			}
+
+			if (empty($_POST['hair_color'])) {
+				throw new Exception('Enter hair color');
+			}
+
+			if (empty($_POST['training'])) {
+				throw new Exception('Choose professional training');
+			}
+
+			if (empty($_POST['languages'])) {
+				throw new Exception('Choose languages');
+			}
+
+			if ($_POST['languages'] === 0) {
+				if (empty($_POST['languages'])) {
+					throw new Exception('Enter languages');
+				}
 			}
 
 			$data = [
+				'user_id' => $_SESSION['user_id'],
 				'user_type' => $_POST['profession'],
-				'name' => $_POST['name'],
-				'email' => $_POST['email'],
-				'password' => $_POST['password'],
-				'mobile' => $_POST['mobile']
+				'gender' => $_POST['gender'],
+				'dob' => $_POST['dob'],
+				'videos' => $_POST['videos'],
+				'skills' => $_POST['skills'],
+				'otherskills' => $_POST['otherskills'] ? $_POST['otherskills'] : null,
+				'experince' => $_POST['experince'],
+				'city' => $_POST['city'],
+				'other_ethnicity' => $_POST['other_ethnicity'],
+				'body_type' => $_POST['body_type'],
+				'hair_type' => $_POST['hair_type'],
+				'others_hairtype' => $_POST['others_hairtype'] ? $_POST['others_hairtype'] : null,
+				'weight' => $_POST['weight'],
+				'skin_color' => $_POST['skin_color'],
+				'hair_color' => $_POST['hair_color'],
+				'training' => $_POST['training'],
+				'languages' => $_POST['languages'],
+				'others_languages' => $_POST['others_languages'] ? $_POST['others_hairtype'] : null
 			];
 
-			$user_id = Model_Admin::signUp($this->DB, $data);
+			$user_id = Model_Admin::saveArtistDetails($this->DB, $data);
 
 			if (empty($user_id)) {
 				throw new Exception('Error occured. Please try again.');
 			}
 
-			$_SESSION['user_id'] = $user_id;
-
-			$result = ['error' => 0, , 'msg' => 'Successfully registered'];
+			$result = ['error' => 0, , 'msg' => 'Successfully saved details'];
 
 		} catch (Exception $e) {
 			$result = ['error' => 1, 'msg' => $e->getMessage()];

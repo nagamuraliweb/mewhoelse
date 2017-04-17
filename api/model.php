@@ -191,5 +191,59 @@
 
 			return $stmt->execute();
 		}
+
+		public function saveArtistDetails ($DB, $data) {
+
+			$sql = 'INSERT INTO dr_mem_users_details VALUES (user_id = :user_id, user_gender_id = :gender,
+				user_skills_id = :skills, user_dob = :dob, user_videos = :videos, user_experience_id = :experince,
+				user_city = :city, user_ethinicity = :other_ethnicity, user_body_id = :body_type, user_hair_id = :hair_type,
+				user_hair_others = :others_hairtype, user_weight = :weight, user_skin_id = :skin_color, user_hair_color_id = :hair_color,
+				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages)';
+
+			$stmt = $DB->prepare($sql);
+			$stmt->bindParam(':user_type', $data['user_type'], PDO::PARAM_INT);
+			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
+			$stmt->bindParam(':gender', $data['gender'], PDO::PARAM_INT);
+			$stmt->bindParam(':dob', $data['dob'], PDO::PARAM_STR);
+			$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
+
+			if ($data['skills'] === 0) {
+				$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_NULL);
+				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_INT);
+				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_NULL);
+			}
+	
+			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);
+			$stmt->bindParam(':city', $data['city'], PDO::PARAM_STR);
+			$stmt->bindParam(':other_ethnicity', $data['other_ethnicity'], PDO::PARAM_STR);
+			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_INT);
+
+			if ($data['hair_type'] === 0) {
+				$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_NULL);
+				$stmt->bindParam(':others_hairtype', $data['others_hairtype'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_INT);
+				$stmt->bindParam(':others_hairtype', $data['others_hairtype'], PDO::PARAM_NULL);
+			}
+
+			$stmt->bindParam(':weight', $data['weight'], PDO::PARAM_INT);
+			$stmt->bindParam(':skin_color', $data['skin_color'], PDO::PARAM_INT);
+			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_INT);
+			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
+
+			if ($data['languages'] === 0) {
+				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_NULL);
+				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_INT);
+				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
+			}
+			
+			$stmt->execute();
+
+			return $DB->lastInsertId();
+		}
 	}
 ?>
