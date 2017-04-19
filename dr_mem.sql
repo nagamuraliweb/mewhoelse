@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2017 at 09:02 PM
+-- Generation Time: Apr 19, 2017 at 07:49 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
@@ -287,6 +287,7 @@ CREATE TABLE `dr_mem_users` (
 CREATE TABLE `dr_mem_users_details` (
   `user_details_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `user_type_id` int(11) NOT NULL,
   `user_role_id` int(11) DEFAULT NULL,
   `user_gender_id` int(11) NOT NULL,
   `user_skills_id` int(11) DEFAULT NULL,
@@ -303,7 +304,7 @@ CREATE TABLE `dr_mem_users_details` (
   `user_language_others` int(11) DEFAULT NULL,
   `user_experience_id` int(11) NOT NULL,
   `user_videos` varchar(1000) DEFAULT NULL,
-  `user_dob` date NOT NULL,
+  `user_dob` date DEFAULT NULL,
   `user_is_professional` int(11) DEFAULT NULL,
   `user_project_id` int(11) DEFAULT NULL,
   `user_project` int(11) DEFAULT NULL,

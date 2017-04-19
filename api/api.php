@@ -459,10 +459,213 @@ class me_api extends db_config {
 				'others_languages' => $_POST['others_languages'] ? $_POST['others_hairtype'] : null
 			];
 
-			$user_id = Model_Admin::saveArtistDetails($this->DB, $data);
+			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $_SESSION['user_id']);
+
+			if (empty($user_id)) {
+				Model_Admin::saveArtistDetails($this->DB, $data);
+			} else {
+				Model_Admin::updateArtistDetails($this->DB, $data);
+			}
+
+			$result = ['error' => 0, , 'msg' => 'Successfully saved details'];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
+	public function saveTechnicianDetails() {
+
+		try {
+
+			if (empty($_SESSION['user_id']))) {
+				throw new Exception('Invalid user');
+			}
+
+			if (! ctype_digit($_POST['profession'])) {
+				throw new Exception('Invalid profession');
+			}
+
+			if (empty($_POST['gender'])) {
+				throw new Exception('Choose gender');
+			}
+
+			if (empty($_POST['dob'])) {
+				throw new Exception('Choose DOB');
+			}
+
+			if (empty($_POST['videos'])) {
+				throw new Exception('Enter videos');
+			}
+
+			if (empty($_POST['skills'])) {
+				throw new Exception('Choose skills');
+			}
+
+			if (empty($_POST['experince'])) {
+				throw new Exception('Choose experince');
+			}
+
+			if (empty($_POST['city'])) {
+				throw new Exception('Choose city');
+			}
+			
+			if (empty($_POST['other_ethnicity'])) {
+				throw new Exception('Enter ethnicity');
+			}
+
+			if (empty($_POST['training'])) {
+				throw new Exception('Choose professional training');
+			}
+
+			if (empty($_POST['languages'])) {
+				throw new Exception('Choose languages');
+			}
+
+			if ($_POST['languages'] === 7) {
+				if (empty($_POST['languages'])) {
+					throw new Exception('Enter languages');
+				}
+			}
+
+			$data = [
+				'user_id' => $_SESSION['user_id'],
+				'user_type' => $_POST['profession'],
+				'gender' => $_POST['gender'],
+				'dob' => $_POST['dob'],
+				'videos' => $_POST['videos'],
+				'otherskills' => $_POST['skills'],
+				'experince' => $_POST['experince'],
+				'city' => $_POST['city'],
+				'other_ethnicity' => $_POST['other_ethnicity'],
+				'training' => $_POST['training'],
+				'languages' => $_POST['languages'],
+				'others_languages' => $_POST['others_languages'] ? $_POST['others_hairtype'] : null
+			];
+
+			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $_SESSION['user_id']);
+
+			if (empty($user_id)) {
+				Model_Admin::saveTechnicianDetails($this->DB, $data);
+			} else {
+				Model_Admin::updateTechnicianDetails($this->DB, $data);
+			}
 
 			if (empty($user_id)) {
 				throw new Exception('Error occured. Please try again.');
+			}
+
+			$result = ['error' => 0, , 'msg' => 'Successfully saved details'];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
+	public function saveClientDetails() {
+
+		try {
+
+			if (empty($_SESSION['user_id']))) {
+				throw new Exception('Invalid user');
+			}
+
+			if (! ctype_digit($_POST['profession'])) {
+				throw new Exception('Invalid profession');
+			}
+
+			if (empty($_POST['gender'])) {
+				throw new Exception('Choose gender');
+			}
+
+			if (empty($_POST['project'])) {
+				throw new Exception('Choose videos');
+			}
+
+			if (empty($_POST['projectname'])) {
+				throw new Exception('Enter project name');
+			}
+
+			if (empty($_POST['project_type'])) {
+				throw new Exception('Choose project type');
+			}
+
+			if (empty($_POST['project_description'])) {
+				throw new Exception('Enter project description');
+			}
+
+			if (empty($_POST['roll_type'])) {
+				throw new Exception('Choose roll type');
+			}
+
+			if (empty($_POST['looking_for'])) {
+				throw new Exception('Choose looking for');
+			}
+
+			if (empty($_POST['character_name'])) {
+				throw new Exception('Enter character name');
+			}
+
+			if (empty($_POST['character_description'])) {
+				throw new Exception('Enter character description');
+			}
+
+			if (empty($_POST['body_type'])) {
+				throw new Exception('Choose body type');
+			}
+
+			if (empty($_POST['experince'])) {
+				throw new Exception('Choose experince');
+			}
+
+			if (empty($_POST['training'])) {
+				throw new Exception('Choose professional training');
+			}
+
+			if (empty($_POST['languages'])) {
+				throw new Exception('Choose languages');
+			}
+
+			if ($_POST['languages'] === 0) {
+				if (empty($_POST['languages'])) {
+					throw new Exception('Enter languages');
+				}
+			}
+
+			if (empty($_POST['production_housename'])) {
+				throw new Exception('Enter production housename');
+			}
+
+			$data = [
+				'user_id' => $_SESSION['user_id'],
+				'user_type' => $_POST['profession'],
+				'gender' => $_POST['gender'],
+				'project' => $_POST['project'],
+				'projectname' => $_POST['projectname'],
+				'project_type' => $_POST['project_type'],
+				'project_description' => $_POST['project_description'],
+				'roll_type' => $_POST['roll_type'],
+				'looking_for' => $_POST['looking_for'],
+				'character_name' => $_POST['character_name'],
+				'character_description' => $_POST['character_description'],
+				'body_type' => $_POST['body_type'],
+				'experince' => $_POST['experince'],
+				'training' => $_POST['training'],
+				'languages' => $_POST['languages'],
+				'others_languages' => $_POST['others_languages'] ? $_POST['others_hairtype'] : null,
+				'production_housename' => $_POST['production_housename'],
+			];
+
+			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $_SESSION['user_id']);
+
+			if (empty($user_id)) {
+				Model_Admin::saveClientDetails($this->DB, $data);
+			} else {
+				Model_Admin::updateClientDetails($this->DB, $data);
 			}
 
 			$result = ['error' => 0, , 'msg' => 'Successfully saved details'];
