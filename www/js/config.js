@@ -35,6 +35,27 @@ angular.module('meapp.config', [])
     controller: 'signupCtrl'
   })
 
+  // artists register
+  .state('artist-register', {
+    url: '/artist-register',
+    templateUrl: 'templates/artist-register.html',
+    controller: 'artistsCtrl'
+  })
+
+  // technicians register
+  .state('technicians-register', {
+    url: '/technicians-register',
+    templateUrl: 'templates/technicians-register.html',
+    controller: 'techniciansCtrl'
+  })
+
+  // clients register
+  .state('clients-register', {
+    url: '/clients-register',
+    templateUrl: 'templates/clients-register.html',
+    controller: 'clientsCtrl'
+  })
+
   // overview page
   .state('overview', {
     url: '/overview',

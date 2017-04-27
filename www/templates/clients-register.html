@@ -1,0 +1,87 @@
+<ion-view view-title="Landing" class="login" hide-nav-bar="true">
+  <ion-content class="padding">
+
+	<div id="landing_header" class="text-center">
+		<img src="img/logo.png" alt="Logo_Meapp" class="img-responsive">
+	</div>    
+
+	<div class="row login_grid">
+		<form>
+			<!-- clients -->
+			<div id="clients">
+				<div><label><input type="radio" name="gender"> Male</label>
+				<label><input type="radio" name="gender"> Female</label></div><br>
+				<select name="project" class="dropdown">
+					<option value="">Project</option>
+					<option value="New">New</option>
+					<option value="Existing">Existing</option>
+				</select>
+				<input type="text" name="projectname" class="inputbox" placeholder="Enter your project name">
+				<select name="project_type" class="dropdown">
+					<option value="">Project type</option>
+					<option value="Feature Film">Feature Film</option>
+					<option value="Ad Film">Ad Film</option>
+					<option value="Short Film">Short Film</option>
+					<option value="TV Seria">TV Seria</option>
+					<option value="Documentary">Documentary</option>
+					<option value="Theater">Theater</option>
+					<option value="Photoshoot">Photoshoot</option>
+				</select>
+				<textarea name="project_description" placeholder="Project description" class="textareabox"></textarea>
+				<select name="roll_type" class="dropdown">
+					<option value="">Roll type</option>
+					<option value="Lead">Lead</option>
+					<option value="Lead Support">Lead Support</option>
+					<option value="Supporting">Supporting</option>
+					<option value="Character">Character</option>
+					<option value="Cameo">Cameo</option>
+					<option value="Junior">Junior</option>
+				</select>
+				<select name="looking_for" class="dropdown">
+					<option value="">Looking for</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
+				<input type="text" name="character_name" class="inputbox" placeholder="Character name">
+				<textarea name="character_description" placeholder="Character description" class="textareabox"></textarea>
+				<h4>Requirements</h4>
+				<select name="body_type" class="dropdown">
+					<option value="">Body Type</option>
+					<option value="Slim">Slim</option>
+					<option value="Average">Average</option>
+					<option value="Athletic">Athletic</option>
+					<option value="Muscular">Muscular</option>
+					<option value="Plus Size">Plus Size</option>
+				</select>
+				<select name="experince" class="dropdown">
+					<option value="">Experience</option>
+					<option value="Fresher">Fresher</option>
+					<option value="Experinced">Experinced</option>
+					<option value="Fresher/Experinced">both</option>
+				</select>
+				<div>
+					Professional training <label><input type="radio" name="training" value="Yes"> Yes</label>
+					<label><input type="radio" name="training" value="No"> No</label>
+				</div><br>
+				<select name="languages" class="dropdown">
+					<option value="0">Languages</option>
+					<option value="Tamil">Tamil</option>
+					<option value="Hindi">Hindi</option>
+					<option value="English">English</option>
+					<option value="Telugu">Telugu</option>
+					<option value="Malayalam">Malayalam</option>
+					<option value="Kannada">Kannada</option>
+					<option value="Others">Others</option>
+				</select>
+				<input type="text" name="production_housename" class="inputbox bottom_30" placeholder="Production house name">
+
+				<button class="button button-outline loginbtn" ng-click="register()">
+				  proceed
+				</button>
+			</div>
+
+		</form>
+	</div>
+
+  </ion-content>
+</ion-view>
