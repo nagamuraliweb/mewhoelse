@@ -1,30 +1,45 @@
 <ion-view view-title="Technicians" class="dashboard">
-  <ion-content>
+  <ion-content class="padding">
     
-    <div class="card list_artist" ui-sref="overview">
-        <img src="img/artist1.jpg" alt="Artist">
-        <div class="padding">
-          <h4>Arunkumar, Camera man <span class="pull-right">Age: 34</span></h4>
-          <p>Bangalore</p>
+    <select name="profession" class="dropdown bottom_30" ng-model="profession">
+        <option value="">Select</option>
+        <option value="artists">Camera man</option>
+        <option value="technicians">Actress</option>
+        <option value="clients">Comedian</option>
+    </select>
+
+    <div class="card list_artist">
+      <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
+        <div class="padding artist_info">
+        <img src="img/thumnail.png" alt="Thumnail">
+          <h4>Megna naidu</h4>
+          <p>Artists</p>
+          <p>Chennai</p>
         </div>
+      </div>
     </div>
 
-    <div class="card list_artist" ui-sref="overview">
-        <img src="img/artist1.jpg" alt="Artist">
-        <div class="padding">
-          <h4>Arunkumar, Camera man <span class="pull-right">Age: 40</span></h4>
-          <p>Bangalore</p>
+    <div class="card list_artist">
+      <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
+        <div class="padding artist_info">
+        <img src="img/thumnail.png" alt="Thumnail">
+          <h4>Megna naidu</h4>
+          <p>Artists</p>
+          <p>Chennai</p>
         </div>
+      </div>
     </div>
 
-    <div class="card list_artist" ui-sref="overview">
-        <img src="img/artist1.jpg" alt="Artist">
-        <div class="padding">
-          <h4>Arunkumar, Camera man <span class="pull-right">Age: 38</span></h4>
-          <p>Bangalore</p>
+    <div class="card list_artist">
+      <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
+        <div class="padding artist_info">
+        <img src="img/thumnail.png" alt="Thumnail">
+          <h4>Megna naidu</h4>
+          <p>Artists</p>
+          <p>Chennai</p>
         </div>
+      </div>
     </div>
-
 
   </ion-content>
 </ion-view>

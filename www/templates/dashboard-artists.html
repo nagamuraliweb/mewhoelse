@@ -1,28 +1,44 @@
 <ion-view view-title="Artists" class="dashboard">
   <ion-content class="padding">
     
-    <div class="card list_artist" ui-sref="overview">
-        <img src="img/artist1.jpg" alt="Artist">
-        <div class="padding">
-          <h4>Megna naidu, Artist <span class="pull-right">Age: 24</span></h4>
+    <select name="profession" class="dropdown bottom_30" ng-model="profession">
+        <option value="">Select</option>
+        <option value="artists">Actor</option>
+        <option value="technicians">Actress</option>
+        <option value="clients">Comedian</option>
+    </select>
+
+    <div class="card list_artist">
+      <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
+        <div class="padding artist_info">
+        <img src="img/thumnail.png" alt="Thumnail">
+          <h4>Megna naidu</h4>
+          <p>Artists</p>
           <p>Chennai</p>
         </div>
-    </div>
-    
-    <div class="card list_artist" ui-sref="overview">
-        <img src="img/artist1.jpg" alt="Artist">
-        <div class="padding">
-          <h4>Megna naidu, Artist <span class="pull-right">Age: 24</span></h4>
-          <p>Chennai</p>
-        </div>
+      </div>
     </div>
 
-    <div class="card list_artist" ui-sref="overview">
-        <img src="img/artist1.jpg" alt="Artist">
-        <div class="padding">
-          <h4>Megna naidu, Artist <span class="pull-right">Age: 24</span></h4>
+    <div class="card list_artist">
+      <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
+        <div class="padding artist_info">
+        <img src="img/thumnail.png" alt="Thumnail">
+          <h4>Megna naidu</h4>
+          <p>Artists</p>
           <p>Chennai</p>
         </div>
+      </div>
+    </div>
+
+    <div class="card list_artist">
+      <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
+        <div class="padding artist_info">
+        <img src="img/thumnail.png" alt="Thumnail">
+          <h4>Megna naidu</h4>
+          <p>Artists</p>
+          <p>Chennai</p>
+        </div>
+      </div>
     </div>
 
   </ion-content>

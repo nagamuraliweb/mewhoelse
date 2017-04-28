@@ -80,10 +80,15 @@ display: table;margin: auto;margin-bottom: 20px;font-size: 14px;}
 .login_grid{margin-top: 20px;color: #ffffff;}
 .login_grid h4{color: #ffffff;font-family:'openSans';}
 /* dashboard page */ 
-.list_artist{background-color:rgba(255,255,255, 0.1);}
-.list_artist h4{color: #f836ff;font-family: 'openSans';text-transform: capitalize;margin-top: 0;}
-.list_artist p{color: #ffae20;font-family: 'openSans';text-transform: capitalize;margin-bottom: 0;}
-.list_artist img{max-width: 100%;height: auto;}
+.list_artist{width: 100%;display: table;position: relative;}
+.artist_profile{min-height: 300px;padding: 10px;}
+.list_artist h4{color: #42214e;font-family: 'openSans';text-transform: capitalize;margin-top: 0;font-size: 16px;
+font-weight: bold;}
+.list_artist p{color: #42214e;font-family: 'openSans';text-transform: capitalize;margin-bottom: 0;
+font-weight: bold;}
+.artist_info{position: relative;background-color:rgba(255,255,255, 0.8);position: absolute;bottom: 10px;
+width: 93%;}
+.artist_info img{position: absolute;right: 10px;bottom: 70px;border-radius: 50%;}
 
 /* overview page */
 .list_overview p{color: #f836ff;font-family: 'openSans';border-bottom: 1px solid #666666;
