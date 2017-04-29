@@ -676,6 +676,58 @@ class me_api extends db_config {
 
 		echo json_encode($result);
 	}
+
+	public function generateHash() {
+
+		try {
+
+			if (empty($_POST['amount'])) {
+				throw new Exception('Invalid amount');
+			}
+
+			if (empty($_POST['productinfo'])) {
+				throw new Exception('Invalid product info');
+			}
+
+			if (empty($_POST['firstname'])) {
+				throw new Exception('Invalid firstname');
+			}
+
+			if (empty($_POST['email'])) {
+				throw new Exception('Invalid email');
+			}
+			
+			$SALT = "nLBSerFb53";
+		
+			$posted = [];
+
+			$posted['key'] = "8FeKgXrj";
+			$posted['txnid'] = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+			
+			foreach($_POST as $key => $value) {    
+				$posted[$key] = $value; 
+			}
+
+			// Hash Sequence
+			$hashSequence = "key|txnid|amount|productinfo|firstname|email||||||||||";
+			$hashVarsSeq = explode('|', $hashSequence);
+			$hash_string = ''; 
+			foreach ($hashVarsSeq as $hash_var) {
+				$hash_string .= isset($posted[$hash_var]) ? $posted[$hash_var] : '';
+				$hash_string .= '|';
+			}
+		
+			$hash_string .= $SALT;		
+			$hash = strtolower(hash('sha512', $hash_string));
+
+			$result = ['error' => 0, , 'key' => $hash];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
 }
 
 $api = new me_api();
