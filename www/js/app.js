@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('meapp', ['ionic', 'meapp.config', 'meapp.controllers'])
+angular.module('meapp', ['ionic', 'meapp.config', 'meapp.controllers', 'meapp.factories', 'meapp.services'])
 
 .run(function($ionicPlatform, $state) {
   $ionicPlatform.ready(function() {
@@ -45,4 +45,15 @@ angular.module('meapp.controllers', [
   'meapp.controllers.techniciansOverviewCtrl',
   'meapp.controllers.clientsOverviewCtrl',
   'meapp.controllers.clientsCtrl'
-  ]);
+]);
+
+// factories
+angular.module('meapp.factories', [
+  'meapp.factories.loaderFactory',
+  'meapp.factories.loginFactory'
+]);
+
+// services
+angular.module('meapp.services', [
+  'meapp.services.loginService'
+]);
