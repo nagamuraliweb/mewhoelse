@@ -57,10 +57,24 @@ angular.module('meapp.config', [])
   })
 
   // overview page
-  .state('overview', {
-    url: '/overview',
-    templateUrl: 'templates/overview.html',
-    controller: 'overviewCtrl'
+  .state('artist_overview', {
+    url: '/artist_overview',
+    templateUrl: 'templates/artist_overview.html',
+    controller: 'artistOverviewCtrl'
+  })
+
+  // overview page
+  .state('technicians_overview', {
+    url: '/technicians_overview',
+    templateUrl: 'templates/technicians_overview.html',
+    controller: 'techniciansOverviewCtrl'
+  })
+
+  // overview page
+  .state('clients_overview', {
+    url: '/clients_overview',
+    templateUrl: 'templates/clients_overview.html',
+    controller: 'clientsOverviewCtrl'
   })
 
   // setup an abstract state for the tabs directive

@@ -97,4 +97,4 @@ padding-bottom: 10px;}
 .bar-header {background: none !important;border-bottom: 1px solid #ffffff;}
 .bar .title{color: #ffae20 !important;}
 .bar .back-button.hide, .bar .buttons .hide{display: block;color: #ffffff;}
-.previous-title{display: none;}
+.previous-title{display: none !important;}

@@ -41,6 +41,8 @@ angular.module('meapp.controllers', [
   'meapp.controllers.signupCtrl',
   'meapp.controllers.loginCtrl',
   'meapp.controllers.forgotCtrl',
-  'meapp.controllers.overviewCtrl',
+  'meapp.controllers.artistOverviewCtrl',
+  'meapp.controllers.techniciansOverviewCtrl',
+  'meapp.controllers.clientsOverviewCtrl',
   'meapp.controllers.clientsCtrl'
   ]);
