@@ -6,19 +6,38 @@
 	</div>    
 
 	<div class="row login_grid">
-		<form>
-			<input type="text" name="name" placeholder="Name" class="inputbox">
-			<input type="email" name="email" placeholder="Email" class="inputbox">
-			<input type="password" name="password" placeholder="Password" class="inputbox">
-			<input type="password" name="confirm_password" placeholder="Confirm Password" class="inputbox">
-			<input type="number" name="mobile" placeholder="Mobile no" class="inputbox">
-			<select name="profession" class="dropdown bottom_30" ng-model="profession">
+		<form name="signupForm" novalidate="">
+			<input type="text" name="name" placeholder="Name" class="inputbox" ng-model="user.name" autocomplete="off" required>
+			<div class="error_alert" ng-show="signupForm.name.$dirty && signupForm.name.$touched">
+			    <span ng-show="signupForm.name.$error.required">Name is required.</span>
+			</div>
+			<input type="email" name="email" placeholder="Email" class="inputbox" ng-model="user.email" autocomplete="off" required>
+			<div class="error_alert" ng-show="signupForm.email.$dirty && signupForm.email.$invalid">
+			    <span ng-show="signupForm.email.$error.required">Email is required.</span>
+			    <span ng-show="signupForm.email.$error.email">Invalid email address.</span>
+			</div>
+			<input type="password" name="password" placeholder="Password" class="inputbox" ng-model="user.password" autocomplete="off" required>
+			<div class="error_alert" ng-show="signupForm.password.$dirty && signupForm.password.$touched">
+			    <span ng-show="signupForm.password.$error.required">Password is required.</span>
+			</div>
+			<input type="password" name="confirm_password" placeholder="Confirm Password" class="inputbox" ng-model="user.confirm_password" autocomplete="off" required>
+			<div class="error_alert" ng-show="signupForm.confirm_password.$dirty && signupForm.confirm_password.$touched">
+			    <span ng-show="signupForm.confirm_password.$error.required">Confirm Password is required.</span>
+			</div>
+			<input type="number" name="mobile" placeholder="Mobile no" class="inputbox" ng-model="user.mobile" autocomplete="off" required>
+			<div class="error_alert" ng-show="signupForm.mobile.$dirty && signupForm.mobile.$touched">
+			    <span ng-show="signupForm.mobile.$error.required">Password is required.</span>
+			</div>
+			<select name="profession" class="dropdown bottom_30" ng-model="user.profession" autocomplete="off" required>
 				<option value="">Select your profession</option>
 				<option value="artists">Artists</option>
 				<option value="technicians">Technicians</option>
 				<option value="clients">Clients</option>
 			</select>
-			<button class="button button-outline loginbtn" ng-click="signup()">
+			<div class="error_alert" ng-show="signupForm.profession.$dirty && signupForm.profession.$touched">
+			    <span ng-show="signupForm.profession.$error.required">Password is required.</span>
+			</div>
+			<button class="button button-outline loginbtn" ng-disabled="!signupForm.$valid" ng-click="signup()">
 			  signup
 			</button>
 		</form>

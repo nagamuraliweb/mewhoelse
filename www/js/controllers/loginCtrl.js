@@ -10,8 +10,9 @@ angular.module('meapp.controllers.loginCtrl', [])
 	$scope.login = function() {
 		loaderFactory.showLoader();
 		loginFactory.userLogin($scope.login.user_email, $scope.login.user_password).then(function (resp) {
+			console.log(resp);
 			loaderFactory.hideLoader();
-			if(resp.status == 0) {
+			if(resp.status === 1) {
 				loaderFactory.showAlert('Login', resp.error);
 				$scope.login.user_email = '';
 				$scope.login.user_password = '';
@@ -19,8 +20,8 @@ angular.module('meapp.controllers.loginCtrl', [])
 				$scope.loginForm.$setUntouched();
 				return;
 			} else {
-				window.localStorage.setItem('userID', resp.data.ID);
-				$state.go('artist-register');
+				//window.localStorage.setItem('userID', resp.data.ID);
+				//$state.go('artist-register');
 			}
 		});
 	}
