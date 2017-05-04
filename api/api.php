@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
 include_once('db_config.php');
 include_once('model.php');
 
@@ -224,18 +228,19 @@ class me_api extends db_config {
 	public function userLogin() {
 
 		try {
-
-			if (empty($_POST['email'])) {
+			$postdata = json_decode(file_get_contents("php://input"));
+			
+			if (empty($postdata->email)) {
 				throw new Exception('Email is required');
 			}
 
-			if (empty($_POST['password'])) {
+			if (empty($postdata->password)) {
 				throw new Exception('Password is required');
 			}
 
 			$data = [
-				'email' => $_POST['email'],
-				'password' => $_POST['password']
+				'email' => $postdata->email,
+				'password' => $postdata->password
 			];
 
 			$user_id = Model_Admin::userLogin($this->DB, $data);
@@ -244,9 +249,7 @@ class me_api extends db_config {
 				throw new Exception('Invalid Credentials');
 			}
 
-			$_SESSION['user_id'] = $user_id;
-
-			$result = ['error' => 0, 'msg' => 'Successfully logged in'];
+			$result = ['error' => 0, 'user_id' => $user_id];
 
 		} catch (Exception $e) {
 			$result = ['error' => 1, 'msg' => $e->getMessage()];
@@ -258,27 +261,27 @@ class me_api extends db_config {
 	public function forgetPassword() {
 
 		try {
+			$postdata = json_decode(file_get_contents("php://input"));
 
-			if (empty($_POST['email'])) {
+			if (empty($postdata->email)) {
 				throw new Exception('Email is required');
 			}
 
-			if (empty($_POST['password'])) {
+			if (empty($postdata->password)) {
 				throw new Exception('Password is required');
 			}
 
-			if (empty($_POST['confirm_password'])) {
+			if (empty($postdata->confirm_password)) {
 				throw new Exception('Confirm password is required');
 			}
 
-			if ($_POST['password'] !== $_POST['confirm_password']) {
+			if ($postdata->password !== $postdata->confirm_password) {
 				throw new Exception('Password and Confirm password does not match');
 			}
 
 			$data = [
-				'email' => $_POST['email'],
-				'password' => $_POST['password'],
-				'confirm_password' => $_POST['confirm_password']
+				'email' => $postdata->email,
+				'password' => $postdata->password
 			];
 
 			if (!Model_Admin::forgetPassword($this->DB, $data)) {
@@ -297,41 +300,42 @@ class me_api extends db_config {
 	public function signUp() {
 
 		try {
+			$postdata = json_decode(file_get_contents("php://input"));
 
-			if (!ctype_digit($_POST['profession'])) {
+			if (!ctype_digit($postdata->profession)) {
 				throw new Exception('Invalid profession');
 			}
 
-			if (empty($_POST['name'])) {
+			if (empty($postdata->name)) {
 				throw new Exception('Name is required');
 			}
 
-			if (empty($_POST['email'])) {
+			if (empty($postdata->email)) {
 				throw new Exception('Email is required');
 			}
 
-			if (!ctype_digit($_POST['mobile'])) {
+			if (!ctype_digit($postdata->mobile)) {
 				throw new Exception('Mobile is required');
 			}
 
-			if (empty($_POST['password'])) {
+			if (empty($postdata->password)) {
 				throw new Exception('Password is required');
 			}
 
-			if (empty($_POST['confirm_password'])) {
+			if (empty($postdata->confirm_password)) {
 				throw new Exception('Confirm password is required');
 			}
 
-			if ($_POST['password'] !== $_POST['confirm_password']) {
+			if ($postdata->password !== $postdata->confirm_password) {
 				throw new Exception('Password and Confirm password does not match');
 			}
 
 			$data = [
-				'user_type' => $_POST['profession'],
-				'name' => $_POST['name'],
-				'email' => $_POST['email'],
-				'password' => $_POST['password'],
-				'mobile' => $_POST['mobile']
+				'user_type' => $postdata->profession,
+				'name' => $postdata->name,
+				'email' => $postdata->email,
+				'password' => $postdata->password,
+				'mobile' => $postdata->mobile
 			];
 
 			$user_id = Model_Admin::signUp($this->DB, $data);
@@ -340,9 +344,7 @@ class me_api extends db_config {
 				throw new Exception('Error occured. Please try again.');
 			}
 
-			$_SESSION['user_id'] = $user_id;
-
-			$result = ['error' => 0, , 'msg' => 'Successfully registered'];
+			$result = ['error' => 0, 'user_id' => $user_id];
 
 		} catch (Exception $e) {
 			$result = ['error' => 1, 'msg' => $e->getMessage()];
@@ -354,112 +356,113 @@ class me_api extends db_config {
 	public function saveArtistDetails() {
 
 		try {
+			$postdata = json_decode(file_get_contents("php://input"));
 
-			if (empty($_SESSION['user_id']))) {
+			if (empty($postdata->user_id)) {
 				throw new Exception('Invalid user');
 			}
 
-			if (! ctype_digit($_POST['profession'])) {
+			if (! ctype_digit($postdata->profession)) {
 				throw new Exception('Invalid profession');
 			}
 
-			if (empty($_POST['gender'])) {
+			if (empty($postdata->gender)) {
 				throw new Exception('Choose gender');
 			}
 
-			if (empty($_POST['dob'])) {
+			if (empty($postdata->dob)) {
 				throw new Exception('Choose DOB');
 			}
 
-			if (empty($_POST['videos'])) {
+			if (empty($postdata->videos)) {
 				throw new Exception('Enter videos');
 			}
 
-			if (empty($_POST['skills'])) {
+			if (empty($postdata->skills)) {
 				throw new Exception('Choose skills');
 			}
 
-			if ($_POST['skills'] === 0) {
-				if (empty($_POST['otherskills'])) {
+			if ($postdata->skills === 0) {
+				if (empty($postdata->otherskills)) {
 					throw new Exception('Enter skills');
 				}
 			}
 
-			if (empty($_POST['experince'])) {
+			if (empty($postdata->experince)) {
 				throw new Exception('Choose experince');
 			}
 
-			if (empty($_POST['city'])) {
+			if (empty($postdata->city)) {
 				throw new Exception('Choose city');
 			}
 			
-			if (empty($_POST['other_ethnicity'])) {
+			if (empty($postdata->other_ethnicity)) {
 				throw new Exception('Enter ethnicity');
 			}
 
-			if (empty($_POST['body_type'])) {
+			if (empty($postdata->body_type)) {
 				throw new Exception('Choose body type');
 			}
 
-			if (empty($_POST['hair_type'])) {
+			if (empty($postdata->hair_type)) {
 				throw new Exception('Choose hair type');
 			}
 
-			if ($_POST['hair_type'] === 0) {
-				if (empty($_POST['others_hairtype'])) {
+			if ($postdata->hair_type === 0) {
+				if (empty($postdata->others_hairtype)) {
 					throw new Exception('Enter hair type');
 				}
 			}
 
-			if (empty($_POST['weight'])) {
+			if (empty($postdata->weight)) {
 				throw new Exception('Enter weight');
 			}
 
-			if (empty($_POST['skin_color'])) {
+			if (empty($postdata->skin_color)) {
 				throw new Exception('Choose skin color');
 			}
 
-			if (empty($_POST['hair_color'])) {
+			if (empty($postdata->hair_color)) {
 				throw new Exception('Enter hair color');
 			}
 
-			if (empty($_POST['training'])) {
+			if (empty($postdata->training)) {
 				throw new Exception('Choose professional training');
 			}
 
-			if (empty($_POST['languages'])) {
+			if (empty($postdata->languages)) {
 				throw new Exception('Choose languages');
 			}
 
-			if ($_POST['languages'] === 0) {
-				if (empty($_POST['languages'])) {
+			if ($postdata->languages === 0) {
+				if (empty($postdata->languages)) {
 					throw new Exception('Enter languages');
 				}
 			}
 
 			$data = [
-				'user_id' => $_SESSION['user_id'],
-				'user_type' => $_POST['profession'],
-				'gender' => $_POST['gender'],
-				'dob' => $_POST['dob'],
-				'videos' => $_POST['videos'],
-				'skills' => $_POST['skills'],
-				'otherskills' => $_POST['otherskills'] ? $_POST['otherskills'] : null,
-				'experince' => $_POST['experince'],
-				'city' => $_POST['city'],
-				'other_ethnicity' => $_POST['other_ethnicity'],
-				'body_type' => $_POST['body_type'],
-				'hair_type' => $_POST['hair_type'],
-				'others_hairtype' => $_POST['others_hairtype'] ? $_POST['others_hairtype'] : null,
-				'weight' => $_POST['weight'],
-				'skin_color' => $_POST['skin_color'],
-				'hair_color' => $_POST['hair_color'],
-				'training' => $_POST['training'],
-				'languages' => $_POST['languages'],
-				'others_languages' => $_POST['others_languages'] ? $_POST['others_hairtype'] : null
+				'user_id' => $postdata->user_id,
+				'user_type' => $postdata->profession,
+				'gender' => $postdata->gender,
+				'dob' => $postdata->dob,
+				'videos' => $postdata->videos,
+				'skills' => $postdata->skills,
+				'otherskills' => $postdata->otherskills ? $postdata->otherskills : null,
+				'experince' => $postdata->experince,
+				'city' => $postdata->city,
+				'other_ethnicity' => $postdata->other_ethnicity,
+				'body_type' => $postdata->body_type,
+				'hair_type' => $postdata->hair_type,
+				'others_hairtype' => $postdata->others_hairtype ? $postdata->others_hairtype : null,
+				'weight' => $postdata->weight,
+				'skin_color' => $postdata->skin_color,
+				'hair_color' => $postdata->hair_color,
+				'training' => $postdata->training,
+				'languages' => $postdata->languages,
+				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null
 			];
 
-			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $_SESSION['user_id']);
+			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
 				Model_Admin::saveArtistDetails($this->DB, $data);
@@ -467,7 +470,7 @@ class me_api extends db_config {
 				Model_Admin::updateArtistDetails($this->DB, $data);
 			}
 
-			$result = ['error' => 0, , 'msg' => 'Successfully saved details'];
+			$result = ['error' => 0, 'msg' => 'Successfully saved details'];
 
 		} catch (Exception $e) {
 			$result = ['error' => 1, 'msg' => $e->getMessage()];
@@ -479,73 +482,74 @@ class me_api extends db_config {
 	public function saveTechnicianDetails() {
 
 		try {
+			$postdata = json_decode(file_get_contents("php://input"));
 
-			if (empty($_SESSION['user_id']))) {
+			if (empty($postdata->user_id)) {
 				throw new Exception('Invalid user');
 			}
 
-			if (! ctype_digit($_POST['profession'])) {
+			if (! ctype_digit($postdata->profession)) {
 				throw new Exception('Invalid profession');
 			}
 
-			if (empty($_POST['gender'])) {
+			if (empty($postdata->gender)) {
 				throw new Exception('Choose gender');
 			}
 
-			if (empty($_POST['dob'])) {
+			if (empty($postdata->dob)) {
 				throw new Exception('Choose DOB');
 			}
 
-			if (empty($_POST['videos'])) {
+			if (empty($postdata->videos)) {
 				throw new Exception('Enter videos');
 			}
 
-			if (empty($_POST['skills'])) {
+			if (empty($postdata->skills)) {
 				throw new Exception('Choose skills');
 			}
 
-			if (empty($_POST['experince'])) {
+			if (empty($postdata->experince)) {
 				throw new Exception('Choose experince');
 			}
 
-			if (empty($_POST['city'])) {
+			if (empty($postdata->city)) {
 				throw new Exception('Choose city');
 			}
 			
-			if (empty($_POST['other_ethnicity'])) {
+			if (empty($postdata->other_ethnicity)) {
 				throw new Exception('Enter ethnicity');
 			}
 
-			if (empty($_POST['training'])) {
+			if (empty($postdata->training)) {
 				throw new Exception('Choose professional training');
 			}
 
-			if (empty($_POST['languages'])) {
+			if (empty($postdata->languages)) {
 				throw new Exception('Choose languages');
 			}
 
-			if ($_POST['languages'] === 7) {
-				if (empty($_POST['languages'])) {
+			if ($postdata->languages === 7) {
+				if (empty($postdata->languages)) {
 					throw new Exception('Enter languages');
 				}
 			}
 
 			$data = [
-				'user_id' => $_SESSION['user_id'],
-				'user_type' => $_POST['profession'],
-				'gender' => $_POST['gender'],
-				'dob' => $_POST['dob'],
-				'videos' => $_POST['videos'],
-				'otherskills' => $_POST['skills'],
-				'experince' => $_POST['experince'],
-				'city' => $_POST['city'],
-				'other_ethnicity' => $_POST['other_ethnicity'],
-				'training' => $_POST['training'],
-				'languages' => $_POST['languages'],
-				'others_languages' => $_POST['others_languages'] ? $_POST['others_hairtype'] : null
+				'user_id' => $postdata->user_id,
+				'user_type' => $postdata->profession,
+				'gender' => $postdata->gender,
+				'dob' => $postdata->dob,
+				'videos' => $postdata->videos,
+				'otherskills' => $postdata->skills,
+				'experince' => $postdata->experince,
+				'city' => $postdata->city,
+				'other_ethnicity' => $postdata->other_ethnicity,
+				'training' => $postdata->training,
+				'languages' => $postdata->languages,
+				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null
 			];
 
-			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $_SESSION['user_id']);
+			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
 				Model_Admin::saveTechnicianDetails($this->DB, $data);
@@ -557,7 +561,7 @@ class me_api extends db_config {
 				throw new Exception('Error occured. Please try again.');
 			}
 
-			$result = ['error' => 0, , 'msg' => 'Successfully saved details'];
+			$result = ['error' => 0, 'msg' => 'Successfully saved details'];
 
 		} catch (Exception $e) {
 			$result = ['error' => 1, 'msg' => $e->getMessage()];
@@ -569,98 +573,99 @@ class me_api extends db_config {
 	public function saveClientDetails() {
 
 		try {
+			$postdata = json_decode(file_get_contents("php://input"));
 
-			if (empty($_SESSION['user_id']))) {
+			if (empty($postdata->user_id)) {
 				throw new Exception('Invalid user');
 			}
 
-			if (! ctype_digit($_POST['profession'])) {
+			if (! ctype_digit($postdata->profession)) {
 				throw new Exception('Invalid profession');
 			}
 
-			if (empty($_POST['gender'])) {
+			if (empty($postdata->gender)) {
 				throw new Exception('Choose gender');
 			}
 
-			if (empty($_POST['project'])) {
+			if (empty($postdata->project)) {
 				throw new Exception('Choose videos');
 			}
 
-			if (empty($_POST['projectname'])) {
+			if (empty($postdata->projectname)) {
 				throw new Exception('Enter project name');
 			}
 
-			if (empty($_POST['project_type'])) {
+			if (empty($postdata->project_type)) {
 				throw new Exception('Choose project type');
 			}
 
-			if (empty($_POST['project_description'])) {
+			if (empty($postdata->project_description)) {
 				throw new Exception('Enter project description');
 			}
 
-			if (empty($_POST['roll_type'])) {
+			if (empty($postdata->roll_type)) {
 				throw new Exception('Choose roll type');
 			}
 
-			if (empty($_POST['looking_for'])) {
+			if (empty($postdata->looking_for)) {
 				throw new Exception('Choose looking for');
 			}
 
-			if (empty($_POST['character_name'])) {
+			if (empty($postdata->character_name)) {
 				throw new Exception('Enter character name');
 			}
 
-			if (empty($_POST['character_description'])) {
+			if (empty($postdata->character_description)) {
 				throw new Exception('Enter character description');
 			}
 
-			if (empty($_POST['body_type'])) {
+			if (empty($postdata->body_type)) {
 				throw new Exception('Choose body type');
 			}
 
-			if (empty($_POST['experince'])) {
+			if (empty($postdata->experince)) {
 				throw new Exception('Choose experince');
 			}
 
-			if (empty($_POST['training'])) {
+			if (empty($postdata->training)) {
 				throw new Exception('Choose professional training');
 			}
 
-			if (empty($_POST['languages'])) {
+			if (empty($postdata->languages)) {
 				throw new Exception('Choose languages');
 			}
 
-			if ($_POST['languages'] === 0) {
-				if (empty($_POST['languages'])) {
+			if ($postdata->languages === 0) {
+				if (empty($postdata->languages)) {
 					throw new Exception('Enter languages');
 				}
 			}
 
-			if (empty($_POST['production_housename'])) {
+			if (empty($postdata->production_housename)) {
 				throw new Exception('Enter production housename');
 			}
 
 			$data = [
-				'user_id' => $_SESSION['user_id'],
-				'user_type' => $_POST['profession'],
-				'gender' => $_POST['gender'],
-				'project' => $_POST['project'],
-				'projectname' => $_POST['projectname'],
-				'project_type' => $_POST['project_type'],
-				'project_description' => $_POST['project_description'],
-				'roll_type' => $_POST['roll_type'],
-				'looking_for' => $_POST['looking_for'],
-				'character_name' => $_POST['character_name'],
-				'character_description' => $_POST['character_description'],
-				'body_type' => $_POST['body_type'],
-				'experince' => $_POST['experince'],
-				'training' => $_POST['training'],
-				'languages' => $_POST['languages'],
-				'others_languages' => $_POST['others_languages'] ? $_POST['others_hairtype'] : null,
-				'production_housename' => $_POST['production_housename'],
+				'user_id' => $postdata->user_id,
+				'user_type' => $postdata->profession,
+				'gender' => $postdata->gender,
+				'project' => $postdata->project,
+				'projectname' => $postdata->projectname,
+				'project_type' => $postdata->project_type,
+				'project_description' => $postdata->project_description,
+				'roll_type' => $postdata->roll_type,
+				'looking_for' => $postdata->looking_for,
+				'character_name' => $postdata->character_name,
+				'character_description' => $postdata->character_description,
+				'body_type' => $postdata->body_type,
+				'experince' => $postdata->experince,
+				'training' => $postdata->training,
+				'languages' => $postdata->languages,
+				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null,
+				'production_housename' => $postdata->production_housename,
 			];
 
-			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $_SESSION['user_id']);
+			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
 				Model_Admin::saveClientDetails($this->DB, $data);
@@ -668,7 +673,7 @@ class me_api extends db_config {
 				Model_Admin::updateClientDetails($this->DB, $data);
 			}
 
-			$result = ['error' => 0, , 'msg' => 'Successfully saved details'];
+			$result = ['error' => 0, 'msg' => 'Successfully saved details'];
 
 		} catch (Exception $e) {
 			$result = ['error' => 1, 'msg' => $e->getMessage()];
@@ -680,20 +685,17 @@ class me_api extends db_config {
 	public function generateHash() {
 
 		try {
+			$postdata = json_decode(file_get_contents("php://input"));
 
-			if (empty($_POST['amount'])) {
-				throw new Exception('Invalid amount');
-			}
-
-			if (empty($_POST['productinfo'])) {
+			if (empty($postdata->productinfo)) {
 				throw new Exception('Invalid product info');
 			}
 
-			if (empty($_POST['firstname'])) {
+			if (empty($postdata->firstname)) {
 				throw new Exception('Invalid firstname');
 			}
 
-			if (empty($_POST['email'])) {
+			if (empty($postdata->email)) {
 				throw new Exception('Invalid email');
 			}
 			
@@ -703,6 +705,7 @@ class me_api extends db_config {
 
 			$posted['key'] = "8FeKgXrj";
 			$posted['txnid'] = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+			$posted['key'] = 500;
 			
 			foreach($_POST as $key => $value) {    
 				$posted[$key] = $value; 
@@ -720,7 +723,7 @@ class me_api extends db_config {
 			$hash_string .= $SALT;		
 			$hash = strtolower(hash('sha512', $hash_string));
 
-			$result = ['error' => 0, , 'key' => $hash];
+			$result = ['error' => 0, 'key' => $hash];
 
 		} catch (Exception $e) {
 			$result = ['error' => 1, 'msg' => $e->getMessage()];
