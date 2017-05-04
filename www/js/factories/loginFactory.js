@@ -3,13 +3,13 @@ angular.module('meapp.factories.loginFactory', [])
 
 	return {
 		userLogin: userLogin,
-		signUp: signUp
+		signUp: signUp,
+		forgotPassword: forgotPassword
 	}
 
 	function userLogin(user_email, user_password) {
 		var deffered = $q.defer();
 		loginService.userLogin(user_email, user_password).then(function (resp) {
-			console.log(resp);
 			deffered.resolve(resp);
 		}, function (error) {
 			console.log(error);
@@ -20,6 +20,17 @@ angular.module('meapp.factories.loginFactory', [])
 	function signUp(user) {
 		var deffered = $q.defer();
 		loginService.signUp(user).then(function(resp) {
+			console.log(resp);
+			deffered.resolve(resp);
+		}, function(error) {
+			console.log(error);
+		});
+		return deffered.promise;
+	}
+
+	function forgotPassword(user) {
+		var deffered = $q.defer();
+		loginService.forgotPassword(user).then(function(resp) {
 			console.log(resp);
 			deffered.resolve(resp);
 		}, function(error) {

@@ -5,17 +5,19 @@ angular.module('meapp.controllers.loginCtrl', [])
 	$scope.login = {
 		user_email: '',
 		user_password: ''
-	}
+	};
 
 	$scope.login = function() {
 		loaderFactory.showLoader();
 		loginFactory.userLogin($scope.login.user_email, $scope.login.user_password).then(function (resp) {
-			console.log(resp);
+			console.log(resp.data);
 			loaderFactory.hideLoader();
-			if(resp.status === 1) {
-				loaderFactory.showAlert('Login', resp.error);
-				$scope.login.user_email = '';
-				$scope.login.user_password = '';
+			if(resp.data.error === 1) {
+				loaderFactory.showAlert('Login', resp.data.msg);
+				$scope.login = {
+					user_email: '',
+					user_password: ''
+				};
 				$scope.loginForm.$setPristine();
 				$scope.loginForm.$setUntouched();
 				return;
