@@ -13,72 +13,42 @@
 				<input type="date" name="dob" placeholder="Date of birth" class="inputbox">
 				<label>Add Profile picture <input type="file" name="profile"></label><br><br>
 				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox">
-				<select name="skills" class="dropdown">
+				<select name="skills" class="dropdown" ng-model="artist_skill">
 					<option value="">Skills</option>
-					<option value="Horse Riding">Horse Riding</option>
-					<option value="Swimming">Swimming</option>
-					<option value="Singing">Singing</option>
-					<option value="Dancing">Dancing</option>
-					<option value="Ramp">Ramp</option>
-					<option value="Host / Hostess">Host / Hostess</option>
-					<option value="Theater">Theater</option>
-					<option value="Others">Others</option>
+					<option ng-repeat="skil in skills" value="{{skil.id_skills}}">{{skil.type}}</option>
 				</select>
 				<input type="text" name="otherskills" class="inputbox" placeholder="Enter your skills">
-				<select name="experince" class="dropdown">
+				<select name="experince" class="dropdown" ng-model="artist_experience">
 					<option value="">Experience</option>
-					<option value="Fresher">Fresher</option>
-					<option value="Experinced">Experinced</option>
-					<option value="Fresher/Experinced">both</option>
+					<option ng-repeat="exp in experience" value="{{exp.id_experience}}">{{exp.type}}</option>
 				</select>
 				<input type="text" name="city" placeholder="City" class="inputbox">
 				<input type="text" name="ethnicity" placeholder="Ethnicity" class="inputbox">
-				<select name="body_type" class="dropdown">
+				<select name="body_type" class="dropdown" ng-model="artist.body">
 					<option value="">Body Type</option>
-					<option value="Slim">Slim</option>
-					<option value="Average">Average</option>
-					<option value="Athletic">Athletic</option>
-					<option value="Plus Size">Plus Size</option>
+					<option ng-repeat="body in bodies" value="{{body.id_body}}">{{body.type}}</option>
 				</select>
-				<select name="hair_type" class="dropdown">
+				<select name="hair_type" class="dropdown" ng-model="artist.hair_type">
 					<option value="">Hair Type</option>
-					<option value="Long">Long</option>
-					<option value="Short">Short</option>
-					<option value="Curly">Curly</option>
-					<option value="Bald">Bald</option>
-					<option value="Others">Others</option>
+					<option ng-repeat="hair in hairs" value="{{hair.id_hair}}">{{hair.type}}</option>
 				</select>
 				<input type="text" name="others_hairtype" class="inputbox" placeholder="Enter your hair type">
 				<input type="text" name="weight" class="inputbox" placeholder="Enter your weight">
-				<select name="skin_color" class="dropdown">
+				<select name="skin_color" class="dropdown" ng-model="artist_skincolor">
 					<option value="">Skin Color</option>
-					<option value="Light">Light</option>
-					<option value="Dusky">Dusky</option>
-					<option value="Olive">Olive</option>
-					<option value="Mix">Mix</option>
+					<option ng-repeat="skin in skins" value="{{skin.id_skin}}">{{skin.type}}</option>
 				</select>
-				<select name="hair_color" class="dropdown">
+				<select name="hair_color" class="dropdown" ng-model="artist_haircolor">
 					<option value="">Hair Color</option>
-					<option value="Light Brown">Light Brown</option>
-					<option value="Red">Red</option>
-					<option value="Blonde">Blonde</option>
-					<option value="Silver / Grey">Silver / Grey</option>
-					<option value="Colored">Colored</option>
-					<option value="Black">Black</option>
+					<option ng-repeat="haircolor in haircolors" value="{{haircolor.id_hair}}">{{haircolor.type}}</option>
 				</select>
 				<div>
 					Professional trained <label><input type="radio" name="training" value="Yes"> Yes</label>
 					<label><input type="radio" name="training" value="No"> No</label>
 				</div><br>
-				<select name="languages" class="dropdown">
+				<select name="languages" class="dropdown" ng-model="artist_language">
 					<option value="">Languages</option>
-					<option value="Tamil">Tamil</option>
-					<option value="Hindi">Hindi</option>
-					<option value="English">English</option>
-					<option value="Telugu">Telugu</option>
-					<option value="Malayalam">Malayalam</option>
-					<option value="Kannada">Kannada</option>
-					<option value="Others">Others</option>
+					<option ng-repeat="language in languages" value="{{language.id_language}}">{{language.type}}</option>
 				</select>
 				<input type="text" name="others_languages" class="inputbox bottom_30" placeholder="Enter your language">
 

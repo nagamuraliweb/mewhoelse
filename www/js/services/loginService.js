@@ -23,7 +23,7 @@ angular.module('meapp.services.loginService', [])
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: { name: user.name, email: user.email, password: user.password, confirm_password: user.confirm_password, mobile: user.mobile, profession: user.profession }
+            data: { name: user.name, email: user.email, password: user.password, confirm_password: user.confirm_password, mobile: parseInt(user.mobile), profession: parseInt(user.profession) }
         };
 
         return $http(request).then(function (resp) {

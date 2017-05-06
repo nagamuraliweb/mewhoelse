@@ -49,11 +49,13 @@ angular.module('meapp.controllers', [
 
 // factories
 angular.module('meapp.factories', [
+  'meapp.factories.loginFactory',
   'meapp.factories.loaderFactory',
-  'meapp.factories.loginFactory'
+  'meapp.factories.dataFactory'
 ]);
 
 // services
 angular.module('meapp.services', [
-  'meapp.services.loginService'
+  'meapp.services.loginService',
+  'meapp.services.dataService'
 ]);

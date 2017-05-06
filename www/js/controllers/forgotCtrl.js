@@ -1,6 +1,7 @@
 angular.module('meapp.controllers.forgotCtrl', [])
 	.controller('forgotCtrl', ['$scope', 'loginFactory', 'loaderFactory', '$state', function($scope, loginFactory, loaderFactory, $state) {
 
+	$scope.form = {};
 	$scope.user = {
 		email: '',
 		password: '',
@@ -19,8 +20,8 @@ angular.module('meapp.controllers.forgotCtrl', [])
 					password: '',
 					confirm_password: ''
 				};
-				//$scope.forgotForm.$setPristine();
-				//$scope.forgotForm.$setUntouched();
+				$scope.form.forgotForm.$setPristine();
+				$scope.form.forgotForm.$setUntouched();
 				return;
 			} else {
 				//window.localStorage.setItem('userID', resp.data.ID);

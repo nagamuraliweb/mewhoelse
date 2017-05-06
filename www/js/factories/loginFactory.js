@@ -31,7 +31,6 @@ angular.module('meapp.factories.loginFactory', [])
 	function forgotPassword(user) {
 		var deffered = $q.defer();
 		loginService.forgotPassword(user).then(function(resp) {
-			console.log(resp);
 			deffered.resolve(resp);
 		}, function(error) {
 			console.log(error);

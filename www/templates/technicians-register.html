@@ -15,11 +15,9 @@
 				<label>Add Profile picture <input type="file" name="profile"></label><br><br>
 				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox">
 				<textarea name="skills" class="textareabox" placeholder="Skills"></textarea>
-				<select name="experince" class="dropdown">
+				<select name="experince" class="dropdown" ng-model="technician.experience">
 					<option value="">Experience</option>
-					<option value="Fresher">Fresher</option>
-					<option value="Experinced">Experinced</option>
-					<option value="Fresher/Experinced">both</option>
+					<option ng-repeat="exp in experience" value="{{exp.id_experience}}">{{exp.type}}</option>
 				</select>
 				<input type="text" name="city" placeholder="City" class="inputbox">
 				<input type="text" name="ethnicity" placeholder="Ethnicity" class="inputbox">
@@ -27,15 +25,9 @@
 					Professional trained <label><input type="radio" name="training" value="Yes"> Yes</label>
 					<label><input type="radio" name="training" value="No"> No</label>
 				</div><br>
-				<select name="languages" class="dropdown">
+				<select name="languages" class="dropdown" ng-model="technician.language">
 					<option value="">Languages</option>
-					<option value="Tamil">Tamil</option>
-					<option value="Hindi">Hindi</option>
-					<option value="English">English</option>
-					<option value="Telugu">Telugu</option>
-					<option value="Malayalam">Malayalam</option>
-					<option value="Kannada">Kannada</option>
-					<option value="Others">Others</option>
+					<option ng-repeat="language in languages" value="{{language.id_language}}">{{language.type}}</option>
 				</select>
 				<input type="text" name="others_languages" class="inputbox bottom_30" placeholder="Enter your language">
 
