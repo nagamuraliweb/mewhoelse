@@ -12,6 +12,17 @@ angular.module('meapp.controllers.signupCtrl', [])
 		profession: ''
 	};
 
+	var userId = window.localStorage.getItem('userID');
+	switch (userId) {
+		case 1: $state.go('artist-register');
+				break;
+		case 2: $state.go('technicians-register');
+				break;
+		case 3: $state.go('clients-register');
+				break;
+		default: console.log('Login');
+	}
+
 	dataFactory.getType().then(function(resp) {
 		$scope.profession_types = JSON.parse(resp.data.types);
 	});
@@ -35,8 +46,17 @@ angular.module('meapp.controllers.signupCtrl', [])
 				return;
 			} else {
 				window.localStorage.setItem('userID', resp.data.user_id);
-				//$state.go('artist-register');
+				switch (resp.data.user_id) {
+					case 1: $state.go('artist-register');
+							break;
+					case 2: $state.go('technicians-register');
+							break;
+					case 3: $state.go('clients-register');
+							break;
+					default: console.log('Signup');
+				}
 			}
+
 		});
 	}
 
