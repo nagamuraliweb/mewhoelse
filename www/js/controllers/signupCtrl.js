@@ -34,8 +34,7 @@ angular.module('meapp.controllers.signupCtrl', [])
 				$scope.form.signupForm.$setUntouched();
 				return;
 			} else {
-				console.log(resp.data);
-				//window.localStorage.setItem('userID', resp.data.user_id);
+				window.localStorage.setItem('userID', resp.data.user_id);
 				//$state.go('artist-register');
 			}
 		});

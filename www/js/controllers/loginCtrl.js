@@ -24,7 +24,7 @@ angular.module('meapp.controllers.loginCtrl', [])
 				return;
 			} else {
 				window.localStorage.setItem('userID', resp.data.user_id);
-				$state.go('artist-register');
+				//$state.go('artist-register');
 			}
 		});
 	}
