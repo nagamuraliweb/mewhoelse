@@ -166,7 +166,7 @@
 			return $DB->lastInsertId();
 		}
 
-		public function getUsersDetails ($DB, $data) {
+		public function getUsersDetails ($DB) {
 
 			$sql = 'SELECT * FROM dr_mem_users as u 
 				INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id';
@@ -179,14 +179,14 @@
 			return empty($row) ? [] : $row;
 		}
 
-		public function getUserDetails ($DB, $data) {
+		public function getUserDetails ($DB, $user_id) {
 
 			$sql = 'SELECT * FROM dr_mem_users as u 
-				INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
+				LEFT JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
 				WHERE u.user_id = :user_id';
 
 			$stmt = $DB->prepare($sql);
-			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
+			$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 			
 			$stmt->execute();
 			$row = $stmt->fetch(PDO::FETCH_OBJ);

@@ -361,6 +361,48 @@ class me_api extends db_config {
 		echo json_encode($result);
 	}
 
+	public function getUserDetails() {
+
+		try {
+
+			if (empty($_GET['user_id'])) {
+				throw new Exception('Invalid user');
+			}
+
+			$user_details = Model_Admin::getUserDetails($this->DB, $_GET['user_id']);
+
+			if (empty($user_details)) {
+				throw new Exception('Invalid user');
+			}
+
+			$result = ['error' => 0, 'user_details' => json_encode($user_details)];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
+	public function getUsersDetails() {
+
+		try {
+
+			$users_details = Model_Admin::getUsersDetails($this->DB);
+
+			if (empty($users_details)) {
+				throw new Exception('No records');
+			}
+
+			$result = ['error' => 0, 'users_details' => json_encode($users_details)];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
 	public function saveArtistDetails() {
 
 		try {
