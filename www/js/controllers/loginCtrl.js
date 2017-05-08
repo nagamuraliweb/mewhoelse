@@ -8,6 +8,17 @@ angular.module('meapp.controllers.loginCtrl', [])
 		user_password: ''
 	};
 
+	var userId = window.localStorage.getItem('userID');
+	switch (userId) {
+		case 1: $state.go('artist-register');
+				break;
+		case 2: $state.go('technicians-register');
+				break;
+		case 3: $state.go('clients-register');
+				break;
+		default: console.log('Login');
+	}
+
 	$scope.login = function() {
 		loaderFactory.showLoader();
 		loginFactory.userLogin($scope.login.user_email, $scope.login.user_password).then(function (resp) {
