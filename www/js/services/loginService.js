@@ -8,7 +8,10 @@ angular.module('meapp.services.loginService', [])
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: { email: user_email, password: user_pass }
+            data: { 
+                email: user_email, 
+                password: user_pass
+            }
         };
 
         return $http(request).then(function (resp) {
@@ -23,7 +26,14 @@ angular.module('meapp.services.loginService', [])
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: { name: user.name, email: user.email, password: user.password, confirm_password: user.confirm_password, mobile: parseInt(user.mobile), profession: parseInt(user.profession) }
+            data: { 
+                name: user.name, 
+                email: user.email, 
+                password: user.password, 
+                confirm_password: user.confirm_password, 
+                mobile: user.mobile, 
+                profession: user.profession
+            }
         };
 
         return $http(request).then(function (resp) {
@@ -38,7 +48,11 @@ angular.module('meapp.services.loginService', [])
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: { email: user.email, password: user.password, confirm_password: user.confirm_password }
+            data: { 
+                email: user.email, 
+                password: user.password, 
+                confirm_password: user.confirm_password
+            }
         };
 
         return $http(request).then(function (resp) {

@@ -230,7 +230,7 @@ class me_api extends db_config {
 		try {
 			$postdata = json_decode(file_get_contents("php://input"));
 			
-			if (empty($postdata->email)) {
+			if (!filter_var($postdata->email, FILTER_VALIDATE_EMAIL)) {
 				throw new Exception('Email is required');
 			}
 
@@ -240,16 +240,16 @@ class me_api extends db_config {
 
 			$data = [
 				'email' => $postdata->email,
-				'password' => $postdata->password
+				'password' => md5($postdata->password)
 			];
 
-			$user_id = Model_Admin::userLogin($this->DB, $data);
+			$res = Model_Admin::userLogin($this->DB, $data);
 
-			if (empty($user_id)) {
+			if (empty($res->user_id)) {
 				throw new Exception('Invalid Credentials');
 			}
 
-			$result = ['error' => 0, 'user_id' => $user_id];
+			$result = ['error' => 0, 'user_id' => $res->user_id];
 
 		} catch (Exception $e) {
 			$result = ['error' => 1, 'msg' => $e->getMessage()];
@@ -263,7 +263,7 @@ class me_api extends db_config {
 		try {
 			$postdata = json_decode(file_get_contents("php://input"));
 
-			if (empty($postdata->email)) {
+			if (!filter_var($postdata->email, FILTER_VALIDATE_EMAIL)) {
 				throw new Exception('Email is required');
 			}
 
@@ -281,8 +281,12 @@ class me_api extends db_config {
 
 			$data = [
 				'email' => $postdata->email,
-				'password' => $postdata->password
+				'password' => md5($postdata->password)
 			];
+
+			if(!Model_Admin::isEmailExists($this->DB, $postdata->email)) {
+				throw new Exception('Email id not exist');
+			}
 
 			if (!Model_Admin::forgetPassword($this->DB, $data)) {
 				throw new Exception('Error occured. Please try again.');
@@ -310,7 +314,7 @@ class me_api extends db_config {
 				throw new Exception('Name is required');
 			}
 
-			if (empty($postdata->email)) {
+			if (!filter_var($postdata->email, FILTER_VALIDATE_EMAIL)) {
 				throw new Exception('Email is required');
 			}
 
@@ -334,9 +338,13 @@ class me_api extends db_config {
 				'user_type' => $postdata->profession,
 				'name' => $postdata->name,
 				'email' => $postdata->email,
-				'password' => $postdata->password,
+				'password' => md5($postdata->password),
 				'mobile' => $postdata->mobile
 			];
+
+			if(Model_Admin::isEmailExists($this->DB, $postdata->email)) {
+				throw new Exception('Email id is already exist');
+			}
 
 			$user_id = Model_Admin::signUp($this->DB, $data);
 
@@ -695,8 +703,8 @@ class me_api extends db_config {
 				throw new Exception('Invalid firstname');
 			}
 
-			if (empty($postdata->email)) {
-				throw new Exception('Invalid email');
+			if (!filter_var($postdata->email, FILTER_VALIDATE_EMAIL)) {
+				throw new Exception('Email is required');
 			}
 			
 			$SALT = "nLBSerFb53";

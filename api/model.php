@@ -137,7 +137,7 @@
 		public function userLogin ($DB, $data) {
 
 			$sql = 'SELECT user_id FROM dr_mem_users 
-				WHERE user_email = :user_email AND user_password = :user_password';
+						WHERE user_email = :user_email AND user_password = :user_password';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_email', $data['email'], PDO::PARAM_STR);
@@ -151,8 +151,8 @@
 
 		public function signUp ($DB, $data) {
 
-			$sql = 'INSERT INTO dr_mem_users VALUES (user_type = :user_type, user_name = :user_name,
-				user_email = :user_email, user_password = :user_password, user_mobile = :user_mobile)';
+			$sql = 'INSERT INTO dr_mem_users (user_type, user_name, user_email, user_password, user_mobile) 
+						VALUES (:user_type, :user_name, :user_email, :user_password, :user_mobile)';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_type', $data['user_type'], PDO::PARAM_INT);
@@ -196,7 +196,7 @@
 
 		public function forgetPassword ($DB, $data) {
 
-			$sql = 'UPDATE dr_mem_users SET password = :password WHERE user_email = :user_email';
+			$sql = 'UPDATE dr_mem_users SET user_password = :password WHERE user_email = :user_email';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_email', $data['email'], PDO::PARAM_STR);
@@ -205,12 +205,25 @@
 			return $stmt->execute();
 		}
 
-		public function isUserRegisteredAlready ($DB, $data) {
+		public function isEmailExists ($DB, $email) {
+
+			$sql = 'SELECT user_id FROM dr_mem_users WHERE user_email = :user_email';
+
+			$stmt = $DB->prepare($sql);
+			$stmt->bindParam(':user_email', $email, PDO::PARAM_STR);
+			
+			$stmt->execute();
+			$row = $stmt->fetch(PDO::FETCH_OBJ);
+
+			return empty($row) ? [] : $row;
+		}
+
+		public function isUserRegisteredAlready ($DB, $user_id) {
 
 			$sql = 'SELECT user_id FROM dr_mem_users_details WHERE user_id = :user_id';
 
 			$stmt = $DB->prepare($sql);
-			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
+			$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 			
 			$stmt->execute();
 			$row = $stmt->fetch(PDO::FETCH_OBJ);

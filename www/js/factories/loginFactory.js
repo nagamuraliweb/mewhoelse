@@ -20,7 +20,6 @@ angular.module('meapp.factories.loginFactory', [])
 	function signUp(user) {
 		var deffered = $q.defer();
 		loginService.signUp(user).then(function(resp) {
-			console.log(resp);
 			deffered.resolve(resp);
 		}, function(error) {
 			console.log(error);
