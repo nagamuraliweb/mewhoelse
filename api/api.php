@@ -781,6 +781,43 @@ class me_api extends db_config {
 
 		echo json_encode($result);
 	}
+
+	public function imageUpload() {
+
+		try {
+			$expensions = ['jpeg', 'jpg', 'png'];
+
+			if( ! isset($_FILES['file']) || ! is_uploaded_file($_FILES['file']['tmp_name']))
+				throw new Exception('Image file is Missing');
+
+			$item_name = $_FILES['file']['name'];
+			$file_explode = explode('.', $item_name);
+			$file_end = end($file_explode);
+
+			$file_ext = strtolower($file_end);
+
+			if(in_array($file_ext, $expensions)=== false)
+				throw new Exception('extension not allowed, please choose a JPEG or PNG file.');
+
+			if($_FILES['file']['size'] > 2097152)
+				throw new Exception('File size must be exactly 2 MB');	
+
+			$upload_image = $_FILES['file'];  
+			$unique_id  = uniqid();
+
+			if ( ! file_exists('../img/tmp')) {
+				mkdir('../img/tmp', 0777, true);
+			}
+
+			move_uploaded_file($_FILES['file']['tmp_name'], '../img/tmp/'.$unique_id.'.jpg');
+
+			$result = ['error' => 0, 'img_name' => $unique_id.'.jpg'];
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
 }
 
 $api = new me_api();

@@ -11,7 +11,10 @@
 				<div><label><input type="radio" name="gender"> Male</label>
 				<label><input type="radio" name="gender"> Female</label></div>
 				<input type="date" name="dob" placeholder="Date of birth" class="inputbox">
-				<label>Add Profile picture <input type="file" name="profile"></label><br><br>
+				<label>
+					Add Profile picture 
+					<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+				</label><br><br>
 				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox">
 				<select name="skills" class="dropdown" ng-model="artist_skill">
 					<option value="">Skills</option>

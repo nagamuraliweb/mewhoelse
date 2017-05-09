@@ -51,11 +51,13 @@ angular.module('meapp.controllers', [
 angular.module('meapp.factories', [
   'meapp.factories.loginFactory',
   'meapp.factories.loaderFactory',
-  'meapp.factories.dataFactory'
+  'meapp.factories.dataFactory',
+  'meapp.factories.artistFactory'
 ]);
 
 // services
 angular.module('meapp.services', [
   'meapp.services.loginService',
-  'meapp.services.dataService'
+  'meapp.services.dataService',
+  'meapp.services.artistService'
 ]);

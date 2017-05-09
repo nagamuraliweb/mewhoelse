@@ -1,5 +1,5 @@
 angular.module('meapp.controllers.artistsCtrl', [])
-	.controller('artistsCtrl', ['$scope', 'dataFactory', function($scope, dataFactory) {
+	.controller('artistsCtrl', ['$scope', 'dataFactory', 'artistFactory', function($scope, dataFactory, artistFactory) {
 
 	dataFactory.getBody().then(function(resp) {
 		$scope.bodies = JSON.parse(resp.data.bodies);
@@ -28,5 +28,14 @@ angular.module('meapp.controllers.artistsCtrl', [])
 	dataFactory.getSkins().then(function(resp) {
 		$scope.skins = JSON.parse(resp.data.skins);
 	});
+
+	$scope.uploadFile = function(files) {
+		var fd = new FormData();
+		fd.append("file", files[0]);
+
+		artistFactory.imageUpload(fd).then(function(resp) {
+			console.log(resp);
+		});
+	};
 
 }]);
