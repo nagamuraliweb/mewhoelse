@@ -11,7 +11,8 @@ angular.module('meapp.factories.dataFactory', [])
 		getSkills: getSkills,
 		getSkins: getSkins,
 		getProjects: getProjects,
-		getRoles: getRoles
+		getRoles: getRoles,
+		getUserDetails: getUserDetails
 	}
 
 	function getType() {
@@ -107,6 +108,17 @@ angular.module('meapp.factories.dataFactory', [])
 	function getRoles() {
 		var deffered = $q.defer();
 		dataService.getRoles().then(function (resp) {
+			deffered.resolve(resp);
+		}, function (error) {
+			console.log(error);
+		});
+		return deffered.promise;
+	}
+
+	function getUserDetails(user_id) {
+		var deffered = $q.defer();
+		dataService.getUserDetails(user_id).then(function (resp) {
+			console.log(resp);
 			deffered.resolve(resp);
 		}, function (error) {
 			console.log(error);

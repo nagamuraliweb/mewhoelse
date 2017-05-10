@@ -1,6 +1,6 @@
 angular.module('meapp.controllers.loginCtrl', [])
-	.controller('loginCtrl', ['$scope', 'loginFactory', 'loaderFactory', '$state', function($scope, loginFactory,                                               
-		loaderFactory, $state) {
+	.controller('loginCtrl', ['$scope', 'loginFactory', 'loaderFactory', '$state', 'dataFactory', function($scope, loginFactory,                                               
+		loaderFactory, $state, dataFactory) {
 
 	$scope.form = {};
 	$scope.login = {
@@ -8,16 +8,16 @@ angular.module('meapp.controllers.loginCtrl', [])
 		user_password: ''
 	};
 
-	var userId = window.localStorage.getItem('userID');
-	switch (userId) {
-		case 1: $state.go('artist-register');
-				break;
-		case 2: $state.go('technicians-register');
-				break;
-		case 3: $state.go('clients-register');
-				break;
-		default: console.log('Login');
-	}
+	// var userId = window.localStorage.getItem('userID');
+	// switch (userId) {
+	// 	case 1: $state.go('artist-register');
+	// 			break;
+	// 	case 2: $state.go('technicians-register');
+	// 			break;
+	// 	case 3: $state.go('clients-register');
+	// 			break;
+	// 	default: console.log('Login');
+	// }
 
 	$scope.login = function() {
 		loaderFactory.showLoader();
@@ -35,7 +35,10 @@ angular.module('meapp.controllers.loginCtrl', [])
 				return;
 			} else {
 				window.localStorage.setItem('userID', resp.data.user_id);
-				//$state.go('artist-register');
+				dataFactory.getUserDetails(resp.data.user_id).then(function(resp) {
+					console.log(resp);
+					//$scope.profession_types = JSON.parse(resp.data.types);
+				});
 			}
 		});
 	}
