@@ -28,9 +28,9 @@ angular.module('meapp.factories.loginFactory', [])
 		return deffered.promise;
 	}
 
-	function forgotPassword(user) {
+	function forgotPassword(email, password, confirm_password) {
 		var deffered = $q.defer();
-		loginService.forgotPassword(user).then(function(resp) {
+		loginService.forgotPassword(email, password, confirm_password).then(function(resp) {
 			deffered.resolve(resp);
 		}, function(error) {
 			console.log(error);

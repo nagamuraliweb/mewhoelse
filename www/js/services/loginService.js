@@ -41,7 +41,7 @@ angular.module('meapp.services.loginService', [])
         });
     }
 
-    this.forgotPassword = function(user) {
+    this.forgotPassword = function(email, password, confirm_password) {
         var request = {
             method: 'POST',
             url: 'http://mewhoelse.in/api/api.php?f=forgetPassword',
@@ -49,9 +49,9 @@ angular.module('meapp.services.loginService', [])
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             data: { 
-                email: user.email, 
-                password: user.password, 
-                confirm_password: user.confirm_password
+                email: email, 
+                password: password, 
+                confirm_password: confirm_password
             }
         };
 

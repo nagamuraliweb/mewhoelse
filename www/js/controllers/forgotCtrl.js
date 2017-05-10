@@ -22,7 +22,7 @@ angular.module('meapp.controllers.forgotCtrl', [])
 			$scope.form.forgotForm.$setPristine();
 			$scope.form.forgotForm.$setUntouched();
 		} else {
-			loginFactory.forgotPassword($scope.user).then(function(resp) {
+			loginFactory.forgotPassword($scope.user.email, $scope.user.password, $scope.user.confirm_password).then(function(resp) {
 				loaderFactory.hideLoader();
 				if(resp.data.error === 1) {
 					loaderFactory.showAlert('Forgot Password', resp.data.msg);
