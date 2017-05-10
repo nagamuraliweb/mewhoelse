@@ -33,7 +33,7 @@ angular.module('meapp.controllers.signupCtrl', [])
 			loaderFactory.hideLoader();
 			if(resp.data.error === 1) {
 				loaderFactory.showAlert('Signup', resp.data.msg);
-				$scope.user = {
+				/*$scope.user = {
 					name: '',
 					email: '',
 					password: '',
@@ -42,7 +42,7 @@ angular.module('meapp.controllers.signupCtrl', [])
 					profession: ''
 				};
 				$scope.form.signupForm.$setPristine();
-				$scope.form.signupForm.$setUntouched();
+				$scope.form.signupForm.$setUntouched();*/
 				return;
 			} else {
 				window.localStorage.setItem('userID', resp.data.user_id);

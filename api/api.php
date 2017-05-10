@@ -322,6 +322,10 @@ class me_api extends db_config {
 				throw new Exception('Mobile is required');
 			}
 
+			if(!preg_match('/^[0-9]{10}+$/', $postdata->mobile)) {
+				throw new Exception('Mobile number shoud be 10 digit');
+			}
+
 			if (empty($postdata->password)) {
 				throw new Exception('Password is required');
 			}
