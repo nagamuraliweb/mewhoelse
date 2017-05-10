@@ -23,6 +23,10 @@ angular.module('meapp.controllers.signupCtrl', [])
 	// 	default: console.log('Login');
 	// }
 
+	dataFactory.getType().then(function(resp) {
+		$scope.profession_types = JSON.parse(resp.data.types);
+	});
+
 	$scope.signup = function() {
 		loaderFactory.showLoader();
 		loginFactory.signUp($scope.user).then(function(resp) {

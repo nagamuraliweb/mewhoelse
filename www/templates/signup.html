@@ -8,7 +8,7 @@
 	<div class="row login_grid">
 		<form name="form.signupForm" novalidate="">
 			<input type="text" name="name" placeholder="Name" class="inputbox" ng-model="user.name" autocomplete="off" required>
-			<div class="error_alert" ng-show="form.signupForm.name.$dirty && form.signupForm.$error.required">
+			<div class="error_alert" ng-show="form.signupForm.name.$dirty && form.signupForm.name.$error.required">
 			    <span>Name is required</span>
 			</div>
 			<input type="email" name="email" placeholder="Email" class="inputbox" ng-model="user.email" autocomplete="off" required>
@@ -17,7 +17,7 @@
 			    <span ng-show="form.signupForm.email.$error.email">Invalid email address</span>
 			</div>
 			<input type="password" name="password" placeholder="Password" class="inputbox" ng-model="user.password" autocomplete="off" required>
-			<div class="error_alert" ng-show="form.signupForm.password.$dirty && form.signupForm.$error.required">
+			<div class="error_alert" ng-show="form.signupForm.password.$dirty && form.signupForm.password.$error.required">
 			    <span>Password is required</span>
 			</div>
 			<input type="password" name="confirm_password" placeholder="Confirm Password" class="inputbox" ng-model="user.confirm_password" autocomplete="off" required>

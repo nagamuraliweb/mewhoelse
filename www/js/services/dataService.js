@@ -154,11 +154,10 @@ angular.module('meapp.services.dataService', [])
     this.getUserDetails = function(user_id) {
         var request = {
             method: 'GET',
-            url: 'http://mewhoelse.in/api/api.php?f=getUserDetails',
+            url: 'http://mewhoelse.in/api/api.php?f=getUserDetails&user_id='+user_id,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            data: {user_id: user_id}
+            }
         };
 
         return $http(request).then(function (resp) {
