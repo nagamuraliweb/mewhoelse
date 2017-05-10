@@ -168,8 +168,15 @@
 
 		public function getUsersDetails ($DB) {
 
-			$sql = 'SELECT * FROM dr_mem_users as u 
-				INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id';
+			$sql = 'SELECT u.user_id, u.user_type, u.user_name, u.user_email, u.user_mobile, ud.user_gender_id, 
+					ud.user_skills_id, ud.user_skills_others, ud.user_dob, ud.user_videos, ud.user_experience_id, ud.user_city, 
+					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_hair_others, ud.user_weight, 
+					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
+					ud.user_language_others, ud.user_project, ud.user_project_name,
+					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
+					ud.user_character_description, ud.user_production_house
+					FROM dr_mem_users as u  
+					INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id';
 
 			$stmt = $DB->prepare($sql);
 			
@@ -181,9 +188,16 @@
 
 		public function getUserDetails ($DB, $user_id) {
 
-			$sql = 'SELECT * FROM dr_mem_users as u 
-				LEFT JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
-				WHERE u.user_id = :user_id';
+			$sql = 'SELECT u.user_id, u.user_type, u.user_name, u.user_email, u.user_mobile, ud.user_gender_id, 
+					ud.user_skills_id, ud.user_skills_others, ud.user_dob, ud.user_videos, ud.user_experience_id, ud.user_city, 
+					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_hair_others, ud.user_weight, 
+					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
+					ud.user_language_others, ud.user_project, ud.user_project_name,
+					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
+					ud.user_character_description, ud.user_production_house
+					FROM dr_mem_users as u 
+					LEFT JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
+					WHERE u.user_id = :user_id';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
