@@ -12,23 +12,6 @@ angular.module('meapp.controllers.signupCtrl', [])
 		profession: ''
 	};
 
-	var userId = window.localStorage.getItem('userID');
-	if(userId) {
-		dataFactory.getUserDetails(userId).then(function(resp) {
-			$scope.userdetails = JSON.parse(resp.data.user_details);
-			$scope.user_type = parseInt($scope.userdetails.user_type);
-			switch ($scope.user_type) {
-				case 1: $state.go('artist-register');
-						break;
-				case 2: $state.go('technicians-register');
-						break;
-				case 3: $state.go('clients-register');
-						break;
-				default: console.log('Login');
-			}
-		});
-	}
-
 	dataFactory.getType().then(function(resp) {
 		$scope.profession_types = JSON.parse(resp.data.types);
 	});
@@ -42,19 +25,9 @@ angular.module('meapp.controllers.signupCtrl', [])
 				return;
 			} else {
 				window.localStorage.setItem('userID', resp.data.user_id);
-				dataFactory.getUserDetails(resp.data.user_id).then(function(resp) {
-					$scope.userdetails = JSON.parse(resp.data.user_details);
-					$scope.user_type = parseInt($scope.userdetails.user_type);
-					switch ($scope.user_type) {
-						case 1: $state.go('artist-register');
-								break;
-						case 2: $state.go('technicians-register');
-								break;
-						case 3: $state.go('clients-register');
-								break;
-						default: console.log('Login');
-					}
-				});
+				if(resp.data.user_id) {
+					loginFactory.checkLogin(resp.data.user_id);
+				}
 			}
 
 		});

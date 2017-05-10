@@ -1,10 +1,11 @@
 angular.module('meapp.factories.loginFactory', [])
-	.factory('loginFactory', ['loginService', '$q', function(loginService, $q) {                                                                                          
+	.factory('loginFactory', ['loginService', '$q', 'dataFactory', '$state', function(loginService, $q, dataFactory, $state) {                                                                                          
 
 	return {
 		userLogin: userLogin,
 		signUp: signUp,
-		forgotPassword: forgotPassword
+		forgotPassword: forgotPassword,
+		checkLogin: checkLogin
 	}
 
 	function userLogin(user_email, user_password) {
@@ -35,6 +36,22 @@ angular.module('meapp.factories.loginFactory', [])
 			console.log(error);
 		});
 		return deffered.promise;
+	}
+
+	function checkLogin(userId){
+		dataFactory.getUserDetails(userId).then(function(resp) {
+			var userdetails = JSON.parse(resp.data.user_details);
+			var user_type = parseInt(userdetails.user_type);
+			switch (user_type) {
+				case 1: $state.go('artist-register');
+						break;
+				case 2: $state.go('technicians-register');
+						break;
+				case 3: $state.go('clients-register');
+						break;
+				default: console.log('Login');
+			}
+		});
 	}
 
 }]);

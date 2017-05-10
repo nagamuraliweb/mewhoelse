@@ -10,24 +10,37 @@ angular.module('meapp.controllers.forgotCtrl', [])
 
 	$scope.forgotPassword = function() {
 		loaderFactory.showLoader();
-		loginFactory.forgotPassword($scope.user).then(function(resp) {
-			console.log(resp);
+		if($scope.user.password !== $scope.user.confirm_password) {
 			loaderFactory.hideLoader();
-			if(resp.data.error === 1) {
-				loaderFactory.showAlert('Forgot Password', resp.data.msg);
-				$scope.user = {
-					email: '',
-					password: '',
-					confirm_password: ''
-				};
-				$scope.form.forgotForm.$setPristine();
-				$scope.form.forgotForm.$setUntouched();
-				return;
-			} else {
-				//window.localStorage.setItem('userID', resp.data.ID);
-				//$state.go('artist-register');
-			}
-		});
+			var errorMsg = "Password and Confirm password does not match";
+			loaderFactory.showAlert('Forgot Password', errorMsg);
+			$scope.user = {
+				email: '',
+				password: '',
+				confirm_password: ''
+			};
+			$scope.form.forgotForm.$setPristine();
+			$scope.form.forgotForm.$setUntouched();
+		} else {
+			loginFactory.forgotPassword($scope.user).then(function(resp) {
+				loaderFactory.hideLoader();
+				if(resp.data.error === 1) {
+					loaderFactory.showAlert('Forgot Password', resp.data.msg);
+					$scope.user = {
+						email: '',
+						password: '',
+						confirm_password: ''
+					};
+					$scope.form.forgotForm.$setPristine();
+					$scope.form.forgotForm.$setUntouched();
+					return;
+				} else {
+					loaderFactory.showAlert('Forgot Password', resp.data.msg);
+					$state.go('login');
+				}
+			});
+		}
+		
 	}
 
 }]);
