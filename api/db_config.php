@@ -5,7 +5,7 @@ class db_config extends PDO {
 	public function __construct() {
 		try {
 
-		    parent::__construct('mysql:host=localhost;dbname=dr_mem', 'root', '');
+		    parent::__construct('mysql:host=localhost;dbname=dr_mem', 'mewhoelse2017', 'b02or3n4%Szmrg');
 
 		} catch (PDOException $e) {
 

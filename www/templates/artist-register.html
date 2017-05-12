@@ -6,56 +6,92 @@
 	</div>    
 
 	<div class="row login_grid">
-		<form>
+		<form name="form.artists">
 			<div id="artists">
-				<div><label><input type="radio" name="gender"> Male</label>
-				<label><input type="radio" name="gender"> Female</label></div>
-				<input type="date" name="dob" placeholder="Date of birth" class="inputbox">
+				<div><label><input type="radio" name="gender" ng-model="artist.gender" value="Male"> Male</label>
+				<label><input type="radio" name="gender" ng-model="artist.gender" value="Female"> Female</label></div>
+				<div class="error_alert" ng-show="form.artists.gender.$dirty && form.artists.gender.$error.required">
+				    <span>Gender is required.</span>
+				</div>
+				<input type="date" name="dob" ng-model="artist.dob" placeholder="Date of birth" class="inputbox" required>
+				<div class="error_alert" ng-show="form.artists.dob.$dirty && form.artists.dob.$error.required">
+				    <span>Date of birth is required.</span>
+				</div>
 				<label>
 					Add Profile picture 
 					<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
 				</label><br><br>
-				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox">
-				<select name="skills" class="dropdown" ng-model="artist_skill">
+				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox" ng-model="artist.videos">
+				<select name="skills" class="dropdown" ng-model="artist.skills" required>
 					<option value="">Skills</option>
 					<option ng-repeat="skil in skills" value="{{skil.id_skills}}">{{skil.type}}</option>
 				</select>
-				<input type="text" name="otherskills" class="inputbox" placeholder="Enter your skills">
-				<select name="experince" class="dropdown" ng-model="artist_experience">
+				<div class="error_alert" ng-show="form.artists.skills.$dirty && form.artists.skills.$error.required">
+				    <span>Skills is required.</span>
+				</div>
+				<input type="text" ng-if="artist.skills === '8'" class="inputbox" placeholder="Enter your skills" name="otherskills" ng-model="artist.otherskills">
+				<select name="experince" class="dropdown" ng-model="artist.experince" required>
 					<option value="">Experience</option>
 					<option ng-repeat="exp in experience" value="{{exp.id_experience}}">{{exp.type}}</option>
 				</select>
-				<input type="text" name="city" placeholder="City" class="inputbox">
-				<input type="text" name="ethnicity" placeholder="Ethnicity" class="inputbox">
-				<select name="body_type" class="dropdown" ng-model="artist.body">
+				<div class="error_alert" ng-show="form.artists.experince.$dirty && form.artists.experince.$error.required">
+				    <span>Experience is required.</span>
+				</div>
+				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="artist.city" required>
+				<div class="error_alert" ng-show="form.artists.city.$dirty && form.artists.city.$error.required">
+				    <span>City is required.</span>
+				</div>
+				<input type="text" name="other_ethnicity" placeholder="Ethnicity" class="inputbox" ng-model="artist.other_ethnicity">
+				<select name="body_type" class="dropdown" name="body_type" ng-model="artist.body_type" required>
 					<option value="">Body Type</option>
 					<option ng-repeat="body in bodies" value="{{body.id_body}}">{{body.type}}</option>
 				</select>
-				<select name="hair_type" class="dropdown" ng-model="artist.hair_type">
+				<div class="error_alert" ng-show="form.artists.body_type.$dirty && form.artists.body_type.$error.required">
+				    <span>Body Type is required.</span>
+				</div>
+				<select name="hair_type" class="dropdown" ng-model="artist.hair_type" name="hair_type" required>
 					<option value="">Hair Type</option>
 					<option ng-repeat="hair in hairs" value="{{hair.id_hair}}">{{hair.type}}</option>
 				</select>
-				<input type="text" name="others_hairtype" class="inputbox" placeholder="Enter your hair type">
-				<input type="text" name="weight" class="inputbox" placeholder="Enter your weight">
-				<select name="skin_color" class="dropdown" ng-model="artist_skincolor">
+				<div class="error_alert" ng-show="form.artists.hair_type.$dirty && form.artists.hair_type.$error.required">
+				    <span>Hair Type is required.</span>
+				</div>
+				<input type="text" ng-if="artist.hair_type === '5'" name="others_hairtype" ng-model="others_hairtype" class="inputbox" placeholder="Enter your hair type">
+				<input type="text" name="weight" ng-model="artist.weight" class="inputbox" placeholder="Enter your weight" required>
+				<div class="error_alert" ng-show="form.artists.weight.$dirty && form.artists.weight.$error.required">
+				    <span>Weight is required.</span>
+				</div>
+				<select name="skin_color" class="dropdown" ng-model="artist.skin_color" required>
 					<option value="">Skin Color</option>
 					<option ng-repeat="skin in skins" value="{{skin.id_skin}}">{{skin.type}}</option>
 				</select>
-				<select name="hair_color" class="dropdown" ng-model="artist_haircolor">
+				<div class="error_alert" ng-show="form.artists.skin_color.$dirty && form.artists.weight.$error.required">
+				    <span>Skin Color is required.</span>
+				</div>
+				<select name="hair_color" class="dropdown" ng-model="artist.hair_color" required>
 					<option value="">Hair Color</option>
 					<option ng-repeat="haircolor in haircolors" value="{{haircolor.id_hair}}">{{haircolor.type}}</option>
 				</select>
+				<div class="error_alert" ng-show="form.artists.hair_color.$dirty && form.artists.hair_color.$error.required">
+				    <span>Hair Color is required.</span>
+				</div>
 				<div>
-					Professional trained <label><input type="radio" name="training" value="Yes"> Yes</label>
-					<label><input type="radio" name="training" value="No"> No</label>
+					Professional trained <label><input type="radio" name="training" ng-model="artist.training" value="Yes"> Yes</label>
+					<label><input type="radio" name="training" ng-model="artist.training" value="No"> No</label>
 				</div><br>
-				<select name="languages" class="dropdown" ng-model="artist_language">
+				<div class="error_alert" ng-show="form.artists.training.$dirty && form.artists.training.$error.required">
+				    <span>Professional trained is required.</span>
+				</div>
+				<select name="languages" ng-model="artist.languages" class="dropdown" ng-model="artist_language">
 					<option value="">Languages</option>
 					<option ng-repeat="language in languages" value="{{language.id_language}}">{{language.type}}</option>
 				</select>
-				<input type="text" name="others_languages" class="inputbox bottom_30" placeholder="Enter your language">
+				<div class="error_alert" ng-show="form.artists.languages.$dirty && form.artists.languages.$error.required">
+				    <span>Languages is required.</span>
+				</div>
+				<input type="text" ng-if="artist.languages === '7'" name="others_languages" ng-model="artist.others_languages" class="inputbox bottom_30" placeholder="Enter your language">
 
-				<button class="button button-outline loginbtn" ng-click="register()">
+				<button class="button button-outline loginbtn" ng-click="saveArtistDetails()" ng-disabled="!form.artists.$valid">
 				  register
 				</button>
 			</div>
