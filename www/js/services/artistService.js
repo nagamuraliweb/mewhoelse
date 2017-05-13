@@ -75,4 +75,37 @@ angular.module('meapp.services.artistService', [])
         });
     }
 
+    this.saveClientDetails = function(client) {
+        var request = {
+            method: 'POST',
+            url: 'http://mewhoelse.in/api/api.php?f=saveClientDetails',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: { 
+                user_id: client.user_id,
+                user_type: client.user_type,
+                gender: client.gender,
+                project: client.project,
+                projectname: client.projectname,
+                project_type: client.project_type,
+                project_description: client.project_description,
+                roll_type: client.roll_type,
+                looking_for: client.looking_for,
+                character_name: client.character_name,
+                character_description:client.character_description,
+                body_type: client.body_type,
+                experince: client.experince,
+                training: client.training,
+                languages: client.languages,
+                others_languages: client.others_languages,
+                production_housename: client.production_housename
+            }
+        };
+
+        return $http(request).then(function (resp) {
+            return resp;
+        });
+    }
+
 }]);
