@@ -3,7 +3,8 @@ angular.module('meapp.factories.artistFactory', [])
 
 	return {
 		imageUpload: imageUpload,
-		saveArtistDetails: saveArtistDetails
+		saveArtistDetails: saveArtistDetails,
+		saveTechnicianDetails: saveTechnicianDetails
 	}
 
 	function imageUpload(fd) {
@@ -19,6 +20,17 @@ angular.module('meapp.factories.artistFactory', [])
 	function saveArtistDetails(artist) {
 		var deffered = $q.defer();
 		artistService.saveArtistDetails(artist).then(function (resp) {
+			console.log(resp);
+			deffered.resolve(resp);
+		}, function (error) {
+			console.log(error);
+		});
+		return deffered.promise;
+	}
+
+	function saveTechnicianDetails(technician) {
+		var deffered = $q.defer();
+		artistService.saveTechnicianDetails(technician).then(function (resp) {
 			console.log(resp);
 			deffered.resolve(resp);
 		}, function (error) {

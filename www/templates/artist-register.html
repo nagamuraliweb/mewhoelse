@@ -82,7 +82,7 @@
 				<div class="error_alert" ng-show="form.artists.training.$dirty && form.artists.training.$error.required">
 				    <span>Professional trained is required.</span>
 				</div>
-				<select name="languages" ng-model="artist.languages" class="dropdown" ng-model="artist_language">
+				<select name="languages" ng-model="artist.languages" class="dropdown" required>
 					<option value="">Languages</option>
 					<option ng-repeat="language in languages" value="{{language.id_language}}">{{language.type}}</option>
 				</select>
