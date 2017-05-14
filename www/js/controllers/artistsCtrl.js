@@ -33,8 +33,7 @@ angular.module('meapp.controllers.artistsCtrl', [])
 
 	var img_name;
 	$scope.artist = {
-		user_id: user_id,
-		user_type: user_type,
+		user_id: '',
 		gender: '',
 		dob: '',
 		videos: '',
@@ -52,11 +51,11 @@ angular.module('meapp.controllers.artistsCtrl', [])
 		training: '',
 		languages: '',
 		others_languages: '',
-		img_name: img_name
+		img_name: ''
 	};
 
-	var user_id = window.localStorage.getItem('userID');
-	$scope.getUserType = function(user_id) {
+	$scope.artist.user_id = window.localStorage.getItem('userID');
+	/*$scope.getUserType = function(user_id) {
 		if(user_id) {
 			dataFactory.getUserDetails(user_id).then(function(resp) {
 				var userDetails = JSON.parse(resp.data.user_details);
@@ -67,25 +66,25 @@ angular.module('meapp.controllers.artistsCtrl', [])
 	};
 	var user_type = $scope.getUserType(user_id);
 	
-	console.log(user_type);
+	console.log(user_type);*/
 
 	$scope.uploadFile = function(files) {
 		var fd = new FormData();
 		fd.append("file", files[0]);
-
+		loaderFactory.showLoader();
 		artistFactory.imageUpload(fd).then(function(resp) {
-			img_name = resp;
-			console.log(resp);
+			$scope.artist.img_name = resp;
+			loaderFactory.hideLoader();
 		});
 	};
 
 	$scope.saveArtistDetails = function() {
-		//loaderFactory.showLoader();
+		loaderFactory.showLoader();
 		console.log($scope.artist);
-		// artistFactory.saveArtistDetails(artist).then(function(rep) {
-		// 	loaderFactory.hideLoader();
-		// 	console.log(JSON.parse(rep.data));
-		// });
+		 artistFactory.saveArtistDetails(artist).then(function(rep) {
+		 	loaderFactory.hideLoader();
+		 	console.log(JSON.parse(rep.data));
+		 });
 	}
 
 }]);

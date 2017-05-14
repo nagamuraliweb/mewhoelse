@@ -416,16 +416,16 @@ class me_api extends db_config {
 				throw new Exception('Invalid user');
 			}
 
-			if (! ctype_digit($postdata->profession)) {
-				throw new Exception('Invalid profession');
-			}
-
 			if (empty($postdata->gender)) {
 				throw new Exception('Choose gender');
 			}
 
 			if (empty($postdata->dob)) {
 				throw new Exception('Choose DOB');
+			}
+
+			if (empty($postdata->img_name)) {
+				throw new Exception('Choose profile picture');
 			}
 
 			if (empty($postdata->videos)) {
@@ -494,6 +494,14 @@ class me_api extends db_config {
 				}
 			}
 
+			if ( ! file_exists('../img/profile')) {
+				mkdir('../img/profile', 0777, true);
+			}
+
+			if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
+				unlink('../img/tmp/'.$postdata->img_name);
+			}
+
 			$data = [
 				'user_id' => $postdata->user_id,
 				'user_type' => $postdata->profession,
@@ -542,16 +550,16 @@ class me_api extends db_config {
 				throw new Exception('Invalid user');
 			}
 
-			if (! ctype_digit($postdata->profession)) {
-				throw new Exception('Invalid profession');
-			}
-
 			if (empty($postdata->gender)) {
 				throw new Exception('Choose gender');
 			}
 
 			if (empty($postdata->dob)) {
 				throw new Exception('Choose DOB');
+			}
+
+			if (empty($postdata->img_name)) {
+				throw new Exception('Choose profile picture');
 			}
 
 			if (empty($postdata->videos)) {
@@ -586,6 +594,14 @@ class me_api extends db_config {
 				if (empty($postdata->languages)) {
 					throw new Exception('Enter languages');
 				}
+			}
+
+			if ( ! file_exists('../img/profile')) {
+				mkdir('../img/profile', 0777, true);
+			}
+
+			if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
+				unlink('../img/tmp/'.$postdata->img_name);
 			}
 
 			$data = [
@@ -631,10 +647,6 @@ class me_api extends db_config {
 
 			if (empty($postdata->user_id)) {
 				throw new Exception('Invalid user');
-			}
-
-			if (! ctype_digit($postdata->profession)) {
-				throw new Exception('Invalid profession');
 			}
 
 			if (empty($postdata->gender)) {
@@ -697,6 +709,14 @@ class me_api extends db_config {
 
 			if (empty($postdata->production_housename)) {
 				throw new Exception('Enter production housename');
+			}
+
+			if ( ! file_exists('../img/profile')) {
+				mkdir('../img/profile', 0777, true);
+			}
+
+			if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
+				unlink('../img/tmp/'.$postdata->img_name);
 			}
 
 			$data = [
