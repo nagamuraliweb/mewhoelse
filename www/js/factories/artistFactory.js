@@ -21,7 +21,7 @@ angular.module('meapp.factories.artistFactory', [])
 	function saveArtistDetails(artist) {
 		var deffered = $q.defer();
 		artistService.saveArtistDetails(artist).then(function (resp) {
-			console.log(resp);
+			//console.log(resp);
 			deffered.resolve(resp);
 		}, function (error) {
 			console.log(error);
@@ -32,7 +32,7 @@ angular.module('meapp.factories.artistFactory', [])
 	function saveTechnicianDetails(technician) {
 		var deffered = $q.defer();
 		artistService.saveTechnicianDetails(technician).then(function (resp) {
-			console.log(resp);
+			//console.log(resp);
 			deffered.resolve(resp);
 		}, function (error) {
 			console.log(error);
@@ -43,7 +43,7 @@ angular.module('meapp.factories.artistFactory', [])
 	function saveClientDetails(client) {
 		var deffered = $q.defer();
 		artistService.saveClientDetails(client).then(function (resp) {
-			console.log(resp);
+			//console.log(resp);
 			deffered.resolve(resp);
 		}, function (error) {
 			console.log(error);

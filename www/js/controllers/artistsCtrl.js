@@ -55,35 +55,27 @@ angular.module('meapp.controllers.artistsCtrl', [])
 	};
 
 	$scope.artist.user_id = window.localStorage.getItem('userID');
-	/*$scope.getUserType = function(user_id) {
-		if(user_id) {
-			dataFactory.getUserDetails(user_id).then(function(resp) {
-				var userDetails = JSON.parse(resp.data.user_details);
-				console.log(userDetails.user_type);
-				return userDetails.user_type;
-			});
-		}
-	};
-	var user_type = $scope.getUserType(user_id);
-	
-	console.log(user_type);*/
 
 	$scope.uploadFile = function(files) {
 		var fd = new FormData();
 		fd.append("file", files[0]);
 		loaderFactory.showLoader();
 		artistFactory.imageUpload(fd).then(function(resp) {
-			$scope.artist.img_name = resp;
+			$scope.artist.img_name = resp.data.img_name;
 			loaderFactory.hideLoader();
 		});
 	};
 
 	$scope.saveArtistDetails = function() {
 		loaderFactory.showLoader();
-		console.log($scope.artist);
-		 artistFactory.saveArtistDetails(artist).then(function(rep) {
+		 artistFactory.saveArtistDetails($scope.artist).then(function(resp) {
 		 	loaderFactory.hideLoader();
-		 	console.log(JSON.parse(rep.data));
+		 	if(resp.data.error === 1) {
+				loaderFactory.showAlert('Registeration Failed', resp.data.msg);
+				return;
+			} else {
+				loaderFactory.showAlert('Registeration Successful', resp.data.msg);
+			}
 		 });
 	}
 

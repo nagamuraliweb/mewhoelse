@@ -24,8 +24,7 @@ angular.module('meapp.controllers.clientsCtrl', [])
 	$scope.form = {};
 
 	$scope.client = {
-		user_id: user_id,
-		user_type: user_type,
+		user_id: '',
 		gender: '',
 		project: '',
 		projectname: '',
@@ -43,23 +42,11 @@ angular.module('meapp.controllers.clientsCtrl', [])
 		production_housename: ''
 	};
 
-	var user_id = window.localStorage.getItem('userID');
-	$scope.getUserType = function(user_id) {
-		if(user_id) {
-			dataFactory.getUserDetails(user_id).then(function(resp) {
-				var userDetails = JSON.parse(resp.data.user_details);
-				console.log(userDetails.user_type);
-				return userDetails.user_type;
-			});
-		}
-	};
-	var user_type = $scope.getUserType(user_id);
-	
-	console.log(user_type);
+	$scope.client.user_id = window.localStorage.getItem('userID');
 
 	$scope.saveClientDetails = function() {
 		//loaderFactory.showLoader();
-		console.log($scope.artist);
+		console.log($scope.client);
 		// artistFactory.saveClientDetails(client).then(function(rep) {
 		// 	loaderFactory.hideLoader();
 		// 	console.log(JSON.parse(rep.data));
