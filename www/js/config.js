@@ -42,6 +42,13 @@ angular.module('meapp.config', [])
     controller: 'artistsCtrl'
   })
 
+  // artists profile
+  .state('artist-profile', {
+    url: '/artist-profile/:user_id',
+    templateUrl: 'templates/artist-profile.html',
+    controller: 'artistProfileCtrl'
+  })
+
   // technicians register
   .state('technicians-register', {
     url: '/technicians-register',

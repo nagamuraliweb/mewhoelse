@@ -1,5 +1,5 @@
 angular.module('meapp.controllers.artistsCtrl', [])
-	.controller('artistsCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', function($scope, dataFactory, artistFactory, loaderFactory) {
+	.controller('artistsCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', function($scope, dataFactory, artistFactory, loaderFactory, $state) {
 
 	$scope.form = {};
 
@@ -75,6 +75,7 @@ angular.module('meapp.controllers.artistsCtrl', [])
 				return;
 			} else {
 				loaderFactory.showAlert('Registeration Successful', resp.data.msg);
+				$state.go('artist-profile', {user_id: $scope.artist.user_id})
 			}
 		 });
 	}
