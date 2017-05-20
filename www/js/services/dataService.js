@@ -165,4 +165,18 @@ angular.module('meapp.services.dataService', [])
         });
     }
 
+    this.getGender = function() {
+        var request = {
+            method: 'GET',
+            url: 'http://mewhoelse.in/api/api.php?f=getGender',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        return $http(request).then(function (resp) {
+            return resp;
+        });
+    }
+
 }]);

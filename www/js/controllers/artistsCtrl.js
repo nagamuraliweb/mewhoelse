@@ -31,7 +31,10 @@ angular.module('meapp.controllers.artistsCtrl', [])
 		$scope.skins = JSON.parse(resp.data.skins);
 	});
 
-	var img_name;
+	dataFactory.getGender().then(function(resp) {
+		$scope.genders = JSON.parse(resp.data.genders);
+	});
+
 	$scope.artist = {
 		user_id: '',
 		gender: '',
@@ -69,6 +72,7 @@ angular.module('meapp.controllers.artistsCtrl', [])
 	$scope.saveArtistDetails = function() {
 		loaderFactory.showLoader();
 		 artistFactory.saveArtistDetails($scope.artist).then(function(resp) {
+		 	console.log($scope.artist);
 		 	loaderFactory.hideLoader();
 		 	if(resp.data.error === 1) {
 				loaderFactory.showAlert('Registeration Failed', resp.data.msg);
