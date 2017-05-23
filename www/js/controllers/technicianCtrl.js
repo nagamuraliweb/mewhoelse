@@ -9,6 +9,10 @@ angular.module('meapp.controllers.technicianCtrl', [])
 		$scope.languages = JSON.parse(resp.data.languages);
 	});
 
+	dataFactory.getGender().then(function(resp) {
+		$scope.genders = JSON.parse(resp.data.genders);
+	});
+
 	$scope.form = {};
 
 	$scope.technician = {

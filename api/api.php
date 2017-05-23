@@ -585,7 +585,7 @@ class me_api extends db_config {
 				throw new Exception('Enter ethnicity');
 			}
 
-			if (empty($postdata->training)) {
+			if (!ctype_digit($postdata->training)) {
 				throw new Exception('Choose professional training');
 			}
 
@@ -631,10 +631,6 @@ class me_api extends db_config {
 				if(!Model_Admin::updateTechnicianDetails($this->DB, $data)) {
 					throw new Exception('Error occured');
 				}
-			}
-
-			if (empty($user_id)) {
-				throw new Exception('Error occured. Please try again.');
 			}
 
 			$result = ['error' => 0, 'msg' => 'Successfully saved details'];
@@ -699,7 +695,7 @@ class me_api extends db_config {
 				throw new Exception('Choose experince');
 			}
 
-			if (empty($postdata->training)) {
+			if (!ctype_digit($postdata->training)) {
 				throw new Exception('Choose professional training');
 			}
 

@@ -57,11 +57,11 @@ angular.module('meapp.services.artistService', [])
                 gender: parseInt(technician.gender),
                 dob: $filter('date')(technician.dob, 'dd-MM-yyyy'),
                 videos: technician.videos,
-                skills: parseInt(technician.skills),
+                skills: technician.skills,
                 experince: parseInt(technician.experince),
                 city: technician.city,
                 other_ethnicity: technician.other_ethnicity,
-                training: technician.training,
+                training: parseInt(technician.training),
                 languages: parseInt(technician.languages),
                 others_languages: technician.others_languages,
                 img_name: technician.img_name
