@@ -302,11 +302,12 @@
 
 		public function updateArtistDetails ($DB, $data) {
 
-			$sql = 'UPDATE dr_mem_users_details SET (user_id = :user_id, user_gender_id = :gender,
+			$sql = 'UPDATE dr_mem_users_details SET user_gender_id = :gender,
 				user_skills_id = :skills, user_skills_others = :otherskills, user_dob = :dob, user_videos = :videos, user_experience_id = :experince,
 				user_city = :city, user_ethinicity = :other_ethnicity, user_body_id = :body_type, user_hair_id = :hair_type,
 				user_hair_others = :others_hairtype, user_weight = :weight, user_skin_id = :skin_color, user_hair_color_id = :hair_color,
-				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages)';
+				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages
+				WHERE user_id = :user_id';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
@@ -386,10 +387,10 @@
 
 		public function updateTechnicianDetails ($DB, $data) {
 
-			$sql = 'UPDATE dr_mem_users_details SET (user_id = :user_id, 
-				user_gender_id = :gender, user_dob = :dob, user_videos = :videos, user_skills_others = :otherskills, 
+			$sql = 'UPDATE dr_mem_users_details SET user_gender_id = :gender, user_dob = :dob, user_videos = :videos, user_skills_others = :otherskills, 
 				user_experience_id = :experince, user_city = :city, user_ethinicity = :other_ethnicity, 
-				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages)';
+				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages
+				WHERE user_id = :user_id';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
@@ -456,13 +457,13 @@
 
 		public function updateClientDetails ($DB, $data) {
 
-			$sql = 'UPDATE dr_mem_users_details SET (user_id = :user_id, 
-				user_gender_id = :gender, user_project = :project, user_project_name = :projectname, 
+			$sql = 'UPDATE dr_mem_users_details SET user_gender_id = :gender, user_project = :project, user_project_name = :projectname, 
 				user_project_id = :project_type, user_project_description = :project_description, 
 				user_role_id = :roll_type, user_looking_for = :looking_for, user_character_name = :character_name,
 				user_character_description = :character_description, user_body_id = :body_type,
 				user_experience_id = :experince, user_is_professional = :training, user_language_id = :languages, 
-				user_language_others = :others_languages, user_production_house = :production_housename)';
+				user_language_others = :others_languages, user_production_house = :production_housename
+				WHERE user_id = :user_id';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);

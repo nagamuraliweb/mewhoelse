@@ -1,5 +1,5 @@
 angular.module('meapp.controllers.clientCtrl', [])
-	.controller('clientCtrl', ['$scope', 'dataFactory', function($scope, dataFactory) {
+	.controller('clientCtrl', ['$scope', 'dataFactory', 'loaderFactory', 'artistFactory', function($scope, dataFactory, loaderFactory, artistFactory) {
 
 	dataFactory.getBody().then(function(resp) {
 		$scope.bodies = JSON.parse(resp.data.bodies);
@@ -19,6 +19,10 @@ angular.module('meapp.controllers.clientCtrl', [])
 
 	dataFactory.getRoles().then(function(resp) {
 		$scope.roles = JSON.parse(resp.data.roles);
+	});
+
+	dataFactory.getGender().then(function(resp) {
+		$scope.genders = JSON.parse(resp.data.genders);
 	});
 
 	$scope.form = {};
@@ -46,7 +50,6 @@ angular.module('meapp.controllers.clientCtrl', [])
 
 	$scope.saveClientDetails = function() {
 		loaderFactory.showLoader();
-		console.log($scope.client);
 		artistFactory.saveClientDetails($scope.client).then(function(rep) {
 			loaderFactory.hideLoader();
 			console.log(rep.data);

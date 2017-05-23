@@ -9,15 +9,15 @@
 		<form name="form.client">
 			<!-- clients -->
 			<div id="clients">
-				<div><label><input type="radio" name="gender" ng-model="client.gender" value="Male"> Male</label>
-				<label><input type="radio" name="gender" ng-model="client.gender" value="Female"> Female</label></div>
+				<div><label><input type="radio" name="gender" ng-model="client.gender" value="{{genders[0].id_gender}}"> {{genders[0].type}}</label>
+				<label><input type="radio" name="gender" ng-model="client.gender" value="{{genders[1].id_gender}}"> {{genders[1].type}}</label></div>
 				<div class="error_alert" ng-show="form.client.gender.$dirty && form.client.gender.$error.required">
 				    <span>Gender is required.</span>
 				</div>
 				<select name="project" class="dropdown" ng-model="client.project" required>
 					<option value="">Project</option>
-					<option value="New">New</option>
-					<option value="Existing">Existing</option>
+					<option value="1">New</option>
+					<option value="2">Existing</option>
 				</select>
 				<div class="error_alert" ng-show="form.client.project.$dirty && form.client.project.$error.required">
 				    <span>Project is required.</span>
@@ -41,10 +41,9 @@
 				<div class="error_alert" ng-show="form.client.roll_type.$dirty && form.client.roll_type.$error.required">
 				    <span>Roll type is required.</span>
 				</div>
-				<select name="looking_for" class="dropdown" ng-model="looking_for">
+				<select name="looking_for" class="dropdown" ng-model="client.looking_for" required>
 					<option value="">Looking for</option>
-					<option value="Male">Male</option>
-					<option value="Female">Female</option>
+					<option ng-repeat="gender in genders" value="{{gender.id_gender}}">{{gender.type}}</option>
 				</select>
 				<input type="text" name="character_name" class="inputbox" placeholder="Character name" ng-model="client.character_name">
 				<textarea name="character_description" placeholder="Character description" class="textareabox" ng-model="client.character_description"></textarea>
@@ -58,8 +57,8 @@
 					<option ng-repeat="exp in experience" value="{{exp.id_experience}}">{{exp.type}}</option>
 				</select>
 				<div>
-					Professional trained <label><input type="radio" name="training" ng-model="client.training" value="Yes"> Yes</label>
-					<label><input type="radio" name="training" ng-model="client.training" value="No"> No</label>
+					Professional trained <label><input type="radio" name="training" ng-model="client.training" value="0"> Yes</label>
+					<label><input type="radio" name="training" ng-model="client.training" value="1"> No</label>
 				</div><br>
 				<select name="languages" ng-model="client.languages" class="dropdown">
 					<option value="">Languages</option>
