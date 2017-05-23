@@ -1,5 +1,5 @@
-angular.module('meapp.controllers.artistsCtrl', [])
-	.controller('artistsCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', function($scope, dataFactory, artistFactory, loaderFactory, $state) {
+angular.module('meapp.controllers.artistCtrl', [])
+	.controller('artistCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', '$filter', function($scope, dataFactory, artistFactory, loaderFactory, $state, $filter) {
 
 	$scope.form = {};
 
@@ -71,16 +71,17 @@ angular.module('meapp.controllers.artistsCtrl', [])
 
 	$scope.saveArtistDetails = function() {
 		loaderFactory.showLoader();
+		console.log($scope.artist);
 		 artistFactory.saveArtistDetails($scope.artist).then(function(resp) {
-		 	console.log($scope.artist);
+		 	console.log(resp);
 		 	loaderFactory.hideLoader();
-		 	if(resp.data.error === 1) {
-				loaderFactory.showAlert('Registeration Failed', resp.data.msg);
-				return;
-			} else {
-				loaderFactory.showAlert('Registeration Successful', resp.data.msg);
-				$state.go('artist-profile', {user_id: $scope.artist.user_id})
-			}
+		 // 	if(resp.data.error === 1) {
+			// 	loaderFactory.showAlert('Registeration Failed', resp.data.msg);
+			// 	return;
+			// } else {
+			// 	loaderFactory.showAlert('Registeration Successful', resp.data.msg);
+			// 	$state.go('artist-profile', {user_id: $scope.artist.user_id})
+			// }
 		 });
 	}
 

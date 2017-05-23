@@ -1,5 +1,5 @@
 angular.module('meapp.services.artistService', [])
-	.service('artistService', ['$http', function($http) {
+	.service('artistService', ['$http', '$filter', function($http, $filter) {
 
 	this.imageUpload = function(fd) {
         return $http.post('http://mewhoelse.in/api/api.php?f=imageUpload', fd, {
@@ -20,7 +20,7 @@ angular.module('meapp.services.artistService', [])
             data: { 
             	user_id: parseInt(artist.user_id),
                 gender: parseInt(artist.gender),
-				dob: artist.dob,
+				dob: $filter('date')(artist.dob, 'dd-MM-yyyy'),
 				videos: artist.videos,
 				skills: parseInt(artist.skills),
 				otherskills: artist.otherskills,
@@ -30,7 +30,7 @@ angular.module('meapp.services.artistService', [])
 				body_type: parseInt(artist.body_type),
 				hair_type: parseInt(artist.hair_type),
 				others_hairtype: artist.others_hairtype,
-				weight: artist.weight,
+				weight: parseInt(artist.weight),
 				skin_color: parseInt(artist.skin_color),
 				hair_color: parseInt(artist.hair_color),
 				training: artist.training,
@@ -53,17 +53,16 @@ angular.module('meapp.services.artistService', [])
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             data: { 
-                user_id: technician.user_id,
-                user_type: technician.user_type,
-                gender: technician.gender,
-                dob: technician.dob,
+                user_id: parseInt(technician.user_id),
+                gender: parseInt(technician.gender),
+                dob: $filter('date')(technician.dob, 'dd-MM-yyyy'),
                 videos: technician.videos,
-                skills: technician.skills,
-                experince: technician.experince,
+                skills: parseInt(technician.skills),
+                experince: parseInt(technician.experince),
                 city: technician.city,
                 other_ethnicity: technician.other_ethnicity,
                 training: technician.training,
-                languages: technician.languages,
+                languages: parseInt(technician.languages),
                 others_languages: technician.others_languages,
                 img_name: technician.img_name
             }
@@ -82,19 +81,18 @@ angular.module('meapp.services.artistService', [])
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             data: { 
-                user_id: client.user_id,
-                user_type: client.user_type,
-                gender: client.gender,
+                user_id: parseInt(client.user_id),
+                gender: parseInt(client.gender),
                 project: client.project,
                 projectname: client.projectname,
-                project_type: client.project_type,
+                project_type: parseInt(client.project_type),
                 project_description: client.project_description,
-                roll_type: client.roll_type,
+                roll_type: parseInt(client.roll_type),
                 looking_for: client.looking_for,
                 character_name: client.character_name,
                 character_description:client.character_description,
-                body_type: client.body_type,
-                experince: client.experince,
+                body_type: parseInt(client.body_type),
+                experince: parseInt(client.experince),
                 training: client.training,
                 languages: client.languages,
                 others_languages: client.others_languages,

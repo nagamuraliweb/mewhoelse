@@ -1,5 +1,5 @@
-angular.module('meapp.controllers.clientsCtrl', [])
-	.controller('clientsCtrl', ['$scope', 'dataFactory', function($scope, dataFactory) {
+angular.module('meapp.controllers.clientCtrl', [])
+	.controller('clientCtrl', ['$scope', 'dataFactory', function($scope, dataFactory) {
 
 	dataFactory.getBody().then(function(resp) {
 		$scope.bodies = JSON.parse(resp.data.bodies);
@@ -45,12 +45,12 @@ angular.module('meapp.controllers.clientsCtrl', [])
 	$scope.client.user_id = window.localStorage.getItem('userID');
 
 	$scope.saveClientDetails = function() {
-		//loaderFactory.showLoader();
+		loaderFactory.showLoader();
 		console.log($scope.client);
-		// artistFactory.saveClientDetails(client).then(function(rep) {
-		// 	loaderFactory.hideLoader();
-		// 	console.log(JSON.parse(rep.data));
-		// });
+		artistFactory.saveClientDetails($scope.client).then(function(rep) {
+			loaderFactory.hideLoader();
+			console.log(rep.data);
+		});
 	}
 
 }]);

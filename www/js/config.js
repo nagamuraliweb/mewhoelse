@@ -21,13 +21,6 @@ angular.module('meapp.config', [])
     controller: 'loginCtrl'
   })
 
-  // forgot password page
-  .state('forgot', {
-    url: '/forgot',
-    templateUrl: 'templates/forgot.html',
-    controller: 'forgotCtrl'
-  })
-
   // signup page
   .state('signup', {
     url: '/signup',
@@ -35,53 +28,95 @@ angular.module('meapp.config', [])
     controller: 'signupCtrl'
   })
 
+  // forgot password page
+  .state('forgot', {
+    url: '/forgot',
+    templateUrl: 'templates/forgot.html',
+    controller: 'forgotCtrl'
+  })
+
   // artists register
   .state('artist-register', {
     url: '/artist-register',
-    templateUrl: 'templates/artist-register.html',
-    controller: 'artistsCtrl'
+    templateUrl: 'templates/artist_register.html',
+    controller: 'artistCtrl'
+  })
+
+  // artists update
+  .state('artist-update', {
+    url: '/artist-update/:user_id',
+    templateUrl: 'templates/artist_update.html',
+    controller: 'artistUpdateCtrl'
   })
 
   // artists profile
   .state('artist-profile', {
     url: '/artist-profile/:user_id',
-    templateUrl: 'templates/artist-profile.html',
+    templateUrl: 'templates/artist_profile.html',
     controller: 'artistProfileCtrl'
+  })
+
+  // artists overview page
+  .state('artist-overview', {
+    url: '/artist-overview/:user_id',
+    templateUrl: 'templates/artist_overview.html',
+    controller: 'artistOverviewCtrl'
   })
 
   // technicians register
   .state('technicians-register', {
     url: '/technicians-register',
-    templateUrl: 'templates/technicians-register.html',
-    controller: 'techniciansCtrl'
+    templateUrl: 'templates/technician_register.html',
+    controller: 'technicianCtrl'
+  })
+
+  // technicians update
+  .state('technician-update', {
+    url: '/technician-update/:user_id',
+    templateUrl: 'templates/technician_update.html',
+    controller: 'technicianUpdateCtrl'
+  })
+
+  // technicians profile
+  .state('technician-profile', {
+    url: '/technician-profile/:user_id',
+    templateUrl: 'templates/technician_profile.html',
+    controller: 'technicianProfileCtrl'
+  })
+
+  // technicians overview page
+  .state('technician-overview', {
+    url: '/technician-overview/:user_id',
+    templateUrl: 'templates/technician_overview.html',
+    controller: 'technicianOverviewCtrl'
   })
 
   // clients register
-  .state('clients-register', {
-    url: '/clients-register',
-    templateUrl: 'templates/clients-register.html',
-    controller: 'clientsCtrl'
+  .state('client-register', {
+    url: '/client-register',
+    templateUrl: 'templates/client_register.html',
+    controller: 'clientCtrl'
   })
 
-  // overview page
-  .state('artist_overview', {
-    url: '/artist_overview',
-    templateUrl: 'templates/artist_overview.html',
-    controller: 'artistOverviewCtrl'
+  // clients update
+  .state('client-update', {
+    url: '/client-update/:user_id',
+    templateUrl: 'templates/client_update.html',
+    controller: 'clientUpdateCtrl'
   })
 
-  // overview page
-  .state('technicians_overview', {
-    url: '/technicians_overview',
-    templateUrl: 'templates/technicians_overview.html',
-    controller: 'techniciansOverviewCtrl'
+  // clients profile page
+  .state('client-profile', {
+    url: '/client-overview/:user_id',
+    templateUrl: 'templates/client_profile.html',
+    controller: 'clientProfileCtrl'
   })
 
-  // overview page
-  .state('clients_overview', {
-    url: '/clients_overview',
-    templateUrl: 'templates/clients_overview.html',
-    controller: 'clientsOverviewCtrl'
+  // clients overview page
+  .state('client-overview', {
+    url: '/client-overview/:user_id',
+    templateUrl: 'templates/client_overview.html',
+    controller: 'clientOverviewCtrl'
   })
 
   // setup an abstract state for the tabs directive
@@ -96,7 +131,7 @@ angular.module('meapp.config', [])
     url: '/artists',
     views: {
       'dashboard-artists': {
-        templateUrl: 'templates/dashboard-artists.html',
+        templateUrl: 'templates/dashboard_artists.html',
         controller: 'artistsCtrl'
       }
     }
@@ -106,7 +141,7 @@ angular.module('meapp.config', [])
       url: '/technicians',
       views: {
         'dashboard-technicians': {
-          templateUrl: 'templates/dashboard-technicians.html',
+          templateUrl: 'templates/dashboard_technicians.html',
           controller: 'techniciansCtrl'
         }
       }

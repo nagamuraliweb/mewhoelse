@@ -504,7 +504,6 @@ class me_api extends db_config {
 
 			$data = [
 				'user_id' => $postdata->user_id,
-				'user_type' => $postdata->profession,
 				'gender' => $postdata->gender,
 				'dob' => $postdata->dob,
 				'videos' => $postdata->videos,
@@ -523,13 +522,19 @@ class me_api extends db_config {
 				'languages' => $postdata->languages,
 				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null
 			];
+			
+			echo $data;
 
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
-				Model_Admin::saveArtistDetails($this->DB, $data);
+				if(!Model_Admin::saveArtistDetails($this->DB, $data)) {
+					throw new Exception('Error occured');
+				}
 			} else {
-				Model_Admin::updateArtistDetails($this->DB, $data);
+				if(!Model_Admin::updateArtistDetails($this->DB, $data)) {
+					throw new Exception('Error occured');
+				}
 			}
 
 			$result = ['error' => 0, 'msg' => 'Successfully saved details'];
@@ -606,7 +611,6 @@ class me_api extends db_config {
 
 			$data = [
 				'user_id' => $postdata->user_id,
-				'user_type' => $postdata->profession,
 				'gender' => $postdata->gender,
 				'dob' => $postdata->dob,
 				'videos' => $postdata->videos,
@@ -622,9 +626,13 @@ class me_api extends db_config {
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
-				Model_Admin::saveTechnicianDetails($this->DB, $data);
+				if(!Model_Admin::saveTechnicianDetails($this->DB, $data)) {
+					throw new Exception('Error occured');
+				}
 			} else {
-				Model_Admin::updateTechnicianDetails($this->DB, $data);
+				if(!Model_Admin::updateTechnicianDetails($this->DB, $data)) {
+					throw new Exception('Error occured');
+				}
 			}
 
 			if (empty($user_id)) {
@@ -721,7 +729,6 @@ class me_api extends db_config {
 
 			$data = [
 				'user_id' => $postdata->user_id,
-				'user_type' => $postdata->profession,
 				'gender' => $postdata->gender,
 				'project' => $postdata->project,
 				'projectname' => $postdata->projectname,
@@ -742,9 +749,13 @@ class me_api extends db_config {
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
-				Model_Admin::saveClientDetails($this->DB, $data);
+				if(!Model_Admin::saveClientDetails($this->DB, $data)) {
+					throw new Exception('Error occured');
+				}
 			} else {
-				Model_Admin::updateClientDetails($this->DB, $data);
+				if(!Model_Admin::updateClientDetails($this->DB, $data)) {
+					throw new Exception('Error occured');
+				}
 			}
 
 			$result = ['error' => 0, 'msg' => 'Successfully saved details'];

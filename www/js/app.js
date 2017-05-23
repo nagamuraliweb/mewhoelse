@@ -36,16 +36,21 @@ angular.module('meapp', ['ionic', 'meapp.config', 'meapp.controllers', 'meapp.fa
 // controllers
 angular.module('meapp.controllers', [
   'meapp.controllers.landingCtrl',
-  'meapp.controllers.artistsCtrl',
-  'meapp.controllers.techniciansCtrl',
-  'meapp.controllers.signupCtrl',
   'meapp.controllers.loginCtrl',
+  'meapp.controllers.signupCtrl',
   'meapp.controllers.forgotCtrl',
+  'meapp.controllers.artistCtrl',
+  'meapp.controllers.artistUpdateCtrl',
+  'meapp.controllers.artistProfileCtrl',
   'meapp.controllers.artistOverviewCtrl',
-  'meapp.controllers.techniciansOverviewCtrl',
-  'meapp.controllers.clientsOverviewCtrl',
-  'meapp.controllers.clientsCtrl',
-  'meapp.controllers.artistProfileCtrl'
+  'meapp.controllers.technicianCtrl',
+  'meapp.controllers.technicianUpdateCtrl',
+  'meapp.controllers.technicianProfileCtrl',
+  'meapp.controllers.technicianOverviewCtrl',
+  'meapp.controllers.clientCtrl',
+  'meapp.controllers.clientUpdateCtrl',
+  'meapp.controllers.clientProfileCtrl',
+  'meapp.controllers.clientOverviewCtrl'
 ]);
 
 // factories

@@ -1,5 +1,5 @@
-angular.module('meapp.controllers.techniciansCtrl', [])
-	.controller('techniciansCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', function($scope, dataFactory, artistFactory, loaderFactory) {
+angular.module('meapp.controllers.technicianUpdateCtrl', [])
+	.controller('technicianUpdateCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', function($scope, dataFactory, artistFactory, loaderFactory) {
 
 	dataFactory.getExperience().then(function(resp) {
 		$scope.experience = JSON.parse(resp.data.experiences);
@@ -10,7 +10,7 @@ angular.module('meapp.controllers.techniciansCtrl', [])
 	});
 
 	$scope.form = {};
-	var img_name;
+
 	$scope.technician = {
 		user_id: '',
 		gender: '',
@@ -35,7 +35,6 @@ angular.module('meapp.controllers.techniciansCtrl', [])
 		artistFactory.imageUpload(fd).then(function(resp) {
 			loaderFactory.hideLoader();
 			$scope.technician.img_name = resp.data.img_name;
-			console.log(resp);
 		});
 	};
 
@@ -43,12 +42,13 @@ angular.module('meapp.controllers.techniciansCtrl', [])
 		loaderFactory.showLoader();
 		artistFactory.saveTechnicianDetails($scope.technician).then(function(resp) {
 			loaderFactory.hideLoader();
-		 	if(resp.data.error === 1) {
-				loaderFactory.showAlert('Registeration Failed', resp.data.msg);
-				return;
-			} else {
-				loaderFactory.showAlert('Registeration Successful', resp.data.msg);
-			}
+			console.log(resp);
+		 // 	if(resp.data.error === 1) {
+			// 	loaderFactory.showAlert('Registeration Failed', resp.data.msg);
+			// 	return;
+			// } else {
+			// 	loaderFactory.showAlert('Registeration Successful', resp.data.msg);
+			// }
 		});
 	}
 

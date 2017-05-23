@@ -1,5 +1,5 @@
-angular.module('meapp.controllers.artistProfileCtrl', [])
-	.controller('artistProfileCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$stateParams', '$state', function($scope, dataFactory, artistFactory, loaderFactory, $stateParams, $state) {
+angular.module('meapp.controllers.technicianProfileCtrl', [])
+	.controller('technicianProfileCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$stateParams', '$state', function($scope, dataFactory, artistFactory, loaderFactory, $stateParams, $state) {
 
 	if($stateParams.user_id === '') {
 		$state.go('landing');

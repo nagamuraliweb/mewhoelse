@@ -13,7 +13,8 @@ angular.module('meapp.factories.dataFactory', [])
 		getProjects: getProjects,
 		getRoles: getRoles,
 		getUserDetails: getUserDetails,
-		getGender: getGender
+		getGender: getGender,
+		getUserType: getUserType
 	}
 
 	function getType() {
@@ -134,6 +135,18 @@ angular.module('meapp.factories.dataFactory', [])
 			console.log(error);
 		});
 		return deffered.promise;
+	}
+
+	function getUserType(userId){
+		var sur;
+		if (userId === 1) {
+			sur = 'Artist';
+		} else if(userId === 2) {
+			sur = 'Technician';
+		} else if(userId === 3) {
+			sur = 'Client';
+		}
+		return sur;
 	}
 
 }]);

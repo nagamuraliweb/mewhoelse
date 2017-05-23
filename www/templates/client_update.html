@@ -1,0 +1,80 @@
+<ion-view view-title="Landing" class="login" hide-nav-bar="true">
+  <ion-content class="padding">
+
+	<div id="landing_header" class="text-center">
+		<img src="img/logo.png" alt="Logo_Meapp" class="img-responsive">
+	</div>    
+
+	<div class="row login_grid">
+		<form name="form.client">
+			<!-- clients -->
+			<div id="clients">
+				<div><label><input type="radio" name="gender" ng-model="client.gender" value="Male"> Male</label>
+				<label><input type="radio" name="gender" ng-model="client.gender" value="Female"> Female</label></div>
+				<div class="error_alert" ng-show="form.client.gender.$dirty && form.client.gender.$error.required">
+				    <span>Gender is required.</span>
+				</div>
+				<select name="project" class="dropdown" ng-model="client.project" required>
+					<option value="">Project</option>
+					<option value="New">New</option>
+					<option value="Existing">Existing</option>
+				</select>
+				<div class="error_alert" ng-show="form.client.project.$dirty && form.client.project.$error.required">
+				    <span>Project is required.</span>
+				</div>
+				<input type="text" name="projectname" class="inputbox" placeholder="Enter your project name" ng-model="client.projectname">
+				<div class="error_alert" ng-show="form.client.projectname.$dirty && form.client.projectname.$error.required">
+				    <span>Project name is required.</span>
+				</div>
+				<select name="project_type" class="dropdown" ng-model="client.project_type" required>
+					<option value="">Project type</option>
+					<option ng-repeat="project in projects" value="{{project.id_project}}">{{project.type}}</option>
+				</select>
+				<div class="error_alert" ng-show="form.client.project_type.$dirty && form.client.project_type.$error.required">
+				    <span>Project name is required.</span>
+				</div>
+				<textarea name="project_description" placeholder="Project description" class="textareabox" ng-model="client.project_description"></textarea>
+				<select name="roll_type" class="dropdown" ng-model="client.roll_type" required>
+					<option value="">Roll type</option>
+					<option ng-repeat="roll in roles" value="{{roll.id_role}}">{{roll.type}}</option>
+				</select>
+				<div class="error_alert" ng-show="form.client.roll_type.$dirty && form.client.roll_type.$error.required">
+				    <span>Roll type is required.</span>
+				</div>
+				<select name="looking_for" class="dropdown" ng-model="looking_for">
+					<option value="">Looking for</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
+				<input type="text" name="character_name" class="inputbox" placeholder="Character name" ng-model="client.character_name">
+				<textarea name="character_description" placeholder="Character description" class="textareabox" ng-model="client.character_description"></textarea>
+				<h4>Requirements</h4>
+				<select name="body_type" class="dropdown" ng-model="client.body_type">
+					<option value="">Body Type</option>
+					<option ng-repeat="body in bodies" value="{{body.id_body}}">{{body.type}}</option>
+				</select>
+				<select name="experince" class="dropdown" ng-model="client.experince">
+					<option value="">Experience</option>
+					<option ng-repeat="exp in experience" value="{{exp.id_experience}}">{{exp.type}}</option>
+				</select>
+				<div>
+					Professional trained <label><input type="radio" name="training" ng-model="client.training" value="Yes"> Yes</label>
+					<label><input type="radio" name="training" ng-model="client.training" value="No"> No</label>
+				</div><br>
+				<select name="languages" ng-model="client.languages" class="dropdown">
+					<option value="">Languages</option>
+					<option ng-repeat="language in languages" value="{{language.id_language}}">{{language.type}}</option>
+				</select>
+				<input type="text" ng-if="client.languages === '7'" name="others_languages" ng-model="client.others_languages" class="inputbox bottom_30" placeholder="Enter your language">
+				<input type="text" name="production_housename" class="inputbox bottom_30" placeholder="Production house name" ng-model="client.production_housename">
+
+				<button class="button button-outline loginbtn" ng-click="saveClientDetails()" ng-disabled="!form.client.$valid">
+				  proceed
+				</button>
+			</div>
+
+		</form>
+	</div>
+
+  </ion-content>
+</ion-view>
