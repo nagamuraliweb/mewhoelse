@@ -6,6 +6,7 @@ class db_config extends PDO {
 		try {
 
 		    parent::__construct('mysql:host=localhost;dbname=dr_mem', 'mewhoelse2017', 'b02or3n4%Szmrg');
+		    $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		} catch (PDOException $e) {
 

@@ -247,22 +247,21 @@
 
 		public function saveArtistDetails ($DB, $data) {
 
-			$sql = 'INSERT INTO dr_mem_users_details (user_type_id, user_id, user_gender_id, user_skills_id, user_dob,
+			$sql = 'INSERT INTO dr_mem_users_details (user_id, user_gender_id, user_skills_id, user_skills_others, user_dob,
 					user_videos, user_experience_id, user_city, user_ethinicity, user_body_id, user_hair_id,
 					user_hair_others, user_weight, user_skin_id, user_hair_color_id, user_is_professional,
 					user_language_id, user_language_others) 
-						VALUES (:user_type, :user_id, :gender, :skills, :dob, :videos, :experince,
+						VALUES (:user_id, :gender, :skills, :otherskills, :dob, :videos, :experince,
 					:city, :other_ethnicity, :body_type, :hair_type, :others_hairtype, :weight, :skin_color, :hair_color,
 					:training, :languages, :others_languages)';
 
 			$stmt = $DB->prepare($sql);
-			$stmt->bindParam(':user_type', $data['user_type'], PDO::PARAM_INT);
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
 			$stmt->bindParam(':gender', $data['gender'], PDO::PARAM_INT);
 			$stmt->bindParam(':dob', $data['dob'], PDO::PARAM_STR);
 			$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 
-			if ($data['skills'] === 0) {
+			if ($data['skills'] == 0) {
 				$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_NULL);
 				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
 			} else {
@@ -275,7 +274,7 @@
 			$stmt->bindParam(':other_ethnicity', $data['other_ethnicity'], PDO::PARAM_STR);
 			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_INT);
 
-			if ($data['hair_type'] === 0) {
+			if ($data['hair_type'] == 0) {
 				$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_NULL);
 				$stmt->bindParam(':others_hairtype', $data['others_hairtype'], PDO::PARAM_STR);
 			} else {
@@ -288,7 +287,7 @@
 			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_INT);
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
 
-			if ($data['languages'] === 0) {
+			if ($data['languages'] == 0) {
 				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_NULL);
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
@@ -303,14 +302,13 @@
 
 		public function updateArtistDetails ($DB, $data) {
 
-			$sql = 'UPDATE dr_mem_users_details SET (user_type_id = :user_type, user_id = :user_id, user_gender_id = :gender,
-				user_skills_id = :skills, user_dob = :dob, user_videos = :videos, user_experience_id = :experince,
+			$sql = 'UPDATE dr_mem_users_details SET (user_id = :user_id, user_gender_id = :gender,
+				user_skills_id = :skills, user_skills_others = :otherskills, user_dob = :dob, user_videos = :videos, user_experience_id = :experince,
 				user_city = :city, user_ethinicity = :other_ethnicity, user_body_id = :body_type, user_hair_id = :hair_type,
 				user_hair_others = :others_hairtype, user_weight = :weight, user_skin_id = :skin_color, user_hair_color_id = :hair_color,
 				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages)';
 
 			$stmt = $DB->prepare($sql);
-			$stmt->bindParam(':user_type', $data['user_type'], PDO::PARAM_INT);
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
 			$stmt->bindParam(':gender', $data['gender'], PDO::PARAM_INT);
 			$stmt->bindParam(':dob', $data['dob'], PDO::PARAM_STR);

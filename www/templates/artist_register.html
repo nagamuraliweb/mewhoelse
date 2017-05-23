@@ -76,8 +76,8 @@
 				    <span>Hair Color is required.</span>
 				</div>
 				<div>
-					Professional trained <label><input type="radio" name="training" ng-model="artist.training" value="Yes"> Yes</label>
-					<label><input type="radio" name="training" ng-model="artist.training" value="No"> No</label>
+					Professional trained <label><input type="radio" name="training" ng-model="artist.training" value="0"> Yes</label>
+					<label><input type="radio" name="training" ng-model="artist.training" value="1"> No</label>
 				</div><br>
 				<div class="error_alert" ng-show="form.artists.training.$dirty && form.artists.training.$error.required">
 				    <span>Professional trained is required.</span>

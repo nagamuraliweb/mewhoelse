@@ -480,7 +480,7 @@ class me_api extends db_config {
 				throw new Exception('Enter hair color');
 			}
 
-			if (empty($postdata->training)) {
+			if (!ctype_digit($postdata->training)) {
 				throw new Exception('Choose professional training');
 			}
 
@@ -523,8 +523,6 @@ class me_api extends db_config {
 				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null
 			];
 			
-			echo $data;
-
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
