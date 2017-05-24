@@ -75,13 +75,13 @@ angular.module('meapp.controllers.artistCtrl', [])
 		 artistFactory.saveArtistDetails($scope.artist).then(function(resp) {
 		 	console.log(resp);
 		 	loaderFactory.hideLoader();
-		 // 	if(resp.data.error === 1) {
-			// 	loaderFactory.showAlert('Registeration Failed', resp.data.msg);
-			// 	return;
-			// } else {
-			// 	loaderFactory.showAlert('Registeration Successful', resp.data.msg);
-			// 	$state.go('artist-profile', {user_id: $scope.artist.user_id})
-			// }
+		 	if(resp.data.error === 1) {
+				loaderFactory.showAlert('Registeration Failed', resp.data.msg);
+				return;
+			} else {
+				loaderFactory.showAlert('Registeration Successful', resp.data.msg);
+				$state.go('artist-profile', {user_id: $scope.artist.user_id})
+			}
 		 });
 	}
 

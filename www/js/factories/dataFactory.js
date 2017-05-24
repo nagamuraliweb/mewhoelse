@@ -27,6 +27,11 @@ angular.module('meapp.factories.dataFactory', [])
 		return deffered.promise;
 	}
 
+	function getUserType() {
+		var usertype = getType();
+		console.log(JSON.parse(usertype.data.types));
+	}
+
 	function getBody() {
 		var deffered = $q.defer();
 		dataService.getBody().then(function (resp) {
@@ -135,18 +140,6 @@ angular.module('meapp.factories.dataFactory', [])
 			console.log(error);
 		});
 		return deffered.promise;
-	}
-
-	function getUserType(userId){
-		var sur;
-		if (userId === 1) {
-			sur = 'Artist';
-		} else if(userId === 2) {
-			sur = 'Technician';
-		} else if(userId === 3) {
-			sur = 'Client';
-		}
-		return sur;
 	}
 
 }]);

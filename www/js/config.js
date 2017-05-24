@@ -64,8 +64,8 @@ angular.module('meapp.config', [])
   })
 
   // technicians register
-  .state('technicians-register', {
-    url: '/technicians-register',
+  .state('technician-register', {
+    url: '/technician-register',
     templateUrl: 'templates/technician_register.html',
     controller: 'technicianCtrl'
   })

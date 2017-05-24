@@ -57,7 +57,7 @@
 				    <span>Hair Type is required.</span>
 				</div>
 				<input type="text" ng-if="artist.hair_type === '5'" name="others_hairtype" ng-model="others_hairtype" class="inputbox" placeholder="Enter your hair type">
-				<input type="text" name="weight" ng-model="artist.weight" class="inputbox" placeholder="Enter your weight" required>
+				<input type="text" name="weight" ng-model="artist.weight" class="inputbox" placeholder="Enter your weight" autocomplete="off" required>
 				<div class="error_alert" ng-show="form.artists.weight.$dirty && form.artists.weight.$error.required">
 				    <span>Weight is required.</span>
 				</div>

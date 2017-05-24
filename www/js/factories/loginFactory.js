@@ -45,9 +45,9 @@ angular.module('meapp.factories.loginFactory', [])
 			switch (user_type) {
 				case 1: $state.go('artist-register');
 						break;
-				case 2: $state.go('technicians-register');
+				case 2: $state.go('technician-register');
 						break;
-				case 3: $state.go('clients-register');
+				case 3: $state.go('client-register');
 						break;
 				default: console.log('Login');
 			}
