@@ -1,5 +1,7 @@
-angular.module('meapp.controllers.artistProfileCtrl', [])
+angular.module('meapp.controllers.artistProfileCtrl', ['youtube-embed'])
 	.controller('artistProfileCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$stateParams', '$state', function($scope, dataFactory, artistFactory, loaderFactory, $stateParams, $state) {
+
+	var bestPlayer = null;
 
 	if($stateParams.user_id === '') {
 		$state.go('landing');
@@ -55,6 +57,14 @@ angular.module('meapp.controllers.artistProfileCtrl', [])
 		$scope.genders = JSON.parse(resp.data.genders);
 		console.log($scope.genders);
 		$scope.gender = $scope.genders[$scope.artist.user_gender_id].type;
+	});
+
+	$scope.$on('youtube.player.playing', function ($event, player) {
+	    bestPlayer = player;
+	});
+
+	$scope.$on('youtube.player.ended', function ($event, player) {
+	    bestPlayer = '';
 	});
 	
 
