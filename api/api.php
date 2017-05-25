@@ -494,12 +494,14 @@ class me_api extends db_config {
 				}
 			}
 
-			if ( ! file_exists('../img/profile')) {
-				mkdir('../img/profile', 0777, true);
-			}
+			if ($postdata->img_name) {
+				if ( ! file_exists('../img/profile')) {
+					mkdir('../img/profile', 0777, true);
+				}
 
-			if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
-				unlink('../img/tmp/'.$postdata->img_name);
+				if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
+					unlink('../img/tmp/'.$postdata->img_name);
+				}
 			}
 
 			$data = [
@@ -599,12 +601,14 @@ class me_api extends db_config {
 				}
 			}
 
-			if ( ! file_exists('../img/profile')) {
-				mkdir('../img/profile', 0777, true);
-			}
+			if ($postdata->img_name) {
+				if ( ! file_exists('../img/profile')) {
+					mkdir('../img/profile', 0777, true);
+				}
 
-			if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
-				unlink('../img/tmp/'.$postdata->img_name);
+				if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
+					unlink('../img/tmp/'.$postdata->img_name);
+				}
 			}
 
 			$data = [
@@ -695,9 +699,9 @@ class me_api extends db_config {
 				throw new Exception('Choose experince');
 			}
 
-			/*if (!ctype_digit($postdata->training)) {
+			if (!ctype_digit($postdata->training)) {
 				throw new Exception('Choose professional training');
-			}*/
+			}
 
 			if (empty($postdata->languages)) {
 				throw new Exception('Choose languages');

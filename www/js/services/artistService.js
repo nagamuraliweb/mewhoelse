@@ -20,7 +20,7 @@ angular.module('meapp.services.artistService', [])
             data: { 
             	user_id: parseInt(artist.user_id),
                 gender: parseInt(artist.gender),
-				dob: $filter('date')(artist.dob, 'dd-MM-yyyy'),
+				dob: $filter('date')(artist.dob, 'yyyy-MM-dd'),
 				videos: artist.videos,
 				skills: parseInt(artist.skills),
 				otherskills: artist.otherskills,
@@ -55,7 +55,7 @@ angular.module('meapp.services.artistService', [])
             data: { 
                 user_id: parseInt(technician.user_id),
                 gender: parseInt(technician.gender),
-                dob: $filter('date')(technician.dob, 'dd-MM-yyyy'),
+                dob: $filter('date')(technician.dob, 'yyyy-MM-dd'),
                 videos: technician.videos,
                 skills: technician.skills,
                 experince: parseInt(technician.experince),
