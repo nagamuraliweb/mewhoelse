@@ -25,9 +25,10 @@
             </span></p>
             <p>Languages <span class="pull-right">{{lang}}</span></p>
             <p>Profile Videos</p>
-            <!-- <iframe width="300" height="300" ng-src="{{artist.user_videos}}">
-            </iframe> -->
-            <youtube-video player-width="'100%'" player-height="'500px'" player="bestPlayer" video-url="artist.user_videos"></youtube-video>
+            <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="artist.user_videos"></youtube-video>
+            <button class="button button-outline loginbtn" ng-click="updateDetails()">
+              Update
+            </button>
         </div>
     </div>
 

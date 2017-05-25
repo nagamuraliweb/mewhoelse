@@ -1,5 +1,5 @@
 angular.module('meapp.controllers.artistUpdateCtrl', [])
-	.controller('artistUpdateCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', '$filter', function($scope, dataFactory, artistFactory, loaderFactory, $state, $filter) {
+	.controller('artistUpdateCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', '$filter', '$stateParams', '$rootScope', function($scope, dataFactory, artistFactory, loaderFactory, $state, $filter, $stateParams, $rootScope) {
 
 	$scope.form = {};
 
@@ -35,6 +35,11 @@ angular.module('meapp.controllers.artistUpdateCtrl', [])
 		$scope.genders = JSON.parse(resp.data.genders);
 	});
 
+	dataFactory.getUserDetails($stateParams.user_id).then(function(resp) {
+		$rootScope.artist_data = JSON.parse(resp.data.user_details);
+		console.log($rootScope.artist_data);
+	});
+	
 	$scope.artist = {
 		user_id: '',
 		gender: '',
@@ -57,7 +62,7 @@ angular.module('meapp.controllers.artistUpdateCtrl', [])
 		img_name: ''
 	};
 
-	$scope.artist.user_id = window.localStorage.getItem('userID');
+	$scope.artist.user_id = $stateParams.user_id;
 
 	$scope.uploadFile = function(files) {
 		var fd = new FormData();
@@ -73,15 +78,14 @@ angular.module('meapp.controllers.artistUpdateCtrl', [])
 		loaderFactory.showLoader();
 		console.log($scope.artist);
 		 artistFactory.saveArtistDetails($scope.artist).then(function(resp) {
-		 	console.log(resp);
 		 	loaderFactory.hideLoader();
-		 // 	if(resp.data.error === 1) {
-			// 	loaderFactory.showAlert('Registeration Failed', resp.data.msg);
-			// 	return;
-			// } else {
-			// 	loaderFactory.showAlert('Registeration Successful', resp.data.msg);
-			// 	$state.go('artist-profile', {user_id: $scope.artist.user_id})
-			// }
+		 	if(resp.data.error === 1) {
+				loaderFactory.showAlert('Updation Failed', resp.data.msg);
+				return;
+			} else {
+				loaderFactory.showAlert('Updation Successful', resp.data.msg);
+				$state.go('artist-profile', {user_id: $stateParams.user_id})
+			}
 		 });
 	}
 

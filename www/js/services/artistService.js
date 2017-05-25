@@ -61,7 +61,7 @@ angular.module('meapp.services.artistService', [])
                 experince: parseInt(technician.experince),
                 city: technician.city,
                 other_ethnicity: technician.other_ethnicity,
-                training: parseInt(technician.training),
+                training: technician.training,
                 languages: parseInt(technician.languages),
                 others_languages: technician.others_languages,
                 img_name: technician.img_name

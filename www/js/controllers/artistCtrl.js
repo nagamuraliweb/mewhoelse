@@ -73,7 +73,6 @@ angular.module('meapp.controllers.artistCtrl', [])
 		loaderFactory.showLoader();
 		console.log($scope.artist);
 		 artistFactory.saveArtistDetails($scope.artist).then(function(resp) {
-		 	console.log(resp);
 		 	loaderFactory.hideLoader();
 		 	if(resp.data.error === 1) {
 				loaderFactory.showAlert('Registeration Failed', resp.data.msg);

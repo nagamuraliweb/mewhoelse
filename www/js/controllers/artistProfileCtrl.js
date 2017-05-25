@@ -15,6 +15,7 @@ angular.module('meapp.controllers.artistProfileCtrl', ['youtube-embed'])
 
 	dataFactory.getType().then(function(resp) {
 		$scope.profession_types = JSON.parse(resp.data.types);
+		console.log($scope.profession_types);
 		$scope.profession = $scope.profession_types[$scope.artist.user_type].type;
 	});
 
@@ -55,7 +56,6 @@ angular.module('meapp.controllers.artistProfileCtrl', ['youtube-embed'])
 
 	dataFactory.getGender().then(function(resp) {
 		$scope.genders = JSON.parse(resp.data.genders);
-		console.log($scope.genders);
 		$scope.gender = $scope.genders[$scope.artist.user_gender_id].type;
 	});
 
@@ -67,5 +67,8 @@ angular.module('meapp.controllers.artistProfileCtrl', ['youtube-embed'])
 	    bestPlayer = '';
 	});
 	
+	$scope.updateDetails = function() {
+		$state.go('artist-update', {user_id: $stateParams.user_id});
+	}
 
 }]);

@@ -1,5 +1,5 @@
 angular.module('meapp.controllers.technicianCtrl', [])
-	.controller('technicianCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', function($scope, dataFactory, artistFactory, loaderFactory) {
+	.controller('technicianCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', '$stateParams', function($scope, dataFactory, artistFactory, loaderFactory, $state, $stateParams) {
 
 	dataFactory.getExperience().then(function(resp) {
 		$scope.experience = JSON.parse(resp.data.experiences);
@@ -47,12 +47,13 @@ angular.module('meapp.controllers.technicianCtrl', [])
 		artistFactory.saveTechnicianDetails($scope.technician).then(function(resp) {
 			loaderFactory.hideLoader();
 			console.log(resp);
-		 // 	if(resp.data.error === 1) {
-			// 	loaderFactory.showAlert('Registeration Failed', resp.data.msg);
-			// 	return;
-			// } else {
-			// 	loaderFactory.showAlert('Registeration Successful', resp.data.msg);
-			// }
+		 	if(resp.data.error === 1) {
+				loaderFactory.showAlert('Registeration Failed', resp.data.msg);
+				return;
+			} else {
+				loaderFactory.showAlert('Registeration Successful', resp.data.msg);
+				$state.go('technician-profile', {user_id: $scope.technician.user_id});
+			}
 		});
 	}
 
