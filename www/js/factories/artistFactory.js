@@ -21,7 +21,6 @@ angular.module('meapp.factories.artistFactory', [])
 	function saveArtistDetails(artist) {
 		var deffered = $q.defer();
 		artistService.saveArtistDetails(artist).then(function (resp) {
-			console.log(resp);
 			deffered.resolve(resp);
 		}, function (error) {
 			console.log(error);

@@ -119,5 +119,5 @@ font-size: 13px;}
 }
 .padding_30{padding: 0 30px 10px 30px;}
 .profile_picture{text-align: center;}
-.profile_picture h4{color: #ffffff;text-transform: capitalize;margin-bottom: 15px;}
+.profile_picture h4{color: #ffffff;text-transform: capitalize;margin-bottom: 15px;font-weight: 400;}
 .personal{color: #ffffff;text-transform: capitalize;padding-left: 30px;font-weight: 100;margin-bottom: 15px;}

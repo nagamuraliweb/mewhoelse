@@ -8,8 +8,9 @@
 	<div class="row login_grid">
 		<form name="form.artists">
 			<div id="artists">
-				<div><label><input type="radio" name="gender" ng-model="artist.gender" value="{{genders[0].id_gender}}"> {{genders[0].type}}</label>
-				<label><input type="radio" name="gender" ng-model="artist.gender" value="{{genders[1].id_gender}}"> {{genders[1].type}}</label></div>
+				<div>
+				<label ng-repeat="gen in genders"><input type="radio" name="gender" ng-model="artist.gender" value="{{gen.id_gender}}"> {{gen.type}}</label>
+				</div>
 				<div class="error_alert" ng-show="form.artists.gender.$dirty && form.artists.gender.$error.required">
 				    <span>Gender is required.</span>
 				</div>

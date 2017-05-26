@@ -3,13 +3,13 @@
     
     <div class="list_overview" ui-sref="overview">
         <div class="profile_picture">
-            <img src="img/artist1.jpg" alt="Artist" class="img-responsive">
+            <img ng-src="http://mewhoelse.in/img/profile/{{user_id}}.jpg" alt="Artist" class="img-responsive">
             <h4>{{artist.user_name}} , {{profession}}</h4>
         </div>
         <h4 class="personal">Personal details</h4>
         <div class="padding_30">
             <p>Gender <span class="pull-right">{{gender}}</span></p>
-            <p>Date of birth <span class="pull-right">{{artist.user_dob}}</span></p>
+            <p>Date of birth <span class="pull-right">{{artist.user_dob | date : 'mediumDate'}}</span></p>
             <p>Skills <span class="pull-right">{{skill}}</span></p>
             <p>Experience <span class="pull-right">{{exp}}</span></p>
             <p>City <span class="pull-right">{{artist.user_city}}</span></p>
