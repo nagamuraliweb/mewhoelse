@@ -74,8 +74,6 @@ angular.module('meapp.services.artistService', [])
     }
 
     this.saveClientDetails = function(client) {
-        console.log('client.looking_for');
-        console.log(client.looking_for);
         var request = {
             method: 'POST',
             url: 'http://mewhoelse.in/api/api.php?f=saveClientDetails',
@@ -95,7 +93,7 @@ angular.module('meapp.services.artistService', [])
                 character_description:client.character_description,
                 body_type: parseInt(client.body_type),
                 experince: parseInt(client.experince),
-                training: parseInt(client.training),
+                training: client.training,
                 languages: client.languages,
                 others_languages: client.others_languages,
                 production_housename: client.production_housename

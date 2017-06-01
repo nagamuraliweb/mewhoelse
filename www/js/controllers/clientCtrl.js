@@ -1,5 +1,5 @@
 angular.module('meapp.controllers.clientCtrl', [])
-	.controller('clientCtrl', ['$scope', 'dataFactory', 'loaderFactory', 'artistFactory', function($scope, dataFactory, loaderFactory, artistFactory) {
+	.controller('clientCtrl', ['$scope', 'dataFactory', 'loaderFactory', 'artistFactory', '$state', function($scope, dataFactory, loaderFactory, artistFactory, $state) {
 
 	dataFactory.getBody().then(function(resp) {
 		$scope.bodies = JSON.parse(resp.data.bodies);
@@ -50,9 +50,15 @@ angular.module('meapp.controllers.clientCtrl', [])
 
 	$scope.saveClientDetails = function() {
 		loaderFactory.showLoader();
-		artistFactory.saveClientDetails($scope.client).then(function(rep) {
+		artistFactory.saveClientDetails($scope.client).then(function(resp) {
 			loaderFactory.hideLoader();
-			console.log(rep.data);
+		 	if(resp.data.error === 1) {
+				loaderFactory.showAlert('Registeration Failed', resp.data.msg);
+				return;
+			} else {
+				loaderFactory.showAlert('Registeration Successful', resp.data.msg);
+				$state.go('client-profile', {user_id: $scope.client.user_id});
+			}
 		});
 	}
 

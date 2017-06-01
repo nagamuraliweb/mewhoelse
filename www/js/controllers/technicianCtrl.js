@@ -46,7 +46,6 @@ angular.module('meapp.controllers.technicianCtrl', [])
 		loaderFactory.showLoader();
 		artistFactory.saveTechnicianDetails($scope.technician).then(function(resp) {
 			loaderFactory.hideLoader();
-			console.log(resp);
 		 	if(resp.data.error === 1) {
 				loaderFactory.showAlert('Registeration Failed', resp.data.msg);
 				return;
