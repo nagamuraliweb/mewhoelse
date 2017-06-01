@@ -424,10 +424,6 @@ class me_api extends db_config {
 				throw new Exception('Choose DOB');
 			}
 
-			if (empty($postdata->img_name)) {
-				throw new Exception('Choose profile picture');
-			}
-
 			if (empty($postdata->videos)) {
 				throw new Exception('Enter videos');
 			}
@@ -499,6 +495,10 @@ class me_api extends db_config {
 					mkdir('../img/profile', 0777, true);
 				}
 
+				if (file_exists('../img/profile/'.$postdata->user_id.'.jpg')) {
+					unlink('../img/profile/'.$postdata->user_id.'.jpg');
+				}
+
 				if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
 					unlink('../img/tmp/'.$postdata->img_name);
 				}
@@ -563,10 +563,6 @@ class me_api extends db_config {
 				throw new Exception('Choose DOB');
 			}
 
-			if (empty($postdata->img_name)) {
-				throw new Exception('Choose profile picture');
-			}
-
 			if (empty($postdata->videos)) {
 				throw new Exception('Enter videos');
 			}
@@ -604,6 +600,10 @@ class me_api extends db_config {
 			if ($postdata->img_name) {
 				if ( ! file_exists('../img/profile')) {
 					mkdir('../img/profile', 0777, true);
+				}
+
+				if (file_exists('../img/profile/'.$postdata->user_id.'.jpg')) {
+					unlink('../img/profile/'.$postdata->user_id.'.jpg');
 				}
 
 				if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {

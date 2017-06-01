@@ -71,7 +71,6 @@ angular.module('meapp.controllers.artistCtrl', [])
 
 	$scope.saveArtistDetails = function() {
 		loaderFactory.showLoader();
-		console.log($scope.artist);
 		 artistFactory.saveArtistDetails($scope.artist).then(function(resp) {
 		 	loaderFactory.hideLoader();
 		 	if(resp.data.error === 1) {
