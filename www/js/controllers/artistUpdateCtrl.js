@@ -6,8 +6,15 @@
 	artistUpdateCtrl.$inject = ['dataFactory', 'artistFactory', 'loaderFactory', '$state', '$stateParams'];
 
 	function artistUpdateCtrl(dataFactory, artistFactory, loaderFactory, $state, $stateParams) {
+
+		if(!window.localStorage.getItem('userID')) {
+			$state.go('login');
+			return;
+		}
+
 		var vm = this;
-		
+		var user_id = window.localStorage.getItem('userID');
+
 		vm.form = {};
 
 		dataFactory.getBody().then(function(resp) {
@@ -42,11 +49,11 @@
 			vm.genders = JSON.parse(resp.data.genders);
 		});
 
-		dataFactory.getUserDetails($stateParams.user_id).then(function(resp) {
+		dataFactory.getUserDetails(user_id).then(function(resp) {
 			var artist_data = JSON.parse(resp.data.user_details);
 
 			vm.artist = {
-				user_id: $stateParams.user_id,
+				user_id: user_id,
 				gender: artist_data.user_gender_id,
 				dob: new Date(artist_data.user_dob),
 				videos: artist_data.user_videos,
@@ -87,7 +94,7 @@
 					return;
 				} else {
 					loaderFactory.showAlert('Updation Successful', resp.data.msg);
-					$state.go('artist-profile', {user_id: $stateParams.user_id})
+					$state.go('artist-profile')
 				}
 			});
 		}

@@ -44,7 +44,7 @@ angular.module('meapp.config', [])
 
   // artists update
   .state('artist-update', {
-    url: '/artist-update/:user_id',
+    url: '/artist-update',
     templateUrl: 'templates/artist_update.html',
     controller: 'artistUpdateCtrl',
     controllerAs: 'vm'
@@ -52,14 +52,14 @@ angular.module('meapp.config', [])
 
   // artists profile
   .state('artist-profile', {
-    url: '/artist-profile/:user_id',
+    url: '/artist-profile',
     templateUrl: 'templates/artist_profile.html',
     controller: 'artistProfileCtrl'
   })
 
   // artists overview page
   .state('artist-overview', {
-    url: '/artist-overview/:user_id',
+    url: '/artist-overview',
     templateUrl: 'templates/artist_overview.html',
     controller: 'artistOverviewCtrl'
   })
@@ -68,26 +68,28 @@ angular.module('meapp.config', [])
   .state('technician-register', {
     url: '/technician-register',
     templateUrl: 'templates/technician_register.html',
-    controller: 'technicianCtrl'
+    controller: 'technicianCtrl',
+    controllerAs: 'vm'
   })
 
   // technicians update
   .state('technician-update', {
-    url: '/technician-update/:user_id',
+    url: '/technician-update',
     templateUrl: 'templates/technician_update.html',
-    controller: 'technicianUpdateCtrl'
+    controller: 'technicianUpdateCtrl',
+    controllerAs: 'vm'
   })
 
   // technicians profile
   .state('technician-profile', {
-    url: '/technician-profile/:user_id',
+    url: '/technician-profile',
     templateUrl: 'templates/technician_profile.html',
     controller: 'technicianProfileCtrl'
   })
 
   // technicians overview page
   .state('technician-overview', {
-    url: '/technician-overview/:user_id',
+    url: '/technician-overview',
     templateUrl: 'templates/technician_overview.html',
     controller: 'technicianOverviewCtrl'
   })
@@ -96,26 +98,28 @@ angular.module('meapp.config', [])
   .state('client-register', {
     url: '/client-register',
     templateUrl: 'templates/client_register.html',
-    controller: 'clientCtrl'
+    controller: 'clientCtrl',
+    controllerAs: 'vm'
   })
 
   // clients update
   .state('client-update', {
-    url: '/client-update/:user_id',
+    url: '/client-update',
     templateUrl: 'templates/client_update.html',
-    controller: 'clientUpdateCtrl'
+    controller: 'clientUpdateCtrl',
+    controllerAs: 'vm'
   })
 
   // clients profile page
   .state('client-profile', {
-    url: '/client-overview/:user_id',
+    url: '/client-profile',
     templateUrl: 'templates/client_profile.html',
     controller: 'clientProfileCtrl'
   })
 
   // clients overview page
   .state('client-overview', {
-    url: '/client-overview/:user_id',
+    url: '/client-overview',
     templateUrl: 'templates/client_overview.html',
     controller: 'clientOverviewCtrl'
   })

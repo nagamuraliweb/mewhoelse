@@ -94,7 +94,7 @@ angular.module('meapp.services.artistService', [])
                 body_type: parseInt(client.body_type),
                 experince: parseInt(client.experince),
                 training: client.training,
-                languages: client.languages,
+                languages: parseInt(client.languages),
                 others_languages: client.others_languages,
                 production_housename: client.production_housename
             }
