@@ -78,7 +78,7 @@ angular.module('meapp.controllers.artistCtrl', [])
 				return;
 			} else {
 				loaderFactory.showAlert('Registeration Successful', resp.data.msg);
-				$state.go('artist-profile', {user_id: $scope.artist.user_id})
+				$state.go('artist-profile')
 			}
 		 });
 	}
