@@ -528,10 +528,34 @@ class me_api extends db_config {
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
+
+				if (empty($postdata->img_name)) {
+					throw new Exception('Choose profile image');
+				}
+
+				if ( ! file_exists('../img/profile')) {
+					mkdir('../img/profile', 0777, true);
+				}
+
+				if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
+					unlink('../img/tmp/'.$postdata->img_name);
+				}
+
 				if(!Model_Admin::saveArtistDetails($this->DB, $data)) {
 					throw new Exception('Error occured');
 				}
 			} else {
+
+				if ($postdata->img_name) {
+					if (file_exists('../img/profile/'.$postdata->user_id.'.jpg')) {
+						unlink('../img/profile/'.$postdata->user_id.'.jpg');
+					}
+
+					if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
+						unlink('../img/tmp/'.$postdata->img_name);
+					}
+				}
+
 				if(!Model_Admin::updateArtistDetails($this->DB, $data)) {
 					throw new Exception('Error occured');
 				}
@@ -597,20 +621,6 @@ class me_api extends db_config {
 				}
 			}
 
-			if ($postdata->img_name) {
-				if ( ! file_exists('../img/profile')) {
-					mkdir('../img/profile', 0777, true);
-				}
-
-				if (file_exists('../img/profile/'.$postdata->user_id.'.jpg')) {
-					unlink('../img/profile/'.$postdata->user_id.'.jpg');
-				}
-
-				if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
-					unlink('../img/tmp/'.$postdata->img_name);
-				}
-			}
-
 			$data = [
 				'user_id' => $postdata->user_id,
 				'gender' => $postdata->gender,
@@ -628,10 +638,32 @@ class me_api extends db_config {
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
+				if (empty($postdata->img_name)) {
+					throw new Exception('Choose profile image');
+				}
+
+				if ( ! file_exists('../img/profile')) {
+					mkdir('../img/profile', 0777, true);
+				}
+
+				if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
+					unlink('../img/tmp/'.$postdata->img_name);
+				}
+
 				if(!Model_Admin::saveTechnicianDetails($this->DB, $data)) {
 					throw new Exception('Error occured');
 				}
 			} else {
+				if ($postdata->img_name) {
+					if (file_exists('../img/profile/'.$postdata->user_id.'.jpg')) {
+						unlink('../img/profile/'.$postdata->user_id.'.jpg');
+					}
+
+					if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
+						unlink('../img/tmp/'.$postdata->img_name);
+					}
+				}
+
 				if(!Model_Admin::updateTechnicianDetails($this->DB, $data)) {
 					throw new Exception('Error occured');
 				}
