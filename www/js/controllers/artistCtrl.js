@@ -1,5 +1,10 @@
 angular.module('meapp.controllers.artistCtrl', [])
 	.controller('artistCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', '$filter', function($scope, dataFactory, artistFactory, loaderFactory, $state, $filter) {
+	
+	if(!window.localStorage.getItem('userID')) {
+		$state.go('landing');
+		return;
+	}
 
 	$scope.form = {};
 
@@ -53,8 +58,7 @@ angular.module('meapp.controllers.artistCtrl', [])
 		hair_color: '',
 		training: '',
 		languages: '',
-		others_languages: '',
-		img_name: ''
+		others_languages: ''
 	};
 
 	$scope.artist.user_id = window.localStorage.getItem('userID');

@@ -6,56 +6,59 @@
 	</div>    
 
 	<div class="row login_grid">
-		<form name="form.technician">
+		<form name="vm.form.technician">
 			<!-- technicians -->
 			<div id="technicians">
-				<div><label><input type="radio" name="gender" ng-model="technician.gender" value="Male"> Male</label>
-				<label><input type="radio" name="gender" ng-model="technician.gender" value="Female"> Female</label></div>
-				<div class="error_alert" ng-show="form.technician.gender.$dirty && form.artists.technician.$error.required">
+				<div>
+					<label ng-repeat="gender in vm.genders">
+						<input type="radio" name="gender" ng-model="vm.technician.gender" value="{{gender.id_gender}}">{{gender.type}}
+					</label>
+				</div>
+				<div class="error_alert" ng-show="vm.form.technician.gender.$dirty && vm.form.technician.gender.$error.required">
 				    <span>Gender is required.</span>
 				</div>
-				<input type="date" name="dob" ng-model="technician.dob" placeholder="Date of birth" class="inputbox" required>
-				<div class="error_alert" ng-show="form.technician.dob.$dirty && form.technician.dob.$error.required">
+				<input type="date" name="dob" ng-model="vm.technician.dob" placeholder="Date of birth" class="inputbox" required>
+				<div class="error_alert" ng-show="vm.form.technician.dob.$dirty && vm.form.technician.dob.$error.required">
 				    <span>Date of birth is required.</span>
 				</div>
 				<label>
 					Add Profile picture 
 					<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
 				</label><br><br>
-				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox" ng-model="technician.videos">
-				<textarea name="skills" class="textareabox" placeholder="Skills" ng-model="technician.skills" required></textarea>
-				<div class="error_alert" ng-show="form.technician.skills.$dirty && form.technician.skills.$error.required">
+				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox" ng-model="vm.technician.videos">
+				<textarea name="skills" class="textareabox" placeholder="Skills" ng-model="vm.technician.skills" required></textarea>
+				<div class="error_alert" ng-show="vm.form.technician.skills.$dirty && vm.form.technician.skills.$error.required">
 				    <span>Skills is required.</span>
 				</div>
-				<select name="experince" class="dropdown" ng-model="technician.experince" required>
+				<select name="experince" class="dropdown" ng-model="vm.technician.experince" required>
 					<option value="">Experience</option>
-					<option ng-repeat="exp in experience" value="{{exp.id_experience}}">{{exp.type}}</option>
+					<option ng-repeat="exp in vm.experience" value="{{exp.id_experience}}">{{exp.type}}</option>
 				</select>
-				<div class="error_alert" ng-show="form.technician.experince.$dirty && form.technician.experince.$error.required">
+				<div class="error_alert" ng-show="vm.form.technician.experince.$dirty && vm.form.technician.experince.$error.required">
 				    <span>Experience is required.</span>
 				</div>
-				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="technician.city" required>
-				<div class="error_alert" ng-show="form.technician.city.$dirty && form.technician.city.$error.required">
+				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="vm.technician.city" required>
+				<div class="error_alert" ng-show="vm.form.technician.city.$dirty && vm.form.technician.city.$error.required">
 				    <span>City is required.</span>
 				</div>
-				<input type="text" name="other_ethnicity" placeholder="Ethnicity" class="inputbox" ng-model="technician.other_ethnicity">
+				<input type="text" name="other_ethnicity" placeholder="Ethnicity" class="inputbox" ng-model="vm.technician.other_ethnicity">
 				<div>
-					Professional trained <label><input type="radio" name="training" ng-model="technician.training" value="Yes"> Yes</label>
-					<label><input type="radio" name="training" ng-model="technician.training" value="No"> No</label>
+					Professional trained <label><input type="radio" name="training" ng-model="vm.technician.training" value="0"> Yes</label>
+					<label><input type="radio" name="training" ng-model="vm.technician.training" value="1"> No</label>
 				</div><br>
-				<div class="error_alert" ng-show="form.technician.training.$dirty && form.technician.training.$error.required">
+				<div class="error_alert" ng-show="vm.form.technician.training.$dirty && vm.form.technician.training.$error.required">
 				    <span>Professional trained is required.</span>
 				</div>
-				<select name="languages" ng-model="technician.languages" class="dropdown" required>
+				<select name="languages" ng-model="vm.technician.languages" class="dropdown" required>
 					<option value="">Languages</option>
-					<option ng-repeat="language in languages" value="{{language.id_language}}">{{language.type}}</option>
+					<option ng-repeat="language in vm.languages" value="{{language.id_language}}">{{language.type}}</option>
 				</select>
-				<div class="error_alert" ng-show="form.technician.languages.$dirty && form.technician.languages.$error.required">
+				<div class="error_alert" ng-show="vm.form.technician.languages.$dirty && vm.form.technician.languages.$error.required">
 				    <span>Languages is required.</span>
 				</div>
-				<input type="text" ng-if="technician.languages === '7'" name="others_languages" ng-model="technician.others_languages" class="inputbox bottom_30" placeholder="Enter your language">
+				<input type="text" ng-if="technician.languages === '7'" name="others_languages" ng-model="vm.technician.others_languages" class="inputbox bottom_30" placeholder="Enter your language">
 
-				<button class="button button-outline loginbtn" ng-click="saveTechnicianDetails()" ng-disabled="!form.technician.$valid">
+				<button class="button button-outline loginbtn" ng-click="vm.saveTechnicianDetails()" ng-disabled="!vm.form.technician.$valid">
 				  register
 				</button>
 			</div>

@@ -1,13 +1,14 @@
 angular.module('meapp.controllers.clientProfileCtrl', [])
-	.controller('clientProfileCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$stateParams', '$state', function($scope, dataFactory, artistFactory, loaderFactory, $stateParams, $state) {
+	.controller('clientProfileCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', function($scope, dataFactory, artistFactory, loaderFactory, $state) {
 
-	if($stateParams.user_id === '') {
+	if(!window.localStorage.getItem('userID')) {
 		$state.go('landing');
 		return;
 	}
 
-	$scope.user_id = $stateParams.user_id;
-	dataFactory.getUserDetails($stateParams.user_id).then(function(resp) {
+	$scope.user_id = window.localStorage.getItem('userID');
+
+	dataFactory.getUserDetails($scope.user_id).then(function(resp) {
 		$scope.client = JSON.parse(resp.data.user_details);
 		console.log($scope.client);
 	});
@@ -49,7 +50,7 @@ angular.module('meapp.controllers.clientProfileCtrl', [])
 	});
 
 	$scope.updateDetails = function() {
-		$state.go('client-update', {user_id: $stateParams.user_id});
+		$state.go('client-update');
 	}
 
 }]);

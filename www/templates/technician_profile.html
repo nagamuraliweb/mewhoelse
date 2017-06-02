@@ -3,24 +3,24 @@
     
     <div class="list_overview" ui-sref="overview">
         <div class="profile_picture">
-            <img ng-src="http://mewhoelse.in/img/profile/{{user_id}}.jpg" alt="Technician" class="img-responsive">
-            <h4>{{technician.user_name}} , {{profession}}</h4>
+            <img ng-src="http://mewhoelse.in/img/profile/{{vm.user_id}}.jpg" alt="Technician" class="img-responsive">
+            <h4>{{::vm.technician.user_name}} , {{::vm.profession}}</h4>
         </div>
         <h4 class="personal">Personal details</h4>
         <div class="padding_30">
-            <p>Gender <span class="pull-right">{{gender}}</span></p>
-            <p>Date of birth <span class="pull-right">{{technician.user_dob | date : 'mediumDate'}}</span></p>
-            <p>Skills <span class="pull-right">{{technician.user_skills_others}}</span></p>
-            <p>Experience <span class="pull-right">{{exp}}</span></p>
-            <p>City <span class="pull-right">{{technician.user_city}}</span></p>
-            <p>Ethnicity <span class="pull-right">{{technician.user_ethinicity}}</span></p>
+            <p>Gender <span class="pull-right">{{::vm.gender}}</span></p>
+            <p>Date of birth <span class="pull-right">{{::vm.technician.user_dob | date : 'mediumDate'}}</span></p>
+            <p>Skills <span class="pull-right">{{::vm.technician.user_skills_others}}</span></p>
+            <p>Experience <span class="pull-right">{{::vm.exp}}</span></p>
+            <p>City <span class="pull-right">{{::vm.technician.user_city}}</span></p>
+            <p>Ethnicity <span class="pull-right">{{::vm.technician.user_ethinicity}}</span></p>
             <p>Professional trained <span class="pull-right">
-            <span ng-if="technician.user_is_professional == 0">Yes</span>
-            <span ng-if="technician.user_is_professional == 1">No</span>
+            <span ng-if="vm.technician.user_is_professional == 0">Yes</span>
+            <span ng-if="vm.technician.user_is_professional == 1">No</span>
             </span></p>
-            <p>Languages <span class="pull-right">{{lang}}</span></p>
+            <p>Languages <span class="pull-right">{{vm.lang}}</span></p>
             <p>Profile Videos</p>
-            <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="technician.user_videos"></youtube-video>
+            <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="vm.technician.user_videos"></youtube-video>
             <button class="button button-outline loginbtn" ng-click="updateDetails()">
               Update
             </button>

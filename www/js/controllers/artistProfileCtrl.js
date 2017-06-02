@@ -1,15 +1,16 @@
 angular.module('meapp.controllers.artistProfileCtrl', ['youtube-embed'])
-	.controller('artistProfileCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$stateParams', '$state', function($scope, dataFactory, artistFactory, loaderFactory, $stateParams, $state) {
+	.controller('artistProfileCtrl', ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', function($scope, dataFactory, artistFactory, loaderFactory, $state) {
 
 	var bestPlayer = null;
 
-	if($stateParams.user_id === '') {
+	if(!window.localStorage.getItem('userID')) {
 		$state.go('landing');
 		return;
 	}
 
-	$scope.user_id = $stateParams.user_id;
-	dataFactory.getUserDetails($stateParams.user_id).then(function(resp) {
+	$scope.user_id = window.localStorage.getItem('userID');
+
+	dataFactory.getUserDetails($scope.user_id).then(function(resp) {
 		$scope.artist = JSON.parse(resp.data.user_details);
 	});
 
@@ -103,7 +104,7 @@ angular.module('meapp.controllers.artistProfileCtrl', ['youtube-embed'])
 	});
 	
 	$scope.updateDetails = function() {
-		$state.go('artist-update', {user_id: $stateParams.user_id});
+		$state.go('artist-update');
 	}
 
 }]);

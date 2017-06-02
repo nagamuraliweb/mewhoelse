@@ -3,12 +3,12 @@
 	angular.module('meapp.controllers.artistUpdateCtrl', [])
 		.controller('artistUpdateCtrl', artistUpdateCtrl);
 
-	artistUpdateCtrl.$inject = ['dataFactory', 'artistFactory', 'loaderFactory', '$state', '$stateParams'];
+	artistUpdateCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state'];
 
-	function artistUpdateCtrl(dataFactory, artistFactory, loaderFactory, $state, $stateParams) {
+	function artistUpdateCtrl($scope, dataFactory, artistFactory, loaderFactory, $state) {
 
 		if(!window.localStorage.getItem('userID')) {
-			$state.go('login');
+			$state.go('landing');
 			return;
 		}
 
@@ -74,7 +74,7 @@
 			};
 		});
 
-		vm.uploadFile = function(files) {
+		$scope.uploadFile = function(files) {
 			var fd = new FormData();
 			fd.append("file", files[0]);
 			loaderFactory.showLoader();

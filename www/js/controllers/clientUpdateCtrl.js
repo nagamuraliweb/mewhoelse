@@ -8,7 +8,7 @@
 
 		function clientUpdateCtrl(dataFactory, loaderFactory, artistFactory, $state) {
 			if(!window.localStorage.getItem('userID')) {
-				$state.go('login');
+				$state.go('landing');
 				return;
 			}
 

@@ -84,7 +84,8 @@ angular.module('meapp.config', [])
   .state('technician-profile', {
     url: '/technician-profile',
     templateUrl: 'templates/technician_profile.html',
-    controller: 'technicianProfileCtrl'
+    controller: 'technicianProfileCtrl',
+    controllerAs: 'vm'
   })
 
   // technicians overview page
