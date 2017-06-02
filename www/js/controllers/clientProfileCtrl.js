@@ -7,6 +7,7 @@ angular.module('meapp.controllers.clientProfileCtrl', [])
 	}
 
 	$scope.user_id = window.localStorage.getItem('userID');
+	$scope.version = new Date().getTime();
 
 	dataFactory.getUserDetails($scope.user_id).then(function(resp) {
 		$scope.client = JSON.parse(resp.data.user_details);

@@ -3,7 +3,7 @@
     
     <div class="list_overview" ui-sref="overview">
         <div class="profile_picture">
-            <img ng-src="http://mewhoelse.in/img/profile/{{vm.user_id}}.jpg" alt="Technician" class="img-responsive">
+            <img ng-src="http://mewhoelse.in/img/profile/{{vm.user_id}}.jpg?v={{vm.version}}" alt="Technician" class="img-responsive">
             <h4>{{::vm.technician.user_name}} , {{::vm.profession}}</h4>
         </div>
         <h4 class="personal">Personal details</h4>

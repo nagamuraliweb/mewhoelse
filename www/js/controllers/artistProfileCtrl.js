@@ -9,6 +9,7 @@ angular.module('meapp.controllers.artistProfileCtrl', ['youtube-embed'])
 	}
 
 	$scope.user_id = window.localStorage.getItem('userID');
+	$scope.version = new Date().getTime();
 
 	dataFactory.getUserDetails($scope.user_id).then(function(resp) {
 		$scope.artist = JSON.parse(resp.data.user_details);

@@ -3,27 +3,27 @@
     
     <div class="list_overview" ui-sref="overview">
         <div class="profile_picture">
-            <img ng-src="http://mewhoelse.in/img/profile/{{user_id}}.jpg" alt="Artist" class="img-responsive">
+            <img ng-src="http://mewhoelse.in/img/profile/{{user_id}}.jpg?v={{version}}" alt="Artist" class="img-responsive">
             <h4>{{artist.user_name}} , {{profession}}</h4>
         </div>
         <h4 class="personal">Personal details</h4>
         <div class="padding_30">
-            <p>Gender <span class="pull-right">{{gender}}</span></p>
-            <p>Date of birth <span class="pull-right">{{artist.user_dob | date : 'mediumDate'}}</span></p>
-            <p>Skills <span class="pull-right">{{skill}}</span></p>
-            <p>Experience <span class="pull-right">{{exp}}</span></p>
-            <p>City <span class="pull-right">{{artist.user_city}}</span></p>
-            <p>Ethnicity <span class="pull-right">{{artist.user_ethinicity}}</span></p>
-            <p>Body Type <span class="pull-right">{{body}}</span></p>
-            <p>Hair Type <span class="pull-right">{{hair}}</span></p>
-            <p>Weight <span class="pull-right">{{artist.user_weight}} KG</span></p>
-            <p>Skin Color <span class="pull-right">{{skin}}</span></p>
-            <p>Hair Color <span class="pull-right">{{haircolor}}</span></p>
+            <p>Gender <span class="pull-right">{{::gender}}</span></p>
+            <p>Date of birth <span class="pull-right">{{::artist.user_dob | date : 'mediumDate'}}</span></p>
+            <p>Skills <span class="pull-right">{{::skill}}</span></p>
+            <p>Experience <span class="pull-right">{{::exp}}</span></p>
+            <p>City <span class="pull-right">{{::artist.user_city}}</span></p>
+            <p>Ethnicity <span class="pull-right">{{::artist.user_ethinicity}}</span></p>
+            <p>Body Type <span class="pull-right">{{::body}}</span></p>
+            <p>Hair Type <span class="pull-right">{{::hair}}</span></p>
+            <p>Weight <span class="pull-right">{{::artist.user_weight}} KG</span></p>
+            <p>Skin Color <span class="pull-right">{{::skin}}</span></p>
+            <p>Hair Color <span class="pull-right">{{::haircolor}}</span></p>
             <p>Professional trained <span class="pull-right">
             <span ng-if="artist.user_is_professional == 0">Yes</span>
             <span ng-if="artist.user_is_professional == 1">No</span>
             </span></p>
-            <p>Languages <span class="pull-right">{{lang}}</span></p>
+            <p>Languages <span class="pull-right">{{::lang}}</span></p>
             <p>Profile Videos</p>
             <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="artist.user_videos"></youtube-video>
             <button class="button button-outline loginbtn" ng-click="updateDetails()">

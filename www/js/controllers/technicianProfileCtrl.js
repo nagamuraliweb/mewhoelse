@@ -14,6 +14,7 @@
 
 		var vm = this;
 		vm.user_id = window.localStorage.getItem('userID');
+		vm.version = new Date().getTime();
 
 		dataFactory.getUserDetails(vm.user_id).then(function(resp) {
 			vm.technician = JSON.parse(resp.data.user_details);
