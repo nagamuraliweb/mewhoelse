@@ -1,53 +1,54 @@
 (function() {
     'use strict';
 
-	angular.module('meapp.controllers.artistCtrl', [])
+angular.module('meapp.controllers.artistCtrl', [])
 	.controller('artistCtrl', artistCtrl);
 
-	artistCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', '$filter'];
+	artistCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state'];
 
-	function artistCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, $filter) {
+	function artistCtrl($scope, dataFactory, artistFactory, loaderFactory, $state) {
 		
 		if(!window.localStorage.getItem('userID')) {
 			$state.go('landing');
 			return;
 		}
 
-		$scope.form = {};
+		var vm = this;
+		vm.form = {};
 
 		dataFactory.getBody().then(function(resp) {
-			$scope.bodies = JSON.parse(resp.data.bodies);
+			vm.bodies = JSON.parse(resp.data.bodies);
 		});
 
 		dataFactory.getExperience().then(function(resp) {
-			$scope.experience = JSON.parse(resp.data.experiences);
+			vm.experience = JSON.parse(resp.data.experiences);
 		});
 
 		dataFactory.getHairs().then(function(resp) {
-			$scope.hairs = JSON.parse(resp.data.hairs);
+			vm.hairs = JSON.parse(resp.data.hairs);
 		});
 
 		dataFactory.getHairColors().then(function(resp) {
-			$scope.haircolors = JSON.parse(resp.data.hairColors);
+			vm.haircolors = JSON.parse(resp.data.hairColors);
 		});
 
 		dataFactory.getLanguages().then(function(resp) {
-			$scope.languages = JSON.parse(resp.data.languages);
+			vm.languages = JSON.parse(resp.data.languages);
 		});
 
 		dataFactory.getSkills().then(function(resp) {
-			$scope.skills = JSON.parse(resp.data.skills);
+			vm.skills = JSON.parse(resp.data.skills);
 		});
 
 		dataFactory.getSkins().then(function(resp) {
-			$scope.skins = JSON.parse(resp.data.skins);
+			vm.skins = JSON.parse(resp.data.skins);
 		});
 
 		dataFactory.getGender().then(function(resp) {
-			$scope.genders = JSON.parse(resp.data.genders);
+			vm.genders = JSON.parse(resp.data.genders);
 		});
 
-		$scope.artist = {
+		vm.artist = {
 			user_id: '',
 			gender: '',
 			dob: '',
@@ -68,21 +69,21 @@
 			others_languages: ''
 		};
 
-		$scope.artist.user_id = window.localStorage.getItem('userID');
+		vm.artist.user_id = window.localStorage.getItem('userID');
 
 		$scope.uploadFile = function(files) {
 			var fd = new FormData();
 			fd.append("file", files[0]);
 			loaderFactory.showLoader();
 			artistFactory.imageUpload(fd).then(function(resp) {
-				$scope.artist.img_name = resp.data.img_name;
+				vm.artist.img_name = resp.data.img_name;
 				loaderFactory.hideLoader();
 			});
 		};
 
-		$scope.saveArtistDetails = function() {
+		vm.saveArtistDetails = function() {
 			loaderFactory.showLoader();
-			 artistFactory.saveArtistDetails($scope.artist).then(function(resp) {
+			 artistFactory.saveArtistDetails(vm.artist).then(function(resp) {
 			 	loaderFactory.hideLoader();
 			 	if(resp.data.error === 1) {
 					loaderFactory.showAlert('Registeration Failed', resp.data.msg);

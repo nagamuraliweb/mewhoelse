@@ -10,8 +10,8 @@
 			<!-- technicians -->
 			<div id="technicians">
 				<div>
-					<label ng-repeat="gender in vm.genders">
-						<input type="radio" name="gender" ng-model="vm.technician.gender" value="{{gender.id_gender}}">{{gender.type}}
+					<label ng-repeat="(key, value) in vm.genders">
+						<input type="radio" name="gender" ng-model="vm.technician.gender" value="{{key}}">{{value}}
 					</label>
 				</div>
 				<div class="error_alert" ng-show="vm.form.technician.gender.$dirty && vm.form.technician.gender.$error.required">
@@ -32,7 +32,7 @@
 				</div>
 				<select name="experince" class="dropdown" ng-model="vm.technician.experince" required>
 					<option value="">Experience</option>
-					<option ng-repeat="exp in vm.experience" value="{{exp.id_experience}}">{{exp.type}}</option>
+					<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
 				</select>
 				<div class="error_alert" ng-show="vm.form.technician.experince.$dirty && vm.form.technician.experince.$error.required">
 				    <span>Experience is required.</span>
@@ -51,14 +51,14 @@
 				</div>
 				<select name="languages" ng-model="vm.technician.languages" class="dropdown" required>
 					<option value="">Languages</option>
-					<option ng-repeat="language in vm.languages" value="{{language.id_language}}">{{language.type}}</option>
+					<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
 				</select>
 				<div class="error_alert" ng-show="vm.form.technician.languages.$dirty && vm.form.technician.languages.$error.required">
 				    <span>Languages is required.</span>
 				</div>
 				<input type="text" ng-if="technician.languages === '7'" name="others_languages" ng-model="vm.technician.others_languages" class="inputbox bottom_30" placeholder="Enter your language">
 
-				<button class="button button-outline loginbtn" ng-click="vm.saveTechnicianDetails()" ng-disabled="!vm.form.technician.$valid">
+				<button class="button button-outline loginbtn" ng-click="vm.updateTechnicianDetails()" ng-disabled="!vm.form.technician.$valid">
 				  register
 				</button>
 			</div>

@@ -39,7 +39,8 @@ angular.module('meapp.config', [])
   .state('artist-register', {
     url: '/artist-register',
     templateUrl: 'templates/artist_register.html',
-    controller: 'artistCtrl'
+    controller: 'artistCtrl',
+    controllerAs: 'vm'
   })
 
   // artists update

@@ -64,7 +64,7 @@
 				};
 			});
 
-			vm.saveClientDetails = function() {
+			vm.updateClientDetails = function() {
 				loaderFactory.showLoader();
 				
 				artistFactory.saveClientDetails(vm.client).then(function(resp) {

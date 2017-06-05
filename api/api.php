@@ -875,6 +875,26 @@ class me_api extends db_config {
 
 		echo json_encode($result);
 	}
+
+	public function hasRegistered () {
+		try {
+
+			if (empty($_GET['user_id'])) {
+				throw new Exception('Invalid user');
+			}
+
+			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $_GET['user_id']);
+
+			$has_registered = empty($user_id) ? false : true;
+
+			$result = ['error' => 0, 'has_registered' => $has_registered];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
 }
 
 $api = new me_api();

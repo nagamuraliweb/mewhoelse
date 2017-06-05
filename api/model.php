@@ -9,7 +9,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}
@@ -21,7 +21,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}
@@ -33,7 +33,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}
@@ -45,7 +45,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}
@@ -57,7 +57,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}
@@ -69,7 +69,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}
@@ -81,7 +81,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}
@@ -93,7 +93,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}
@@ -105,7 +105,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}
@@ -117,7 +117,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}
@@ -129,7 +129,7 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->execute();
 
-			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 			return empty($row) ? [] : $row;
 		}

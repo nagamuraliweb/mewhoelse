@@ -57,7 +57,7 @@
 			});
 		};
 
-		vm.saveTechnicianDetails = function() {
+		vm.updateTechnicianDetails = function() {
 			loaderFactory.showLoader();
 			artistFactory.saveTechnicianDetails(vm.technician).then(function(resp) {
 				loaderFactory.hideLoader();
