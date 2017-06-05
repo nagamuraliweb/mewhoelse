@@ -138,7 +138,7 @@ angular.module('meapp.config', [])
     views: {
       'dashboard-artists': {
         templateUrl: 'templates/dashboard_artists.html',
-        controller: 'artistsCtrl'
+        controller: 'artistListCtrl'
       }
     }
   })
@@ -148,7 +148,7 @@ angular.module('meapp.config', [])
       views: {
         'dashboard-technicians': {
           templateUrl: 'templates/dashboard_technicians.html',
-          controller: 'techniciansCtrl'
+          controller: 'technicianListCtrl'
         }
       }
     });

@@ -165,6 +165,20 @@ angular.module('meapp.services.dataService', [])
         });
     }
 
+    this.getUsersDetails = function() {
+        var request = {
+            method: 'GET',
+            url: 'http://mewhoelse.in/api/api.php?f=getUsersDetails',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        return $http(request).then(function (resp) {
+            return resp;
+        });
+    }
+
     this.getGender = function() {
         var request = {
             method: 'GET',

@@ -3,7 +3,7 @@
     
     <div class="list_overview" ui-sref="overview">
         <div class="profile_picture">
-            <h4>{{::client.user_name}} , {::{profession}}</h4>
+            <h4>{{::client.user_name}} , {{::profession}}</h4>
         </div>
 
         <div class="padding_30">
@@ -11,13 +11,13 @@
             <p>Requirements for this project</p>
             <p>Project <span class="pull-right">New</span></p>
             <p>Project name <span class="pull-right">{{::client.user_project_name}}</span></p>
-            <p>Project type <span class="pull-right">type 1</span></p>
+            <p>Project type <span class="pull-right">{{::project}}</span></p>
             <p>Project description <span class="pull-right">{{::client.user_project_description}}</span></p>
-            <p>Roll type <span class="pull-right">Junior</span></p>
-            <p>Looking for <span class="pull-right">Male</span></p>
+            <p>Roll type <span class="pull-right">{{::role}}</span></p>
+            <p>Looking for <span class="pull-right">{{::looking}}</span></p>
             <p>Character name <span class="pull-right">{{::client.user_character_name}}</span></p>
             <p>Character description <span class="pull-right">{{::client.user_character_description}}</span></p>
-            <p>Body Type <span class="pull-right">Mascular</span></p>
+            <p>Body Type <span class="pull-right">{{::body}}</span></p>
             <p>Experience <span class="pull-right">{{::exp}}</span></p>
             <p>Professional trained <span class="pull-right">
             <span ng-if="client.user_is_professional == 0">Yes</span>
@@ -25,7 +25,7 @@
             </span></p>
             <p>Languages <span class="pull-right">{{::lang}}</span></p>
             <p>Production house name <span class="pull-right">{{::client.user_production_house}}</span></p>
-            <button class="button button-outline loginbtn" ng-click="updateDetails()">
+            <button class="button button-outline loginbtn" ui-sref="client-update">
               Update
             </button>
         </div>

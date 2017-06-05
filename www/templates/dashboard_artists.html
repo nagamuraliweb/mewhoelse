@@ -8,35 +8,13 @@
         <option value="clients">Comedian</option>
     </select>
 
-    <div class="card list_artist">
+    <div class="card list_artist" ng-repeat="user in users_details">
       <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
         <div class="padding artist_info">
         <img src="img/thumnail.png" alt="Thumnail">
-          <h4>Megna naidu</h4>
-          <p>Artists</p>
-          <p>Chennai</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card list_artist">
-      <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
-        <div class="padding artist_info">
-        <img src="img/thumnail.png" alt="Thumnail">
-          <h4>Megna naidu</h4>
-          <p>Artists</p>
-          <p>Chennai</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card list_artist">
-      <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
-        <div class="padding artist_info">
-        <img src="img/thumnail.png" alt="Thumnail">
-          <h4>Megna naidu</h4>
-          <p>Artists</p>
-          <p>Chennai</p>
+          <h4>{{::user.user_name}}</h4>
+          <!-- <p>Artists</p> -->
+          <p>{{::user.user_city}}</p>
         </div>
       </div>
     </div>
