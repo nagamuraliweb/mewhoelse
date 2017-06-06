@@ -55,7 +55,8 @@ angular.module('meapp.config', [])
   .state('artist-profile', {
     url: '/artist-profile',
     templateUrl: 'templates/artist_profile.html',
-    controller: 'artistProfileCtrl'
+    controller: 'artistProfileCtrl',
+    controllerAs: 'vm'
   })
 
   // artists overview page
@@ -116,7 +117,8 @@ angular.module('meapp.config', [])
   .state('client-profile', {
     url: '/client-profile',
     templateUrl: 'templates/client_profile.html',
-    controller: 'clientProfileCtrl'
+    controller: 'clientProfileCtrl',
+    controllerAs: 'vm'
   })
 
   // clients overview page
