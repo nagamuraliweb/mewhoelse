@@ -68,7 +68,7 @@
 					<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
 				</select>
 				<input type="text" ng-if="vm.client.languages === '7'" name="others_languages" ng-model="vm.client.others_languages" class="inputbox bottom_30" placeholder="Enter your language">
-				<input type="text" name="production_housename" class="inputbox bottom_30" placeholder="Production house name" ng-model="vm.client.production_housename">
+				<input type="text" name="production_housename" class="inputbox bottom_30" placeholder="Production house name" ng-model="vm.client.production_housename" autocomplete="off">
 
 				<button class="button button-outline loginbtn" ng-click="vm.saveClientDetails()" ng-disabled="!vm.form.client.$valid">
 				  proceed

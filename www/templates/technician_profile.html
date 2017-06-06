@@ -11,7 +11,7 @@
             <p>Gender <span class="pull-right">{{::vm.gender}}</span></p>
             <p>Date of birth <span class="pull-right">{{::vm.technician.user_dob | date : 'mediumDate'}}</span></p>
             <p ng-if="vm.technician.user_skills_id">Skills <span class="pull-right">{{::vm.skills}}</span></p>
-            <p ng-if="vm.technician.user_skills_others">Other Skills <span class="pull-right">{{::vm.technician.user_skills_others}}</span></p>
+            <p ng-if="vm.technician.user_skills_others">Skills <span class="pull-right">{{::vm.technician.user_skills_others}}</span></p>
             <p>Experience <span class="pull-right">{{::vm.exp}}</span></p>
             <p>City <span class="pull-right">{{::vm.technician.user_city}}</span></p>
             <p>Ethnicity <span class="pull-right">{{::vm.technician.user_ethinicity}}</span></p>
@@ -19,7 +19,8 @@
             <span ng-if="vm.technician.user_is_professional == 0">Yes</span>
             <span ng-if="vm.technician.user_is_professional == 1">No</span>
             </span></p>
-            <p>Languages <span class="pull-right">{{vm.lang}}</span></p>
+            <p>Languages <span class="pull-right">{{::vm.lang}}</span></p>
+            <p ng-if="vm.technician.user_language_others">Languages <span class="pull-right">{{::vm.technician.user_language_others}}</span></p>
             <p>Profile Videos</p>
             <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="vm.technician.user_videos"></youtube-video>
             <button class="button button-outline loginbtn" ui-sref="technician-update">
