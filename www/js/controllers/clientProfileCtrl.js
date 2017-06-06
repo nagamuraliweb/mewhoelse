@@ -13,84 +13,53 @@
 			return;
 		}
 
+		var vm = this;
 		$scope.user_id = window.localStorage.getItem('userID');
 		$scope.version = new Date().getTime();
 
 		dataFactory.getUserDetails($scope.user_id).then(function(resp) {
-			$scope.client = JSON.parse(resp.data.user_details);
-			console.log($scope.client);
+			vm.client = JSON.parse(resp.data.user_details);
+			console.log(vm.client);
 		});
 
 		dataFactory.getBody().then(function(resp) {
-			$scope.bodies = JSON.parse(resp.data.bodies);
-			for(var i = 0; i < $scope.bodies.length; i++) {
-				if($scope.bodies[i].id_body === $scope.client.user_body_id) {
-					$scope.body = $scope.bodies[i].type;
-				}
-			}
+			var bodies = JSON.parse(resp.data.bodies);
+			vm.body = bodies[vm.client.user_body_id];
 		});
 
 		dataFactory.getProjects().then(function(resp) {
-			$scope.projects = JSON.parse(resp.data.projects);
-			for(var i = 0; i < $scope.projects.length; i++) {
-				if($scope.projects[i].id_project === $scope.client.user_project_id) {
-					$scope.project = $scope.projects[i].type;
-				}
-			}
+			var projects = JSON.parse(resp.data.projects);
+			vm.project = projects[vm.client.user_project_id];
 		});
 
 		dataFactory.getRoles().then(function(resp) {
-			$scope.roles = JSON.parse(resp.data.roles);
-			for(var i = 0; i < $scope.roles.length; i++) {
-				if($scope.roles[i].id_role === $scope.client.user_role_id) {
-					$scope.role = $scope.roles[i].type;
-				}
-			}
+			var roles = JSON.parse(resp.data.roles);
+			vm.role = roles[vm.client.user_role_id];
 		});
 
 		dataFactory.getType().then(function(resp) {
-			$scope.profession_types = JSON.parse(resp.data.types);
-			for(var i = 0; i < $scope.profession_types.length; i++) {
-				if($scope.profession_types[i].id_type === $scope.client.user_type) {
-					$scope.profession = $scope.profession_types[i].type;
-				}
-			}
+			var profession_types = JSON.parse(resp.data.types);
+			vm.profession = profession_types[vm.client.user_type];
 		});
 
 		dataFactory.getGender().then(function(resp) {
-			$scope.genders = JSON.parse(resp.data.genders);
-			for(var i = 0; i < $scope.genders.length; i++) {
-				if($scope.genders[i].id_gender === $scope.client.user_gender_id) {
-					$scope.gender = $scope.genders[i].type;
-				}
-			}
+			var genders = JSON.parse(resp.data.genders);
+			vm.gender = genders[vm.client.user_gender_id];
 		});
 
 		dataFactory.getGender().then(function(resp) {
-			$scope.genders1 = JSON.parse(resp.data.genders);
-			for(var i = 0; i < $scope.genders1.length; i++) {
-				if($scope.genders1[i].id_gender === $scope.client.user_looking_for) {
-					$scope.looking = $scope.genders1[i].type;
-				}
-			}
+			var genders1 = JSON.parse(resp.data.genders);
+			vm.looking = genders1[vm.client.user_looking_for];
 		});
 
 		dataFactory.getExperience().then(function(resp) {
-			$scope.experience = JSON.parse(resp.data.experiences);
-			for(var i = 0; i < $scope.experience.length; i++) {
-				if($scope.experience[i].id_experience === $scope.client.user_experience_id) {
-					$scope.exp = $scope.experience[i].type;
-				}
-			}
+			var experience = JSON.parse(resp.data.experiences);
+			vm.exp = experience[vm.client.user_experience_id];
 		});
 
 		dataFactory.getLanguages().then(function(resp) {
-			$scope.languages = JSON.parse(resp.data.languages);
-			for(var i = 0; i < $scope.languages.length; i++) {
-				if($scope.languages[i].id_language === $scope.client.user_language_id) {
-					$scope.lang = $scope.languages[i].type;
-				}
-			}
+			var languages = JSON.parse(resp.data.languages);
+			vm.lang = languages[vm.client.user_language_id];
 		});
 
 	}

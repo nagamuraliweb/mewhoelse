@@ -22,38 +22,27 @@
 
 		dataFactory.getType().then(function(resp) {
 			var profession_types = JSON.parse(resp.data.types);
-			for(var i = 0; i < profession_types.length; i++) {
-				if(profession_types[i].id_type === vm.technician.user_type) {
-					vm.profession = profession_types[i].type;
-				}
-			}
+			vm.profession = profession_types[vm.technician.user_type];
 		});
 
 		dataFactory.getExperience().then(function(resp) {
 			var experience = JSON.parse(resp.data.experiences);
-			for(var i = 0; i < experience.length; i++) {
-				if(experience[i].id_experience === vm.technician.user_experience_id) {
-					vm.exp = experience[i].type;
-				}
-			}
+			vm.exp = experience[vm.technician.user_experience_id];
+		});
+
+		dataFactory.getSkills().then(function(resp) {
+			var skills = JSON.parse(resp.data.skills);
+			vm.skills = skills[vm.technician.user_skills_id];
 		});
 
 		dataFactory.getLanguages().then(function(resp) {
 			var languages = JSON.parse(resp.data.languages);
-			for(var i = 0; i < languages.length; i++) {
-				if(languages[i].id_language === vm.technician.user_language_id) {
-					vm.lang = languages[i].type;
-				}
-			}
+			vm.lang = languages[vm.technician.user_language_id];
 		});
 
 		dataFactory.getGender().then(function(resp) {
 			var genders = JSON.parse(resp.data.genders);
-			for(var i = 0; i < genders.length; i++) {
-				if(genders[i].id_gender === vm.technician.user_gender_id) {
-					vm.gender = genders[i].type;
-				}
-			}
+			vm.gender = genders[vm.technician.user_gender_id];
 		});
 
 		$scope.$on('youtube.player.playing', function ($event, player) {
@@ -64,9 +53,6 @@
 			bestPlayer = '';
 		});
 		
-		vm.updateDetails = function() {
-			$state.go('technician-update');
-		}
 	}
 
 })();

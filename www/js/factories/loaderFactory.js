@@ -22,6 +22,7 @@ angular.module('meapp.factories.loaderFactory', [])
 			title: title,
 			content: msg
 		}).then(function (resp){
+			return resp;
 			console.log(resp);
 		});
 	}

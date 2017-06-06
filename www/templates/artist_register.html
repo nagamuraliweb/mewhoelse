@@ -32,7 +32,7 @@
 				<div class="error_alert" ng-show="vm.form.artists.skills.$dirty && vm.form.artists.skills.$error.required">
 				    <span>Skills is required.</span>
 				</div>
-				<input type="text" ng-if="artist.skills === '8'" class="inputbox" placeholder="Enter your skills" name="otherskills" ng-model="artist.otherskills">
+				<input type="text" ng-if="vm.artist.skills === '8'" class="inputbox" placeholder="Enter your skills" name="otherskills" ng-model="artist.otherskills">
 				<select name="experince" class="dropdown" ng-model="vm.artist.experince" required>
 					<option value="">Experience</option>
 					<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
@@ -59,8 +59,8 @@
 				<div class="error_alert" ng-show="vm.form.artists.hair_type.$dirty && vm.form.artists.hair_type.$error.required">
 				    <span>Hair Type is required.</span>
 				</div>
-				<input type="text" ng-if="artist.hair_type === '5'" name="others_hairtype" ng-model="vm.others_hairtype" class="inputbox" placeholder="Enter your hair type">
-				<input type="text" name="weight" ng-model="vm.artist.weight" class="inputbox" placeholder="Enter your weight" autocomplete="off" required>
+				<input type="text" ng-if="vm.artist.hair_type === '5'" name="others_hairtype" ng-model="vm.others_hairtype" class="inputbox" placeholder="Enter your hair type">
+				<input type="number" name="weight" ng-model="vm.artist.weight" class="inputbox" placeholder="Enter your weight" autocomplete="off" required>
 				<div class="error_alert" ng-show="vm.form.artists.weight.$dirty && vm.form.artists.weight.$error.required">
 				    <span>Weight is required.</span>
 				</div>
