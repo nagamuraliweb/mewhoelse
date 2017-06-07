@@ -7,10 +7,16 @@
 	clientOverviewCtrl.$inject = ['$scope'];
 
 	function clientOverviewCtrl($scope) {
-		// if(!window.localStorage.getItem('userID')) {
-		// 	$state.go('landing');
-		// 	return;
-		// }
+
+		if(!window.localStorage.getItem('userID')) {
+			$state.go('landing');
+			return;
+		}
+
+		$scope.logOut = function() {
+			window.localStorage.removeItem('userID');
+			$state.go('login');
+		}
 
 	}
 })();

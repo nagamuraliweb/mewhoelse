@@ -7,10 +7,16 @@
 	technicianListCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', '$stateParams'];
 
 	function technicianListCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, $stateParams) {
-		// if(!window.localStorage.getItem('userID')) {
-		// 	$state.go('landing');
-		// 	return;
-		// }
+		
+		if(!window.localStorage.getItem('userID')) {
+			$state.go('landing');
+			return;
+		}
+
+		$scope.logOut = function() {
+			window.localStorage.removeItem('userID');
+			$state.go('login');
+		}
 
 	}
 })();

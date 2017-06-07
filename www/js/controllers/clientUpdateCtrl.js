@@ -7,9 +7,15 @@
 		clientUpdateCtrl.$inject = ['dataFactory', 'loaderFactory', 'artistFactory', '$state'];
 
 		function clientUpdateCtrl(dataFactory, loaderFactory, artistFactory, $state) {
+			
 			if(!window.localStorage.getItem('userID')) {
 				$state.go('landing');
 				return;
+			}
+
+			$scope.logOut = function() {
+				window.localStorage.removeItem('userID');
+				$state.go('login');
 			}
 
 			var vm = this;

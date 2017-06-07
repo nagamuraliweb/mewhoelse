@@ -5,7 +5,8 @@ angular.module('meapp.factories.loginFactory', [])
 		userLogin: userLogin,
 		signUp: signUp,
 		forgotPassword: forgotPassword,
-		checkLogin: checkLogin
+		checkLogin: checkLogin,
+		hasRegistered: hasRegistered
 	}
 
 	function userLogin(user_email, user_password) {
@@ -31,6 +32,17 @@ angular.module('meapp.factories.loginFactory', [])
 	function forgotPassword(email, password, confirm_password) {
 		var deffered = $q.defer();
 		loginService.forgotPassword(email, password, confirm_password).then(function(resp) {
+			deffered.resolve(resp);
+		}, function(error) {
+			console.log(error);
+		});
+		return deffered.promise;
+	}
+
+	function hasRegistered(user_id) {
+		var deffered = $q.defer();
+		loginService.hasRegistered(user_id).then(function(resp) {
+			console.log(resp);
 			deffered.resolve(resp);
 		}, function(error) {
 			console.log(error);

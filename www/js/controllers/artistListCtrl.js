@@ -7,10 +7,16 @@
 	artistListCtrl.$inject = ['$scope', 'dataFactory', '$state'];
 
 	function artistListCtrl($scope, dataFactory, $state) {
-		// if(!window.localStorage.getItem('userID')) {
-		// 	$state.go('landing');
-		// 	return;
-		// }
+		
+		if(!window.localStorage.getItem('userID')) {
+			$state.go('landing');
+			return;
+		}
+
+		$scope.logOut = function() {
+			window.localStorage.removeItem('userID');
+			$state.go('login');
+		}
 
 		dataFactory.getUsersDetails().then(function(resp) {
 			$scope.users_details = JSON.parse(resp.data.users_details);

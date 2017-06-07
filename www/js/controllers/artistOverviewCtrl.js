@@ -7,11 +7,16 @@
 	artistOverviewCtrl.$inject = ['$scope'];
 
 	function artistOverviewCtrl($scope) {
-		// if(!window.localStorage.getItem('userID')) {
-		// 	$state.go('landing');
-		// 	return;
-		// }
+		
+		if(!window.localStorage.getItem('userID')) {
+			$state.go('landing');
+			return;
+		}
 
+		$scope.logOut = function() {
+			window.localStorage.removeItem('userID');
+			$state.go('login');
+		}
 
 	}
 })();

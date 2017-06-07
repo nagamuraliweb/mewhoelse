@@ -7,9 +7,15 @@
 	technicianProfileCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state'];
 
 	function technicianProfileCtrl($scope, dataFactory, artistFactory, loaderFactory, $state) {
+		
 		if(!window.localStorage.getItem('userID')) {
 			$state.go('landing');
 			return;
+		}
+		
+		$scope.logOut = function() {
+			window.localStorage.removeItem('userID');
+			$state.go('login');
 		}
 
 		var vm = this;

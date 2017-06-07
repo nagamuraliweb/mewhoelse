@@ -60,4 +60,21 @@ angular.module('meapp.services.loginService', [])
         });
     }
 
+    this.hasRegistered = function(user_id) {
+        var request = {
+            method: 'POST',
+            url: 'http://mewhoelse.in/api/api.php?f=hasRegistered',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: { 
+                user_id: user_id
+            }
+        };
+
+        return $http(request).then(function (resp) {
+            return resp;
+        });
+    }
+
 }]);

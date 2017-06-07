@@ -30,7 +30,7 @@
 			</div>
 			<select name="profession" class="dropdown bottom_30" ng-model="user.profession" autocomplete="off" required>
 				<option value="">Select your profession</option>
-				<option ng-repeat="profess in profession_types" value="{{profess.id_type}}">{{profess.type}}</option>
+				<option ng-repeat="(key, value) in profession_types" value="{{key}}">{{value}}</option>
 			</select>
 			<div class="error_alert" ng-show="form.signupForm.profession.$dirty && form.signupForm.profession.$error.required">
 			    <span>Choose Profession</span>

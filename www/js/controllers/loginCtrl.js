@@ -36,8 +36,12 @@
 				} else {
 					window.localStorage.setItem('userID', resp.data.user_id);
 					if(resp.data.user_id) {
-						loginFactory.checkLogin(resp.data.user_id);
+						loginFactory.hasRegistered(resp.data.user_id).then(function(rep) {
+							console.log(rep);
+							//loginFactory.checkLogin(resp.data.user_id);
+						});
 					}
+					
 				}
 			});
 		}
