@@ -31,7 +31,7 @@
             <p>Languages <span class="pull-right">{{::vm.lang}}</span></p>
             <p ng-if="vm.artist.user_language_others">Languages <span class="pull-right">{{::vm.artist.user_language_others}}</span></p>
             <p>Profile Videos</p>
-            <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="artist.user_videos"></youtube-video>
+            <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="vm.artist.user_videos"></youtube-video>
             <button class="button button-outline loginbtn" ui-sref="artist-update">
               Update
             </button>

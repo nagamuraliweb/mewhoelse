@@ -4,9 +4,9 @@
 	angular.module('meapp.controllers.clientCtrl', [])
 		.controller('clientCtrl', clientCtrl);
 
-	clientCtrl.$inject = ['dataFactory', 'loaderFactory', 'artistFactory', '$state'];
+	clientCtrl.$inject = ['dataFactory', 'loaderFactory', 'artistFactory', '$state', '$scope'];
 
-	function clientCtrl(dataFactory, loaderFactory, artistFactory, $state) {
+	function clientCtrl(dataFactory, loaderFactory, artistFactory, $state, $scope) {
 
 		if(!window.localStorage.getItem('userID')) {
 			$state.go('login');

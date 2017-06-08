@@ -5,8 +5,9 @@ angular.module('meapp.factories.loginFactory', [])
 		userLogin: userLogin,
 		signUp: signUp,
 		forgotPassword: forgotPassword,
-		checkLogin: checkLogin,
-		hasRegistered: hasRegistered
+		redirectRegister: redirectRegister,
+		hasRegistered: hasRegistered,
+		redirectProfile: redirectProfile
 	}
 
 	function userLogin(user_email, user_password) {
@@ -50,7 +51,7 @@ angular.module('meapp.factories.loginFactory', [])
 		return deffered.promise;
 	}
 
-	function checkLogin(userId){
+	function redirectRegister(userId){
 		dataFactory.getUserDetails(userId).then(function(resp) {
 			var userdetails = JSON.parse(resp.data.user_details);
 			var user_type = parseInt(userdetails.user_type);
@@ -60,6 +61,22 @@ angular.module('meapp.factories.loginFactory', [])
 				case 2: $state.go('technician-register');
 						break;
 				case 3: $state.go('client-register');
+						break;
+				default: console.log('Login');
+			}
+		});
+	}
+
+	function redirectProfile(userId){
+		dataFactory.getUserDetails(userId).then(function(resp) {
+			var userdetails = JSON.parse(resp.data.user_details);
+			var user_type = parseInt(userdetails.user_type);
+			switch (user_type) {
+				case 1: $state.go('artist-profile');
+						break;
+				case 2: $state.go('technician-profile');
+						break;
+				case 3: $state.go('client-profile');
 						break;
 				default: console.log('Login');
 			}

@@ -37,8 +37,12 @@
 					window.localStorage.setItem('userID', resp.data.user_id);
 					if(resp.data.user_id) {
 						loginFactory.hasRegistered(resp.data.user_id).then(function(rep) {
-							console.log(rep);
-							//loginFactory.checkLogin(resp.data.user_id);
+							if(rep.data.has_registered === true) {
+								loginFactory.redirectProfile(resp.data.user_id);
+							} else {
+								loginFactory.redirectRegister(resp.data.user_id);
+							}
+							
 						});
 					}
 					

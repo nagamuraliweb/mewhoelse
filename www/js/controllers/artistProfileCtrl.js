@@ -26,6 +26,7 @@
 
 		dataFactory.getUserDetails($scope.user_id).then(function(resp) {
 			vm.artist = JSON.parse(resp.data.user_details);
+			console.log(vm.artist);
 		});
 
 		dataFactory.getType().then(function(resp) {

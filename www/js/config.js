@@ -63,7 +63,8 @@ angular.module('meapp.config', [])
   .state('artist-overview', {
     url: '/artist-overview',
     templateUrl: 'templates/artist_overview.html',
-    controller: 'artistOverviewCtrl'
+    controller: 'artistOverviewCtrl',
+    controllerAs: 'vm'
   })
 
   // technicians register
@@ -94,7 +95,8 @@ angular.module('meapp.config', [])
   .state('technician-overview', {
     url: '/technician-overview',
     templateUrl: 'templates/technician_overview.html',
-    controller: 'technicianOverviewCtrl'
+    controller: 'technicianOverviewCtrl',
+    controllerAs: 'vm'
   })
 
   // clients register
@@ -125,7 +127,8 @@ angular.module('meapp.config', [])
   .state('client-overview', {
     url: '/client-overview',
     templateUrl: 'templates/client_overview.html',
-    controller: 'clientOverviewCtrl'
+    controller: 'clientOverviewCtrl',
+    controllerAs: 'vm'
   })
 
   // setup an abstract state for the tabs directive
@@ -141,7 +144,8 @@ angular.module('meapp.config', [])
     views: {
       'dashboard-artists': {
         templateUrl: 'templates/dashboard_artists.html',
-        controller: 'artistListCtrl'
+        controller: 'artistListCtrl',
+        controllerAs: 'vm'
       }
     }
   })
@@ -151,7 +155,8 @@ angular.module('meapp.config', [])
       views: {
         'dashboard-technicians': {
           templateUrl: 'templates/dashboard_technicians.html',
-          controller: 'technicianListCtrl'
+          controller: 'technicianListCtrl',
+          controllerAs: 'vm'
         }
       }
     });
