@@ -13,11 +13,6 @@
 			return;
 		}
 
-		$scope.logOut = function() {
-			window.localStorage.removeItem('userID');
-			$state.go('login');
-		}
-
 		var vm = this;
 
 		dataFactory.getBody().then(function(resp) {

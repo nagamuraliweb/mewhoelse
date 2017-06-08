@@ -13,11 +13,6 @@ angular.module('meapp.controllers.artistCtrl', [])
 			return;
 		}
 
-		$scope.logOut = function() {
-			window.localStorage.removeItem('userID');
-			$state.go('login');
-		}
-
 		var vm = this;
 		vm.form = {};
 

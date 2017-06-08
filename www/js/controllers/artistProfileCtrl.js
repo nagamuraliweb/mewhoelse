@@ -15,11 +15,6 @@
 			return;
 		}
 
-		$scope.logOut = function() {
-			window.localStorage.removeItem('userID');
-			$state.go('login');
-		}
-
 		var vm = this;
 		$scope.user_id = window.localStorage.getItem('userID');
 		$scope.version = new Date().getTime();

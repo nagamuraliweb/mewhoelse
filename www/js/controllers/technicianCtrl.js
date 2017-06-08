@@ -12,11 +12,6 @@
 			$state.go('landing');
 			return;
 		}
-		
-		$scope.logOut = function() {
-			window.localStorage.removeItem('userID');
-			$state.go('login');
-		}
 
 		var vm = this;
 		var user_id = window.localStorage.getItem('userID');

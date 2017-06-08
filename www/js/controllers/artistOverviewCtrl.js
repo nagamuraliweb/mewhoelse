@@ -13,10 +13,5 @@
 			return;
 		}
 
-		$scope.logOut = function() {
-			window.localStorage.removeItem('userID');
-			$state.go('login');
-		}
-
 	}
 })();
