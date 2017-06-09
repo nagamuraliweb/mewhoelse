@@ -27,6 +27,14 @@
 					Add Profile picture 
 					<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
 				</label><br><br>
+
+				<label>
+					Add Portfolio pictures
+					<div class="row" id="parentID">
+						<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+					<span class="pull-right"><i class="icon icon ion-plus-circled" ng-click="appendClonedDiv()"></i></span>
+					</div>
+				</label>
 				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox" ng-model="vm.artist.videos">
 				<select name="skills" class="dropdown" ng-model="vm.artist.skills" required>
 					<option value="">Skills</option>

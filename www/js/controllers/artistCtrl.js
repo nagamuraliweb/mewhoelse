@@ -81,6 +81,13 @@ angular.module('meapp.controllers.artistCtrl', [])
 			});
 		};
 
+		$scope.appendClonedDiv = function() {
+			alert('hi');
+		    var pID = angular.element( document.querySelector( '#parentID' ) );
+		    var cID = angular.element( document.querySelector( '#childID' ) );
+		    iEl.append(wEl.clone());
+	    }
+
 		vm.saveArtistDetails = function() {
 			loaderFactory.showLoader();
 			 artistFactory.saveArtistDetails(vm.artist).then(function(resp) {

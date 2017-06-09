@@ -13,11 +13,6 @@
 			user_email: '',
 			user_password: ''
 		};
-
-		var userId = window.localStorage.getItem('userID');
-		if(userId) {
-			loginFactory.checkLogin(userId);
-		}
 		
 		$scope.login = function() {
 			loaderFactory.showLoader();
