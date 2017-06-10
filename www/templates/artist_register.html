@@ -30,13 +30,44 @@
 
 				<label>
 					Add Portfolio pictures
-					<div class="row" id="parentID">
+					<div class="row" id="firstPhoto">
+					<div class="col col-75">
 						<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
-					<span class="pull-right"><i class="icon icon ion-plus-circled" ng-click="appendClonedDiv()"></i></span>
+					</div>
+					<div class="col">
+						<span class="pull-right" ng-click="vm.showSecondPhoto()"><i class="icon icon ion-plus-circled"></i></span>
+					</div>
+					</div>
+
+					<div class="row" id="secondPhoto" ng-if="showSecond">
+					<div class="col col-75">
+						<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+					</div>
+					<div class="col">
+						<span class="pull-right" ng-click="vm.showThirdPhoto()"><i class="icon icon ion-plus-circled"></i></span>
+					</div>
+					</div>
+
+					<div class="row" id="thirdPhoto" ng-if="showThird">
+					<div class="col col-75">
+						<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+					</div>
+					</div>
+
+				</label>
+
+				<label>
+					Add Portfolio Videos
+					<div>
+						<input type="url" name="videos" placeholder="Add profile videos Youtube link here" class="inputbox" ng-model="vm.artist.videos">
+					</div>
+
+					<div id="profileVideo">
+						<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
 					</div>
 				</label>
-				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox" ng-model="vm.artist.videos">
-				<select name="skills" class="dropdown" ng-model="vm.artist.skills" required>
+
+				<select name="skills" class="dropdown" ng-model="vm.artist.skills" multiple="true" required>
 					<option value="">Skills</option>
 					<option ng-repeat="(key, value) in vm.skills" value="{{key}}">{{value}}</option>
 				</select>
@@ -96,7 +127,7 @@
 				<div class="error_alert" ng-show="vm.form.artists.training.$dirty && vm.form.artists.training.$error.required">
 				    <span>Professional trained is required.</span>
 				</div>
-				<select name="languages" ng-model="vm.artist.languages" class="dropdown" required>
+				<select name="languages" ng-model="vm.artist.languages" class="dropdown" multiple="true" required>
 					<option value="">Languages</option>
 					<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
 				</select>

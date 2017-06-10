@@ -124,3 +124,4 @@ font-size: 13px;}
 .createportfolio{width: 160px !important;}
 .ion-log-out{color: white;font-size: 20px;position: fixed;top: 10px;right: 10px;z-index: 1000;}
 .ion-plus-circled{font-size: 24px;}
+#firstPhoto, #secondPhoto, #thirdPhoto {margin-bottom: 10px;}

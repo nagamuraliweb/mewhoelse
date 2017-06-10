@@ -32,7 +32,7 @@
 				<div class="error_alert" ng-show="vm.form.client.projectname.$dirty && vm.form.client.projectname.$error.required">
 				    <span>Project name is required.</span>
 				</div>
-				<select name="project_type" class="dropdown" ng-model="vm.client.project_type" required>
+				<select name="project_type" class="dropdown" ng-model="vm.client.project_type" multiple="true" required>
 					<option value="">Project type</option>
 					<option ng-repeat="(key, value) in vm.projects" value="{{key}}">{{value}}</option>
 				</select>
@@ -40,21 +40,21 @@
 				    <span>Project name is required.</span>
 				</div>
 				<textarea name="project_description" placeholder="Project description" class="textareabox" ng-model="vm.client.project_description"></textarea>
-				<select name="roll_type" class="dropdown" ng-model="vm.client.roll_type" required>
+				<select name="roll_type" class="dropdown" ng-model="vm.client.roll_type" multiple="true" required>
 					<option value="">Roll type</option>
 					<option ng-repeat="(key, value) in vm.roles" value="{{key}}">{{value}}</option>
 				</select>
 				<div class="error_alert" ng-show="vm.form.client.roll_type.$dirty && vm.form.client.roll_type.$error.required">
 				    <span>Roll type is required.</span>
 				</div>
-				<select name="looking_for" class="dropdown" ng-model="vm.client.looking_for">
+				<select name="looking_for" class="dropdown" ng-model="vm.client.looking_for" multiple="true">
 					<option value="">Looking for</option>
 					<option ng-repeat="(key, value) in vm.genders" value="{{key}}">{{value}}</option>
 				</select>
 				<input type="text" name="character_name" class="inputbox" placeholder="Character name" ng-model="vm.client.character_name">
 				<textarea name="character_description" placeholder="Character description" class="textareabox" ng-model="vm.client.character_description"></textarea>
 				<h4>Requirements</h4>
-				<select name="body_type" class="dropdown" ng-model="vm.client.body_type">
+				<select name="body_type" class="dropdown" ng-model="vm.client.body_type" multiple="true">
 					<option value="">Body Type</option>
 					<option ng-repeat="(key, value) in vm.bodies" value="{{key}}">{{value}}</option>
 				</select>
@@ -66,7 +66,7 @@
 					Professional trained <label><input type="radio" name="training" ng-model="vm.client.training" value="0"> Yes</label>
 					<label><input type="radio" name="training" ng-model="vm.client.training" value="1"> No</label>
 				</div><br>
-				<select name="languages" ng-model="vm.client.languages" class="dropdown">
+				<select name="languages" ng-model="vm.client.languages" class="dropdown" multiple="true">
 					<option value="">Languages</option>
 					<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
 				</select>

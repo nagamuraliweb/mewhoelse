@@ -52,7 +52,7 @@
 				<div class="error_alert" ng-show="vm.form.technician.training.$dirty && vm.form.technician.training.$error.required">
 				    <span>Professional trained is required.</span>
 				</div>
-				<select name="languages" ng-model="vm.technician.languages" class="dropdown" required>
+				<select name="languages" ng-model="vm.technician.languages" class="dropdown" multiple="true" required>
 					<option value="">Languages</option>
 					<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
 				</select>

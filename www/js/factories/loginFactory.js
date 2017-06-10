@@ -43,7 +43,6 @@ angular.module('meapp.factories.loginFactory', [])
 	function hasRegistered(user_id) {
 		var deffered = $q.defer();
 		loginService.hasRegistered(user_id).then(function(resp) {
-			console.log(resp);
 			deffered.resolve(resp);
 		}, function(error) {
 			console.log(error);

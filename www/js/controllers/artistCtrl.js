@@ -81,12 +81,21 @@ angular.module('meapp.controllers.artistCtrl', [])
 			});
 		};
 
-		$scope.appendClonedDiv = function() {
-			alert('hi');
-		    var pID = angular.element( document.querySelector( '#parentID' ) );
-		    var cID = angular.element( document.querySelector( '#childID' ) );
-		    iEl.append(wEl.clone());
-	    }
+		// vm.appendClonedDiv = function() {
+		//     var pID = angular.element(document.querySelector('#parentID'));
+		//     var cID = angular.element(document.querySelector('#childID'));
+		//     cID.append(pID.clone());
+	 //    }
+	 	$scope.showSecond = false;
+	 	$scope.showThird = false;
+
+	 	vm.showSecondPhoto = function() {
+	 		$scope.showSecond = true;
+	 	}
+
+	 	vm.showThirdPhoto = function() {
+	 		$scope.showThird = true;
+	 	}
 
 		vm.saveArtistDetails = function() {
 			loaderFactory.showLoader();
