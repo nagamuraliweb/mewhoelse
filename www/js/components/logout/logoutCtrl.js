@@ -10,7 +10,9 @@
             controller: logoutCtrl
         });
 
-    function logoutCtrl() {
+    logoutCtrl.$inject = ['$state'];
+
+    function logoutCtrl($state) {
         var ctrl = this;
         
         ctrl.onLogout = function() {
