@@ -8,11 +8,6 @@
 
 	function clientCtrl(dataFactory, loaderFactory, artistFactory, $state, $scope) {
 
-		if(!window.localStorage.getItem('userID')) {
-			$state.go('login');
-			return;
-		}
-
 		var vm = this;
 
 		dataFactory.getBody().then(function(resp) {

@@ -7,11 +7,6 @@
 		clientUpdateCtrl.$inject = ['dataFactory', 'loaderFactory', 'artistFactory', '$state'];
 
 		function clientUpdateCtrl(dataFactory, loaderFactory, artistFactory, $state) {
-			
-			if(!window.localStorage.getItem('userID')) {
-				$state.go('landing');
-				return;
-			}
 
 			var vm = this;
 			var user_id = window.localStorage.getItem('userID');

@@ -7,11 +7,6 @@ angular.module('meapp.controllers.artistCtrl', [])
 	artistCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state'];
 
 	function artistCtrl($scope, dataFactory, artistFactory, loaderFactory, $state) {
-		
-		if(!window.localStorage.getItem('userID')) {
-			$state.go('landing');
-			return;
-		}
 
 		var vm = this;
 		vm.form = {};

@@ -8,10 +8,5 @@
 
 	function clientOverviewCtrl($scope) {
 
-		if(!window.localStorage.getItem('userID')) {
-			$state.go('landing');
-			return;
-		}
-
 	}
 })();

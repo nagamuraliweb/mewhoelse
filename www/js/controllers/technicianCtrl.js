@@ -8,11 +8,6 @@
 
 	function technicianCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, $stateParams) {
 
-		if(!window.localStorage.getItem('userID')) {
-			$state.go('landing');
-			return;
-		}
-
 		var vm = this;
 		var user_id = window.localStorage.getItem('userID');
 

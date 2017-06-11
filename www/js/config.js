@@ -11,28 +11,32 @@ angular.module('meapp.config', [])
   .state('landing', {
     url: '/landing',
     templateUrl: 'templates/landing.html',
-    controller: 'landingCtrl'
+    controller: 'landingCtrl',
+    isAuthorized: false
   })
 
   // login page
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
+    controller: 'loginCtrl',
+    isAuthorized: false
   })
 
   // signup page
   .state('signup', {
     url: '/signup',
     templateUrl: 'templates/signup.html',
-    controller: 'signupCtrl'
+    controller: 'signupCtrl',
+    isAuthorized: false
   })
 
   // forgot password page
   .state('forgot', {
     url: '/forgot',
     templateUrl: 'templates/forgot.html',
-    controller: 'forgotCtrl'
+    controller: 'forgotCtrl',
+    isAuthorized: false
   })
 
   // artists register
@@ -40,7 +44,8 @@ angular.module('meapp.config', [])
     url: '/artist-register',
     templateUrl: 'templates/artist_register.html',
     controller: 'artistCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // artists update
@@ -48,7 +53,8 @@ angular.module('meapp.config', [])
     url: '/artist-update',
     templateUrl: 'templates/artist_update.html',
     controller: 'artistUpdateCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // artists profile
@@ -56,7 +62,8 @@ angular.module('meapp.config', [])
     url: '/artist-profile',
     templateUrl: 'templates/artist_profile.html',
     controller: 'artistProfileCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // artists overview page
@@ -72,7 +79,8 @@ angular.module('meapp.config', [])
     url: '/technician-register',
     templateUrl: 'templates/technician_register.html',
     controller: 'technicianCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // technicians update
@@ -80,7 +88,8 @@ angular.module('meapp.config', [])
     url: '/technician-update',
     templateUrl: 'templates/technician_update.html',
     controller: 'technicianUpdateCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // technicians profile
@@ -88,7 +97,8 @@ angular.module('meapp.config', [])
     url: '/technician-profile',
     templateUrl: 'templates/technician_profile.html',
     controller: 'technicianProfileCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // technicians overview page
@@ -96,7 +106,8 @@ angular.module('meapp.config', [])
     url: '/technician-overview',
     templateUrl: 'templates/technician_overview.html',
     controller: 'technicianOverviewCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // clients register
@@ -104,7 +115,8 @@ angular.module('meapp.config', [])
     url: '/client-register',
     templateUrl: 'templates/client_register.html',
     controller: 'clientCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // clients update
@@ -112,7 +124,8 @@ angular.module('meapp.config', [])
     url: '/client-update',
     templateUrl: 'templates/client_update.html',
     controller: 'clientUpdateCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // clients profile page
@@ -120,7 +133,8 @@ angular.module('meapp.config', [])
     url: '/client-profile',
     templateUrl: 'templates/client_profile.html',
     controller: 'clientProfileCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // clients overview page
@@ -128,7 +142,8 @@ angular.module('meapp.config', [])
     url: '/client-overview',
     templateUrl: 'templates/client_overview.html',
     controller: 'clientOverviewCtrl',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    isAuthorized: true
   })
 
   // setup an abstract state for the tabs directive
@@ -145,7 +160,8 @@ angular.module('meapp.config', [])
       'dashboard-artists': {
         templateUrl: 'templates/dashboard_artists.html',
         controller: 'artistListCtrl',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        isAuthorized: true
       }
     }
   })
@@ -156,7 +172,8 @@ angular.module('meapp.config', [])
         'dashboard-technicians': {
           templateUrl: 'templates/dashboard_technicians.html',
           controller: 'technicianListCtrl',
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          isAuthorized: true
         }
       }
     });

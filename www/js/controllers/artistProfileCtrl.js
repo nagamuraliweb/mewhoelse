@@ -10,11 +10,6 @@
 		
 		var bestPlayer = null;
 
-		if(!window.localStorage.getItem('userID')) {
-			$state.go('landing');
-			return;
-		}
-
 		var vm = this;
 		$scope.user_id = window.localStorage.getItem('userID');
 		$scope.version = new Date().getTime();

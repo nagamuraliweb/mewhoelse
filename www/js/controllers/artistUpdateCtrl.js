@@ -7,11 +7,6 @@
 
 	function artistUpdateCtrl($scope, dataFactory, artistFactory, loaderFactory, $state) {
 
-		if(!window.localStorage.getItem('userID')) {
-			$state.go('landing');
-			return;
-		}
-
 		var vm = this;
 		var user_id = window.localStorage.getItem('userID');
 

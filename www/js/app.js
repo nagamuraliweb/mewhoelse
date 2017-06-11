@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('meapp', ['ionic', 'meapp.config', 'meapp.controllers', 'meapp.factories', 'meapp.services', 'meapp.components'])
 
-.run(function($ionicPlatform, $state) {
+.run(function($ionicPlatform, $state, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -29,6 +29,16 @@ angular.module('meapp', ['ionic', 'meapp.config', 'meapp.controllers', 'meapp.fa
         navigator.app.backHistory();
       }
     }, 100);
+
+    $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+      if(toState.isAuthorized === true) {
+        if(!window.localStorage.getItem('userID')){
+          $state.go('landing');
+          return;
+        }
+      }
+
+    });
 
   });
 });

@@ -7,11 +7,6 @@
 	clientProfileCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state'];
 
 	function clientProfileCtrl($scope, dataFactory, artistFactory, loaderFactory, $state) {
-		
-		if(!window.localStorage.getItem('userID')) {
-			$state.go('landing');
-			return;
-		}
 
 		var vm = this;
 		$scope.user_id = window.localStorage.getItem('userID');

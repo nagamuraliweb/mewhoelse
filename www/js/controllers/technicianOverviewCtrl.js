@@ -8,10 +8,5 @@
 
 	function technicianOverviewCtrl($scope) {
 
-		if(!window.localStorage.getItem('userID')) {
-			$state.go('landing');
-			return;
-		}
-
 	}
 })();
