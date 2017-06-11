@@ -13,7 +13,7 @@
         <option value="clients">Comedian</option>
     </select>
 
-    <div class="card list_artist" ng-repeat="user in users_details">
+    <div class="card list_artist" ng-repeat="user in users_details" ui-sref="artist-overview({user_id: user.user_id})">
       <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
         <div class="padding artist_info">
         <img src="img/thumnail.png" alt="Thumnail">

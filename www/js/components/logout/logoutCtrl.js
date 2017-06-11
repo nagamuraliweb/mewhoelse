@@ -17,7 +17,7 @@
         
         ctrl.onLogout = function() {
 			window.localStorage.removeItem('userID');
-			$state.go('login');
+			$state.go('landing');
 		}
     }
 })();

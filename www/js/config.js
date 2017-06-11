@@ -68,7 +68,7 @@ angular.module('meapp.config', [])
 
   // artists overview page
   .state('artist-overview', {
-    url: '/artist-overview',
+    url: '/artist-overview/:user_id',
     templateUrl: 'templates/artist_overview.html',
     controller: 'artistOverviewCtrl',
     controllerAs: 'vm'
@@ -147,7 +147,7 @@ angular.module('meapp.config', [])
   })
 
   // setup an abstract state for the tabs directive
-    .state('dashboard', {
+  .state('dashboard', {
     url: '/dashboard',
     templateUrl: 'templates/dashboard.html'
   })
