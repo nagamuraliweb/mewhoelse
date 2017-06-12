@@ -68,7 +68,7 @@ angular.module('meapp.config', [])
 
   // artists overview page
   .state('artist-overview', {
-    url: '/artist-overview/:user_id',
+    url: '/artist-overview',
     templateUrl: 'templates/artist_overview.html',
     controller: 'artistOverviewCtrl',
     controllerAs: 'vm'
@@ -142,6 +142,15 @@ angular.module('meapp.config', [])
     url: '/client-overview',
     templateUrl: 'templates/client_overview.html',
     controller: 'clientOverviewCtrl',
+    controllerAs: 'vm',
+    isAuthorized: true
+  })
+
+  // clients overview page
+  .state('films-list', {
+    url: '/films-list',
+    templateUrl: 'templates/films_list.html',
+    controller: 'filmsListCtrl',
     controllerAs: 'vm',
     isAuthorized: true
   })

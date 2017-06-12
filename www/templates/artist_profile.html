@@ -6,7 +6,7 @@
   
   <ion-content class="padding">
     
-    <div class="list_overview" ui-sref="overview">
+    <div class="list_overview">
         <div class="profile_picture">
             <img ng-src="http://mewhoelse.in/img/profile/{{user_id}}.jpg?v={{version}}" alt="Artist" class="img-responsive">
             <h4>{{vm.artist.user_name}} , {{vm.profession}}</h4>
@@ -36,6 +36,10 @@
             <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="vm.artist.user_videos"></youtube-video>
             <button class="button button-outline loginbtn" ui-sref="artist-update">
               Update
+            </button>
+
+            <button class="button button-outline loginbtn autowidth" ui-sref="films-list">
+              Search for films
             </button>
         </div>
     </div>

@@ -62,7 +62,8 @@ angular.module('meapp.controllers', [
   'meapp.controllers.clientProfileCtrl',
   'meapp.controllers.clientOverviewCtrl',
   'meapp.controllers.artistListCtrl',
-  'meapp.controllers.technicianListCtrl'
+  'meapp.controllers.technicianListCtrl',
+  'meapp.controllers.filmsListCtrl'
 ]);
 
 // factories
