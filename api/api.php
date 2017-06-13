@@ -388,17 +388,44 @@ class me_api extends db_config {
 		echo json_encode($result);
 	}
 
-	public function getUsersDetails() {
+	public function getFilterUsers() {
 
 		try {
 
-			$users_details = Model_Admin::getUsersDetails($this->DB);
+			if (empty($_GET['filter_user'])) {
+				throw new Exception('Invalid type');
+			}
+			
+			$filter_users = Model_Admin::getFilterUsers($this->DB, $_GET['filter_user']);
 
-			if (empty($users_details)) {
+			if (empty($filter_users)) {
 				throw new Exception('No records');
 			}
 
-			$result = ['error' => 0, 'users_details' => json_encode($users_details)];
+			$result = ['error' => 0, 'filter_users' => json_encode($filter_users)];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
+	public function getProjectDetails() {
+
+		try {
+
+			if (empty($_GET['project_type'])) {
+				throw new Exception('Invalid project type');
+			}
+
+			$project_details = Model_Admin::getProjectDetails($this->DB, $_GET['project_type']);
+
+			if (empty($project_details)) {
+				throw new Exception('No records');
+			}
+
+			$result = ['error' => 0, 'project_details' => json_encode($project_details)];
 
 		} catch (Exception $e) {
 			$result = ['error' => 1, 'msg' => $e->getMessage()];
