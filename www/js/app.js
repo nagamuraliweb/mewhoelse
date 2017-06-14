@@ -32,9 +32,9 @@ angular.module('meapp', ['ionic', 'meapp.config', 'meapp.controllers', 'meapp.fa
 
     $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
       if(toState.isAuthorized === true) {
-        if(!window.localStorage.getItem('userID')){
+        if(!window.localStorage.getItem('userID')) {
           $state.go('landing');
-          return;
+          e.preventDefault();
         }
       }
 
