@@ -434,6 +434,29 @@ class me_api extends db_config {
 		echo json_encode($result);
 	}
 
+	public function getClientPosts() {
+
+		try {
+
+			if (empty($_GET['user_id'])) {
+				throw new Exception('Invalid user');
+			}
+
+			$client_posts = Model_Admin::getClientPosts($this->DB, $_GET['user_id']);
+
+			if (empty($client_posts)) {
+				throw new Exception('No records');
+			}
+
+			$result = ['error' => 0, 'client_posts' => json_encode($client_posts)];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
 	public function saveArtistDetails() {
 
 		try {
