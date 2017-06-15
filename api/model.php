@@ -329,6 +329,12 @@
 			$stmt->bindParam(':dob', $data['dob'], PDO::PARAM_STR);
 			$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 
+			if ($data['videos']) {
+				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_INT);
+			}
+
 			if ($data['skills'] == 0) {
 				$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_NULL);
 				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
@@ -381,7 +387,12 @@
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
 			$stmt->bindParam(':gender', $data['gender'], PDO::PARAM_INT);
 			$stmt->bindParam(':dob', $data['dob'], PDO::PARAM_STR);
-			$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
+			
+			if ($data['videos']) {
+				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_INT);
+			}
 
 			if ($data['skills'] === 0) {
 				$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_NULL);
@@ -432,7 +443,13 @@
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
 			$stmt->bindParam(':gender', $data['gender'], PDO::PARAM_INT);
 			$stmt->bindParam(':dob', $data['dob'], PDO::PARAM_STR);
-			$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
+
+			if ($data['videos']) {
+				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_INT);
+			}
+
 			$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
 	
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);
@@ -464,7 +481,13 @@
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
 			$stmt->bindParam(':gender', $data['gender'], PDO::PARAM_INT);
 			$stmt->bindParam(':dob', $data['dob'], PDO::PARAM_STR);
-			$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
+			
+			if ($data['videos']) {
+				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_INT);
+			}
+			
 			$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
 	
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);

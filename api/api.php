@@ -474,10 +474,6 @@ class me_api extends db_config {
 				throw new Exception('Choose DOB');
 			}
 
-			if (empty($postdata->videos)) {
-				throw new Exception('Enter videos');
-			}
-
 			if (empty($postdata->skills)) {
 				throw new Exception('Choose skills');
 			}
@@ -558,7 +554,7 @@ class me_api extends db_config {
 				'user_id' => $postdata->user_id,
 				'gender' => $postdata->gender,
 				'dob' => $postdata->dob,
-				'videos' => $postdata->videos,
+				'videos' => ($postdata->videos) ? $postdata->videos : null,
 				'skills' => $postdata->skills,
 				'otherskills' => $postdata->otherskills ? $postdata->otherskills : null,
 				'experince' => $postdata->experince,
@@ -637,10 +633,6 @@ class me_api extends db_config {
 				throw new Exception('Choose DOB');
 			}
 
-			if (empty($postdata->videos)) {
-				throw new Exception('Enter videos');
-			}
-
 			if (empty($postdata->skills)) {
 				throw new Exception('Choose skills');
 			}
@@ -675,7 +667,7 @@ class me_api extends db_config {
 				'user_id' => $postdata->user_id,
 				'gender' => $postdata->gender,
 				'dob' => $postdata->dob,
-				'videos' => $postdata->videos,
+				'videos' => ($postdata->videos) ? $postdata->videos : null,
 				'otherskills' => $postdata->skills,
 				'experince' => $postdata->experince,
 				'city' => $postdata->city,
@@ -742,7 +734,7 @@ class me_api extends db_config {
 			}
 
 			if (empty($postdata->project)) {
-				throw new Exception('Choose videos');
+				throw new Exception('Choose project');
 			}
 
 			if (empty($postdata->projectname)) {
