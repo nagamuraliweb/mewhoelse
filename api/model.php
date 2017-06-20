@@ -166,7 +166,7 @@
 			return $DB->lastInsertId();
 		}
 
-		public function getUsersDetails ($DB) {
+		/*public function getUsersDetails ($DB) {
 
 			$sql = 'SELECT u.user_id, u.user_type, u.user_name, u.user_email, u.user_mobile, ud.user_gender_id, 
 					ud.user_skills_id, ud.user_skills_others, ud.user_dob, ud.user_videos, ud.user_experience_id, ud.user_city, 
@@ -184,7 +184,7 @@
 			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 			return empty($row) ? [] : $row;
-		}
+		}*/
 
 		public function getUserDetails ($DB, $user_id) {
 

@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: PUT, GET, POST");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -536,20 +534,6 @@ class me_api extends db_config {
 				}
 			}
 
-			if ($postdata->img_name) {
-				if ( ! file_exists('../img/profile')) {
-					mkdir('../img/profile', 0777, true);
-				}
-
-				if (file_exists('../img/profile/'.$postdata->user_id.'.jpg')) {
-					unlink('../img/profile/'.$postdata->user_id.'.jpg');
-				}
-
-				if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
-					unlink('../img/tmp/'.$postdata->img_name);
-				}
-			}
-
 			$data = [
 				'user_id' => $postdata->user_id,
 				'gender' => $postdata->gender,
@@ -574,18 +558,16 @@ class me_api extends db_config {
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
-
 				if (empty($postdata->img_name)) {
 					throw new Exception('Choose profile image');
 				}
 
-				if ( ! file_exists('../img/profile')) {
-					mkdir('../img/profile', 0777, true);
+				if (empty($postdata->video_name)) {
+					throw new Exception('Choose profile image');
 				}
 
-				if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
-					unlink('../img/tmp/'.$postdata->img_name);
-				}
+				saveUploadedImage($postdata->img_name, $postdata->user_id);
+				saveUploadedVideo($postdata->video_name, $postdata->user_id);
 
 				if(!Model_Admin::saveArtistDetails($this->DB, $data)) {
 					throw new Exception('Error occured');
@@ -593,13 +575,11 @@ class me_api extends db_config {
 			} else {
 
 				if ($postdata->img_name) {
-					if (file_exists('../img/profile/'.$postdata->user_id.'.jpg')) {
-						unlink('../img/profile/'.$postdata->user_id.'.jpg');
-					}
+					saveUploadedImage($postdata->img_name, $postdata->user_id);
+				}
 
-					if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
-						unlink('../img/tmp/'.$postdata->img_name);
-					}
+				if ($postdata->video_name) {
+					saveUploadedVideo($postdata->video_name, $postdata->user_id);
 				}
 
 				if(!Model_Admin::updateArtistDetails($this->DB, $data)) {
@@ -684,26 +664,14 @@ class me_api extends db_config {
 					throw new Exception('Choose profile image');
 				}
 
-				if ( ! file_exists('../img/profile')) {
-					mkdir('../img/profile', 0777, true);
-				}
-
-				if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
-					unlink('../img/tmp/'.$postdata->img_name);
-				}
+				saveUploadedImage($postdata->img_name, $postdata->user_id);
 
 				if(!Model_Admin::saveTechnicianDetails($this->DB, $data)) {
 					throw new Exception('Error occured');
 				}
 			} else {
 				if ($postdata->img_name) {
-					if (file_exists('../img/profile/'.$postdata->user_id.'.jpg')) {
-						unlink('../img/profile/'.$postdata->user_id.'.jpg');
-					}
-
-					if (copy('../img/tmp/'.$postdata->img_name, '../img/profile/'.$postdata->user_id.'.jpg')) {
-						unlink('../img/tmp/'.$postdata->img_name);
-					}
+					saveUploadedImage($postdata->img_name, $postdata->user_id);
 				}
 
 				if(!Model_Admin::updateTechnicianDetails($this->DB, $data)) {
@@ -896,9 +864,11 @@ class me_api extends db_config {
 			$file_ext = strtolower($file_end);
 
 			if(in_array($file_ext, $expensions)=== false)
-				throw new Exception('extension not allowed, please choose a JPEG or PNG file.');
+				throw new Exception('Invalid file');
 
-			if($_FILES['file']['size'] > 2097152)
+			$max_size = ini_get('upload_max_filesize');
+
+			if($_FILES['file']['size'] > $max_size)
 				throw new Exception('File size must be exactly 2 MB');	
 
 			$upload_image = $_FILES['file'];  
@@ -916,6 +886,69 @@ class me_api extends db_config {
 		}
 
 		echo json_encode($result);
+	}
+
+	private function saveUploadedImage($img_name, $user_id) {
+		if ( ! file_exists('../img/profile')) {
+			mkdir('../img/profile', 0777, true);
+		}
+
+		if (copy('../img/tmp/'.$img_name, '../img/profile/'.$user_id.'.jpg')) {
+			unlink('../img/tmp/'.$img_name);
+		}
+	}
+
+	public function videoUpload() {
+
+		try {
+			$expensions = ['mp3', 'mp4', 'wma'];
+
+			if( ! isset($_FILES['file']) || ! is_uploaded_file($_FILES['file']['tmp_name']))
+				throw new Exception('Image file is Missing');
+
+			$item_name = $_FILES['file']['name'];
+			$file_explode = explode('.', $item_name);
+			$file_end = end($file_explode);
+
+			$file_ext = strtolower($file_end);
+
+			if(in_array($file_ext, $expensions)=== false)
+				throw new Exception('Invalid file');
+
+			$max_size = ini_get('upload_max_filesize');
+
+			if($_FILES['file']['size'] > $max_size)
+				throw new Exception('File size must be exactly 2 MB');	
+
+			$upload_image = $_FILES['file'];  
+			$unique_id  = uniqid();
+
+			if ( ! file_exists('../video/tmp')) {
+				mkdir('../video/tmp', 0777, true);
+			}
+
+			move_uploaded_file($_FILES['file']['tmp_name'], '../video/tmp/'.$unique_id.'.'.$file_ext);
+
+			$result = ['error' => 0, 'video_name' => $unique_id.'.'.$file_ext];
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
+	private function saveUploadedVideo($video_name, $user_id) {
+		if ( ! file_exists('../video/profile')) {
+			mkdir('../video/profile', 0777, true);
+		}
+
+		$file_explode = explode('.', $video_name);
+		$file_end = end($file_explode);
+		$file_ext = strtolower($file_end);
+
+		if (copy('../video/tmp/'.$video_name, '../video/'.$user_id.'.'.$file_ext)) {
+			unlink('../video/tmp/'.$video_name);
+		}
 	}
 
 	public function hasRegistered () {

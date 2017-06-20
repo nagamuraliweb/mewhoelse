@@ -10,6 +10,15 @@ angular.module('meapp.services.artistService', [])
         });
     }
 
+    this.videoUpload = function(fd) {
+        return $http.post('http://mewhoelse.in/api/api.php?f=videoUpload', fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }).then(function (resp) {
+            return resp;
+        });
+    }
+
     this.saveArtistDetails = function(artist) {
         var request = {
             method: 'POST',

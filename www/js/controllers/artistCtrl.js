@@ -71,8 +71,28 @@ angular.module('meapp.controllers.artistCtrl', [])
 			fd.append("file", files[0]);
 			loaderFactory.showLoader();
 			artistFactory.imageUpload(fd).then(function(resp) {
-				vm.artist.img_name = resp.data.img_name;
 				loaderFactory.hideLoader();
+				if(resp.data.error === 1) {
+					loaderFactory.showAlert(resp.data.msg);
+					return;
+				} else {
+					vm.artist.img_name = resp.data.img_name;
+				}
+			});
+		};
+
+		$scope.uploadVideo = function(files) {
+			var fd = new FormData();
+			fd.append("file", files[0]);
+			loaderFactory.showLoader();
+			artistFactory.videoUpload(fd).then(function(resp) {
+				loaderFactory.hideLoader();
+				if(resp.data.error === 1) {
+					loaderFactory.showAlert(resp.data.msg);
+					return;
+				} else {
+					vm.artist.video_name = resp.data.video_name;
+				}
 			});
 		};
 

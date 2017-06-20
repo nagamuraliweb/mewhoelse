@@ -49,7 +49,12 @@
 			loaderFactory.showLoader();
 			artistFactory.imageUpload(fd).then(function(resp) {
 				loaderFactory.hideLoader();
-				vm.technician.img_name = resp.data.img_name;
+				if(resp.data.error === 1) {
+					loaderFactory.showAlert(resp.data.msg);
+					return;
+				} else {
+					vm.artist.img_name = resp.data.img_name;
+				}
 			});
 		};
 
