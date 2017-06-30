@@ -21,6 +21,12 @@
 				<div class="error_alert" ng-show="vm.form.artists.gender.$dirty && vm.form.artists.gender.$error.required">
 				    <span>Gender is required.</span>
 				</div>
+
+				<select class="segment-select">
+			      <option value="1">Yes</option>
+			      <option value="0">No</option>
+			  	</select>
+
 				<input type="date" name="dob" ng-model="vm.artist.dob" placeholder="Date of birth" class="inputbox" required>
 				<div class="error_alert" ng-show="vm.form.artists.dob.$dirty && vm.form.artists.dob.$error.required">
 				    <span>Date of birth is required.</span>

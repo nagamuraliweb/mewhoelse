@@ -63,8 +63,16 @@ form {
         -moz-background-size: cover;
         background-size: cover;
     }
-.inputbox{width: 100%;float: left;background: none;border-bottom: 1px solid #ffffff !important;
-    color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;}
+/*.inputbox{width: 100%;float: left;background: none;border-bottom: 1px solid #ffffff !important;
+    color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;}*/
+    .inputbox{width: 100%;
+    float: left;
+    background: #202020;
+    border-bottom: 1px solid #282828 !important;
+    color: #ffffff !important;
+    margin-bottom: 20px;
+    font-size: 16px !important;
+    padding-left: 10px !important;}
 .textareabox{width: 100%;float: left;background: none;border: 1px solid #ffffff !important;
     color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;min-height: 100px;}
 .dropdown{width: 100%;float: left;background: none;border:0;border-bottom: 1px solid #ffffff !important;
@@ -115,7 +123,11 @@ font-size: 13px;}
     stroke: #f836ff !important;
     fill: #f836ff !important;
 }
-.padding_30{padding: 0 10px 10px 10px;}
+/*.padding_30{padding: 0 10px 10px 10px;}*/
+.padding_30 {
+    padding: 10px 10px 10px 10px;
+    background: rgba(0, 0, 0, 0.5);
+}
 .profile_picture{text-align: center;}
 .profile_picture h4{color: #ffffff;text-transform: capitalize;margin-bottom: 15px;font-weight: 400;}
 .personal{color: #ffffff;text-transform: capitalize;padding-left: 30px;font-weight: 100;margin-bottom: 15px;}
