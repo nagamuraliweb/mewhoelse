@@ -62,20 +62,15 @@
 				<div class="border_bottom">
 				Skills
 						<div class="wrapper" id="dwrapper2">
-							<select id="dlist2"  multiple>
-							  <option value="volvo">Volvo</option>
-							  <option value="saab">Saab</option>
-							  <option value="mercedes">Mercedes</option>
-							  <option value="audi">Audi</option>
-							  <option value="Hyndai">Hyndai</option>
-							  <option value="Honda">Honda</option>
-							  <option value="Ferrari">Ferrari</option>
-							  <option value="Ducati">Ducati</option>
-							  <option value="Tesla">Tesla</option>
-							  <option value="volkswagon">volkswagon</option>
-							  <option value="Mclaren">Mclaren</option>
+							<select id="dlist2" name="skills" ng-model="vm.artist.skills" multiple="true" required>
+							  <option value="">Select</option>
+							  <option ng-repeat="(key, value) in vm.skills" value="{{key}}">{{value}}</option>
 							</select>
 						</div>
+				</div>
+
+				<div class="error_alert" ng-show="vm.form.artists.skills.$dirty && vm.form.artists.skills.$error.required">
+				    <span>Skills is required.</span>
 				</div>
 
 				<input type="text" ng-if="vm.artist.skills === '8'" class="inputbox" placeholder="Enter your skills" name="otherskills" ng-model="artist.otherskills">

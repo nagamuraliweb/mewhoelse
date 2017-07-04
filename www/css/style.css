@@ -72,10 +72,10 @@ form {
     /*background: none;*/
 /*    border-bottom: 1px solid #b986eb !important;
 */    color: #ffffff !important;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-size: 14px !important;padding-left: 10px !important;}
-    .border_bottom{/*border-bottom: 1px solid #b986eb !important;*/padding-bottom: 10px;
-    /*margin-bottom: 10px;*/float: left;width: 100%;}
+    .border_bottom{/*border-bottom: 1px solid #b986eb !important;padding-bottom: 10px;*/
+    margin-bottom: 5px;float: left;width: 100%;}
 .textareabox{width: 100%;float: left;background: none;border: 1px solid #ffffff !important;
     color: #ffffff !important;margin-bottom: 10px;font-size: 16px !important;min-height: 100px;}
 /*.dropdown{width: 100%;float: left;background: none;border:0;border-bottom: 1px solid #ffffff !important;
