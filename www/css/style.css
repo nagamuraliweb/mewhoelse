@@ -33,6 +33,7 @@ body
 .bottom_30{margin-bottom: 30px !important;}
 #landing{width: 100%;height: 100%;}
 #landing_header{margin-top: 30px;}
+#landing_header p{text-align: left;color: #ffffff;}
 #landing_header img{width: 50%;}
 .pane {
         background: url('../img/landing_bg.jpg') no-repeat center center fixed; 
@@ -67,16 +68,22 @@ form {
     color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;}*/
     .inputbox{width: 100%;
     float: left;
-    background: #202020;
-    border-bottom: 1px solid #282828 !important;
-    color: #ffffff !important;
-    margin-bottom: 20px;
-    font-size: 16px !important;
-    padding-left: 10px !important;}
+    background: rgba(185,134,235,0.2);
+    /*background: none;*/
+/*    border-bottom: 1px solid #b986eb !important;
+*/    color: #ffffff !important;
+    margin-bottom: 10px;
+    font-size: 14px !important;padding-left: 10px !important;}
+    .border_bottom{/*border-bottom: 1px solid #b986eb !important;*/padding-bottom: 10px;
+    /*margin-bottom: 10px;*/float: left;width: 100%;}
 .textareabox{width: 100%;float: left;background: none;border: 1px solid #ffffff !important;
-    color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;min-height: 100px;}
-.dropdown{width: 100%;float: left;background: none;border:0;border-bottom: 1px solid #ffffff !important;
+    color: #ffffff !important;margin-bottom: 10px;font-size: 16px !important;min-height: 100px;}
+/*.dropdown{width: 100%;float: left;background: none;border:0;border-bottom: 1px solid #ffffff !important;
     color: #ffffff !important;margin-bottom: 20px;font-size: 16px !important;padding-bottom: 8px;
+ -webkit-appearance: none;-moz-appearance: none;text-indent: 1px;text-overflow: '';
+background: url('../img/dropdown.png') no-repeat top 10px right;}*/
+.dropdown{width: 100%;float: left;background: none;border:0;border-bottom: 1px solid #b986eb !important;
+    color: #ffffff !important;margin-bottom: 10px;font-size: 16px !important;padding-bottom: 8px;
  -webkit-appearance: none;-moz-appearance: none;text-indent: 1px;text-overflow: '';
 background: url('../img/dropdown.png') no-repeat top 10px right;}
 .loginbtn{color: #ffffff !important;text-transform: uppercase;border: 1px solid #ffffff !important;
@@ -136,3 +143,85 @@ font-size: 13px;}
 #firstPhoto, #secondPhoto, #thirdPhoto {margin-bottom: 10px;}
 .logout{position: fixed;top: 10px;right: 10px;z-index: 1000;}
 .autowidth{width: auto !important;}
+.login_grid1{color: #ffffff;}
+.back-text{display: none !important;}
+.no_pad{padding: 0 !important;}
+.login_grid1 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ffffff;font-size: 14px;
+}
+.login_grid1 ::-moz-placeholder { /* Firefox 19+ */
+  color: #ffffff;font-size: 14px;
+}
+.login_grid1 :-ms-input-placeholder { /* IE 10+ */
+  color: #ffffff;font-size: 14px;
+}
+.login_grid1 :-moz-placeholder { /* Firefox 18- */
+  color: #ffffff;font-size: 14px;
+}
+.multipleimage{margin-bottom: 10px;}
+.multipleimage .uploadbtn1{position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    text-align:center;
+    background:url('../img/headview.png') no-repeat;
+    display:block;
+    width:90px;
+    height:117px;
+    line-height:30px;
+    float:left;}
+    .multipleimage .uploadbtn2{position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    text-align:center;
+    background:url('../img/profileview.png') no-repeat;
+    display:block;
+    width:90px;
+    height:117px;
+    line-height:30px;
+    float:left;}
+    .multipleimage .uploadbtn3{position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    text-align:center;
+    background:url('../img/fullview.png') no-repeat;
+    display:block;
+    width:90px;
+    height:117px;
+    line-height:30px;
+    float:left;}
+.multipleimage input[type="file"]{
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity = 0);-ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding:0;
+    left:0;
+}
+#profileVideo input[type="file"]{
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity = 0);-ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding:0;
+    left:0;
+}
+#profileVideo .uploadbtn4{position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    text-align:center;
+    background:url('../img/addvideo.png') no-repeat;
+    display:block;
+    width:150px;
+    height:30px;
+    line-height:30px;
+    float:left;}

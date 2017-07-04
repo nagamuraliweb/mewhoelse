@@ -1,0 +1,111 @@
+
+.wrapper {
+  width: 200px;
+  float: right;
+}
+
+.dListholder {
+ /* background: #b986eb;*/
+  background: rgba(185,134,235,0.2);
+  font-size: 16px;
+  font-weight: 300;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  min-height: 30px;
+}
+
+.dListText {
+  padding: 5px 13px;
+  color: #fff;
+  font-family: "Lucida Sans", Arial, Helvetica, sans-serif;
+  float: left;
+  width: 330px;
+  overflow: hidden;font-size: 14px;
+}
+
+.dListBtn {
+  background: url(../img/drop_btn.png);
+  width: 25px;
+  height: 19px;
+  float: right;
+  margin-right: 6px;
+  margin-top: -24px;
+}
+
+.dListBtn,
+.dListText:hover { cursor: pointer; }
+
+.dListdivider { height: 10px; }
+
+.dListdrop {
+  background: #b986eb;
+  padding: 5px 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 10;
+  width: 200px;
+  display: none;
+}
+
+.dlitem {
+  padding: 3px 5px;
+  font-family: "Lucida Sans", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-bottom: 1px;
+}
+
+.dlithov:hover {
+  background: #27ae60;
+  cursor: pointer;
+  color: #fff;
+}
+
+.fleft { float: left; }
+
+.ItemAdded {
+  background: #27ae60;
+  color: #fff;
+}
+
+.dlsearch {
+  width: 100%;
+  height: 24px;
+  background: none;
+  border: none;
+  padding: 3px 3px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.dlsearch:focus { outline: none; }
+
+.reducepad {
+  padding: 3px 12px;
+  height: 24px;
+}
+::-webkit-input-placeholder {
+ color: white;
+ font-family: "Lucida Sans", Arial, Helvetica, sans-serif;
+ font-size: 16px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+ color: white;
+ font-family: "Lucida Sans", Arial, Helvetica, sans-serif;
+ font-size: 16px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+ color: white;
+ font-family: "Lucida Sans", Arial, Helvetica, sans-serif;
+ font-size: 16px;
+}
+
+:-ms-input-placeholder {
+ color: white;
+ font-family: "Lucida Sans", Arial, Helvetica, sans-serif;
+ font-size: 16px;
+}

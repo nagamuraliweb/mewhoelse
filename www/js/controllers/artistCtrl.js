@@ -43,6 +43,45 @@ angular.module('meapp.controllers.artistCtrl', [])
 			vm.genders = JSON.parse(resp.data.genders);
 		});
 
+		jQuery(function ($){
+           $(".segment-select").Segment();
+      	});
+
+      	$('#dlist2').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist3').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist4').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist5').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist6').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist7').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist8').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
 		vm.artist = {
 			user_id: '',
 			gender: '',
