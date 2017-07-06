@@ -56,6 +56,20 @@
 			});
 		};
 
+		jQuery(function ($){
+           $(".segment-select").Segment();
+      	});
+
+      	$('#dlist2').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist3').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
 		vm.saveTechnicianDetails = function() {
 			loaderFactory.showLoader();
 			artistFactory.saveTechnicianDetails(vm.technician).then(function(resp) {

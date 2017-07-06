@@ -55,6 +55,40 @@
 			production_housename: ''
 		};
 
+		jQuery(function ($){
+           $(".segment-select").Segment();
+      	});
+
+      	$('#dlist2').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist3').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist4').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist5').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist6').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
+		$('#dlist7').dropList({
+			multiple	: true,
+			selected	: '["Select"]'
+		});
+
 		vm.saveClientDetails = function() {
 			loaderFactory.showLoader();
 
