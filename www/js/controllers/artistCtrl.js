@@ -4,83 +4,32 @@
 angular.module('meapp.controllers.artistCtrl', [])
 	.controller('artistCtrl', artistCtrl);
 
-	artistCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state'];
+	artistCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant'];
 
-	function artistCtrl($scope, dataFactory, artistFactory, loaderFactory, $state) {
+	function artistCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant) {
 
 		var vm = this;
 		vm.form = {};
 
-		dataFactory.getBody().then(function(resp) {
-			vm.bodies = JSON.parse(resp.data.bodies);
-		});
-
-		dataFactory.getExperience().then(function(resp) {
-			vm.experience = JSON.parse(resp.data.experiences);
-		});
-
-		dataFactory.getHairs().then(function(resp) {
-			vm.hairs = JSON.parse(resp.data.hairs);
-		});
-
-		dataFactory.getHairColors().then(function(resp) {
-			vm.haircolors = JSON.parse(resp.data.hairColors);
-		});
-
-		dataFactory.getLanguages().then(function(resp) {
-			vm.languages = JSON.parse(resp.data.languages);
-		});
-
-		dataFactory.getSkills().then(function(resp) {
-			vm.skills = JSON.parse(resp.data.skills);
-		});
-
-		dataFactory.getSkins().then(function(resp) {
-			vm.skins = JSON.parse(resp.data.skins);
-		});
-
-		dataFactory.getGender().then(function(resp) {
-			vm.genders = JSON.parse(resp.data.genders);
-		});
+		vm.skills = coreConstant.skills;
+		vm.bodies = coreConstant.bodies;
+		vm.experience = coreConstant.experience;
+		vm.hairs = coreConstant.hairs;
+		vm.haircolors = coreConstant.hairColors;
+		vm.skins = coreConstant.skins;
+		vm.genders = coreConstant.genders;
+		vm.languages = coreConstant.languages;
 
 		jQuery(function ($){
            $(".segment-select").Segment();
       	});
 
-      	$('#dlist2').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
-
-		$('#dlist3').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
-
-		$('#dlist4').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
-
-		$('#dlist5').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
-
-		$('#dlist6').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
-
-		$('#dlist7').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
-
-		$('#dlist8').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
+      	setTimeout(function() {
+			$('#dlist2, #dlist3, #dlist4, #dlist5, #dlist6, #dlist7, #dlist8').dropList({
+				multiple	: true,
+				selected	: '["Select"]'
+			});
+		}, 500);
 
 		vm.artist = {
 			user_id: '',
@@ -153,7 +102,8 @@ angular.module('meapp.controllers.artistCtrl', [])
 
 		vm.saveArtistDetails = function() {
 			loaderFactory.showLoader();
-			 artistFactory.saveArtistDetails(vm.artist).then(function(resp) {
+			console.log(vm.artist);
+			 /*artistFactory.saveArtistDetails(vm.artist).then(function(resp) {
 			 	loaderFactory.hideLoader();
 			 	if(resp.data.error === 1) {
 					loaderFactory.showAlert('Registeration Failed', resp.data.msg);
@@ -162,7 +112,7 @@ angular.module('meapp.controllers.artistCtrl', [])
 					loaderFactory.showAlert('Registeration Successful', resp.data.msg);
 					$state.go('artist-profile')
 				}
-			 });
+			 });*/
 		}
 
 	}
