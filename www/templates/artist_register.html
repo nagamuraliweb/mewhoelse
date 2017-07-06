@@ -19,7 +19,7 @@
 				</div> -->
 
 				<div>
-				<p>Profile pictures</p>
+				<p class="titleColor">Profile pictures</p>
 				<div class="row no_pad multipleimage">
 					<div class="col-33 col">
 						<label class="uploadbtn1">
@@ -83,7 +83,7 @@
 				    <span>Skills is required.</span>
 				</div> -->
 
-				<p>Personal details</p>
+				<p class="titleColor">Personal details</p>
 
 				<div class="border_bottom">
 				<p>Gender <span class="pull-right">
@@ -153,6 +153,7 @@
 				</div>
 
 				<input type="text" ng-if="vm.artist.hair_type === '5'" name="others_hairtype" ng-model="vm.others_hairtype" class="inputbox" placeholder="Enter your hair type">
+
 				<input type="number" name="weight" ng-model="vm.artist.weight" class="inputbox" placeholder="Enter your weight" autocomplete="off" required>
 				<div class="error_alert" ng-show="vm.form.artists.weight.$dirty && vm.form.artists.weight.$error.required">
 				    <span>Weight is required.</span>
