@@ -30,6 +30,7 @@ body
 }
 .pull-left{float: left;}
 .pull-right{float: right;}
+.bottom_20{margin-bottom: 20px !important;}
 .bottom_30{margin-bottom: 30px !important;}
 #landing{width: 100%;height: 100%;}
 #landing_header{margin-top: 30px;}
@@ -86,9 +87,9 @@ background: url('../img/dropdown.png') no-repeat top 10px right;}*/
     color: #ffffff !important;margin-bottom: 10px;font-size: 16px !important;padding-bottom: 8px;
  -webkit-appearance: none;-moz-appearance: none;text-indent: 1px;text-overflow: '';
 background: url('../img/dropdown.png') no-repeat top 10px right;}
-.loginbtn{color: #ffffff !important;text-transform: uppercase;border: 1px solid #ffffff !important;
+.loginbtn{color: #ffffff !important;text-transform: uppercase;/*border: 1px solid #ffffff !important;*/
 	border-radius: 0;width: 100px;min-height: 28px;line-height: 28px;font-family:'openSans';
-display: table;margin: auto;margin-bottom: 20px;font-size: 14px;}
+display: table;margin: auto;margin-bottom: 20px;font-size: 12px;background: rgba(185,134,235,0.2) !important;}
 .forgot{color: #ffae20;font-family:'openSans';width: 100%;}
 .signup{color: #ffffff;font-family:'openSans';font-size: 16px;}
 .signup span{color: #ffae20;font-family:'openSans';}
@@ -107,16 +108,16 @@ width: 93%;}
 
 /* overview page */
 .list_overview p{color: #ffffff;font-family: 'openSans';padding-bottom: 5px;text-transform: uppercase;
-font-size: 13px;}
+font-size: 12px;}
 .list_overview span{color: #ffae20;text-transform: capitalize;}
 .bar-header {background: none !important;border-bottom: 1px solid #ffffff;}
 .bar .title{color: #ffae20 !important;}
 .bar .back-button.hide, .bar .buttons .hide{display: block;color: #ffffff;}
 .previous-title{display: none !important;}
 .error_alert{
-    color: #a94442;
+    color: red;
     background-color: #f2dede;
-    border-left: 3px solid #a94442;
+    border-left: 3px solid red;
     padding: 4px;
     margin-bottom: 10px;
     width: 100%;float: left;font-size: 12px;font-weight: bold;
@@ -133,6 +134,9 @@ font-size: 13px;}
 /*.padding_30{padding: 0 10px 10px 10px;}*/
 .padding_30 {
     padding: 10px 10px 10px 10px;
+    background: rgba(0, 0, 0, 0.5);
+}
+.padding_0 {
     background: rgba(0, 0, 0, 0.5);
 }
 .profile_picture{text-align: center;}
@@ -156,6 +160,18 @@ font-size: 13px;}
   color: #ffffff;font-size: 14px;
 }
 .login_grid1 :-moz-placeholder { /* Firefox 18- */
+  color: #ffffff;font-size: 14px;
+}
+.login_grid ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ffffff;font-size: 14px;
+}
+.login_grid ::-moz-placeholder { /* Firefox 19+ */
+  color: #ffffff;font-size: 14px;
+}
+.login_grid :-ms-input-placeholder { /* IE 10+ */
+  color: #ffffff;font-size: 14px;
+}
+.login_grid :-moz-placeholder { /* Firefox 18- */
   color: #ffffff;font-size: 14px;
 }
 .multipleimage{margin-bottom: 10px;}
@@ -226,3 +242,4 @@ font-size: 13px;}
     line-height:30px;
     float:left;}
 .titleColor{color: #ffae20 !important;}
+.artistColor{color: #ffffff;font-size: 12px;}
