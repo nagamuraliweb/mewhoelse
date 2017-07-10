@@ -11,37 +11,80 @@
             <h4>{{::vm.client.user_name}} , {{::vm.profession}}</h4>
         </div>
 
-        <div class="padding_30">
-            <p>Gender <span class="pull-right">{{::vm.gender}}</span></p>
-            <p>Requirements for this project</p>
-            <p>Project <span class="pull-right">
-            <span ng-if="vm.client.user_project == 1">New</span>
-            <span ng-if="vm.client.user_project == 2">Existing</span>
-            </span></p>
-            <p>Project name <span class="pull-right">{{::vm.client.user_project_name}}</span></p>
-            <p>Project type <span class="pull-right">{{::vm.project}}</span></p>
-            <p>Project description <span class="pull-right">{{::vm.client.user_project_description}}</span></p>
-            <p>Roll type <span class="pull-right">{{::vm.role}}</span></p>
-            <p>Looking for <span class="pull-right">{{::vm.looking}}</span></p>
-            <p>Character name <span class="pull-right">{{::vm.client.user_character_name}}</span></p>
-            <p>Character description <span class="pull-right">{{::vm.client.user_character_description}}</span></p>
-            <p>Body Type <span class="pull-right">{{::vm.body}}</span></p>
-            <p>Experience <span class="pull-right">{{::vm.exp}}</span></p>
-            <p>Professional trained <span class="pull-right">
-            <span ng-if="vm.client.user_is_professional == 0">Yes</span>
-            <span ng-if="vm.client.user_is_professional == 1">No</span>
-            </span></p>
-            <p ng-if="vm.client.user_language_id">Languages <span class="pull-right">{{::vm.lang}}</span></p>
-            <p ng-if="vm.client.user_language_others">Languages <span class="pull-right">{{::vm.client.user_language_others}}</span></p>
-            <p>Production house name <span class="pull-right">{{::vm.client.user_production_house}}</span></p>
+        <div class="padding_0 artistColor">
+            <p class="titleColor">Project Details</p>
+            <div class="row">
+                <div class="col col-50">Project</div>
+                <div class="col col-50">: <span ng-if="vm.client.user_project == 1">New</span>
+            <span ng-if="vm.client.user_project == 2">Existing</span></div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Project name</div>
+                <div class="col col-50">: {{::vm.client.user_project_name}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Project type</div>
+                <div class="col col-50">: {{::vm.project}}</div>
+            </div>
+
+            <p class="titleColor">Project Description</p>
+            <div class="row">
+                <div class="col col-50">Roll type</div>
+                <div class="col col-50">: {{::vm.role}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Looking for</div>
+                <div class="col col-50">: {{::vm.looking}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Character name</div>
+                <div class="col col-50">: {{::vm.client.user_character_name}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Character description</div>
+                <div class="col col-50">: {{::vm.client.user_character_description}}</div>
+            </div>
+
+            <p class="titleColor">Requirements</p>
+            <div class="row">
+                <div class="col col-50">Body Type</div>
+                <div class="col col-50">: {{::vm.body}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Experience</div>
+                <div class="col col-50">: {{::vm.exp}}</div>
+            </div>
+             <div class="row">
+                <div class="col col-50">Professional trained</div>
+                <div class="col col-50">: <span ng-if="vm.client.user_is_professional == 0">Yes</span>
+            <span ng-if="vm.client.user_is_professional == 1">No</span></div>
+            </div>
+            <div class="row" ng-if="vm.client.user_language_id">
+                <div class="col col-50">Languages</div>
+                <div class="col col-50">: {{::vm.lang}}</div>
+            </div>
+            <div class="row" ng-if="vm.client.user_language_others">
+                <div class="col col-50">Languages</div>
+                <div class="col col-50">: {{::vm.client.user_language_others}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Production house name</div>
+                <div class="col col-50">: {{::vm.client.user_production_house}}</div>
+            </div>
+            
             <button class="button button-outline loginbtn" ui-sref="client-update">
               Update
             </button>
 
-            <button class="button button-outline loginbtn autowidth" ui-sref="dashboard">
-              view artists & technicians
-            </button>
         </div>
+
+        <button class="button button-outline loginbtn autowidth">
+            Add more requirements
+        </button>
+
+        <button class="button button-outline loginbtn autowidth" ui-sref="dashboard">
+          view artists & technicians
+        </button>
     </div>
 
   </ion-content>
