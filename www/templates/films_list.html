@@ -1,49 +1,52 @@
-<ion-view view-title="Films List" class="dashboard">
+<ion-view view-title="Browse your roles" class="dashboard">
 
   <ion-nav-buttons side="right">
     <logout></logout>
   </ion-nav-buttons>
   
   <ion-content class="padding">
+
+    <div class="border_bottom filmlist">
+        <select class="segment-select">
+            <option value="1">Feature</option>
+            <option value="0">Add</option>
+            <option value="0">Short</option>
+            <option value="0">Tv</option>
+        </select>
+    </div>
     
-    <select name="profession" class="dropdown bottom_30" ng-model="profession">
-        <option value="">Select</option>
-        <option ng-repeat="(key, value) in vm.projects" value="{{key}}">{{value}}</option>
-    </select>
+    <div class="row padding0">
+      
+      <div class="card col list_tech" ui-sref="film-overview">
+          <div class="card-content">
 
-    <div class="list_overview">
-      <div class="padding_30">
-          <p>Gender <span class="pull-right">Male</span></p>
-          <p>Requirements for this project</p>
-          <p>Project <span class="pull-right">
-          <span ng-if="vm.client.user_project == 1">New</span>
-          <span ng-if="vm.client.user_project == 2">Existing</span>
-          </span></p>
-          <p>Project name <span class="pull-right">vm.client.user_project_name</span></p>
-          <p>Project type <span class="pull-right">vm.project</span></p>
-          <p>Project description <span class="pull-right">vm.client.user_project_description</span></p>
-          <p>Roll type <span class="pull-right">vm.role</span></p>
-          <p>Looking for <span class="pull-right">vm.looking</span></p>
-          <p>Character name <span class="pull-right">::vm.client.user_character_name</span></p>
-          <p>Character description <span class="pull-right">vm.client.user_character_description</span></p>
-          <p>Body Type <span class="pull-right">vm.body</span></p>
-          <p>Experience <span class="pull-right">vm.exp</span></p>
-          <p>Professional trained <span class="pull-right">
-          <span ng-if="vm.client.user_is_professional == 0">Yes</span>
-          <span ng-if="vm.client.user_is_professional == 1">No</span>
-          </span></p>
-          <p ng-if="vm.client.user_language_id">Languages <span class="pull-right">vm.lang</span></p>
-          <p ng-if="vm.client.user_language_others">Languages <span class="pull-right">vm.client.user_language_others</span></p>
-          <p>Production house name <span class="pull-right">vm.client.user_production_house</span></p>
+              <h3 class="text-center">Add film</h3>
+              <p>Looking for Male.</p>
+              <p>Character name</p>
+              <div>
+                 <button class="button button-outline loginbtn viewbtn">
+                   View
+                 </button>
+              </div>
 
-          <button class="button button-outline loginbtn autowidth" ui-sref="artist-profile">
-            Go back to profile
-          </button>
-
-          <button class="button button-outline loginbtn autowidth" ui-sref="technician-profile">
-            Go back to profile
-          </button>
+          </div>
       </div>
+
+      <div class="card col list_tech" ui-sref="film-overview">
+          <div class="card-content">
+
+              <h3 class="text-center">Add film</h3>
+              <p>Looking for Male.</p>
+              <p>Character name</p>
+              <div>
+                 <button class="button button-outline loginbtn viewbtn">
+                   View
+                 </button>
+              </div>
+
+          </div>
+      </div>
+
     </div>
 
   </ion-content>

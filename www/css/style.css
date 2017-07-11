@@ -241,10 +241,11 @@ width: 93%;}
     line-height:30px;
     float:left;}
 .titleColor{color: #ffae20 !important;}
-.artistColor{color: #ffffff;font-size: 12px;position: relative;margin-bottom: 10px;}
+.artistColor{color: #ffffff;font-size: 12px;position: relative;margin-bottom: 10px;float: left;
+width: 100%;}
 .artistColor p{margin: 10px 0 0 10px;}
 .bar-stable .button.button-clear{color: #ffffff;}
-.editProject{position: absolute;top: 5px;right: 7px;z-index: 9999;cursor: pointer;color: #ffffff;font-size: 24px;
+.editProject{position: absolute;top: 5px;right: 7px;z-index: 9999;cursor: pointer;color: #ffae20;font-size: 24px;
 }
 .top_10{padding-top: 10px;}
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
@@ -254,8 +255,13 @@ ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-col
 ion-tabs.tabs-color-active-positive .tab-item {
     color: white !important;
 }
-.list_tech{margin:10px 5px 10px 5px !important;background: rgba(255, 255, 255);}
+.list_tech{margin:10px 5px 10px 5px !important;background: rgba(255, 255, 255, 0.2);}
 .list_tech img{max-width: 100%;box-sizing: border-box;}
 .list_tech h3{margin-top: 0;color: #ffae20 !important;font-size: 16px;text-transform: capitalize;}
+.list_tech p{color: #ffffff;font-size: 12px;}
 .padding0{padding: 0px !important;}
 .list_tech span{font-size: 12px;}
+.land_btn{background: rgba(185,134,235,0.2) !important;border: 0 !important;font-size: 14px !important;}
+.viewbtn{background: rgba(185,134,235) !important;}
+.filmlist .ui-segment{border-radius: 2px !important;}
+.filmlist .ui-segment span.option{padding-left: 10px !important;padding-right: 10px !important;}

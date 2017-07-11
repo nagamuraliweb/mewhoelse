@@ -12,6 +12,10 @@
 		$scope.user_id = window.localStorage.getItem('userID');
 		$scope.version = new Date().getTime();
 
+		jQuery(function ($){
+           $(".segment-select").Segment();
+      	});
+
 		dataFactory.getProjects().then(function(resp) {
 			vm.projects = JSON.parse(resp.data.projects);
 		});

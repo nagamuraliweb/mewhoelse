@@ -146,11 +146,20 @@ angular.module('meapp.config', [])
     isAuthorized: true
   })
 
-  // clients overview page
+  // films list page
   .state('films-list', {
     url: '/films-list',
     templateUrl: 'templates/films_list.html',
     controller: 'filmsListCtrl',
+    controllerAs: 'vm',
+    isAuthorized: true
+  })
+
+  // film overview page
+  .state('film-overview', {
+    url: '/film-overview',
+    templateUrl: 'templates/film_overview.html',
+    controller: 'filmOverviewCtrl',
     controllerAs: 'vm',
     isAuthorized: true
   })
