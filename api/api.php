@@ -866,9 +866,7 @@ class me_api extends db_config {
 			if(in_array($file_ext, $expensions)=== false)
 				throw new Exception('Invalid file');
 
-			$max_size = ini_get('upload_max_filesize');
-
-			if($_FILES['file']['size'] > $max_size)
+			if($_FILES['file']['size'] > 2097152)
 				throw new Exception('File size must be exactly 2 MB');	
 
 			$upload_image = $_FILES['file'];  
@@ -915,9 +913,7 @@ class me_api extends db_config {
 			if(in_array($file_ext, $expensions)=== false)
 				throw new Exception('Invalid file');
 
-			$max_size = ini_get('upload_max_filesize');
-
-			if($_FILES['file']['size'] > $max_size)
+			if($_FILES['file']['size'] > 2097152)
 				throw new Exception('File size must be exactly 2 MB');	
 
 			$upload_image = $_FILES['file'];  

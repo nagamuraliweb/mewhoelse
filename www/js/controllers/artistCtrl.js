@@ -54,10 +54,11 @@ angular.module('meapp.controllers.artistCtrl', [])
 
 		vm.artist.user_id = window.localStorage.getItem('userID');
 
-		$scope.uploadFile = function(files) {
+		$scope.uploadFile = function(files, selector) {
 			var fd = new FormData();
 			fd.append("file", files[0]);
 			loaderFactory.showLoader();
+			
 			artistFactory.imageUpload(fd).then(function(resp) {
 				loaderFactory.hideLoader();
 				if(resp.data.error === 1) {
@@ -65,6 +66,12 @@ angular.module('meapp.controllers.artistCtrl', [])
 					return;
 				} else {
 					vm.artist.img_name = resp.data.img_name;
+
+					var img = document.createElement('img');
+					img.setAttribute('src', 'http://mewhoelse.in/img/tmp/'+resp.data.img_name);
+					img.setAttribute('width', '90px');
+					img.setAttribute('height', '117px');
+					document.getElementById(selector).appendChild(img);
 				}
 			});
 		};
