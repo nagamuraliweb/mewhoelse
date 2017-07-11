@@ -12,7 +12,10 @@
         </div>
 
         <div class="padding_0 artistColor">
-            <p class="titleColor">Project Details</p>
+
+            <i class="icon ion-compose editProject" ui-sref="client-update"></i>
+            
+            <p class="titleColor top_10">Project Details</p>
             <div class="row">
                 <div class="col col-50">Project</div>
                 <div class="col col-50">: <span ng-if="vm.client.user_project == 1">New</span>
@@ -71,14 +74,10 @@
                 <div class="col col-50">Production house name</div>
                 <div class="col col-50">: {{::vm.client.user_production_house}}</div>
             </div>
-            
-            <button class="button button-outline loginbtn" ui-sref="client-update">
-              Update
-            </button>
 
         </div>
 
-        <button class="button button-outline loginbtn autowidth">
+        <button class="button button-outline loginbtn autowidth" ui-sref="client-register">
             Add more requirements
         </button>
 

@@ -8,9 +8,12 @@
 
 	function artistListCtrl($scope, dataFactory, $state) {
 
+		var vm = this;
+
 		dataFactory.getUsersDetails().then(function(resp) {
-			$scope.users_details = JSON.parse(resp.data.users_details);
-			console.log($scope.users_details);
+			console.log(resp);
+			vm.user_details = JSON.parse(resp.data.users_details);
+			console.log(vm.user_details);
 		});
 
 	}

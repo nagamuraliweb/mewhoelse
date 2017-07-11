@@ -11,37 +11,86 @@
             <img ng-src="http://mewhoelse.in/img/profile/{{user_id}}.jpg?v={{version}}" alt="Artist" class="img-responsive">
             <h4>{{vm.artist.user_name}} , {{vm.profession}}</h4>
         </div>
-        <h4 class="personal">Personal details</h4>
-        <div class="padding_30">
-            <p>Gender <span class="pull-right">{{::vm.gender}}</span></p>
-            <p>Date of birth <span class="pull-right">{{::vm.artist.user_dob | date : 'mediumDate'}}</span></p>
-            <p ng-if="vm.artist.user_skills_id">Skills <span class="pull-right">{{::vm.skill}}</span></p>
-            <p ng-if="vm.artist.user_others_kills">{{::vm.artist.user_others_kills}} <span class="pull-right">{{::vm.client.user_language_others}}</span></p>
-            <p>Experience <span class="pull-right">{{::vm.exp}}</span></p>
-            <p>City <span class="pull-right">{{::vm.artist.user_city}}</span></p>
-            <p>Ethnicity <span class="pull-right">{{::vm.artist.user_ethinicity}}</span></p>
-            <p>Body Type <span class="pull-right">{{::vm.body}}</span></p>
-            <p ng-if="vm.artist.user_hair_id">Hair Type <span class="pull-right">{{::vm.hair}}</span></p>
-            <p ng-if="!vm.artist.user_hair_id">Hair Type <span class="pull-right">{{::vm.hair}}</span></p>
-            <p>Weight <span class="pull-right">{{::vm.artist.user_weight}} KG</span></p>
-            <p>Skin Color <span class="pull-right">{{::vm.skin}}</span></p>
-            <p>Hair Color <span class="pull-right">{{::vm.haircolor}}</span></p>
-            <p>Professional trained <span class="pull-right">
-            <span ng-if="vm.artist.user_is_professional == 0">Yes</span>
-            <span ng-if="vm.artist.user_is_professional == 1">No</span>
-            </span></p>
-            <p>Languages <span class="pull-right">{{::vm.lang}}</span></p>
-            <p ng-if="vm.artist.user_language_others">Languages <span class="pull-right">{{::vm.artist.user_language_others}}</span></p>
-            <p>Profile Videos</p>
-            <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="vm.artist.user_videos"></youtube-video>
-            <button class="button button-outline loginbtn" ui-sref="artist-update">
-              Update
-            </button>
+        
+        <div class="padding_0 artistColor">
 
-            <button class="button button-outline loginbtn">
-              Send message
-            </button>
+            <div class="row" ng-if="vm.artist.user_skills_id">
+                <div class="col col-50">Skills</div>
+                <div class="col col-50">: {{::vm.skill}}</div>
+            </div>
+            <div class="row" ng-if="vm.artist.user_others_kills">
+                <div class="col col-50">Skills</div>
+                <div class="col col-50">: {{::vm.artist.user_others_kills}}</div>
+            </div>
+
+            <p class="titleColor">Personal details</h4>
+            <div class="row">
+                <div class="col col-50">Gender</div>
+                <div class="col col-50">: {{::vm.gender}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Date of birth</div>
+                <div class="col col-50">: {{::vm.artist.user_dob | date : 'mediumDate'}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Body Type</div>
+                <div class="col col-50">: {{::vm.body}}</div>
+            </div>
+            <div class="row" ng-if="vm.artist.user_hair_id">
+                <div class="col col-50">Hair Type</div>
+                <div class="col col-50">: {{::vm.hair}}</div>
+            </div>
+            <div class="row" ng-if="!vm.artist.user_hair_id">
+                <div class="col col-50">Hair Type</div>
+                <div class="col col-50">: {{::vm.hair}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Weight</div>
+                <div class="col col-50">: {{::vm.artist.user_weight}} KG</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Languages</div>
+                <div class="col col-50">: {{::vm.lang}}</div>
+            </div>
+            <div class="row" ng-if="vm.artist.user_language_others">
+                <div class="col col-50">Languages</div>
+                <div class="col col-50">: {{::vm.artist.user_language_others}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Experience</div>
+                <div class="col col-50">: {{::vm.exp}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">City</div>
+                <div class="col col-50">: {{::vm.artist.user_city}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Ethnicity</div>
+                <div class="col col-50">: {{::vm.artist.user_ethinicity}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Skin Color</div>
+                <div class="col col-50">: {{::vm.skin}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Hair Color</div>
+                <div class="col col-50">: {{::vm.haircolor}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Professional trained</div>
+                <div class="col col-50">: <span ng-if="vm.artist.user_is_professional == 0">Yes</span>
+            <span ng-if="vm.artist.user_is_professional == 1">No</span></div>
+            </div>
+            
+            <p class="titleColor">Profile Videos</p>
+
+            <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="vm.artist.user_videos"></youtube-video>
         </div>
+
+        <button class="button button-outline loginbtn autowidth" ui-sref="films-list">
+          Send message
+        </button>
+            
     </div>
 
   </ion-content>

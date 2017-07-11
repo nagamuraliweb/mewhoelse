@@ -13,6 +13,9 @@
         </div>
         
         <div class="padding_0 artistColor">
+
+            <i class="icon ion-compose editProject" ui-sref="artist-update"></i>
+
             <div class="row" ng-if="vm.artist.user_skills_id">
                 <div class="col col-50">Skills</div>
                 <div class="col col-50">: {{::vm.skill}}</div>
@@ -84,10 +87,6 @@
             <p class="titleColor">Profile Videos</p>
 
             <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="vm.artist.user_videos"></youtube-video>
-
-            <button class="button button-outline loginbtn" ui-sref="artist-update">
-              Update
-            </button>
 
             <button class="button button-outline loginbtn autowidth" ui-sref="films-list">
               Search for films

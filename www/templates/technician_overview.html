@@ -7,21 +7,65 @@
   <ion-content class="padding">
     
     <div class="list_overview">
-        <img src="img/artist1.jpg" alt="Artist" class="img-responsive">
-        <p>Name <span class="pull-right">Megna naidu, Artist</span></p>
-        <p>profession <span class="pull-right">Artists</span></p>
-        <p>Address <span class="pull-right">Chennai</span></p>
-        <p>Gender <span class="pull-right">Megna naidu, Artist</span></p>
-        <p>Date of birth <span class="pull-right">Chennai</span></p>
-        <p>Skills <span class="pull-right">Horse Riding</span></p>
-        <p>Experience <span class="pull-right">Experienced</span></p>
-        <p>City <span class="pull-right">Megna naidu, Artist</span></p>
-        <p>Ethnicity <span class="pull-right">Chennai</span></p>
-        <p>Professional trained <span class="pull-right">Yes</span></p>
-        <p>Languages <span class="pull-right">Tamil English</span></p>
-        <p>Profile Videos</p>
-        <iframe width="300" height="300" src="https://www.youtube.com/embed/XGSy3_Czz8k">
-        </iframe>
+        <div class="profile_picture">
+            <img ng-src="http://mewhoelse.in/img/profile/{{vm.user_id}}.jpg?v={{vm.version}}" alt="Technician" class="img-responsive">
+            <h4>{{::vm.technician.user_name}} , {{::vm.profession}}</h4>
+        </div>
+
+        <div class="padding_0 artistColor">
+
+            <div class="row" ng-if="vm.technician.user_skills_id">
+                <div class="col col-50">Skills</div>
+                <div class="col col-50">: {{::vm.skills}}</div>
+            </div>
+            <div class="row" ng-if="vm.technician.user_skills_others">
+                <div class="col col-50">Skills</div>
+                <div class="col col-50">: {{::vm.technician.user_skills_others}}</div>
+            </div>
+
+            <p class="titleColor">Personal details</h4>
+            <div class="row">
+                <div class="col col-50">Gender</div>
+                <div class="col col-50">: {{::vm.gender}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Date of birth</div>
+                <div class="col col-50">: {{::vm.technician.user_dob | date : 'mediumDate'}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Languages</div>
+                <div class="col col-50">: {{::vm.lang}}</div>
+            </div>
+            <div class="row" ng-if="vm.technician.user_language_others">
+                <div class="col col-50">Languages</div>
+                <div class="col col-50">: {{::vm.technician.user_language_others}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Experience</div>
+                <div class="col col-50">: {{::vm.exp}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">City</div>
+                <div class="col col-50">: {{::vm.technician.user_city}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Ethnicity</div>
+                <div class="col col-50">: {{::vm.technician.user_ethinicity}}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Professional trained</div>
+                <div class="col col-50">: <span ng-if="vm.technician.user_is_professional == 0">Yes</span>
+            <span ng-if="vm.technician.user_is_professional == 1">No</span></div>
+            </div>
+
+            <p class="titleColor">Profile Videos</p>
+            <youtube-video player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="vm.technician.user_videos"></youtube-video>
+        </div>
+
+        <button class="button button-outline loginbtn autowidth" ui-sref="films-list">
+          Send message
+        </button>
+
     </div>
 
   </ion-content>
