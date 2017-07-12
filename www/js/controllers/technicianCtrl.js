@@ -4,29 +4,19 @@
 	angular.module('meapp.controllers.technicianCtrl', [])
 	.controller('technicianCtrl', technicianCtrl);
 
-	technicianCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', '$stateParams'];
+	technicianCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', '$stateParams', 'coreConstant'];
 
-	function technicianCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, $stateParams) {
+	function technicianCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, $stateParams, coreConstant) {
 
 		var vm = this;
-		var user_id = window.localStorage.getItem('userID');
-
 		vm.form = {};
 
-		dataFactory.getExperience().then(function(resp) {
-			vm.experience = JSON.parse(resp.data.experiences);
-		});
-
-		dataFactory.getLanguages().then(function(resp) {
-			vm.languages = JSON.parse(resp.data.languages);
-		});
-
-		dataFactory.getGender().then(function(resp) {
-			vm.genders = JSON.parse(resp.data.genders);
-		});
+		vm.experience = coreConstant.experience;
+		vm.languages = coreConstant.languages;
+		vm.genders = coreConstant.genders;
 
 		vm.technician = {
-			user_id: user_id,
+			user_id: '',
 			gender: '',
 			dob: '',
 			videos: '',
@@ -45,18 +35,34 @@
 			var fd = new FormData();
 			fd.append("file", files[0]);
 			loaderFactory.showLoader();
+			
 			artistFactory.imageUpload(fd).then(function(resp) {
 				loaderFactory.hideLoader();
 				if(resp.data.error === 1) {
 					loaderFactory.showAlert(resp.data.msg);
 					return;
 				} else {
-					vm.artist.img_name = resp.data.img_name;
+
+					if (selector === 'frontview') {
+						vm.technician.front_img = resp.data.img_name;
+					} else if (selector === 'sideview') {
+						vm.technician.side_img = resp.data.img_name;
+					} else {
+						vm.technician.full_img = resp.data.img_name;
+					}
+
+					$('#'+selector).empty();
+
+					var img = document.createElement('img');
+					img.setAttribute('src', 'http://mewhoelse.in/img/tmp/'+resp.data.img_name);
+					img.setAttribute('width', '90px');
+					img.setAttribute('height', '117px');
+					document.getElementById(selector).appendChild(img);
 				}
 			});
 		};
 
-		jQuery(function ($){
+		/*jQuery(function ($){
            $(".segment-select").Segment();
       	});
 
@@ -68,7 +74,7 @@
 		$('#dlist3').dropList({
 			multiple	: true,
 			selected	: '["Select"]'
-		});
+		});*/
 
 		vm.saveTechnicianDetails = function() {
 			loaderFactory.showLoader();

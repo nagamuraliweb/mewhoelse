@@ -3,104 +3,178 @@
   <div class="logout">
     <logout></logout>
   </div>
-  
-  <ion-content class="padding">
 
-	<div id="landing_header" class="text-center">
-		<img src="img/logo.png" alt="Logo_Meapp" class="img-responsive">
-	</div>    
+  <ion-content class="padding">   
 
-	<div class="row login_grid">
-		<form name="vm.form.artists">
+	<div class="row login_grid1">
+		<form name="vm.form.artists" novalidate>
 			<div id="artists">
 				<div>
-					<label ng-repeat="(key, value) in vm.genders">
-						<input type="radio" name="gender" ng-model="vm.client.gender" value="{{key}}"> {{value}}
-					</label>
+				<p class="titleColor">Profile pictures</p>
+				<div class="row no_pad multipleimage">
+					<div class="col-33 col">
+						<label class="uploadbtn1">
+							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'frontview')" />
+						</label><br>
+						<span id="frontview">
+							<img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_front.jpg" width="90px" height="117px" />
+						</span>
+					</div>
+
+					<div class="col-33 col">
+						<label class="uploadbtn2">
+							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'sideview')" />
+						</label><br>
+						<span id="sideview">
+							<img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_side.jpg" width="90px" height="117px" />
+						</span>
+					</div>
+
+					<div class="col-33 col">
+						<label class="uploadbtn3">
+							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'fullview')" />
+						</label><br>
+						<span id="fullview">
+							<img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_full.jpg" width="90px" height="117px" />
+						</span>
+					</div>
 				</div>
-				<div class="error_alert" ng-show="vm.form.artists.gender.$dirty && vm.form.artists.gender.$error.required">
-				    <span>Gender is required.</span>
+				</div> 
+
+				<div class="border_bottom">
+				<label>
+					<div>
+						<input type="url" name="videos" placeholder="Profile video(Youtube link)" class="inputbox" ng-model="vm.artist.videos">
+					</div>
+
+					<div id="profileVideo">
+						<label class="uploadbtn4">
+							<input type="file" name="file" onchange="angular.element(this).scope().uploadVideo(this.files)" />
+						</label><br>
+						<span id="profilevideo"></span>
+					</div>
+				</label>
 				</div>
+
+				<div class="border_bottom">
+				Skills
+						<div class="wrapper" id="dwrapper2">
+							<select id="dlist2" name="skills" ng-model="vm.artist.skills">
+							  <option value="">Select</option>
+							  <option ng-repeat="(key, value) in vm.skills" value="{{key}}">{{value}}</option>
+							</select>
+						</div>
+				</div>
+
+				<div class="error_alert" ng-show="vm.form.artists.skills.$dirty && vm.form.artists.skills.$error.required">
+				    <span>Skills is required.</span>
+				</div>
+
+				<input type="text" ng-if="vm.artist.skills === '8'" class="inputbox" placeholder="Enter your skills" name="otherskills" ng-model="artist.otherskills" />
+
+				<p class="titleColor">Personal details</p>
+
+				<div class="border_bottom">
+				<p>Gender <span class="pull-right">
+					<select ng-model="vm.artist.gender">
+				      <option value="1">Male</option>
+				      <option value="0">Female</option>
+				  	</select>
+				</span></p>
+			  	</div>
+
 				<input type="date" name="dob" ng-model="vm.artist.dob" placeholder="Date of birth" class="inputbox" required>
 				<div class="error_alert" ng-show="vm.form.artists.dob.$dirty && vm.form.artists.dob.$error.required">
 				    <span>Date of birth is required.</span>
 				</div>
-				<label>
-					Add Profile picture 
-					<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
-				</label><br><br>
-				<input type="url" name="videos" placeholder="Add profile videos link here" class="inputbox" ng-model="vm.artist.videos">
-				<select name="skills" class="dropdown" ng-model="vm.artist.skills" required>
-					<option value="">Skills</option>
-					<option ng-repeat="(key, value) in vm.skills" value="{{key}}">{{value}}</option>
-				</select>
-				<div class="error_alert" ng-show="vm.form.artists.skills.$dirty && vm.form.artists.skills.$error.required">
-				    <span>Skills is required.</span>
+
+				<div class="border_bottom">
+				Body Type
+						<div class="wrapper" id="dwrapper4">
+							<select id="dlist4" ng-model="vm.artist.body_type" required>
+							  	<option value="">Select</option>
+								<option ng-repeat="(key, value) in vm.bodies" value="{{key}}">{{value}}</option>
+							</select>
+						</div>
 				</div>
-				<input type="text" ng-if="vm.artist.skills === '8'" class="inputbox" placeholder="Enter your skills" name="otherskills" ng-model="vm.artist.otherskills">
-				<select name="experince" class="dropdown" ng-model="vm.artist.experince" required>
-					<option value="">Experience</option>
-					<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
-				</select>
-				<div class="error_alert" ng-show="vm.form.artists.experince.$dirty && vm.form.artists.experince.$error.required">
-				    <span>Experience is required.</span>
+
+				<div class="border_bottom">
+				Hair Type
+						<div class="wrapper" id="dwrapper5">
+							<select id="dlist5" ng-model="vm.artist.hair_type" required>
+							  	<option value="">Select</option>
+								<option ng-repeat="(key, value) in vm.hairs" value="{{key}}">{{value}}</option>
+							</select>
+						</div>
 				</div>
+
+				<input type="text" ng-if="vm.artist.hair_type === '5'" name="others_hairtype" ng-model="vm.others_hairtype" class="inputbox" placeholder="Enter your hair type">
+
+				<input type="number" name="weight" ng-model="vm.artist.weight" class="inputbox" placeholder="Enter your weight" autocomplete="off" required>
+				<div class="error_alert" ng-show="vm.form.artists.weight.$dirty && vm.form.artists.weight.$error.required">
+				    <span>Weight is required.</span>
+				</div>
+
+				<div class="border_bottom">
+				Languages
+						<div class="wrapper" id="dwrapper8">
+							<select id="dlist8" ng-model="vm.artist.languages" required>
+							  <option value="">Select</option>
+								<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
+							</select>
+						</div>
+				</div>
+
+				<input type="text" ng-if="vm.artist.languages === '7'" name="others_languages" ng-model="vm.artist.others_languages" class="inputbox bottom_30" placeholder="Enter your language" />
+
+				<div class="border_bottom">
+				Experience
+						<div class="wrapper" id="dwrapper3">
+							<select id="dlist3" ng-model="vm.artist.experince" required>
+							  	<option value="">Select</option>
+								<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
+							</select>
+						</div>
+				</div>
+
 				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="vm.artist.city" required>
 				<div class="error_alert" ng-show="vm.form.artists.city.$dirty && vm.form.artists.city.$error.required">
 				    <span>City is required.</span>
 				</div>
-				<input type="text" name="other_ethnicity" placeholder="Ethnicity" class="inputbox" ng-model="vm.artist.other_ethnicity">
-				<select name="body_type" class="dropdown" name="body_type" ng-model="vm.artist.body_type" required>
-					<option value="">Body Type</option>
-					<option ng-repeat="(key, value) in vm.bodies" value="{{key}}">{{value}}</option>
-				</select>
-				<div class="error_alert" ng-show="vm.form.artists.body_type.$dirty && vm.form.artists.body_type.$error.required">
-				    <span>Body Type is required.</span>
-				</div>
-				<select name="hair_type" class="dropdown" ng-model="vm.artist.hair_type" name="hair_type" required>
-					<option value="">Hair Type</option>
-					<option ng-repeat="(key, value) in vm.hairs" value="{{key}}">{{value}}</option>
-				</select>
-				<div class="error_alert" ng-show="vm.form.artists.hair_type.$dirty && vm.form.artists.hair_type.$error.required">
-				    <span>Hair Type is required.</span>
-				</div>
-				<input type="text" ng-if="artist.hair_type === '5'" name="others_hairtype" ng-model="vm.others_hairtype" class="inputbox" placeholder="Enter your hair type">
-				<input type="text" name="weight" ng-model="vm.artist.weight" class="inputbox" placeholder="Enter your weight" required>
-				<div class="error_alert" ng-show="vm.form.artists.weight.$dirty && vm.form.artists.weight.$error.required">
-				    <span>Weight is required.</span>
-				</div>
-				<select name="skin_color" class="dropdown" ng-model="vm.artist.skin_color" required>
-					<option value="">Skin Color</option>
-					<option ng-repeat="(key, value) in vm.skins" value="{{key}}">{{value}}</option>
-				</select>
-				<div class="error_alert" ng-show="vm.form.artists.skin_color.$dirty && vm.form.artists.weight.$error.required">
-				    <span>Skin Color is required.</span>
-				</div>
-				<select name="hair_color" class="dropdown" ng-model="vm.artist.hair_color" required>
-					<option value="">Hair Color</option>
-					<option ng-repeat="(key, value) in vm.haircolors" value="{{key}}">{{value}}</option>
-				</select>
-				<div class="error_alert" ng-show="vm.form.artists.hair_color.$dirty && vm.form.artists.hair_color.$error.required">
-				    <span>Hair Color is required.</span>
-				</div>
-				<div>
-					Professional trained <label><input type="radio" name="training" ng-model="vm.artist.training" value="0"> Yes</label>
-					<label><input type="radio" name="training" ng-model="vm.artist.training" value="1"> No</label>
-				</div><br>
-				<div class="error_alert" ng-show="vm.form.artists.training.$dirty && vm.form.artists.training.$error.required">
-				    <span>Professional trained is required.</span>
-				</div>
-				<select name="languages" ng-model="vm.artist.languages" class="dropdown" required>
-					<option value="">Languages</option>
-					<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
-				</select>
-				<div class="error_alert" ng-show="vm.form.artists.languages.$dirty && vm.form.artists.languages.$error.required">
-				    <span>Languages is required.</span>
-				</div>
-				<input type="text" ng-if="vm.artist.languages === '7'" name="others_languages" ng-model="vm.artist.others_languages" class="inputbox bottom_30" placeholder="Enter your language">
 
-				<button class="button button-outline loginbtn" ng-click="vm.updateArtistDetails()" ng-disabled="!vm.form.artists.$valid">
-				  update
+				<input type="text" name="other_ethnicity" placeholder="Ethnicity" class="inputbox" ng-model="vm.artist.other_ethnicity" />
+
+				<div class="border_bottom">
+				Skin Color
+						<div class="wrapper" id="dwrapper6">
+							<select id="dlist6" ng-model="vm.artist.skin_color" required>
+							  	<option value="">Select</option>
+								<option ng-repeat="(key, value) in vm.skins" value="{{key}}">{{value}}</option>
+							</select>
+						</div>
+				</div>
+
+				<div class="border_bottom">
+				Hair Color
+						<div class="wrapper" id="dwrapper7">
+							<select id="dlist7" ng-model="vm.artist.hair_color" required>
+							  	<option value="">Select</option>
+								<option ng-repeat="(key, value) in vm.haircolors" value="{{key}}">{{value}}</option>
+							</select>
+						</div>
+				</div>
+
+				<div class="border_bottom">
+				<p>Professional trained <span class="pull-right">
+					<select ng-model="vm.artist.training">
+				      <option value="1">Yes</option>
+				      <option value="0">No</option>
+				  	</select>
+				</span></p>
+			  	</div>
+
+				<button class="button button-outline loginbtn createportfolio" ng-click="vm.updateArtistDetails()">
+				  create portfolio
 				</button>
 			</div>
 

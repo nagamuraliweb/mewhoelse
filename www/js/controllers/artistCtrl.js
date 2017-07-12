@@ -118,7 +118,7 @@ angular.module('meapp.controllers.artistCtrl', [])
 
 		vm.saveArtistDetails = function() {
 			loaderFactory.showLoader();
-			console.log(vm.artist);
+
 			 artistFactory.saveArtistDetails(vm.artist).then(function(resp) {
 			 	loaderFactory.hideLoader();
 			 	if(resp.data.error === 1) {

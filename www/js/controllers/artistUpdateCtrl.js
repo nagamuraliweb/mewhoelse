@@ -3,46 +3,23 @@
 	angular.module('meapp.controllers.artistUpdateCtrl', [])
 		.controller('artistUpdateCtrl', artistUpdateCtrl);
 
-	artistUpdateCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state'];
+	artistUpdateCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant'];
 
-	function artistUpdateCtrl($scope, dataFactory, artistFactory, loaderFactory, $state) {
+	function artistUpdateCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant) {
 
 		var vm = this;
 		var user_id = window.localStorage.getItem('userID');
 
 		vm.form = {};
 
-		dataFactory.getBody().then(function(resp) {
-			vm.bodies = JSON.parse(resp.data.bodies);
-		});
-
-		dataFactory.getExperience().then(function(resp) {
-			vm.experience = JSON.parse(resp.data.experiences);
-		});
-
-		dataFactory.getHairs().then(function(resp) {
-			vm.hairs = JSON.parse(resp.data.hairs);
-		});
-
-		dataFactory.getHairColors().then(function(resp) {
-			vm.haircolors = JSON.parse(resp.data.hairColors);
-		});
-
-		dataFactory.getLanguages().then(function(resp) {
-			vm.languages = JSON.parse(resp.data.languages);
-		});
-
-		dataFactory.getSkills().then(function(resp) {
-			vm.skills = JSON.parse(resp.data.skills);
-		});
-
-		dataFactory.getSkins().then(function(resp) {
-			vm.skins = JSON.parse(resp.data.skins);
-		});
-
-		dataFactory.getGender().then(function(resp) {
-			vm.genders = JSON.parse(resp.data.genders);
-		});
+		vm.skills = coreConstant.skills;
+		vm.bodies = coreConstant.bodies;
+		vm.experience = coreConstant.experience;
+		vm.hairs = coreConstant.hairs;
+		vm.haircolors = coreConstant.hairColors;
+		vm.skins = coreConstant.skins;
+		vm.genders = coreConstant.genders;
+		vm.languages = coreConstant.languages;
 
 		dataFactory.getUserDetails(user_id).then(function(resp) {
 			var artist_data = JSON.parse(resp.data.user_details);
@@ -60,7 +37,7 @@
 				body_type: artist_data.user_body_id,
 				hair_type: artist_data.user_hair_id,
 				others_hairtype: artist_data.user_hair_others,
-				weight: artist_data.user_weight,
+				weight: parseInt(artist_data.user_weight),
 				skin_color: artist_data.user_skin_id,
 				hair_color: artist_data.user_hair_color_id,
 				training: artist_data.user_is_professional,
@@ -73,13 +50,29 @@
 			var fd = new FormData();
 			fd.append("file", files[0]);
 			loaderFactory.showLoader();
+
 			artistFactory.imageUpload(fd).then(function(resp) {
 				loaderFactory.hideLoader();
 				if(resp.data.error === 1) {
 					loaderFactory.showAlert(resp.data.msg);
 					return;
 				} else {
-					vm.artist.img_name = resp.data.img_name;
+
+					if (selector === 'frontview') {
+						vm.artist.front_img = resp.data.img_name;
+					} else if (selector === 'sideview') {
+						vm.artist.side_img = resp.data.img_name;
+					} else {
+						vm.artist.full_img = resp.data.img_name;
+					}
+
+					$('#'+selector).empty();
+
+					var img = document.createElement('img');
+					img.setAttribute('src', 'http://mewhoelse.in/img/tmp/'+resp.data.img_name);
+					img.setAttribute('width', '90px');
+					img.setAttribute('height', '117px');
+					document.getElementById(selector).appendChild(img);
 				}
 			});
 		};
