@@ -1,4 +1,5 @@
 <?php
+//error_reporting(E_ALL); ini_set('display_errors', '1');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: PUT, GET, POST");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -552,34 +553,41 @@ class me_api extends db_config {
 				'hair_color' => $postdata->hair_color,
 				'training' => $postdata->training,
 				'languages' => $postdata->languages,
-				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null
+				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null,
 			];
 			
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
-				if (empty($postdata->img_name)) {
-					throw new Exception('Choose profile image');
+				if (empty($postdata->front_img)) {
+					throw new Exception('Upload front view image');
 				}
 
-				if (empty($postdata->video_name)) {
-					throw new Exception('Choose profile image');
+				if (empty($postdata->side_img)) {
+					throw new Exception('Upload side view image');
 				}
 
-				saveUploadedImage($postdata->img_name, $postdata->user_id);
-				saveUploadedVideo($postdata->video_name, $postdata->user_id);
+				if (empty($postdata->full_img)) {
+					throw new Exception('Upload full view image');
+				}
+
+				if ($postdata->video_name) {
+					$this->saveUploadedVideo($postdata->video_name, $postdata->user_id);
+				}
+
+				$this->saveUploadedImage($postdata);
 
 				if(!Model_Admin::saveArtistDetails($this->DB, $data)) {
 					throw new Exception('Error occured');
 				}
 			} else {
 
-				if ($postdata->img_name) {
-					saveUploadedImage($postdata->img_name, $postdata->user_id);
+				if ($postdata->front_img || $postdata->side_img || $postdata->full_img) {
+					$this->saveUploadedImage($postdata);
 				}
 
 				if ($postdata->video_name) {
-					saveUploadedVideo($postdata->video_name, $postdata->user_id);
+					$this->saveUploadedVideo($postdata->video_name, $postdata->user_id);
 				}
 
 				if(!Model_Admin::updateArtistDetails($this->DB, $data)) {
@@ -660,18 +668,26 @@ class me_api extends db_config {
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
 
 			if (empty($user_id)) {
-				if (empty($postdata->img_name)) {
-					throw new Exception('Choose profile image');
+				if (empty($postdata->front_img)) {
+					throw new Exception('Upload front view image');
 				}
 
-				saveUploadedImage($postdata->img_name, $postdata->user_id);
+				if (empty($postdata->side_img)) {
+					throw new Exception('Upload side view image');
+				}
+
+				if (empty($postdata->full_img)) {
+					throw new Exception('Upload full view image');
+				}
+
+				$this->saveUploadedImage($postdata);
 
 				if(!Model_Admin::saveTechnicianDetails($this->DB, $data)) {
 					throw new Exception('Error occured');
 				}
 			} else {
-				if ($postdata->img_name) {
-					saveUploadedImage($postdata->img_name, $postdata->user_id);
+				if ($postdata->front_img || $postdata->side_img || $postdata->full_img) {
+					$this->saveUploadedImage($postdata);
 				}
 
 				if(!Model_Admin::updateTechnicianDetails($this->DB, $data)) {
@@ -886,13 +902,38 @@ class me_api extends db_config {
 		echo json_encode($result);
 	}
 
-	private function saveUploadedImage($img_name, $user_id) {
-		if ( ! file_exists('../img/profile')) {
-			mkdir('../img/profile', 0777, true);
-		}
+	public function saveUploadedImage($data) {
+		if ($data->front_img || $data->side_img || $data->full_img) {
+			if ( ! file_exists('../img/profile')) {
+				mkdir('../img/profile', 0777, true);
+			}
 
-		if (copy('../img/tmp/'.$img_name, '../img/profile/'.$user_id.'.jpg')) {
-			unlink('../img/tmp/'.$img_name);
+			if ($data->front_img) {
+				$tmp_name = $data->front_img;
+				$img_name = 'front';
+
+				if (copy('../img/tmp/'.$tmp_name, '../img/profile/'.$data->user_id.'_'.$img_name.'.jpg')) {
+					unlink('../img/tmp/'.$tmp_name);
+				}
+			}
+
+			if ($data->side_img) {
+				$tmp_name = $data->side_img;
+				$img_name = 'side';
+
+				if (copy('../img/tmp/'.$tmp_name, '../img/profile/'.$data->user_id.'_'.$img_name.'.jpg')) {
+					unlink('../img/tmp/'.$tmp_name);
+				}
+			}
+
+			if ($data->full_img) {
+				$tmp_name = $data->full_img;
+				$img_name = 'full';
+
+				if (copy('../img/tmp/'.$tmp_name, '../img/profile/'.$data->user_id.'_'.$img_name.'.jpg')) {
+					unlink('../img/tmp/'.$tmp_name);
+				}
+			}
 		}
 	}
 

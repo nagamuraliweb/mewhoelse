@@ -20,7 +20,7 @@ angular.module('meapp.controllers.artistCtrl', [])
 		vm.genders = coreConstant.genders;
 		vm.languages = coreConstant.languages;
 
-		jQuery(function ($){
+		/*jQuery(function ($){
            $(".segment-select").Segment();
       	});
 
@@ -29,7 +29,7 @@ angular.module('meapp.controllers.artistCtrl', [])
 				multiple	: true,
 				selected	: '["Select"]'
 			});
-		}, 500);
+		}, 500);*/
 
 		vm.artist = {
 			user_id: '',
@@ -65,7 +65,16 @@ angular.module('meapp.controllers.artistCtrl', [])
 					loaderFactory.showAlert(resp.data.msg);
 					return;
 				} else {
-					vm.artist.img_name = resp.data.img_name;
+
+					if (selector === 'frontview') {
+						vm.artist.front_img = resp.data.img_name;
+					} else if (selector === 'sideview') {
+						vm.artist.side_img = resp.data.img_name;
+					} else {
+						vm.artist.full_img = resp.data.img_name;
+					}
+
+					$('#'+selector).empty();
 
 					var img = document.createElement('img');
 					img.setAttribute('src', 'http://mewhoelse.in/img/tmp/'+resp.data.img_name);
@@ -110,7 +119,7 @@ angular.module('meapp.controllers.artistCtrl', [])
 		vm.saveArtistDetails = function() {
 			loaderFactory.showLoader();
 			console.log(vm.artist);
-			 /*artistFactory.saveArtistDetails(vm.artist).then(function(resp) {
+			 artistFactory.saveArtistDetails(vm.artist).then(function(resp) {
 			 	loaderFactory.hideLoader();
 			 	if(resp.data.error === 1) {
 					loaderFactory.showAlert('Registeration Failed', resp.data.msg);
@@ -119,7 +128,7 @@ angular.module('meapp.controllers.artistCtrl', [])
 					loaderFactory.showAlert('Registeration Successful', resp.data.msg);
 					$state.go('artist-profile')
 				}
-			 });*/
+			 });
 		}
 
 	}

@@ -31,7 +31,7 @@ angular.module('meapp.services.artistService', [])
                 gender: parseInt(artist.gender),
 				dob: $filter('date')(artist.dob, 'yyyy-MM-dd'),
 				videos: artist.videos,
-				skills: parseInt(artist.skills),
+				skills: artist.skills,
 				otherskills: artist.otherskills,
 				experince: parseInt(artist.experince),
 				city: artist.city,
@@ -43,9 +43,12 @@ angular.module('meapp.services.artistService', [])
 				skin_color: parseInt(artist.skin_color),
 				hair_color: parseInt(artist.hair_color),
 				training: artist.training,
-				languages: parseInt(artist.languages),
+				languages: artist.languages,
 				others_languages: artist.others_languages,
-                img_name: artist.img_name
+                front_img: artist.front_img,
+                side_img: artist.side_img,
+                full_img: artist.full_img,
+                video_name: artist.video_name
             }
         };
 
@@ -73,7 +76,9 @@ angular.module('meapp.services.artistService', [])
                 training: technician.training,
                 languages: parseInt(technician.languages),
                 others_languages: technician.others_languages,
-                img_name: technician.img_name
+                front_img: artist.front_img,
+                side_img: artist.side_img,
+                full_img: artist.full_img
             }
         };
 

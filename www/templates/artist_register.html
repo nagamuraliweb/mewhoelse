@@ -7,7 +7,7 @@
   <ion-content class="padding">   
 
 	<div class="row login_grid1">
-		<form name="vm.form.artists">
+		<form name="vm.form.artists" novalidate>
 			<div id="artists">
 				<div>
 				<p class="titleColor">Profile pictures</p>
@@ -53,9 +53,9 @@
 				<div class="border_bottom">
 				Skills
 						<div class="wrapper" id="dwrapper2">
-							<select id="dlist2" name="skills" ng-model="vm.artist.skills" multiple="true" required>
+							<select id="dlist2" name="skills" ng-model="vm.artist.skills">
 							  <option value="">Select</option>
-							  <option ng-repeat="skill in vm.skills" value="{{skill}}">{{skill}}</option>
+							  <option ng-repeat="(key, value) in vm.skills" value="{{key}}">{{value}}</option>
 							</select>
 						</div>
 				</div>
@@ -70,7 +70,7 @@
 
 				<div class="border_bottom">
 				<p>Gender <span class="pull-right">
-					<select class="segment-select">
+					<select ng-model="vm.artist.gender">
 				      <option value="1">Male</option>
 				      <option value="0">Female</option>
 				  	</select>
@@ -85,9 +85,9 @@
 				<div class="border_bottom">
 				Body Type
 						<div class="wrapper" id="dwrapper4">
-							<select id="dlist4"  multiple ng-model="vm.artist.body_type" required>
+							<select id="dlist4" ng-model="vm.artist.body_type" required>
 							  	<option value="">Select</option>
-								<option ng-repeat="body in vm.bodies" value="{{body}}">{{body}}</option>
+								<option ng-repeat="(key, value) in vm.bodies" value="{{key}}">{{value}}</option>
 							</select>
 						</div>
 				</div>
@@ -95,9 +95,9 @@
 				<div class="border_bottom">
 				Hair Type
 						<div class="wrapper" id="dwrapper5">
-							<select id="dlist5"  multiple ng-model="vm.artist.hair_type" required>
+							<select id="dlist5" ng-model="vm.artist.hair_type" required>
 							  	<option value="">Select</option>
-								<option ng-repeat="hair in vm.hairs" value="{{hair}}">{{hair}}</option>
+								<option ng-repeat="(key, value) in vm.hairs" value="{{key}}">{{value}}</option>
 							</select>
 						</div>
 				</div>
@@ -112,9 +112,9 @@
 				<div class="border_bottom">
 				Languages
 						<div class="wrapper" id="dwrapper8">
-							<select id="dlist8"  multiple ng-model="vm.artist.languages" required>
+							<select id="dlist8" ng-model="vm.artist.languages" required>
 							  <option value="">Select</option>
-								<option ng-repeat="language in vm.languages" value="{{language}}">{{language}}</option>
+								<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
 							</select>
 						</div>
 				</div>
@@ -124,14 +124,14 @@
 				<div class="border_bottom">
 				Experience
 						<div class="wrapper" id="dwrapper3">
-							<select id="dlist3"  multiple  ng-model="vm.artist.experince" required>
+							<select id="dlist3" ng-model="vm.artist.experince" required>
 							  	<option value="">Select</option>
-								<option ng-repeat="experience in vm.experience" value="{{experience}}">{{experience}}</option>
+								<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
 							</select>
 						</div>
 				</div>
 
-				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="artist.city" required>
+				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="vm.artist.city" required>
 				<div class="error_alert" ng-show="vm.form.artists.city.$dirty && vm.form.artists.city.$error.required">
 				    <span>City is required.</span>
 				</div>
@@ -141,9 +141,9 @@
 				<div class="border_bottom">
 				Skin Color
 						<div class="wrapper" id="dwrapper6">
-							<select id="dlist6"  multiple ng-model="vm.artist.skin_color" required>
+							<select id="dlist6" ng-model="vm.artist.skin_color" required>
 							  	<option value="">Select</option>
-								<option ng-repeat="skin in vm.skins" value="{{skin}}">{{skin}}</option>
+								<option ng-repeat="(key, value) in vm.skins" value="{{key}}">{{value}}</option>
 							</select>
 						</div>
 				</div>
@@ -151,16 +151,16 @@
 				<div class="border_bottom">
 				Hair Color
 						<div class="wrapper" id="dwrapper7">
-							<select id="dlist7"  multiple ng-model="vm.artist.hair_color" required>
+							<select id="dlist7" ng-model="vm.artist.hair_color" required>
 							  	<option value="">Select</option>
-								<option ng-repeat="haircolor in vm.haircolors" value="{{haircolor}}">{{haircolor}}</option>
+								<option ng-repeat="(key, value) in vm.haircolors" value="{{key}}">{{value}}</option>
 							</select>
 						</div>
 				</div>
 
 				<div class="border_bottom">
 				<p>Professional trained <span class="pull-right">
-					<select class="segment-select" ng-model="vm.artist.training">
+					<select ng-model="vm.artist.training">
 				      <option value="1">Yes</option>
 				      <option value="0">No</option>
 				  	</select>
