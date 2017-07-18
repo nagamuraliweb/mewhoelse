@@ -10,6 +10,8 @@ angular.module('meapp.controllers.artistCtrl', [])
 
 		var vm = this;
 		vm.form = {};
+		vm.showSkills = vm.showBodies = vm.showHairType = false;
+		vm.showSkins = vm.showHaircolors = vm.showLanguages = false;
 
 		vm.skills = coreConstant.skills;
 		vm.bodies = coreConstant.bodies;
@@ -99,6 +101,78 @@ angular.module('meapp.controllers.artistCtrl', [])
 				}
 			});
 		};
+
+		vm.listSkills = function() {
+			vm.showSkills = (vm.showSkills) ? false : true;
+		}
+
+		$('#skills_list li').on('click', function() {
+			if($(this).hasClass('active')) {
+				$(this).removeClass('active');
+			} else {
+				$(this).addClass('active');
+			}
+		});
+
+		vm.listBodies = function() {
+			vm.showBodies = (vm.showBodies) ? false : true;
+		}
+
+		$('#bodies_list li').on('click', function() {
+			if($(this).hasClass('active')) {
+				$(this).removeClass('active');
+			} else {
+				$(this).addClass('active');
+			}
+		});
+
+		vm.listHairType = function() {
+			vm.showHairType = (vm.showHairType) ? false : true;
+		}
+
+		$('#hairs_list li').on('click', function() {
+			if($(this).hasClass('active')) {
+				$(this).removeClass('active');
+			} else {
+				$(this).addClass('active');
+			}
+		});
+
+		vm.listLanguages = function() {
+			vm.showLanguages = (vm.showLanguages) ? false : true;
+		}
+
+		$('#languages_list li').on('click', function() {
+			if($(this).hasClass('active')) {
+				$(this).removeClass('active');
+			} else {
+				$(this).addClass('active');
+			}
+		});
+
+		vm.listSkins = function() {
+			vm.showSkins = (vm.showSkins) ? false : true;
+		}
+
+		$('#skins_list li').on('click', function() {
+			if($(this).hasClass('active')) {
+				$(this).removeClass('active');
+			} else {
+				$(this).addClass('active');
+			}
+		});
+
+		vm.listHaircolors = function() {
+			vm.showHaircolors = (vm.showHaircolors) ? false : true;
+		}
+
+		$('#haircolors_list li').on('click', function() {
+			if($(this).hasClass('active')) {
+				$(this).removeClass('active');
+			} else {
+				$(this).addClass('active');
+			}
+		});
 
 		// vm.appendClonedDiv = function() {
 		//     var pID = angular.element(document.querySelector('#parentID'));
