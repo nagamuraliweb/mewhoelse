@@ -76,9 +76,9 @@ angular.module('meapp.services.artistService', [])
                 training: technician.training,
                 languages: technician.languages,
                 others_languages: technician.others_languages,
-                front_img: artist.front_img,
-                side_img: artist.side_img,
-                full_img: artist.full_img
+                front_img: technician.front_img,
+                side_img: technician.side_img,
+                full_img: technician.full_img
             }
         };
 
