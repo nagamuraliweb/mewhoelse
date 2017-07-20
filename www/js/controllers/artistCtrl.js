@@ -70,10 +70,13 @@ angular.module('meapp.controllers.artistCtrl', [])
 
 					if (selector === 'frontview') {
 						vm.artist.front_img = resp.data.img_name;
+						$('#frontviewDelete').show();
 					} else if (selector === 'sideview') {
 						vm.artist.side_img = resp.data.img_name;
+						$('#sideviewDelete').show();
 					} else {
 						vm.artist.full_img = resp.data.img_name;
+						$('#fullviewDelete').show();
 					}
 
 					$('#'+selector).empty();
@@ -173,6 +176,11 @@ angular.module('meapp.controllers.artistCtrl', [])
 				$(this).addClass('active');
 			}
 		});
+
+		vm.deleteImg = function(selector) {
+			$('#'+selector).empty();
+			$('#'+selector+'Delete').hide();
+		}
 
 		// vm.appendClonedDiv = function() {
 		//     var pID = angular.element(document.querySelector('#parentID'));
