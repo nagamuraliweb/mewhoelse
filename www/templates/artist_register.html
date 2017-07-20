@@ -12,25 +12,28 @@
 				<div>
 				<p class="titleColor">Profile pictures</p>
 				<div class="row no_pad multipleimage">
-					<div class="col-33 col">
+					<div class="col-33 col imgdiv">
 						<label class="uploadbtn1">
 							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'frontview')" />
 						</label><br>
 						<span id="frontview"></span>
+						<span id="frontviewDelete">X</span>
 					</div>
 
-					<div class="col-33 col">
+					<div class="col-33 col imgdiv">
 						<label class="uploadbtn2">
 							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'sideview')" />
 						</label><br>
 						<span id="sideview"></span>
+						<span id="sideviewDelete">X</span>
 					</div>
 
-					<div class="col-33 col">
+					<div class="col-33 col imgdiv">
 						<label class="uploadbtn3">
 							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'fullview')" />
 						</label><br>
 						<span id="fullview"></span>
+						<span id="fullviewDelete">X</span>
 					</div>
 				</div>
 				</div> 
@@ -51,19 +54,18 @@
 				</div>
 
 				<div class="border_bottom">
-				Skills
-						<div class="wrapper" id="dwrapper2">
-							<div ng-click="vm.listSkills();">Select</option>
-							<ul id="skills_list" ng-show="vm.showSkills">
-								<li ng-repeat="(key, value) in vm.skills" data-id="{{key}}">{{value}}</li>
-							</ul>
-						</div>
-						<!--<div class="wrapper" id="dwrapper2">
-							<select id="dlist2" name="skills" ng-model="vm.artist.skills">
-							  <option value="">Select</option>
-							  <option ng-repeat="(key, value) in vm.skills" value="{{key}}">{{value}}</option>
-							</select>
-						</div>-->
+				<p ng-click="vm.listSkills();">Skills <span class="pull-right">></span><span class="pull-right"><</span></p>
+					<div class="wrapper" id="dwrapper2">
+						<ul id="skills_list" ng-show="vm.showSkills">
+							<li ng-repeat="(key, value) in vm.skills" data-id="{{key}}">{{value}}</li>
+						</ul>
+					</div>
+					<!--<div class="wrapper" id="dwrapper2">
+						<select id="dlist2" name="skills" ng-model="vm.artist.skills">
+						  <option value="">Select</option>
+						  <option ng-repeat="(key, value) in vm.skills" value="{{key}}">{{value}}</option>
+						</select>
+					</div>-->
 				</div>
 
 				<div class="error_alert" ng-show="vm.form.artists.skills.$dirty && vm.form.artists.skills.$error.required">

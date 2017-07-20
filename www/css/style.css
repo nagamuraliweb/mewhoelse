@@ -266,3 +266,14 @@ ion-tabs.tabs-color-active-positive .tab-item {
 .filmlist .ui-segment{border-radius: 2px !important;}
 .filmlist .ui-segment span.option{padding-left: 10px !important;padding-right: 10px !important;}
 .product-price{color: #ffffff;}
+.wrapper{width: 100% !important;float: left !important;margin-bottom: 10px;}
+.imgdiv{position: relative;}
+#frontview{position: absolute;top: 0;left: 0;z-index: 100;}
+#frontview img{margin: 4px 0 0 5px;}
+#frontviewDelete{position: absolute;top: 0;right: 2px;z-index: 999999;cursor: pointer;color: red;}
+#sideview{position: absolute;top: 0;left: 0;z-index: 100;}
+#sideview img{margin: 4px 0 0 5px;}
+#sideviewDelete{position: absolute;top: 0;right: 2px;z-index: 999999;cursor: pointer;color: red;}
+#fullview{position: absolute;top: 0;left: 0;z-index: 100;}
+#fullview img{margin: 4px 0 0 5px;}
+#fullviewDelete{position: absolute;top: 0;right: 2px;z-index: 999999;cursor: pointer;color: red;}
