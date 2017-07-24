@@ -22,10 +22,11 @@ angular.module('meapp.controllers.artistCtrl', [])
 		vm.genders = coreConstant.genders;
 		vm.languages = coreConstant.languages;
 
-		/*jQuery(function ($){
+		jQuery(function ($){
            $(".segment-select").Segment();
       	});
-
+      	
+		/*
       	setTimeout(function() {
 			$('#dlist2, #dlist3, #dlist4, #dlist5, #dlist6, #dlist7, #dlist8').dropList({
 				multiple	: true,

@@ -60,6 +60,10 @@
 				};
 			});
 
+			jQuery(function ($){
+	           $(".segment-select").Segment();
+	      	});
+
 			vm.updateClientDetails = function() {
 				loaderFactory.showLoader();
 				

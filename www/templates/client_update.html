@@ -14,19 +14,27 @@
 		<form name="vm.form.client">
 			<!-- clients -->
 			<div id="clients">
-				<div>
+				<!-- <div>
 					<label ng-repeat="(key, value) in vm.genders">
 						<input type="radio" name="gender" ng-model="vm.client.gender" value="{{key}}">{{value}}
 					</label>
 				</div>
 				<div class="error_alert" ng-show="vm.form.client.gender.$dirty && vm.form.client.gender.$error.required">
 				    <span>Gender is required.</span>
-				</div>
-				<select name="project" class="dropdown" ng-model="vm.client.project" required>
+				</div> -->
+				<!-- <select name="project" class="dropdown" ng-model="vm.client.project" required>
 					<option value="">Project</option>
 					<option value="1">New</option>
 					<option value="2">Existing</option>
-				</select>
+				</select> -->
+				<div class="border_bottom">
+				<p>Project <span class="pull-right">
+					<select class="segment-select" name="project" ng-model="vm.client.project" required>
+				      <option value="1">New</option>
+				      <option value="2">Existing</option>
+				  	</select>
+				</span></p>
+			  	</div>
 				<div class="error_alert" ng-show="vm.form.client.project.$dirty && vm.form.client.project.$error.required">
 				    <span>Project is required.</span>
 				</div>
@@ -64,19 +72,29 @@
 					<option value="">Experience</option>
 					<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
 				</select>
-				<div>
+
+				<!-- <div>
 					Professional trained <label><input type="radio" name="training" ng-model="vm.client.training" value="0"> Yes</label>
 					<label><input type="radio" name="training" ng-model="vm.client.training" value="1"> No</label>
-				</div><br>
+				</div><br> -->
+				<div class="border_bottom">
+				<p>Professional trained <span class="pull-right">
+					<select class="segment-select" name="training" ng-model="vm.client.training" required>
+				      <option value="0">Yes</option>
+				      <option value="1">No</option>
+				  	</select>
+				</span></p>
+			  	</div>
+
 				<select name="languages" ng-model="vm.client.languages" class="dropdown">
 					<option value="">Languages</option>
 					<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
 				</select>
-				<input type="text" ng-if="vm.client.languages === '7'" name="others_languages" ng-model="vm.client.others_languages" class="inputbox bottom_30" placeholder="Enter your language">
-				<input type="text" name="production_housename" class="inputbox bottom_30" placeholder="Production house name" ng-model="vm.client.production_housename">
+				<input type="text" ng-if="vm.client.languages === '7'" name="others_languages" ng-model="vm.client.others_languages" class="inputbox bottom_10" placeholder="Enter your language">
+				<input type="text" name="production_housename" class="inputbox bottom_10" placeholder="Production house name" ng-model="vm.client.production_housename">
 
 				<button class="button button-outline loginbtn" ng-click="vm.updateClientDetails()" ng-disabled="!vm.form.client.$valid">
-				  proceed
+				  update
 				</button>
 			</div>
 

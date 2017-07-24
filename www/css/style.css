@@ -77,6 +77,7 @@ form {
     font-size: 14px !important;padding-left: 10px !important;}
     .border_bottom{/*border-bottom: 1px solid #b986eb !important;padding-bottom: 10px;*/
     margin-bottom: 5px;float: left;width: 100%;}
+.border_bottom p{margin-bottom: 0;}
 .textareabox{width: 100%;float: left;/*background: none;border: 1px solid #ffffff !important;*/background: rgba(185,134,235,0.2);
     color: #ffffff !important;margin-bottom: 10px;font-size: 16px !important;min-height: 100px;padding: 10px;}
 /*.dropdown{width: 100%;float: left;background: none;border:0;border-bottom: 1px solid #ffffff !important;
@@ -243,7 +244,7 @@ width: 93%;}
 .titleColor{color: #ffae20 !important;}
 .artistColor{color: #ffffff;font-size: 12px;position: relative;margin-bottom: 10px;float: left;
 width: 100%;}
-.artistColor p{margin: 10px 0 0 10px;}
+.artistColor p{margin: 0px 0 0 10px;}
 .bar-stable .button.button-clear{color: #ffffff;}
 .editProject{position: absolute;top: 5px;right: 7px;z-index: 9999;cursor: pointer;color: #ffae20;font-size: 24px;
 }
@@ -258,7 +259,7 @@ ion-tabs.tabs-color-active-positive .tab-item {
 .list_tech{margin:10px 5px 10px 5px !important;background: rgba(255, 255, 255, 0.2);}
 .list_tech img{max-width: 100%;box-sizing: border-box;}
 .list_tech h3{margin-top: 0;color: #ffae20 !important;font-size: 16px;text-transform: capitalize;}
-.list_tech p{color: #ffffff;font-size: 12px;}
+.list_tech p{color: #ffffff;font-size: 12px;text-align: center;}
 .padding0{padding: 0px !important;}
 .list_tech span{font-size: 12px;}
 .land_btn{background: rgba(185,134,235,0.2) !important;border: 0 !important;font-size: 14px !important;}
@@ -266,7 +267,7 @@ ion-tabs.tabs-color-active-positive .tab-item {
 .filmlist .ui-segment{border-radius: 2px !important;}
 .filmlist .ui-segment span.option{padding-left: 10px !important;padding-right: 10px !important;}
 .product-price{color: #ffffff;}
-.wrapper{width: 100% !important;float: left !important;margin-bottom: 10px;}
+.wrapper{width: 100% !important;float: left !important;}
 .imgdiv{position: relative;}
 #frontview{position: absolute;top: 0;left: 0;z-index: 100;}
 #frontview img{margin: 4px 0 0 5px;}
@@ -277,3 +278,9 @@ ion-tabs.tabs-color-active-positive .tab-item {
 #fullview{position: absolute;top: 0;left: 0;z-index: 100;}
 #fullview img{margin: 4px 0 0 5px;}
 #fullviewDelete{position: absolute;top: 0;right: 2px;z-index: 999999;cursor: pointer;color: red;}
+.ion-ios-arrow-down{font-size: 28px;}
+.ion-ios-arrow-forward{font-size: 24px;}
+.wrapper ul{background: rgba(185,134,235,0.2);color: #ffffff;padding: 5px;}
+.wrapper ul li{margin-bottom: 5px;border-bottom: 1px solid #4E1B80;padding-bottom: 5px;font-size: 13px;}
+.wrapper ul li:last-child{margin-bottom: 0px;border: none;padding-bottom: 0px;}
+.bottom_10{margin-bottom: 10px !important;}
