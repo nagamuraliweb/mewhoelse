@@ -54,7 +54,7 @@
 				</div>
 
 				<div class="border_bottom">
-				<p ng-click="vm.listSkills();">Skills <span class="pull-right"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right"><i class="icon ion-ios-arrow-down"></i></span></p>
+				<p ng-click="vm.listSkills();">Skills <span class="pull-right" ng-show="!vm.showSkills"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showSkills"><i class="icon ion-ios-arrow-down"></i></span></p>
 					<div class="wrapper" id="dwrapper2">
 						<ul id="skills_list" ng-show="vm.showSkills">
 							<li ng-repeat="(key, value) in vm.skills" data-id="{{key}}">{{value}}</li>
@@ -78,7 +78,7 @@
 
 				<div class="border_bottom">
 				<p>Gender <span class="pull-right">
-					<select ng-model="vm.artist.gender">
+					<select class="segment-select" ng-model="vm.artist.gender">
 				      <option value="1">Male</option>
 				      <option value="0">Female</option>
 				  	</select>
@@ -91,7 +91,7 @@
 				</div>
 
 				<div class="border_bottom">
-				<p ng-click="vm.listBodies();">Body Type <span class="pull-right"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right"><i class="icon ion-ios-arrow-down"></i></span></p>
+				<p ng-click="vm.listBodies();">Body Type <span class="pull-right" ng-show="!vm.showBodies"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showBodies"><i class="icon ion-ios-arrow-down"></i></span></p>
 					<div class="wrapper" id="dwrapper4">
 						<ul id="bodies_list" ng-show="vm.showBodies">
 							<li ng-repeat="(key, value) in vm.bodies" data-id="{{key}}">{{value}}</li>
@@ -106,7 +106,7 @@
 				</div>
 
 				<div class="border_bottom">
-				<p ng-click="vm.listHairType();">Hair Type <span class="pull-right"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right"><i class="icon ion-ios-arrow-down"></i></span></p>
+				<p ng-click="vm.listHairType();">Hair Type <span class="pull-right" ng-show="!vm.showHairType"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showHairType"><i class="icon ion-ios-arrow-down"></i></span></p>
 					<div class="wrapper" id="dwrapper5">
 						<ul id="hairs_list" ng-show="vm.showHairType">
 							<li ng-repeat="(key, value) in vm.hairs" data-id="{{key}}">{{value}}</li>
@@ -128,7 +128,7 @@
 				</div>
 
 				<div class="border_bottom">
-				<p ng-click="vm.listLanguages();">Languages <span class="pull-right"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right"><i class="icon ion-ios-arrow-down"></i></span></p>
+				<p ng-click="vm.listLanguages();">Languages <span class="pull-right" ng-show="!vm.showLanguages"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showLanguages"><i class="icon ion-ios-arrow-down"></i></span></p>
 					<div class="wrapper" id="dwrapper8">
 						<ul id="languages_list" ng-show="vm.showLanguages">
 							<li ng-repeat="(key, value) in vm.languages" data-id="{{key}}">{{value}}</li>
@@ -162,7 +162,7 @@
 				<input type="text" name="other_ethnicity" placeholder="Ethnicity" class="inputbox" ng-model="vm.artist.other_ethnicity" />
 
 				<div class="border_bottom">
-				<p ng-click="vm.listSkins();">Skin Color <span class="pull-right"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right"><i class="icon ion-ios-arrow-down"></i></span></p>
+				<p ng-click="vm.listSkins();">Skin Color <span class="pull-right" ng-show="!vm.showSkins"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showSkins"><i class="icon ion-ios-arrow-down"></i></span></p>
 					<div class="wrapper" id="dwrapper6">
 						<ul id="skins_list" ng-show="vm.showSkins">
 							<li ng-repeat="(key, value) in vm.skins" data-id="{{key}}">{{value}}</li>
@@ -177,7 +177,7 @@
 				</div>
 
 				<div class="border_bottom">
-				<p ng-click="vm.listHaircolors();">Hair Color <span class="pull-right"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right"><i class="icon ion-ios-arrow-down"></i></span></p>
+				<p ng-click="vm.listHaircolors();">Hair Color <span class="pull-right" ng-show="!vm.showHaircolors"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showHaircolors"><i class="icon ion-ios-arrow-down"></i></span></p>
 					<div class="wrapper" id="dwrapper7">
 						<ul id="haircolors_list" ng-show="vm.showHaircolors">
 							<li ng-repeat="(key, value) in vm.haircolors" data-id="{{key}}">{{value}}</li>
@@ -193,7 +193,7 @@
 
 				<div class="border_bottom">
 				<p>Professional trained <span class="pull-right">
-					<select ng-model="vm.artist.training">
+					<select class="segment-select" ng-model="vm.artist.training">
 				      <option value="1">Yes</option>
 				      <option value="0">No</option>
 				  	</select>
