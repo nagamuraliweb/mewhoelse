@@ -12,6 +12,7 @@ angular.module('meapp.controllers.artistCtrl', [])
 		vm.form = {};
 		vm.showSkills = vm.showBodies = vm.showHairType = false;
 		vm.showSkins = vm.showHaircolors = vm.showLanguages = false;
+		vm.selectedSkills = {};
 
 		vm.skills = coreConstant.skills;
 		vm.bodies = coreConstant.bodies;
@@ -106,17 +107,11 @@ angular.module('meapp.controllers.artistCtrl', [])
 			});
 		};
 
+		
+
 		vm.listSkills = function() {
 			vm.showSkills = (vm.showSkills) ? false : true;
 		}
-
-		$('#skills_list li').on('click', function() {
-			if($(this).hasClass('active')) {
-				$(this).removeClass('active');
-			} else {
-				$(this).addClass('active');
-			}
-		});
 
 		vm.listBodies = function() {
 			vm.showBodies = (vm.showBodies) ? false : true;
@@ -200,6 +195,16 @@ angular.module('meapp.controllers.artistCtrl', [])
 	 	}
 
 		vm.saveArtistDetails = function() {
+			vm.artist.skills = JSON.stringify(Object.keys(vm.selectedSkills));
+			vm.artist.languages = JSON.stringify(Object.keys(vm.selectedLanguages));
+			vm.artist.body_type = JSON.stringify(Object.keys(vm.selectedBodies));
+			vm.artist.hair_type = JSON.stringify(Object.keys(vm.selectedHairs));
+			vm.artist.skin_color = JSON.stringify(Object.keys(vm.selectedSkins));
+			vm.artist.hair_color = JSON.stringify(Object.keys(vm.selectHairColors));
+			vm.artist.gender = $('#gender').val();
+			vm.artist.experince = $('#experience').val();
+			vm.artist.training = $('#training').val();
+
 			loaderFactory.showLoader();
 
 			 artistFactory.saveArtistDetails(vm.artist).then(function(resp) {
@@ -216,3 +221,21 @@ angular.module('meapp.controllers.artistCtrl', [])
 
 	}
 })();
+
+// angular.element(document).ready(function() {
+// 	$('#skills_list li').on('click', function() { console.log('click');
+// 		if($(this).hasClass('active')) {
+// 			$(this).removeClass('active');
+// 		} else {
+// 			$(this).addClass('active');
+// 		}
+// 	});
+
+// 	$('.skills_list').on('click', function() { console.log('click');
+// 		if($(this).hasClass('active')) {
+// 			$(this).removeClass('active');
+// 		} else {
+// 			$(this).addClass('active');
+// 		}
+// 	});
+// });
