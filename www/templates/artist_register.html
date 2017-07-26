@@ -1,8 +1,8 @@
 <ion-view view-title="Profile builder">
 
-  <div class="logout">
+  <ion-nav-buttons side="right">
     <logout></logout>
-  </div>
+  </ion-nav-buttons>
 
   <ion-content class="padding">   
 
@@ -144,7 +144,7 @@
 
 				<input type="text" ng-if="vm.artist.languages === '7'" name="others_languages" ng-model="vm.artist.others_languages" class="inputbox bottom_30" placeholder="Enter your language" />
 
-				<div class="border_bottom">
+				<!-- <div class="border_bottom">
 				Experience
 						<div class="wrapper" id="dwrapper3">
 							<select id="dlist3" ng-model="vm.artist.experince" required>
@@ -152,7 +152,16 @@
 								<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
 							</select>
 						</div>
-				</div>
+				</div> -->
+
+				<div class="border_bottom">
+				<p>Experience <span class="pull-right">
+					<select class="segment-select" ng-model="vm.artist.experince">
+				      <option value="1">Fresher</option>
+				      <option value="2">Experienced</option>
+				  	</select>
+				</span></p>
+			  	</div>
 
 				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="vm.artist.city" required>
 				<div class="error_alert" ng-show="vm.form.artists.city.$dirty && vm.form.artists.city.$error.required">
