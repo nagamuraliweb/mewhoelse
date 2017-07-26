@@ -12,7 +12,6 @@ angular.module('meapp.controllers.artistCtrl', [])
 		vm.form = {};
 		vm.showSkills = vm.showBodies = vm.showHairType = false;
 		vm.showSkins = vm.showHaircolors = vm.showLanguages = false;
-		vm.selectedSkills = {};
 
 		vm.skills = coreConstant.skills;
 		vm.bodies = coreConstant.bodies;
@@ -26,14 +25,6 @@ angular.module('meapp.controllers.artistCtrl', [])
 		jQuery(function ($){
            $(".segment-select").Segment();
       	});
-      	
-		/*
-      	setTimeout(function() {
-			$('#dlist2, #dlist3, #dlist4, #dlist5, #dlist6, #dlist7, #dlist8').dropList({
-				multiple	: true,
-				selected	: '["Select"]'
-			});
-		}, 500);*/
 
 		vm.artist = {
 			user_id: '',
@@ -107,8 +98,6 @@ angular.module('meapp.controllers.artistCtrl', [])
 			});
 		};
 
-		
-
 		vm.listSkills = function() {
 			vm.showSkills = (vm.showSkills) ? false : true;
 		}
@@ -117,82 +106,26 @@ angular.module('meapp.controllers.artistCtrl', [])
 			vm.showBodies = (vm.showBodies) ? false : true;
 		}
 
-		$('#bodies_list li').on('click', function() {
-			if($(this).hasClass('active')) {
-				$(this).removeClass('active');
-			} else {
-				$(this).addClass('active');
-			}
-		});
-
 		vm.listHairType = function() {
 			vm.showHairType = (vm.showHairType) ? false : true;
 		}
-
-		$('#hairs_list li').on('click', function() {
-			if($(this).hasClass('active')) {
-				$(this).removeClass('active');
-			} else {
-				$(this).addClass('active');
-			}
-		});
 
 		vm.listLanguages = function() {
 			vm.showLanguages = (vm.showLanguages) ? false : true;
 		}
 
-		$('#languages_list li').on('click', function() {
-			if($(this).hasClass('active')) {
-				$(this).removeClass('active');
-			} else {
-				$(this).addClass('active');
-			}
-		});
-
 		vm.listSkins = function() {
 			vm.showSkins = (vm.showSkins) ? false : true;
 		}
-
-		$('#skins_list li').on('click', function() {
-			if($(this).hasClass('active')) {
-				$(this).removeClass('active');
-			} else {
-				$(this).addClass('active');
-			}
-		});
 
 		vm.listHaircolors = function() {
 			vm.showHaircolors = (vm.showHaircolors) ? false : true;
 		}
 
-		$('#haircolors_list li').on('click', function() {
-			if($(this).hasClass('active')) {
-				$(this).removeClass('active');
-			} else {
-				$(this).addClass('active');
-			}
-		});
-
 		vm.deleteImg = function(selector) {
 			$('#'+selector).empty();
 			$('#'+selector+'Delete').hide();
 		}
-
-		// vm.appendClonedDiv = function() {
-		//     var pID = angular.element(document.querySelector('#parentID'));
-		//     var cID = angular.element(document.querySelector('#childID'));
-		//     cID.append(pID.clone());
-	 //    }
-	 	$scope.showSecond = false;
-	 	$scope.showThird = false;
-
-	 	vm.showSecondPhoto = function() {
-	 		$scope.showSecond = true;
-	 	}
-
-	 	vm.showThirdPhoto = function() {
-	 		$scope.showThird = true;
-	 	}
 
 		vm.saveArtistDetails = function() {
 			vm.artist.skills = JSON.stringify(Object.keys(vm.selectedSkills));
@@ -221,21 +154,3 @@ angular.module('meapp.controllers.artistCtrl', [])
 
 	}
 })();
-
-// angular.element(document).ready(function() {
-// 	$('#skills_list li').on('click', function() { console.log('click');
-// 		if($(this).hasClass('active')) {
-// 			$(this).removeClass('active');
-// 		} else {
-// 			$(this).addClass('active');
-// 		}
-// 	});
-
-// 	$('.skills_list').on('click', function() { console.log('click');
-// 		if($(this).hasClass('active')) {
-// 			$(this).removeClass('active');
-// 		} else {
-// 			$(this).addClass('active');
-// 		}
-// 	});
-// });

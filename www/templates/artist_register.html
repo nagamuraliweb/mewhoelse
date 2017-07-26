@@ -75,7 +75,7 @@
 				    <span>Skills is required.</span>
 				</div>
 
-				<input type="text" ng-if="vm.artist.skills === '8'" class="inputbox" placeholder="Enter your skills" name="otherskills" ng-model="artist.otherskills" />
+				<input type="text" class="inputbox" placeholder="Enter other skills" name="otherskills" ng-model="artist.otherskills" />
 
 				<p class="titleColor">Personal details</p>
 
@@ -129,8 +129,6 @@
 						</div>-->
 				</div>
 
-				<input type="text" ng-if="vm.artist.hair_type === '5'" name="others_hairtype" ng-model="vm.others_hairtype" class="inputbox" placeholder="Enter your hair type">
-
 				<input type="number" name="weight" ng-model="vm.artist.weight" class="inputbox" placeholder="Enter your weight" autocomplete="off" required>
 				<div class="error_alert" ng-show="vm.form.artists.weight.$dirty && vm.form.artists.weight.$error.required">
 				    <span>Weight is required.</span>
@@ -154,7 +152,7 @@
 						</div>-->
 				</div>
 
-				<input type="text" ng-if="vm.artist.languages === '7'" name="others_languages" ng-model="vm.artist.others_languages" class="inputbox bottom_30" placeholder="Enter your language" />
+				<input type="text" name="others_languages" ng-model="vm.artist.others_languages" class="inputbox bottom_30" placeholder="Enter other languages" />
 
 				<!-- <div class="border_bottom">
 				Experience

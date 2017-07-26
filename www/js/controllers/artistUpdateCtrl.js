@@ -11,6 +11,8 @@
 		var user_id = window.localStorage.getItem('userID');
 
 		vm.form = {};
+		vm.showSkills = vm.showBodies = vm.showHairType = false;
+		vm.showSkins = vm.showHaircolors = vm.showLanguages = false;
 
 		vm.skills = coreConstant.skills;
 		vm.bodies = coreConstant.bodies;
@@ -20,6 +22,10 @@
 		vm.skins = coreConstant.skins;
 		vm.genders = coreConstant.genders;
 		vm.languages = coreConstant.languages;
+
+		jQuery(function ($){
+           $(".segment-select").Segment();
+      	});
 
 		dataFactory.getUserDetails(user_id).then(function(resp) {
 			var artist_data = JSON.parse(resp.data.user_details);
@@ -91,6 +97,30 @@
 				}
 			});
 		};
+
+		vm.listSkills = function() {
+			vm.showSkills = (vm.showSkills) ? false : true;
+		}
+
+		vm.listBodies = function() {
+			vm.showBodies = (vm.showBodies) ? false : true;
+		}
+
+		vm.listHairType = function() {
+			vm.showHairType = (vm.showHairType) ? false : true;
+		}
+
+		vm.listLanguages = function() {
+			vm.showLanguages = (vm.showLanguages) ? false : true;
+		}
+
+		vm.listSkins = function() {
+			vm.showSkins = (vm.showSkins) ? false : true;
+		}
+
+		vm.listHaircolors = function() {
+			vm.showHaircolors = (vm.showHaircolors) ? false : true;
+		}
 
 		vm.updateArtistDetails = function() {
 			loaderFactory.showLoader();

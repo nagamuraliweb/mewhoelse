@@ -57,28 +57,36 @@
 				</div>
 
 				<div class="border_bottom">
-				Skills
-						<div class="wrapper" id="dwrapper2">
-							<select id="dlist2" name="skills" ng-model="vm.artist.skills">
-							  <option value="">Select</option>
-							  <option ng-repeat="(key, value) in vm.skills" value="{{key}}">{{value}}</option>
-							</select>
-						</div>
+				<p ng-click="vm.listSkills();">Skills <span class="pull-right" ng-show="!vm.showSkills"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showSkills"><i class="icon ion-ios-arrow-down"></i></span></p>
+					<div class="wrapper" id="dwrapper2">
+						<ul id="skills_list" ng-show="vm.showSkills">
+							<li ng-repeat="(key, value) in vm.skills" data-id="{{key}}">
+								<input type="checkbox" name="selectSkills[]" value="{{key}}" ng-model="vm.selectedSkills[key]" />
+								{{value}}
+							</li>
+						</ul>
+					</div>
+					<!--<div class="wrapper" id="dwrapper2">
+						<select id="dlist2" name="skills" ng-model="vm.artist.skills">
+						  <option value="">Select</option>
+						  <option ng-repeat="(key, value) in vm.skills" value="{{key}}">{{value}}</option>
+						</select>
+					</div>-->
 				</div>
 
 				<div class="error_alert" ng-show="vm.form.artists.skills.$dirty && vm.form.artists.skills.$error.required">
 				    <span>Skills is required.</span>
 				</div>
 
-				<input type="text" ng-if="vm.artist.skills === '8'" class="inputbox" placeholder="Enter your skills" name="otherskills" ng-model="artist.otherskills" />
+				<input type="text" class="inputbox" placeholder="Enter other skills" name="otherskills" ng-model="artist.otherskills" />
 
 				<p class="titleColor">Personal details</p>
 
 				<div class="border_bottom">
 				<p>Gender <span class="pull-right">
-					<select ng-model="vm.artist.gender">
+					<select class="segment-select" id="gender">
 				      <option value="1">Male</option>
-				      <option value="0">Female</option>
+				      <option value="2">Female</option>
 				  	</select>
 				</span></p>
 			  	</div>
@@ -89,26 +97,40 @@
 				</div>
 
 				<div class="border_bottom">
-				Body Type
-						<div class="wrapper" id="dwrapper4">
+				<p ng-click="vm.listBodies();">Body Type <span class="pull-right" ng-show="!vm.showBodies"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showBodies"><i class="icon ion-ios-arrow-down"></i></span></p>
+					<div class="wrapper" id="dwrapper4">
+						<ul id="bodies_list" ng-show="vm.showBodies">
+							<li ng-repeat="(key, value) in vm.bodies" data-id="{{key}}">
+								<input type="radio" name="selectBodies[]" value="{{key}}" ng-model="vm.selectedBodies[key]" />
+								{{value}}
+							</li>
+						</ul>
+					</div>
+						<!--<div class="wrapper" id="dwrapper4">
 							<select id="dlist4" ng-model="vm.artist.body_type" required>
 							  	<option value="">Select</option>
 								<option ng-repeat="(key, value) in vm.bodies" value="{{key}}">{{value}}</option>
 							</select>
-						</div>
+						</div>-->
 				</div>
 
 				<div class="border_bottom">
-				Hair Type
-						<div class="wrapper" id="dwrapper5">
+				<p ng-click="vm.listHairType();">Hair Type <span class="pull-right" ng-show="!vm.showHairType"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showHairType"><i class="icon ion-ios-arrow-down"></i></span></p>
+					<div class="wrapper" id="dwrapper5">
+						<ul id="hairs_list" ng-show="vm.showHairType">
+							<li ng-repeat="(key, value) in vm.hairs" data-id="{{key}}">
+								<input type="radio" name="selectHairs[]" value="{{key}}" ng-model="vm.selectedHairs[key]" />
+								{{value}}
+							</li>
+						</ul>
+					</div>
+						<!--<div class="wrapper" id="dwrapper5">
 							<select id="dlist5" ng-model="vm.artist.hair_type" required>
 							  	<option value="">Select</option>
 								<option ng-repeat="(key, value) in vm.hairs" value="{{key}}">{{value}}</option>
 							</select>
-						</div>
+						</div>-->
 				</div>
-
-				<input type="text" ng-if="vm.artist.hair_type === '5'" name="others_hairtype" ng-model="vm.others_hairtype" class="inputbox" placeholder="Enter your hair type">
 
 				<input type="number" name="weight" ng-model="vm.artist.weight" class="inputbox" placeholder="Enter your weight" autocomplete="off" required>
 				<div class="error_alert" ng-show="vm.form.artists.weight.$dirty && vm.form.artists.weight.$error.required">
@@ -116,26 +138,33 @@
 				</div>
 
 				<div class="border_bottom">
-				Languages
-						<div class="wrapper" id="dwrapper8">
+				<p ng-click="vm.listLanguages();">Languages <span class="pull-right" ng-show="!vm.showLanguages"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showLanguages"><i class="icon ion-ios-arrow-down"></i></span></p>
+					<div class="wrapper" id="dwrapper8">
+						<ul id="languages_list" ng-show="vm.showLanguages">
+							<li ng-repeat="(key, value) in vm.languages" data-id="{{key}}">
+								<input type="checkbox" name="selectlanguages[]" value="{{key}}" ng-model="vm.selectedLanguages[key]" />
+								{{value}}
+							</li>
+						</ul>
+					</div>
+						<!--<div class="wrapper" id="dwrapper8">
 							<select id="dlist8" ng-model="vm.artist.languages" required>
 							  <option value="">Select</option>
 								<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
 							</select>
-						</div>
+						</div>-->
 				</div>
 
-				<input type="text" ng-if="vm.artist.languages === '7'" name="others_languages" ng-model="vm.artist.others_languages" class="inputbox bottom_30" placeholder="Enter your language" />
+				<input type="text" name="others_languages" ng-model="vm.artist.others_languages" class="inputbox bottom_30" placeholder="Enter other language" />
 
 				<div class="border_bottom">
-				Experience
-						<div class="wrapper" id="dwrapper3">
-							<select id="dlist3" ng-model="vm.artist.experince" required>
-							  	<option value="">Select</option>
-								<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
-							</select>
-						</div>
-				</div>
+				<p>Experience <span class="pull-right">
+					<select class="segment-select" id="experience">
+				      <option value="1">Fresher</option>
+				      <option value="2">Experienced</option>
+				  	</select>
+				</span></p>
+			  	</div>
 
 				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="vm.artist.city" required>
 				<div class="error_alert" ng-show="vm.form.artists.city.$dirty && vm.form.artists.city.$error.required">
@@ -145,28 +174,44 @@
 				<input type="text" name="other_ethnicity" placeholder="Ethnicity" class="inputbox" ng-model="vm.artist.other_ethnicity" />
 
 				<div class="border_bottom">
-				Skin Color
-						<div class="wrapper" id="dwrapper6">
+				<p ng-click="vm.listSkins();">Skin Color <span class="pull-right" ng-show="!vm.showSkins"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showSkins"><i class="icon ion-ios-arrow-down"></i></span></p>
+					<div class="wrapper" id="dwrapper6">
+						<ul id="skins_list" ng-show="vm.showSkins">
+							<li ng-repeat="(key, value) in vm.skins" data-id="{{key}}">
+								<input type="radio" name="selectSkins[]" value="{{key}}" ng-model="vm.selectedSkins[key]" />
+								{{value}}
+							</li>
+						</ul>
+					</div>
+						<!--<div class="wrapper" id="dwrapper6">
 							<select id="dlist6" ng-model="vm.artist.skin_color" required>
 							  	<option value="">Select</option>
 								<option ng-repeat="(key, value) in vm.skins" value="{{key}}">{{value}}</option>
 							</select>
-						</div>
+						</div>-->
 				</div>
 
 				<div class="border_bottom">
-				Hair Color
-						<div class="wrapper" id="dwrapper7">
+				<p ng-click="vm.listHaircolors();">Hair Color <span class="pull-right" ng-show="!vm.showHaircolors"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showHaircolors"><i class="icon ion-ios-arrow-down"></i></span></p>
+					<div class="wrapper" id="dwrapper7">
+						<ul id="haircolors_list" ng-show="vm.showHaircolors">
+							<li ng-repeat="(key, value) in vm.haircolors" data-id="{{key}}">
+								<input type="radio" name="selectHairColors[]" value="{{key}}" ng-model="vm.selectHairColors[key]" />
+								{{value}}
+							</li>
+						</ul>
+					</div>
+						<!--<div class="wrapper" id="dwrapper7">
 							<select id="dlist7" ng-model="vm.artist.hair_color" required>
 							  	<option value="">Select</option>
 								<option ng-repeat="(key, value) in vm.haircolors" value="{{key}}">{{value}}</option>
 							</select>
-						</div>
+						</div>-->
 				</div>
 
 				<div class="border_bottom">
 				<p>Professional trained <span class="pull-right">
-					<select ng-model="vm.artist.training">
+					<select class="segment-select" id="training">
 				      <option value="1">Yes</option>
 				      <option value="0">No</option>
 				  	</select>
