@@ -98,39 +98,20 @@
 				<input type="text" ng-if="technician.languages === '7'" name="others_languages" ng-model="vm.technician.others_languages" class="inputbox bottom_30" placeholder="Enter your language"> -->
 
 				<div class="border_bottom">
-				Languages
-						<div class="wrapper" id="dwrapper2">
-							<select id="dlist2"  multiple>
-							  <option value="volvo">Volvo</option>
-							  <option value="saab">Saab</option>
-							  <option value="mercedes">Mercedes</option>
-							  <option value="audi">Audi</option>
-							  <option value="Hyndai">Hyndai</option>
-							  <option value="Honda">Honda</option>
-							  <option value="Ferrari">Ferrari</option>
-							  <option value="Ducati">Ducati</option>
-							  <option value="Tesla">Tesla</option>
-							  <option value="volkswagon">volkswagon</option>
-							  <option value="Mclaren">Mclaren</option>
-							</select>
-						</div>
+				<p ng-click="vm.listLanguages();">Languages <span class="pull-right" ng-show="!vm.showLanguages"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showLanguages"><i class="icon ion-ios-arrow-down"></i></span></p>
+					<div class="wrapper" id="dwrapper2">
+						<ul id="languages_list" ng-show="vm.showLanguages">
+							<li ng-repeat="(key, value) in vm.languages" data-id="{{key}}">{{value}}</li>
+						</ul>
+					</div>
 				</div>
 
 				<div class="border_bottom">
 				Experience
 						<div class="wrapper" id="dwrapper3">
-							<select id="dlist3"  multiple>
-							  <option value="volvo">Volvo</option>
-							  <option value="saab">Saab</option>
-							  <option value="mercedes">Mercedes</option>
-							  <option value="audi">Audi</option>
-							  <option value="Hyndai">Hyndai</option>
-							  <option value="Honda">Honda</option>
-							  <option value="Ferrari">Ferrari</option>
-							  <option value="Ducati">Ducati</option>
-							  <option value="Tesla">Tesla</option>
-							  <option value="volkswagon">volkswagon</option>
-							  <option value="Mclaren">Mclaren</option>
+							<select id="dlist3" required>
+							  	<option value="">Select</option>
+								<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
 							</select>
 						</div>
 				</div>

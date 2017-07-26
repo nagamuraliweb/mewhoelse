@@ -4,35 +4,18 @@
 	angular.module('meapp.controllers.clientCtrl', [])
 		.controller('clientCtrl', clientCtrl);
 
-	clientCtrl.$inject = ['dataFactory', 'loaderFactory', 'artistFactory', '$state', '$scope'];
+	clientCtrl.$inject = ['dataFactory', 'loaderFactory', 'artistFactory', '$state', '$scope', 'coreConstant'];
 
-	function clientCtrl(dataFactory, loaderFactory, artistFactory, $state, $scope) {
+	function clientCtrl(dataFactory, loaderFactory, artistFactory, $state, $scope, coreConstant) {
 
 		var vm = this;
 
-		dataFactory.getBody().then(function(resp) {
-			vm.bodies = JSON.parse(resp.data.bodies);
-		});
-
-		dataFactory.getExperience().then(function(resp) {
-			vm.experience = JSON.parse(resp.data.experiences);
-		});
-
-		dataFactory.getLanguages().then(function(resp) {
-			vm.languages = JSON.parse(resp.data.languages);
-		});
-
-		dataFactory.getProjects().then(function(resp) {
-			vm.projects = JSON.parse(resp.data.projects);
-		});
-
-		dataFactory.getRoles().then(function(resp) {
-			vm.roles = JSON.parse(resp.data.roles);
-		});
-
-		dataFactory.getGender().then(function(resp) {
-			vm.genders = JSON.parse(resp.data.genders);
-		});
+		vm.bodies = coreConstant.bodies;
+		vm.experience = coreConstant.experience;
+		vm.languages = coreConstant.languages;
+		vm.projects = coreConstant.projectType;
+		vm.roles = coreConstant.roles;
+		vm.genders = coreConstant.genders;
 
 		vm.form = {};
 

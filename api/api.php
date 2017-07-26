@@ -554,6 +554,7 @@ class me_api extends db_config {
 				'training' => $postdata->training,
 				'languages' => $postdata->languages,
 				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null,
+				'video_name' => $postdata->video_name ? $postdata->video_name : null
 			];
 			
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);

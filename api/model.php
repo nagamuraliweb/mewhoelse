@@ -194,7 +194,7 @@
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
-					ud.user_character_description, ud.user_production_house
+					ud.user_character_description, ud.user_production_house, ud.video_name
 					FROM dr_mem_users as u 
 					LEFT JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
 					WHERE u.user_id = :user_id';
@@ -216,7 +216,7 @@
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
-					ud.user_character_description, ud.user_production_house
+					ud.user_character_description, ud.user_production_house, ud.video_name
 					FROM dr_mem_users as u 
 					INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
 					WHERE u.user_type = :user_type';
@@ -239,7 +239,7 @@
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
-					ud.user_character_description, ud.user_production_house
+					ud.user_character_description, ud.user_production_house, ud.video_name
 					FROM dr_mem_users as u 
 					INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
 					WHERE ud.user_project_id = :project_type';
@@ -262,7 +262,7 @@
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
-					ud.user_character_description, ud.user_production_house
+					ud.user_character_description, ud.user_production_house, ud.video_name
 					FROM dr_mem_users as u 
 					INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
 					WHERE u.user_id = :user_id';
@@ -318,10 +318,10 @@
 			$sql = 'INSERT INTO dr_mem_users_details (user_id, user_gender_id, user_skills_id, user_skills_others, user_dob,
 					user_videos, user_experience_id, user_city, user_ethinicity, user_body_id, user_hair_id,
 					user_hair_others, user_weight, user_skin_id, user_hair_color_id, user_is_professional,
-					user_language_id, user_language_others) 
+					user_language_id, user_language_others, video_name) 
 						VALUES (:user_id, :gender, :skills, :otherskills, :dob, :videos, :experince,
 					:city, :other_ethnicity, :body_type, :hair_type, :others_hairtype, :weight, :skin_color, :hair_color,
-					:training, :languages, :others_languages)';
+					:training, :languages, :others_languages, :video_name)';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
@@ -332,6 +332,12 @@
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 			} else {
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_NULL);
+			}
+
+			if ($data['video_name']) {
+				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_NULL);
 			}
 
 			if ($data['skills'] == 0) {
@@ -379,7 +385,7 @@
 				user_skills_id = :skills, user_skills_others = :otherskills, user_dob = :dob, user_videos = :videos, user_experience_id = :experince,
 				user_city = :city, user_ethinicity = :other_ethnicity, user_body_id = :body_type, user_hair_id = :hair_type,
 				user_hair_others = :others_hairtype, user_weight = :weight, user_skin_id = :skin_color, user_hair_color_id = :hair_color,
-				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages
+				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages, video_name = :video_name
 				WHERE user_id = :user_id';
 
 			$stmt = $DB->prepare($sql);
@@ -391,6 +397,12 @@
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 			} else {
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_INT);
+			}
+
+			if ($data['video_name']) {
+				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_NULL);
 			}
 
 			if ($data['skills'] === 0) {
