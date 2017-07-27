@@ -77,7 +77,8 @@ angular.module('meapp.services.artistService', [])
                 others_languages: technician.others_languages,
                 front_img: technician.front_img,
                 side_img: technician.side_img,
-                full_img: technician.full_img
+                full_img: technician.full_img,
+                video_name: technician.video_name
             }
         };
 

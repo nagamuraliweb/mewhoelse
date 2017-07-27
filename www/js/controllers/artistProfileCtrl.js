@@ -43,8 +43,6 @@
 				languages.push(vm.artist.user_language_others);
 
 			vm.skill = skills.join(', ');
-			console.log(vm.skill);
-
 			vm.lang = languages.join(', ');
 			
 		});

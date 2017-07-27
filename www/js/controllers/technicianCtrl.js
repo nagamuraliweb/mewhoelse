@@ -10,6 +10,7 @@
 
 		var vm = this;
 		vm.form = {};
+		vm.showLanguages = false;
 
 		vm.experience = coreConstant.experience;
 		vm.languages = coreConstant.languages;
@@ -26,12 +27,17 @@
 			other_ethnicity: '',
 			training: '',
 			languages: '',
-			others_languages: ''
+			others_languages: '',
+			video_name: ''
 		};
 
 		vm.technician.user_id = window.localStorage.getItem('userID');
 
-		$scope.uploadFile = function(files) {
+		vm.listLanguages = function() {
+			vm.showLanguages = (vm.showLanguages) ? false : true;
+		}
+
+		$scope.uploadFile = function(files, selector) {
 			var fd = new FormData();
 			fd.append("file", files[0]);
 			loaderFactory.showLoader();
@@ -62,21 +68,31 @@
 			});
 		};
 
-		/*jQuery(function ($){
+		$scope.uploadVideo = function(files) {
+			var fd = new FormData();
+			fd.append("file", files[0]);
+			loaderFactory.showLoader();
+			artistFactory.videoUpload(fd).then(function(resp) {
+				loaderFactory.hideLoader();
+				if(resp.data.error === 1) {
+					loaderFactory.showAlert(resp.data.msg);
+					return;
+				} else {
+					vm.technician.video_name = resp.data.video_name;
+				}
+			});
+		};
+
+		jQuery(function ($){
            $(".segment-select").Segment();
       	});
 
-      	$('#dlist2').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
-
-		$('#dlist3').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});*/
-
 		vm.saveTechnicianDetails = function() {
+			vm.technician.languages = Object.keys(vm.selectedLanguages).join(',');
+			vm.technician.gender = $('#gender').val();
+			vm.technician.experince = $('#experience').val();
+			vm.technician.training = $('#training').val();
+
 			loaderFactory.showLoader();
 			artistFactory.saveTechnicianDetails(vm.technician).then(function(resp) {
 				loaderFactory.hideLoader();

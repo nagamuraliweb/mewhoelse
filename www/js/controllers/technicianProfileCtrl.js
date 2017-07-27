@@ -4,41 +4,34 @@
 	angular.module('meapp.controllers.technicianProfileCtrl', [])
 		.controller('technicianProfileCtrl', technicianProfileCtrl);
 
-	technicianProfileCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state'];
+	technicianProfileCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant'];
 
-	function technicianProfileCtrl($scope, dataFactory, artistFactory, loaderFactory, $state) {
+	function technicianProfileCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant) {
 
 		var vm = this;
 		vm.user_id = window.localStorage.getItem('userID');
 		vm.version = new Date().getTime();
+		var languages = [];
+
+		vm.experience = coreConstant.experience;
+		vm.languages = coreConstant.languages;
+		vm.genders = coreConstant.genders;
 
 		dataFactory.getUserDetails(vm.user_id).then(function(resp) {
 			vm.technician = JSON.parse(resp.data.user_details);
-		});
 
-		dataFactory.getType().then(function(resp) {
-			var profession_types = JSON.parse(resp.data.types);
-			vm.profession = profession_types[vm.technician.user_type];
-		});
+			vm.profession = coreConstant.type[vm.technician.user_type];
+			vm.gender = coreConstant.genders[vm.technician.user_gender_id];
+			vm.exp = coreConstant.experience[vm.technician.user_experience_id];
 
-		dataFactory.getExperience().then(function(resp) {
-			var experience = JSON.parse(resp.data.experiences);
-			vm.exp = experience[vm.technician.user_experience_id];
-		});
+			angular.forEach(vm.technician.user_language_id.split(','), function(key) {
+				languages.push(coreConstant.languages[key]);
+			});
 
-		dataFactory.getSkills().then(function(resp) {
-			var skills = JSON.parse(resp.data.skills);
-			vm.skills = skills[vm.technician.user_skills_id];
-		});
+			if(vm.technician.user_language_others)
+				languages.push(vm.technician.user_language_others);
 
-		dataFactory.getLanguages().then(function(resp) {
-			var languages = JSON.parse(resp.data.languages);
-			vm.lang = languages[vm.technician.user_language_id];
-		});
-
-		dataFactory.getGender().then(function(resp) {
-			var genders = JSON.parse(resp.data.genders);
-			vm.gender = genders[vm.technician.user_gender_id];
+			vm.lang = languages.join(', ');
 		});
 
 		$scope.$on('youtube.player.playing', function ($event, player) {

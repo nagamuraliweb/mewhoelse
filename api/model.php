@@ -449,6 +449,7 @@
 			$stmt->bindParam(':city', $data['city'], PDO::PARAM_STR);
 			$stmt->bindParam(':other_ethnicity', $data['other_ethnicity'], PDO::PARAM_STR);
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
+			$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
@@ -485,6 +486,7 @@
 			$stmt->bindParam(':city', $data['city'], PDO::PARAM_STR);
 			$stmt->bindParam(':other_ethnicity', $data['other_ethnicity'], PDO::PARAM_STR);
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
+			$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
@@ -519,6 +521,7 @@
 			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_INT);
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);			
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
+			$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
@@ -557,6 +560,7 @@
 			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_INT);
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);			
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
+			$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);

@@ -12,10 +12,19 @@
 		var user_id = window.localStorage.getItem('userID');
 
 		vm.form = {};
+		vm.showLanguages = true;
 
 		vm.experience = coreConstant.experience;
 		vm.languages = coreConstant.languages;
 		vm.genders = coreConstant.genders;
+
+		jQuery(function ($){
+           $(".segment-select").Segment();
+      	});
+
+		vm.listLanguages = function() {
+			vm.showLanguages = (vm.showLanguages) ? false : true;
+		}
 
 		dataFactory.getUserDetails(user_id).then(function(resp) {
 			var tech_data = JSON.parse(resp.data.user_details);
@@ -35,7 +44,7 @@
 			};
 		});
 
-		$scope.uploadFile = function(files) {
+		$scope.uploadFile = function(files, selector) {
 			var fd = new FormData();
 			fd.append("file", files[0]);
 			loaderFactory.showLoader();
@@ -65,6 +74,27 @@
 				}
 			});
 		};
+
+		$scope.uploadVideo = function(files) {
+			var fd = new FormData();
+			fd.append("file", files[0]);
+			loaderFactory.showLoader();
+			artistFactory.videoUpload(fd).then(function(resp) {
+				loaderFactory.hideLoader();
+				if(resp.data.error === 1) {
+					loaderFactory.showAlert(resp.data.msg);
+					return;
+				} else {
+					vm.technician.video_name = resp.data.video_name;
+				}
+			});
+		};
+
+		vm.deleteImg = function(selector) {
+			$('#'+selector).find('img').remove();
+			angular.element("input[id="+selector+"Field]").val(null);
+			$('#'+selector+'Delete').hide();
+		}
 
 		vm.updateTechnicianDetails = function() {
 			loaderFactory.showLoader();

@@ -977,7 +977,7 @@ class me_api extends db_config {
 		$file_end = end($file_explode);
 		$file_ext = strtolower($file_end);
 
-		if (copy('../video/tmp/'.$video_name, '../video/'.$user_id.'.'.$file_ext)) {
+		if (copy('../video/tmp/'.$video_name, '../video/'.$video_name)) {
 			unlink('../video/tmp/'.$video_name);
 		}
 	}

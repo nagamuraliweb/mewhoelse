@@ -44,7 +44,8 @@ angular.module('meapp.controllers.artistCtrl', [])
 			hair_color: '',
 			training: '',
 			languages: '',
-			others_languages: ''
+			others_languages: '',
+			video_name: ''
 		};
 
 		vm.artist.user_id = window.localStorage.getItem('userID');

@@ -16,23 +16,26 @@
 				<div class="row no_pad multipleimage">
 					<div class="col-33 col">
 						<label class="uploadbtn1">
-							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+							<input type="file" name="file" id="frontviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'frontview')" />
 						</label><br>
-						<span id="headview"></span>
+						<span id="frontview"></span>
+						<span id="frontviewDelete" style="display:none;" ng-click="vm.deleteImg('frontview');">X</span>
 					</div>
 
 					<div class="col-33 col">
 						<label class="uploadbtn2">
-							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+							<input type="file" name="file" id="sideviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'sideview')" />
 						</label><br>
-						<span id="profileview"></span>
+						<span id="sideview"></span>
+						<span id="sideviewDelete" style="display:none;" ng-click="vm.deleteImg('sideview');">X</span>
 					</div>
 
 					<div class="col-33 col">
 						<label class="uploadbtn3">
-							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+							<input type="file" name="file" id="fullviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'fullview')" />
 						</label><br>
 						<span id="fullview"></span>
+						<span id="fullviewDelete" style="display:none;" ng-click="vm.deleteImg('fullview');">X</span>
 					</div>
 				</div>
 				</div> 
@@ -76,9 +79,9 @@
 
 				<div class="border_bottom">
 				<p>Gender <span class="pull-right">
-					<select class="segment-select">
+					<select class="segment-select" id="gender">
 				      <option value="1">Male</option>
-				      <option value="0">Female</option>
+				      <option value="2">Female</option>
 				  	</select>
 				</span></p>
 			  	</div>
@@ -99,22 +102,26 @@
 
 				<div class="border_bottom">
 				<p ng-click="vm.listLanguages();">Languages <span class="pull-right" ng-show="!vm.showLanguages"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showLanguages"><i class="icon ion-ios-arrow-down"></i></span></p>
-					<div class="wrapper" id="dwrapper2">
+					<div class="wrapper" id="dwrapper8">
 						<ul id="languages_list" ng-show="vm.showLanguages">
-							<li ng-repeat="(key, value) in vm.languages" data-id="{{key}}">{{value}}</li>
+							<li ng-repeat="(key, value) in vm.languages">
+								<input type="checkbox" name="selectlanguages[]" value="{{key}}" ng-model="vm.selectedLanguages[key]" />
+								{{value}}
+							</li>
 						</ul>
 					</div>
 				</div>
 
+				<input type="text" name="others_languages" ng-model="vm.technician.others_languages" class="inputbox bottom_30" placeholder="Enter other languages" />
+
 				<div class="border_bottom">
-				Experience
-						<div class="wrapper" id="dwrapper3">
-							<select id="dlist3" required>
-							  	<option value="">Select</option>
-								<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
-							</select>
-						</div>
-				</div>
+				<p>Experience <span class="pull-right">
+					<select class="segment-select" id="experience">
+				      <option value="1">Fresher</option>
+				      <option value="2">Experienced</option>
+				  	</select>
+				</span></p>
+			  	</div>
 				
 				<!-- <select name="experince" class="dropdown" ng-model="vm.technician.experince" required>
 					<option value="">Experience</option>
@@ -141,15 +148,15 @@
 
 				<div class="border_bottom">
 				<p>Professional trained <span class="pull-right">
-					<select class="segment-select">
+					<select class="segment-select" id="training">
 				      <option value="1">Yes</option>
-				      <option value="0">No</option>
+				      <option value="2">No</option>
 				  	</select>
 				</span></p>
 			  	</div>
 				
 
-				<button class="button button-outline loginbtn createportfolio" ng-click="vm.saveTechnicianDetails()" ng-disabled="!vm.form.technician.$valid">
+				<button class="button button-outline loginbtn createportfolio" ng-click="vm.saveTechnicianDetails()">
 				  create portfolio
 				</button>
 			</div>

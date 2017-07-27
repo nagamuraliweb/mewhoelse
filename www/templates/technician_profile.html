@@ -38,10 +38,6 @@
                 <div class="col col-50">Languages</div>
                 <div class="col col-50">: {{::vm.lang}}</div>
             </div>
-            <div class="row" ng-if="vm.technician.user_language_others">
-                <div class="col col-50">Languages</div>
-                <div class="col col-50">: {{::vm.technician.user_language_others}}</div>
-            </div>
             <div class="row">
                 <div class="col col-50">Experience</div>
                 <div class="col col-50">: {{::vm.exp}}</div>
@@ -56,8 +52,8 @@
             </div>
             <div class="row">
                 <div class="col col-50">Professional trained</div>
-                <div class="col col-50">: <span ng-if="vm.technician.user_is_professional == 0">Yes</span>
-            <span ng-if="vm.technician.user_is_professional == 1">No</span></div>
+                <div class="col col-50">: <span ng-if="vm.technician.user_is_professional == 1">Yes</span>
+            <span ng-if="vm.technician.user_is_professional == 2">No</span></div>
             </div>
 
             <p class="titleColor">Profile Videos</p>
