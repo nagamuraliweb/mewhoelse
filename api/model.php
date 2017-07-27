@@ -170,7 +170,7 @@
 
 			$sql = 'SELECT u.user_id, u.user_type, u.user_name, u.user_email, u.user_mobile, ud.user_gender_id, 
 					ud.user_skills_id, ud.user_skills_others, ud.user_dob, ud.user_videos, ud.user_experience_id, ud.user_city, 
-					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_hair_others, ud.user_weight, 
+					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_weight, 
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
@@ -190,7 +190,7 @@
 
 			$sql = 'SELECT u.user_id, u.user_type, u.user_name, u.user_email, u.user_mobile, ud.user_gender_id, 
 					ud.user_skills_id, ud.user_skills_others, ud.user_dob, ud.user_videos, ud.user_experience_id, ud.user_city, 
-					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_hair_others, ud.user_weight, 
+					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_weight, 
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
@@ -212,7 +212,7 @@
 
 			$sql = 'SELECT u.user_id, u.user_type, u.user_name, u.user_email, u.user_mobile, ud.user_gender_id, 
 					ud.user_skills_id, ud.user_skills_others, ud.user_dob, ud.user_videos, ud.user_experience_id, ud.user_city, 
-					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_hair_others, ud.user_weight, 
+					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_weight, 
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
@@ -235,7 +235,7 @@
 			$sql = 'SELECT u.user_id, u.user_type, u.user_name, u.user_email, u.user_mobile, 
 					ud.user_gender_id, ud.user_skills_id, ud.user_skills_others, ud.user_dob,
 					ud.user_videos, ud.user_experience_id, ud.user_city, 
-					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_hair_others, ud.user_weight, 
+					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_weight, 
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
@@ -258,7 +258,7 @@
 			$sql = 'SELECT u.user_id, u.user_type, u.user_name, u.user_email, u.user_mobile, 
 					ud.user_gender_id, ud.user_skills_id, ud.user_skills_others, ud.user_dob,
 					ud.user_videos, ud.user_experience_id, ud.user_city, 
-					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_hair_others, ud.user_weight, 
+					ud.user_ethinicity, ud.user_body_id, ud.user_hair_id, ud.user_weight, 
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
@@ -340,29 +340,28 @@
 				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_NULL);
 			}
 
-			if ($data['skills'] == 0) {
-				$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_NULL);
+			$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_STR);
+
+			if ($data['otherskills']) {
 				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_STR);
 				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_NULL);
 			}
 	
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);
 			$stmt->bindParam(':city', $data['city'], PDO::PARAM_STR);
 			$stmt->bindParam(':other_ethnicity', $data['other_ethnicity'], PDO::PARAM_STR);
-			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_STR);
-			$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_STR);
+			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_INT);
+			$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_INT);
 			$stmt->bindParam(':weight', $data['weight'], PDO::PARAM_INT);
-			$stmt->bindParam(':skin_color', $data['skin_color'], PDO::PARAM_STR);
-			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_STR);
+			$stmt->bindParam(':skin_color', $data['skin_color'], PDO::PARAM_INT);
+			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_INT);
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
+			$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 
-			if ($data['languages'] == 0) {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_NULL);
+			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
 			}
 			
@@ -397,29 +396,25 @@
 				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_NULL);
 			}
 
-			if ($data['skills'] === 0) {
-				$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_NULL);
+			if ($data['otherskills']) {
 				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_STR);
 				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_NULL);
 			}
 	
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);
 			$stmt->bindParam(':city', $data['city'], PDO::PARAM_STR);
 			$stmt->bindParam(':other_ethnicity', $data['other_ethnicity'], PDO::PARAM_STR);
-			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_STR);
-			$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_STR);
+			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_INT);
+			$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_INT);
 			$stmt->bindParam(':weight', $data['weight'], PDO::PARAM_INT);
-			$stmt->bindParam(':skin_color', $data['skin_color'], PDO::PARAM_STR);
-			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_STR);
+			$stmt->bindParam(':skin_color', $data['skin_color'], PDO::PARAM_INT);
+			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_INT);
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
 
-			if ($data['languages'] === 0) {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_NULL);
+			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
 			}
 			
@@ -452,11 +447,9 @@
 			$stmt->bindParam(':other_ethnicity', $data['other_ethnicity'], PDO::PARAM_STR);
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
 
-			if ($data['languages'] === 7) {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_NULL);
+			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
 			}
 			
@@ -490,11 +483,9 @@
 			$stmt->bindParam(':other_ethnicity', $data['other_ethnicity'], PDO::PARAM_STR);
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
 
-			if ($data['languages'] === 7) {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_NULL);
+			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
 			}
 
@@ -526,11 +517,9 @@
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);			
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
 
-			if ($data['languages'] === 7) {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_NULL);
+			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
 			}
 
@@ -566,11 +555,9 @@
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);			
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
 
-			if ($data['languages'] === 7) {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_NULL);
+			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
 			}
 

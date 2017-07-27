@@ -32,11 +32,19 @@
 				skills.push(coreConstant.skills[key]);
 			});
 
+			if(vm.artist.user_skills_others)
+				skills.push(vm.artist.user_skills_others);
+
 			angular.forEach(vm.artist.user_language_id.split(','), function(key) {
 				languages.push(coreConstant.languages[key]);
 			});
 
+			if(vm.artist.user_language_others)
+				languages.push(vm.artist.user_language_others);
+
 			vm.skill = skills.join(', ');
+			console.log(vm.skill);
+
 			vm.lang = languages.join(', ');
 			
 		});
