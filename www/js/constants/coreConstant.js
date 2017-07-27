@@ -1,5 +1,6 @@
 var coreConstant = {};
 
+coreConstant.type = {1: "Artist", 2: "Technician", 3: "Client"};
 coreConstant.skills = {1: "Horse Riding", 2: "Swimming", 3: "Singing", 4: "Dancing", 5: "Ramp", 6: "Host / Hostess", 7: "Theater", 8: "Others"};
 coreConstant.bodies = {1:"Slim", 2:"Average", 3:"Athletic", 4:"Plus Size", 5:"Muscular"};
 coreConstant.hairs = {1: "Long", 2: "Short", 3: "Curly", 4: "Bald"};

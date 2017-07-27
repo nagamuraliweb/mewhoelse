@@ -317,10 +317,10 @@
 
 			$sql = 'INSERT INTO dr_mem_users_details (user_id, user_gender_id, user_skills_id, user_skills_others, user_dob,
 					user_videos, user_experience_id, user_city, user_ethinicity, user_body_id, user_hair_id,
-					user_hair_others, user_weight, user_skin_id, user_hair_color_id, user_is_professional,
+					user_weight, user_skin_id, user_hair_color_id, user_is_professional,
 					user_language_id, user_language_others, video_name) 
 						VALUES (:user_id, :gender, :skills, :otherskills, :dob, :videos, :experince,
-					:city, :other_ethnicity, :body_type, :hair_type, :others_hairtype, :weight, :skin_color, :hair_color,
+					:city, :other_ethnicity, :body_type, :hair_type, :weight, :skin_color, :hair_color,
 					:training, :languages, :others_languages, :video_name)';
 
 			$stmt = $DB->prepare($sql);
@@ -351,19 +351,11 @@
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);
 			$stmt->bindParam(':city', $data['city'], PDO::PARAM_STR);
 			$stmt->bindParam(':other_ethnicity', $data['other_ethnicity'], PDO::PARAM_STR);
-			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_INT);
-
-			if ($data['hair_type'] == 0) {
-				$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_NULL);
-				$stmt->bindParam(':others_hairtype', $data['others_hairtype'], PDO::PARAM_STR);
-			} else {
-				$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_INT);
-				$stmt->bindParam(':others_hairtype', $data['others_hairtype'], PDO::PARAM_NULL);
-			}
-
+			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_STR);
+			$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_STR);
 			$stmt->bindParam(':weight', $data['weight'], PDO::PARAM_INT);
-			$stmt->bindParam(':skin_color', $data['skin_color'], PDO::PARAM_INT);
-			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_INT);
+			$stmt->bindParam(':skin_color', $data['skin_color'], PDO::PARAM_STR);
+			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_STR);
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
 
 			if ($data['languages'] == 0) {
@@ -384,7 +376,7 @@
 			$sql = 'UPDATE dr_mem_users_details SET user_gender_id = :gender,
 				user_skills_id = :skills, user_skills_others = :otherskills, user_dob = :dob, user_videos = :videos, user_experience_id = :experince,
 				user_city = :city, user_ethinicity = :other_ethnicity, user_body_id = :body_type, user_hair_id = :hair_type,
-				user_hair_others = :others_hairtype, user_weight = :weight, user_skin_id = :skin_color, user_hair_color_id = :hair_color,
+				user_weight = :weight, user_skin_id = :skin_color, user_hair_color_id = :hair_color,
 				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages, video_name = :video_name
 				WHERE user_id = :user_id';
 
@@ -416,19 +408,11 @@
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);
 			$stmt->bindParam(':city', $data['city'], PDO::PARAM_STR);
 			$stmt->bindParam(':other_ethnicity', $data['other_ethnicity'], PDO::PARAM_STR);
-			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_INT);
-
-			if ($data['hair_type'] === 0) {
-				$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_NULL);
-				$stmt->bindParam(':others_hairtype', $data['others_hairtype'], PDO::PARAM_STR);
-			} else {
-				$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_INT);
-				$stmt->bindParam(':others_hairtype', $data['others_hairtype'], PDO::PARAM_NULL);
-			}
-
+			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_STR);
+			$stmt->bindParam(':hair_type', $data['hair_type'], PDO::PARAM_STR);
 			$stmt->bindParam(':weight', $data['weight'], PDO::PARAM_INT);
-			$stmt->bindParam(':skin_color', $data['skin_color'], PDO::PARAM_INT);
-			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_INT);
+			$stmt->bindParam(':skin_color', $data['skin_color'], PDO::PARAM_STR);
+			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_STR);
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
 
 			if ($data['languages'] === 0) {

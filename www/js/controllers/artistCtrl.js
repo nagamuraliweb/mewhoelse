@@ -60,7 +60,6 @@ angular.module('meapp.controllers.artistCtrl', [])
 					loaderFactory.showAlert(resp.data.msg);
 					return;
 				} else {
-
 					if (selector === 'frontview') {
 						vm.artist.front_img = resp.data.img_name;
 						$('#frontviewDelete').show();
@@ -71,8 +70,6 @@ angular.module('meapp.controllers.artistCtrl', [])
 						vm.artist.full_img = resp.data.img_name;
 						$('#fullviewDelete').show();
 					}
-
-					$('#'+selector).empty();
 
 					var img = document.createElement('img');
 					img.setAttribute('src', 'http://mewhoelse.in/img/tmp/'+resp.data.img_name);
@@ -123,17 +120,18 @@ angular.module('meapp.controllers.artistCtrl', [])
 		}
 
 		vm.deleteImg = function(selector) {
-			$('#'+selector).empty();
+			$('#'+selector).find('img').remove();
+			angular.element("input[id="+selector+"Field]").val(null);
 			$('#'+selector+'Delete').hide();
 		}
 
 		vm.saveArtistDetails = function() {
-			vm.artist.skills = JSON.stringify(Object.keys(vm.selectedSkills));
-			vm.artist.languages = JSON.stringify(Object.keys(vm.selectedLanguages));
-			vm.artist.body_type = JSON.stringify(Object.keys(vm.selectedBodies));
-			vm.artist.hair_type = JSON.stringify(Object.keys(vm.selectedHairs));
-			vm.artist.skin_color = JSON.stringify(Object.keys(vm.selectedSkins));
-			vm.artist.hair_color = JSON.stringify(Object.keys(vm.selectHairColors));
+			vm.artist.skills = Object.keys(vm.selectedSkills).join(',');
+			vm.artist.languages = Object.keys(vm.selectedLanguages).join(',');
+			vm.artist.body_type = vm.selectedBodies;
+			vm.artist.hair_type = vm.selectedHairs;
+			vm.artist.skin_color = vm.selectedSkins;
+			vm.artist.hair_color = vm.selectHairColors;
 			vm.artist.gender = $('#gender').val();
 			vm.artist.experince = $('#experience').val();
 			vm.artist.training = $('#training').val();
@@ -151,6 +149,5 @@ angular.module('meapp.controllers.artistCtrl', [])
 				}
 			 });
 		}
-
 	}
 })();

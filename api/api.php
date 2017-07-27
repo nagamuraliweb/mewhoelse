@@ -503,12 +503,6 @@ class me_api extends db_config {
 				throw new Exception('Choose hair type');
 			}
 
-			if ($postdata->hair_type === 0) {
-				if (empty($postdata->others_hairtype)) {
-					throw new Exception('Enter hair type');
-				}
-			}
-
 			if (empty($postdata->weight)) {
 				throw new Exception('Enter weight');
 			}
@@ -547,7 +541,6 @@ class me_api extends db_config {
 				'other_ethnicity' => $postdata->other_ethnicity,
 				'body_type' => $postdata->body_type,
 				'hair_type' => $postdata->hair_type,
-				'others_hairtype' => $postdata->others_hairtype ? $postdata->others_hairtype : null,
 				'weight' => $postdata->weight,
 				'skin_color' => $postdata->skin_color,
 				'hair_color' => $postdata->hair_color,

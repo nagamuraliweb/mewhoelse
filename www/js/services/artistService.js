@@ -38,7 +38,6 @@ angular.module('meapp.services.artistService', [])
 				other_ethnicity: artist.other_ethnicity,
 				body_type: parseInt(artist.body_type),
 				hair_type: parseInt(artist.hair_type),
-				others_hairtype: artist.others_hairtype,
 				weight: parseInt(artist.weight),
 				skin_color: parseInt(artist.skin_color),
 				hair_color: parseInt(artist.hair_color),

@@ -14,7 +14,7 @@
 				<div class="row no_pad multipleimage">
 					<div class="col-33 col imgdiv">
 						<label class="uploadbtn1">
-							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'frontview')" />
+							<input type="file" name="file" id="frontviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'frontview')" />
 						</label><br>
 						<span id="frontview"></span>
 						<span id="frontviewDelete" style="display:none;" ng-click="vm.deleteImg('frontview');">X</span>
@@ -22,7 +22,7 @@
 
 					<div class="col-33 col imgdiv">
 						<label class="uploadbtn2">
-							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'sideview')" />
+							<input type="file" name="file" id="sideviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'sideview')" />
 						</label><br>
 						<span id="sideview"></span>
 						<span id="sideviewDelete" style="display:none;" ng-click="vm.deleteImg('sideview');">X</span>
@@ -30,7 +30,7 @@
 
 					<div class="col-33 col imgdiv">
 						<label class="uploadbtn3">
-							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'fullview')" />
+							<input type="file" name="file" id="fullviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'fullview')" />
 						</label><br>
 						<span id="fullview"></span>
 						<span id="fullviewDelete" style="display:none;" ng-click="vm.deleteImg('fullview');">X</span>
@@ -75,7 +75,7 @@
 				    <span>Skills is required.</span>
 				</div>
 
-				<input type="text" class="inputbox" placeholder="Enter other skills" name="otherskills" ng-model="artist.otherskills" />
+				<input type="text" class="inputbox" placeholder="Enter other skills" name="otherskills" ng-model="vm.artist.otherskills" />
 
 				<p class="titleColor">Personal details</p>
 
@@ -98,7 +98,7 @@
 					<div class="wrapper" id="dwrapper4">
 						<ul id="bodies_list" ng-show="vm.showBodies">
 							<li ng-repeat="(key, value) in vm.bodies" data-id="{{key}}">
-								<input type="radio" name="selectBodies[]" value="{{key}}" ng-model="vm.selectedBodies[key]" />
+								<input type="radio" name="selectBodies" ng-value="{{key}}" ng-model="vm.selectedBodies" />
 								{{value}}
 							</li>
 						</ul>
@@ -116,7 +116,7 @@
 					<div class="wrapper" id="dwrapper5">
 						<ul id="hairs_list" ng-show="vm.showHairType">
 							<li ng-repeat="(key, value) in vm.hairs" data-id="{{key}}">
-								<input type="radio" name="selectHairs[]" value="{{key}}" ng-model="vm.selectedHairs[key]" />
+								<input type="radio" name="selectHairs" ng-value="{{key}}" ng-model="vm.selectedHairs" />
 								{{value}}
 							</li>
 						</ul>
@@ -185,7 +185,7 @@
 					<div class="wrapper" id="dwrapper6">
 						<ul id="skins_list" ng-show="vm.showSkins">
 							<li ng-repeat="(key, value) in vm.skins" data-id="{{key}}">
-								<input type="radio" name="selectSkins[]" value="{{key}}" ng-model="vm.selectedSkins[key]" />
+								<input type="radio" name="selectSkins" ng-value="{{key}}" ng-model="vm.selectedSkins" />
 								{{value}}
 							</li>
 						</ul>
@@ -203,7 +203,7 @@
 					<div class="wrapper" id="dwrapper7">
 						<ul id="haircolors_list" ng-show="vm.showHaircolors">
 							<li ng-repeat="(key, value) in vm.haircolors" data-id="{{key}}">
-								<input type="radio" name="selectHairColors[]" value="{{key}}" ng-model="vm.selectHairColors[key]" />
+								<input type="radio" name="selectHairColors" ng-value="{{key}}" ng-model="vm.selectHairColors" />
 								{{value}}
 							</li>
 						</ul>
