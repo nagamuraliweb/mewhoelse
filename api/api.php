@@ -546,7 +546,7 @@ class me_api extends db_config {
 				'hair_color' => $postdata->hair_color,
 				'training' => $postdata->training,
 				'languages' => $postdata->languages,
-				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null,
+				'others_languages' => $postdata->others_languages ? $postdata->others_languages : null,
 				'video_name' => $postdata->video_name ? $postdata->video_name : null
 			];
 			
@@ -656,7 +656,7 @@ class me_api extends db_config {
 				'other_ethnicity' => $postdata->other_ethnicity,
 				'training' => $postdata->training,
 				'languages' => $postdata->languages,
-				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null
+				'others_languages' => $postdata->others_languages ? $postdata->others_languages : null
 			];
 
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
@@ -784,7 +784,7 @@ class me_api extends db_config {
 				'experince' => $postdata->experince,
 				'training' => $postdata->training,
 				'languages' => $postdata->languages,
-				'others_languages' => $postdata->others_languages ? $postdata->others_hairtype : null,
+				'others_languages' => $postdata->others_languages ? $postdata->others_languages : null,
 				'production_housename' => $postdata->production_housename,
 			];
 

@@ -387,7 +387,7 @@
 			if ($data['videos']) {
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_INT);
+				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_NULL);
 			}
 
 			if ($data['video_name']) {
@@ -395,6 +395,8 @@
 			} else {
 				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_NULL);
 			}
+
+			$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_STR);
 
 			if ($data['otherskills']) {
 				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
@@ -411,6 +413,7 @@
 			$stmt->bindParam(':skin_color', $data['skin_color'], PDO::PARAM_INT);
 			$stmt->bindParam(':hair_color', $data['hair_color'], PDO::PARAM_INT);
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
+			$stmt->bindParam(':languages', $data['languages'], PDO::PARAM_STR);
 
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
@@ -473,7 +476,7 @@
 			if ($data['videos']) {
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_INT);
+				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_NULL);
 			}
 			
 			$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
@@ -520,7 +523,7 @@
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
+				$stmt->bindParam(':others_languages', null, PDO::PARAM_NULL);
 			}
 
 			$stmt->bindParam(':production_housename', $data['production_housename'], PDO::PARAM_STR);
@@ -558,7 +561,7 @@
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
+				$stmt->bindParam(':others_languages', null, PDO::PARAM_NULL);
 			}
 
 			$stmt->bindParam(':production_housename', $data['production_housename'], PDO::PARAM_STR);

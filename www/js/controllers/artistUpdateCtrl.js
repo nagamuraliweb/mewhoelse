@@ -11,8 +11,8 @@
 		var user_id = window.localStorage.getItem('userID');
 
 		vm.form = {};
-		vm.showSkills = vm.showBodies = vm.showHairType = false;
-		vm.showSkins = vm.showHaircolors = vm.showLanguages = false;
+		vm.showSkills = vm.showBodies = vm.showHairType = true;
+		vm.showSkins = vm.showHaircolors = vm.showLanguages = true;
 
 		vm.skills = coreConstant.skills;
 		vm.bodies = coreConstant.bodies;
@@ -50,6 +50,10 @@
 				languages: artist_data.user_language_id,
 				others_languages: artist_data.user_language_others
 			};
+
+			$('#gender').val(artist_data.user_gender_id);
+			$('#experience').val(artist_data.user_experience_id);
+			$('#training').val(artist_data.user_is_professional);
 		});
 
 		$scope.uploadFile = function(files) {
