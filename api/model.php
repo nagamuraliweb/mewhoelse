@@ -174,7 +174,7 @@
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
-					ud.user_character_description, ud.user_production_house
+					ud.user_production_house
 					FROM dr_mem_users as u  
 					INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id';
 
@@ -194,7 +194,7 @@
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
-					ud.user_character_description, ud.user_production_house, ud.video_name
+					ud.user_production_house, ud.video_name
 					FROM dr_mem_users as u 
 					LEFT JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
 					WHERE u.user_id = :user_id';
@@ -216,7 +216,7 @@
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
-					ud.user_character_description, ud.user_production_house, ud.video_name
+					ud.user_production_house, ud.video_name
 					FROM dr_mem_users as u 
 					INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
 					WHERE u.user_type = :user_type';
@@ -239,7 +239,7 @@
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
-					ud.user_character_description, ud.user_production_house, ud.video_name
+					ud.user_production_house, ud.video_name
 					FROM dr_mem_users as u 
 					INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
 					WHERE ud.user_project_id = :project_type';
@@ -262,7 +262,7 @@
 					ud.user_skin_id, ud.user_hair_color_id, ud.user_is_professional, ud.user_language_id, 
 					ud.user_language_others, ud.user_project, ud.user_project_name,
 					ud.user_project_id, ud.user_project_description, ud.user_role_id, ud.user_looking_for, ud.user_character_name,
-					ud.user_character_description, ud.user_production_house, ud.video_name
+					ud.user_production_house, ud.video_name
 					FROM dr_mem_users as u 
 					INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
 					WHERE u.user_id = :user_id';
@@ -499,17 +499,16 @@
 
 		public function saveClientDetails ($DB, $data) {
 
-			$sql = 'INSERT INTO dr_mem_users_details (user_id, user_gender_id, user_project, user_project_name,
+			$sql = 'INSERT INTO dr_mem_users_details (user_id, user_project, user_project_name,
 					user_project_id, user_project_description, user_role_id, user_looking_for, user_character_name,
-					user_character_description, user_body_id, user_experience_id, user_is_professional, user_language_id,
+					user_body_id, user_experience_id, user_is_professional, user_language_id,
 					user_language_others, user_production_house) 
-						VALUES (:user_id, :gender, :project, :projectname, :project_type, :project_description, 
-					:roll_type, :looking_for, :character_name, :character_description, :body_type, :experince, 
+						VALUES (:user_id, :project, :projectname, :project_type, :project_description, 
+					:roll_type, :looking_for, :character_name, :body_type, :experince, 
 					:training, :languages, :others_languages, :production_housename)';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
-			$stmt->bindParam(':gender', $data['gender'], PDO::PARAM_INT);
 			$stmt->bindParam(':project', $data['project'], PDO::PARAM_INT);
 			$stmt->bindParam(':projectname', $data['projectname'], PDO::PARAM_STR);
 			$stmt->bindParam(':project_type', $data['project_type'], PDO::PARAM_INT);
@@ -517,7 +516,6 @@
 			$stmt->bindParam(':roll_type', $data['roll_type'], PDO::PARAM_INT);
 			$stmt->bindParam(':looking_for', $data['looking_for'], PDO::PARAM_INT);
 			$stmt->bindParam(':character_name', $data['character_name'], PDO::PARAM_STR);
-			$stmt->bindParam(':character_description', $data['character_description'], PDO::PARAM_STR);
 			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_INT);
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);			
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);
@@ -538,17 +536,16 @@
 
 		public function updateClientDetails ($DB, $data) {
 
-			$sql = 'UPDATE dr_mem_users_details SET user_gender_id = :gender, user_project = :project, user_project_name = :projectname, 
+			$sql = 'UPDATE dr_mem_users_details SET user_project = :project, user_project_name = :projectname, 
 				user_project_id = :project_type, user_project_description = :project_description, 
 				user_role_id = :roll_type, user_looking_for = :looking_for, user_character_name = :character_name,
-				user_character_description = :character_description, user_body_id = :body_type,
+				user_body_id = :body_type,
 				user_experience_id = :experince, user_is_professional = :training, user_language_id = :languages, 
 				user_language_others = :others_languages, user_production_house = :production_housename
 				WHERE user_id = :user_id';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
-			$stmt->bindParam(':gender', $data['gender'], PDO::PARAM_INT);
 			$stmt->bindParam(':project', $data['project'], PDO::PARAM_INT);
 			$stmt->bindParam(':projectname', $data['projectname'], PDO::PARAM_STR);
 			$stmt->bindParam(':project_type', $data['project_type'], PDO::PARAM_INT);
@@ -556,7 +553,6 @@
 			$stmt->bindParam(':roll_type', $data['roll_type'], PDO::PARAM_INT);
 			$stmt->bindParam(':looking_for', $data['looking_for'], PDO::PARAM_INT);
 			$stmt->bindParam(':character_name', $data['character_name'], PDO::PARAM_STR);
-			$stmt->bindParam(':character_description', $data['character_description'], PDO::PARAM_STR);
 			$stmt->bindParam(':body_type', $data['body_type'], PDO::PARAM_INT);
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);			
 			$stmt->bindParam(':training', $data['training'], PDO::PARAM_INT);

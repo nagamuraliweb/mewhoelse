@@ -8,6 +8,12 @@ angular.module('meapp.controllers.artistCtrl', [])
 
 	function artistCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant) {
 
+		dataFactory.hasRegistered().then(function(resp) {
+			if(resp.data.has_registered) {
+				$state.go('artist-profile');
+			}
+		});
+
 		var vm = this;
 		vm.form = {};
 		vm.showSkills = vm.showBodies = vm.showHairType = false;
@@ -127,6 +133,10 @@ angular.module('meapp.controllers.artistCtrl', [])
 		}
 
 		vm.saveArtistDetails = function() {
+
+			if(!validate())
+				return;
+
 			vm.artist.skills = Object.keys(vm.selectedSkills).join(',');
 			vm.artist.languages = Object.keys(vm.selectedLanguages).join(',');
 			vm.artist.body_type = vm.selectedBodies;
@@ -149,6 +159,56 @@ angular.module('meapp.controllers.artistCtrl', [])
 					$state.go('artist-profile')
 				}
 			 });
+		}
+
+		function validate() {
+			try {
+
+				if ($('#frontview').find('img').length === 0)
+					throw "Upload front view image";
+
+				if ($('#sideview').find('img').length === 0)
+					throw "Upload side view image";
+
+				if ($('#fullview').find('img').length === 0)
+					throw "Upload full view image";
+
+				if(vm.selectedSkills.length === 0)
+					throw "Choose skills";
+				
+				if (!vm.artist.dob || typeof vm.artist.dob === 'undefined')
+					throw "Choose DOB";
+				
+				if (!vm.selectedBodies)
+					throw "Choose Body Type";
+				
+				if (!vm.hair_type)
+					throw "Choose Hair Type";
+
+				if (!vm.artist.weight)
+					throw "Enter Weight";
+
+				if (!vm.selectedLanguages)
+					throw "Choose Languages";
+				
+				if (!vm.artist.city)
+					throw "Enter City";
+
+				if (!vm.artist.other_ethnicity)
+					throw "Enter Ethnicity";
+				
+				if (!vm.selectedSkins)
+					throw "Choose Skin Colour";
+
+				if (!vm.selectHairColors)
+					throw "Choose Hair Colour";
+
+			} catch(e) {
+				loaderFactory.showAlert(e);
+				return false;
+			}
+
+			return true;
 		}
 	}
 })();

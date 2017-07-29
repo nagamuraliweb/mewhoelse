@@ -63,16 +63,6 @@
 							</li>
 						</ul>
 					</div>
-					<!--<div class="wrapper" id="dwrapper2">
-						<select id="dlist2" name="skills" ng-model="vm.artist.skills">
-						  <option value="">Select</option>
-						  <option ng-repeat="(key, value) in vm.skills" value="{{key}}">{{value}}</option>
-						</select>
-					</div>-->
-				</div>
-
-				<div class="error_alert" ng-show="vm.form.artists.skills.$dirty && vm.form.artists.skills.$error.required">
-				    <span>Skills is required.</span>
 				</div>
 
 				<input type="text" class="inputbox" placeholder="Enter other skills" name="otherskills" ng-model="vm.artist.otherskills" />
@@ -89,9 +79,6 @@
 			  	</div>
 
 				<input type="date" name="dob" ng-model="vm.artist.dob" placeholder="Date of birth" class="inputbox" required>
-				<div class="error_alert" ng-show="vm.form.artists.dob.$dirty && vm.form.artists.dob.$error.required">
-				    <span>Date of birth is required.</span>
-				</div>
 
 				<div class="border_bottom">
 				<p ng-click="vm.listBodies();">Body Type <span class="pull-right" ng-show="!vm.showBodies"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showBodies"><i class="icon ion-ios-arrow-down"></i></span></p>
@@ -103,12 +90,6 @@
 							</li>
 						</ul>
 					</div>
-						<!--<div class="wrapper" id="dwrapper4">
-							<select id="dlist4" ng-model="vm.artist.body_type" required>
-							  	<option value="">Select</option>
-								<option ng-repeat="(key, value) in vm.bodies" value="{{key}}">{{value}}</option>
-							</select>
-						</div>-->
 				</div>
 
 				<div class="border_bottom">
@@ -121,18 +102,9 @@
 							</li>
 						</ul>
 					</div>
-						<!--<div class="wrapper" id="dwrapper5">
-							<select id="dlist5" ng-model="vm.artist.hair_type" required>
-							  	<option value="">Select</option>
-								<option ng-repeat="(key, value) in vm.hairs" value="{{key}}">{{value}}</option>
-							</select>
-						</div>-->
 				</div>
 
-				<input type="number" name="weight" ng-model="vm.artist.weight" class="inputbox" placeholder="Enter your weight" autocomplete="off" required>
-				<div class="error_alert" ng-show="vm.form.artists.weight.$dirty && vm.form.artists.weight.$error.required">
-				    <span>Weight is required.</span>
-				</div>
+				<input type="number" name="weight" ng-model="vm.artist.weight" class="inputbox" placeholder="Enter your weight" autocomplete="off">
 
 				<div class="border_bottom">
 				<p ng-click="vm.listLanguages();">Languages <span class="pull-right" ng-show="!vm.showLanguages"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showLanguages"><i class="icon ion-ios-arrow-down"></i></span></p>
@@ -144,25 +116,9 @@
 							</li>
 						</ul>
 					</div>
-						<!--<div class="wrapper" id="dwrapper8">
-							<select id="dlist8" ng-model="vm.artist.languages" required>
-							  <option value="">Select</option>
-								<option ng-repeat="(key, value) in vm.languages" value="{{key}}">{{value}}</option>
-							</select>
-						</div>-->
 				</div>
 
 				<input type="text" name="others_languages" ng-model="vm.artist.others_languages" class="inputbox bottom_30" placeholder="Enter other languages" />
-
-				<!-- <div class="border_bottom">
-				Experience
-						<div class="wrapper" id="dwrapper3">
-							<select id="dlist3" ng-model="vm.artist.experince" required>
-							  	<option value="">Select</option>
-								<option ng-repeat="(key, value) in vm.experience" value="{{key}}">{{value}}</option>
-							</select>
-						</div>
-				</div> -->
 
 				<div class="border_bottom">
 				<p>Experience <span class="pull-right">
@@ -173,11 +129,7 @@
 				</span></p>
 			  	</div>
 
-				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="vm.artist.city" required>
-				<div class="error_alert" ng-show="vm.form.artists.city.$dirty && vm.form.artists.city.$error.required">
-				    <span>City is required.</span>
-				</div>
-
+				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="vm.artist.city">
 				<input type="text" name="other_ethnicity" placeholder="Ethnicity" class="inputbox" ng-model="vm.artist.other_ethnicity" />
 
 				<div class="border_bottom">
@@ -190,12 +142,6 @@
 							</li>
 						</ul>
 					</div>
-						<!--<div class="wrapper" id="dwrapper6">
-							<select id="dlist6" ng-model="vm.artist.skin_color" required>
-							  	<option value="">Select</option>
-								<option ng-repeat="(key, value) in vm.skins" value="{{key}}">{{value}}</option>
-							</select>
-						</div>-->
 				</div>
 
 				<div class="border_bottom">
@@ -208,12 +154,6 @@
 							</li>
 						</ul>
 					</div>
-						<!--<div class="wrapper" id="dwrapper7">
-							<select id="dlist7" ng-model="vm.artist.hair_color" required>
-							  	<option value="">Select</option>
-								<option ng-repeat="(key, value) in vm.haircolors" value="{{key}}">{{value}}</option>
-							</select>
-						</div>-->
 				</div>
 
 				<div class="border_bottom">

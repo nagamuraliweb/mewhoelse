@@ -15,7 +15,8 @@ angular.module('meapp.factories.dataFactory', [])
 		getUserDetails: getUserDetails,
 		getGender: getGender,
 		getUserType: getUserType,
-		getUsersDetails: getUsersDetails
+		getUsersDetails: getUsersDetails,
+		hasRegistered: hasRegistered
 	}
 
 	function getType() {
@@ -146,6 +147,16 @@ angular.module('meapp.factories.dataFactory', [])
 	function getGender() {
 		var deffered = $q.defer();
 		dataService.getGender().then(function (resp) {
+			deffered.resolve(resp);
+		}, function (error) {
+			console.log(error);
+		});
+		return deffered.promise;
+	}
+
+	function hasRegistered() {
+		var deffered = $q.defer();
+		dataService.hasRegistered().then(function (resp) {
 			deffered.resolve(resp);
 		}, function (error) {
 			console.log(error);

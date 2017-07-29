@@ -12,6 +12,9 @@
 			var user_id = window.localStorage.getItem('userID');
 
 			vm.form = {};
+			vm.showProjectType = vm.showRollType = vm.showBodies = true;
+			vm.showLanguages = true;
+			vm.selectedLanguages = {};
 
 			vm.bodies = coreConstant.bodies;
 			vm.experience = coreConstant.experience;
@@ -25,7 +28,6 @@
 
 				vm.client = {
 					user_id: user_id,
-					gender: client_data.user_gender_id,
 					project: client_data.user_project,
 					projectname: client_data.user_project_name,
 					project_type: client_data.user_project_id,
@@ -33,7 +35,6 @@
 					roll_type: client_data.user_role_id,
 					looking_for: client_data.user_looking_for,
 					character_name: client_data.user_character_name,
-					character_description: client_data.user_character_description,
 					body_type: client_data.user_body_id,
 					experince: client_data.user_experience_id,
 					training: client_data.user_is_professional,
@@ -41,13 +42,42 @@
 					others_languages: client_data.user_language_others,
 					production_housename: client_data.user_production_house
 				};
+
+				angular.forEach(client_data.user_language_id, function(key) {
+					vm.selectedLanguages.push(key);
+				});
 			});
 
 			jQuery(function ($){
 	           $(".segment-select").Segment();
 	      	});
 
+			vm.listProjectType = function() {
+				vm.showProjectType = (vm.showProjectType) ? false : true;
+			}
+
+			vm.listRollType = function() {
+				vm.showRollType = (vm.showRollType) ? false : true;
+			}
+
+			vm.listBodies = function() {
+				vm.showBodies = (vm.showBodies) ? false : true;
+			}
+
+			vm.listLanguages = function() {
+				vm.showLanguages = (vm.showLanguages) ? false : true;
+			}
+
 			vm.updateClientDetails = function() {
+				vm.client.project_type = vm.selectedProjectType;
+				vm.client.languages = Object.keys(vm.selectedLanguages).join(',');
+				vm.client.body_type = vm.selectedBodies;
+				vm.client.roll_type = vm.selectedRollType;
+				vm.client.project = $('#project').val();
+				vm.client.looking_for = $('#looking_for').val();
+				vm.client.experince = $('#experience').val();
+				vm.client.training = $('#training').val();
+
 				loaderFactory.showLoader();
 				
 				artistFactory.saveClientDetails(vm.client).then(function(resp) {

@@ -13,6 +13,7 @@
 		vm.form = {};
 		vm.showSkills = vm.showBodies = vm.showHairType = true;
 		vm.showSkins = vm.showHaircolors = vm.showLanguages = true;
+		vm.selectedSkills = [];
 
 		vm.skills = coreConstant.skills;
 		vm.bodies = coreConstant.bodies;
@@ -54,6 +55,12 @@
 			$('#gender').val(artist_data.user_gender_id);
 			$('#experience').val(artist_data.user_experience_id);
 			$('#training').val(artist_data.user_is_professional);
+
+			// angular.forEach(artist_data.user_skills_id.split(','), function(key) {
+			// 	vm.selectedSkills.push(key);
+			// });
+
+			// console.log(vm.selectedSkills);
 		});
 
 		$scope.uploadFile = function(files) {
@@ -132,7 +139,12 @@
 			$('#'+selector+'Delete').hide();
 		}
 
+
 		vm.updateArtistDetails = function() {
+
+			 if(!validate())
+			 	return;
+
 			vm.artist.skills = Object.keys(vm.selectedSkills).join(',');
 			vm.artist.languages = Object.keys(vm.selectedLanguages).join(',');
 			vm.artist.body_type = vm.selectedBodies;
@@ -155,6 +167,56 @@
 					$state.go('artist-profile')
 				}
 			});
+		}
+
+		function validate() {
+			try {
+
+				if ($('#frontview').find('img').length === 0)
+					throw "Upload front view image";
+
+				if ($('#sideview').find('img').length === 0)
+					throw "Upload side view image";
+
+				if ($('#fullview').find('img').length === 0)
+					throw "Upload full view image";
+
+				if(vm.selectedSkills.length === 0)
+					throw "Choose skills";
+				
+				if (!vm.artist.dob || typeof vm.artist.dob === 'undefined')
+					throw "Choose DOB";
+				
+				if (!vm.selectedBodies)
+					throw "Choose Body Type";
+				
+				if (!vm.hair_type)
+					throw "Choose Hair Type";
+
+				if (!vm.artist.weight)
+					throw "Enter Weight";
+
+				if (!vm.selectedLanguages)
+					throw "Choose Languages";
+				
+				if (!vm.artist.city)
+					throw "Enter City";
+
+				if (!vm.artist.other_ethnicity)
+					throw "Enter Ethnicity";
+				
+				if (!vm.selectedSkins)
+					throw "Choose Skin Colour";
+
+				if (!vm.selectHairColors)
+					throw "Choose Hair Colour";
+
+			} catch(e) {
+				loaderFactory.showAlert(e);
+				return false;
+			}
+
+			return true;
 		}
 	}
 })();

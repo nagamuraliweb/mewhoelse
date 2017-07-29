@@ -24,12 +24,13 @@
 
 			<div class="border_bottom">
 			<p>Project <span class="pull-right">
-				<select class="segment-select" name="project" ng-model="vm.client.project" required>
-			      <option value="1">New</option>
-			      <option value="0">Existing</option>
-			  	</select>
+				<select class="segment-select" id="project">
+					<option value="1">New</option>
+					<option value="2">Existing</option>
+				</select>
 			</span></p>
-		  	</div>
+			</div>
+
 		  	<div class="error_alert" ng-show="vm.form.client.project.$dirty && vm.form.client.project.$error.required">
 			    <span>Project is required.</span>
 			</div>
@@ -48,22 +49,15 @@
 			</div> -->
 
 			<div class="border_bottom">
-			Project type
-					<div class="wrapper" id="dwrapper2">
-						<select id="dlist2"  multiple>
-						  <option value="volvo">Volvo</option>
-						  <option value="saab">Saab</option>
-						  <option value="mercedes">Mercedes</option>
-						  <option value="audi">Audi</option>
-						  <option value="Hyndai">Hyndai</option>
-						  <option value="Honda">Honda</option>
-						  <option value="Ferrari">Ferrari</option>
-						  <option value="Ducati">Ducati</option>
-						  <option value="Tesla">Tesla</option>
-						  <option value="volkswagon">volkswagon</option>
-						  <option value="Mclaren">Mclaren</option>
-						</select>
-					</div>
+			<p ng-click="vm.listProjectType();">Project type <span class="pull-right" ng-show="!vm.showProjectType"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showProjectType"><i class="icon ion-ios-arrow-down"></i></span></p>
+				<div class="wrapper" id="dwrapper2">
+					<ul id="projects_list" ng-show="vm.showProjectType">
+						<li ng-repeat="(key, value) in vm.projects" data-id="{{key}}">
+							<input type="radio" name="selectProjectType" ng-value="{{key}}" ng-model="vm.selectedProjectType" />
+							{{value}}
+						</li>
+					</ul>
+				</div>
 			</div>
 
 			<p class="titleColor">Project Description</p>
@@ -77,21 +71,14 @@
 			</div> -->
 
 			<div class="border_bottom">
-			Roll type
-				<div class="wrapper" id="dwrapper3">
-					<select id="dlist3"  multiple>
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="mercedes">Mercedes</option>
-					  <option value="audi">Audi</option>
-					  <option value="Hyndai">Hyndai</option>
-					  <option value="Honda">Honda</option>
-					  <option value="Ferrari">Ferrari</option>
-					  <option value="Ducati">Ducati</option>
-					  <option value="Tesla">Tesla</option>
-					  <option value="volkswagon">volkswagon</option>
-					  <option value="Mclaren">Mclaren</option>
-					</select>
+			<p ng-click="vm.listRollType();">Roll type <span class="pull-right" ng-show="!vm.showRollType"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showRollType"><i class="icon ion-ios-arrow-down"></i></span></p>
+				<div class="wrapper" id="dwrapper2">
+					<ul id="roles_list" ng-show="vm.showRollType">
+						<li ng-repeat="(key, value) in vm.roles" data-id="{{key}}">
+							<input type="radio" name="selectRollType" value="{{key}}" ng-model="vm.selectedRollType" />
+							{{value}}
+						</li>
+					</ul>
 				</div>
 			</div>
 
@@ -101,13 +88,12 @@
 			</select> -->
 
 			<div class="border_bottom">
-			Looking for
-				<div class="wrapper" id="dwrapper4">
-					<select id="dlist4"  multiple>
-					  <option value="volvo">Male</option>
-					  <option value="saab">Female</option>
-					</select>
-				</div>
+			<p>Looking for <span class="pull-right">
+				<select class="segment-select" id="looking_for">
+					<option value="1">Male</option>
+					<option value="2">Female</option>
+				</select>
+			</span></p>
 			</div>
 
 			<input type="text" name="character_name" class="inputbox" placeholder="Character name" ng-model="vm.client.character_name">
@@ -124,21 +110,14 @@
 			</select> -->
 
 			<div class="border_bottom">
-			Body Type
-				<div class="wrapper" id="dwrapper5">
-					<select id="dlist5"  multiple>
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="mercedes">Mercedes</option>
-					  <option value="audi">Audi</option>
-					  <option value="Hyndai">Hyndai</option>
-					  <option value="Honda">Honda</option>
-					  <option value="Ferrari">Ferrari</option>
-					  <option value="Ducati">Ducati</option>
-					  <option value="Tesla">Tesla</option>
-					  <option value="volkswagon">volkswagon</option>
-					  <option value="Mclaren">Mclaren</option>
-					</select>
+			<p ng-click="vm.listBodies();">Body Type <span class="pull-right" ng-show="!vm.showBodies"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showBodies"><i class="icon ion-ios-arrow-down"></i></span></p>
+				<div class="wrapper" id="dwrapper4">
+					<ul id="bodies_list" ng-show="vm.showBodies">
+						<li ng-repeat="(key, value) in vm.bodies">
+							<input type="radio" name="selectBodies" ng-value="{{key}}" ng-model="vm.selectedBodies" />
+							{{value}}
+						</li>
+					</ul>
 				</div>
 			</div>
 
@@ -148,22 +127,12 @@
 			</select> -->
 
 			<div class="border_bottom">
-			Experience
-				<div class="wrapper" id="dwrapper6">
-					<select id="dlist6"  multiple>
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="mercedes">Mercedes</option>
-					  <option value="audi">Audi</option>
-					  <option value="Hyndai">Hyndai</option>
-					  <option value="Honda">Honda</option>
-					  <option value="Ferrari">Ferrari</option>
-					  <option value="Ducati">Ducati</option>
-					  <option value="Tesla">Tesla</option>
-					  <option value="volkswagon">volkswagon</option>
-					  <option value="Mclaren">Mclaren</option>
-					</select>
-				</div>
+			<p>Experience <span class="pull-right">
+				<select class="segment-select" id="experience">
+					<option value="1">Fresher</option>
+					<option value="2">Experienced</option>
+				</select>
+			</span></p>
 			</div>
 
 			<!-- <div>
@@ -173,9 +142,9 @@
 
 			<div class="border_bottom">
 			<p>Professional trained <span class="pull-right">
-				<select class="segment-select" ng-model="vm.client.training">
+				<select class="segment-select" ng-model="vm.client.training" id="training">
 			      <option value="1">Yes</option>
-			      <option value="0">No</option>
+			      <option value="2">No</option>
 			  	</select>
 			</span></p>
 		  	</div>
@@ -187,29 +156,22 @@
 			<input type="text" ng-if="vm.client.languages === '7'" name="others_languages" ng-model="vm.client.others_languages" class="inputbox bottom_30" placeholder="Enter your language"> -->
 
 			<div class="border_bottom">
-			Languages
-				<div class="wrapper" id="dwrapper7">
-					<select id="dlist7"  multiple>
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="mercedes">Mercedes</option>
-					  <option value="audi">Audi</option>
-					  <option value="Hyndai">Hyndai</option>
-					  <option value="Honda">Honda</option>
-					  <option value="Ferrari">Ferrari</option>
-					  <option value="Ducati">Ducati</option>
-					  <option value="Tesla">Tesla</option>
-					  <option value="volkswagon">volkswagon</option>
-					  <option value="Mclaren">Mclaren</option>
-					</select>
-				</div>
+				<p ng-click="vm.listLanguages();">Languages <span class="pull-right" ng-show="!vm.showLanguages"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showLanguages"><i class="icon ion-ios-arrow-down"></i></span></p>
+					<div class="wrapper" id="dwrapper8">
+						<ul id="languages_list" ng-show="vm.showLanguages">
+							<li ng-repeat="(key, value) in vm.languages">
+								<input type="checkbox" name="selectlanguages[]" value="{{key}}" ng-model="vm.selectedLanguages[key]" />
+								{{value}}
+							</li>
+						</ul>
+					</div>
 			</div>
 
-			<input type="text" ng-if="vm.client.languages === '7'" name="others_languages" ng-model="vm.client.others_languages" class="inputbox bottom_30" placeholder="Enter your language">
+			<input type="text" name="others_languages" ng-model="vm.client.others_languages" class="inputbox bottom_30" placeholder="Enter your language">
 
 			<input type="text" name="production_housename" class="inputbox bottom_10" placeholder="Production house name" ng-model="vm.client.production_housename" autocomplete="off">
 
-			<button class="button button-outline loginbtn" ng-click="vm.saveClientDetails()" ng-disabled="!vm.form.client.$valid">
+			<button class="button button-outline loginbtn" ng-click="vm.saveClientDetails()">
 			  proceed
 			</button>
 

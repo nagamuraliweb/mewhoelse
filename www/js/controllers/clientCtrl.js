@@ -10,6 +10,10 @@
 
 		var vm = this;
 
+		vm.form = {};
+		vm.showProjectType = vm.showRollType = vm.showBodies = false;
+		vm.showLanguages = false;
+
 		vm.bodies = coreConstant.bodies;
 		vm.experience = coreConstant.experience;
 		vm.languages = coreConstant.languages;
@@ -17,11 +21,8 @@
 		vm.roles = coreConstant.roles;
 		vm.genders = coreConstant.genders;
 
-		vm.form = {};
-
 		vm.client = {
 			user_id: window.localStorage.getItem('userID'),
-			gender: '',
 			project: '',
 			projectname: '',
 			project_type: '',
@@ -29,7 +30,6 @@
 			roll_type: '',
 			looking_for: '',
 			character_name: '',
-			character_description:'',
 			body_type: '',
 			experince: '',
 			training: '',
@@ -42,37 +42,32 @@
            $(".segment-select").Segment();
       	});
 
-      	$('#dlist2').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
+      	vm.listProjectType = function() {
+			vm.showProjectType = (vm.showProjectType) ? false : true;
+		}
 
-		$('#dlist3').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
+		vm.listRollType = function() {
+			vm.showRollType = (vm.showRollType) ? false : true;
+		}
 
-		$('#dlist4').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
+		vm.listBodies = function() {
+			vm.showBodies = (vm.showBodies) ? false : true;
+		}
 
-		$('#dlist5').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
-
-		$('#dlist6').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
-
-		$('#dlist7').dropList({
-			multiple	: true,
-			selected	: '["Select"]'
-		});
+		vm.listLanguages = function() {
+			vm.showLanguages = (vm.showLanguages) ? false : true;
+		}
 
 		vm.saveClientDetails = function() {
+			vm.client.project_type = vm.selectedProjectType;
+			vm.client.languages = Object.keys(vm.selectedLanguages).join(',');
+			vm.client.body_type = vm.selectedBodies;
+			vm.client.roll_type = vm.selectedRollType;
+			vm.client.project = $('#project').val();
+			vm.client.looking_for = $('#looking_for').val();
+			vm.client.experince = $('#experience').val();
+			vm.client.training = $('#training').val();
+
 			loaderFactory.showLoader();
 
 			artistFactory.saveClientDetails(vm.client).then(function(resp) {

@@ -87,7 +87,7 @@ angular.module('meapp.services.artistService', [])
         });
     }
 
-    this.saveClientDetails = function(client) {
+    this.saveClientDetails = function(client) { console.log(client);
         var request = {
             method: 'POST',
             url: 'http://mewhoelse.in/api/api.php?f=saveClientDetails',
@@ -96,7 +96,6 @@ angular.module('meapp.services.artistService', [])
             },
             data: { 
                 user_id: parseInt(client.user_id),
-                gender: parseInt(client.gender),
                 project: client.project,
                 projectname: client.projectname,
                 project_type: parseInt(client.project_type),
@@ -104,7 +103,6 @@ angular.module('meapp.services.artistService', [])
                 roll_type: parseInt(client.roll_type),
                 looking_for: parseInt(client.looking_for),
                 character_name: client.character_name,
-                character_description:client.character_description,
                 body_type: parseInt(client.body_type),
                 experince: parseInt(client.experince),
                 training: client.training,

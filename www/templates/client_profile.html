@@ -43,10 +43,6 @@
                 <div class="col col-50">Character name</div>
                 <div class="col col-50">: {{::vm.client.user_character_name}}</div>
             </div>
-            <div class="row">
-                <div class="col col-50">Character description</div>
-                <div class="col col-50">: {{::vm.client.user_character_description}}</div>
-            </div>
 
             <p class="titleColor">Requirements</p>
             <div class="row">
@@ -59,16 +55,12 @@
             </div>
              <div class="row">
                 <div class="col col-50">Professional trained</div>
-                <div class="col col-50">: <span ng-if="vm.client.user_is_professional == 0">Yes</span>
-            <span ng-if="vm.client.user_is_professional == 1">No</span></div>
+                <div class="col col-50">: <span ng-if="vm.client.user_is_professional == 1">Yes</span>
+            <span ng-if="vm.client.user_is_professional == 2">No</span></div>
             </div>
             <div class="row" ng-if="vm.client.user_language_id">
                 <div class="col col-50">Languages</div>
                 <div class="col col-50">: {{::vm.lang}}</div>
-            </div>
-            <div class="row" ng-if="vm.client.user_language_others">
-                <div class="col col-50">Languages</div>
-                <div class="col col-50">: {{::vm.client.user_language_others}}</div>
             </div>
             <div class="row">
                 <div class="col col-50">Production house name</div>

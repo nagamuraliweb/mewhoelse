@@ -707,10 +707,6 @@ class me_api extends db_config {
 				throw new Exception('Invalid user');
 			}
 
-			if (empty($postdata->gender)) {
-				throw new Exception('Choose gender');
-			}
-
 			if (empty($postdata->project)) {
 				throw new Exception('Choose project');
 			}
@@ -737,10 +733,6 @@ class me_api extends db_config {
 
 			if (empty($postdata->character_name)) {
 				throw new Exception('Enter character name');
-			}
-
-			if (empty($postdata->character_description)) {
-				throw new Exception('Enter character description');
 			}
 
 			if (empty($postdata->body_type)) {
@@ -771,7 +763,6 @@ class me_api extends db_config {
 
 			$data = [
 				'user_id' => $postdata->user_id,
-				'gender' => $postdata->gender,
 				'project' => $postdata->project,
 				'projectname' => $postdata->projectname,
 				'project_type' => $postdata->project_type,
