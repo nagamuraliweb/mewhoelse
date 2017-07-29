@@ -87,6 +87,12 @@
            $(".segment-select").Segment();
       	});
 
+		vm.deleteImg = function(selector) {
+			$('#'+selector).find('img').remove();
+			angular.element("input[id="+selector+"Field]").val(null);
+			$('#'+selector+'Delete').hide();
+		}
+
 		vm.saveTechnicianDetails = function() {
 			vm.technician.languages = Object.keys(vm.selectedLanguages).join(',');
 			vm.technician.gender = $('#gender').val();

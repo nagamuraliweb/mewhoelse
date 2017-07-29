@@ -18,7 +18,9 @@
 						<label class="uploadbtn1">
 							<input type="file" name="file" id="frontviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'frontview')" />
 						</label><br>
-						<span id="frontview"></span>
+						<span id="frontview">
+							<img src="http://mewhoelse.in/img/profile/{{vm.technician.user_id}}_front.jpg" width="90px" height="117px" />
+						</span>
 						<span id="frontviewDelete" style="display:none;" ng-click="vm.deleteImg('frontview');">X</span>
 					</div>
 
@@ -26,7 +28,9 @@
 						<label class="uploadbtn2">
 							<input type="file" name="file" id="sideviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'sideview')" />
 						</label><br>
-						<span id="sideview"></span>
+						<span id="sideview">
+							<img src="http://mewhoelse.in/img/profile/{{vm.technician.user_id}}_side.jpg" width="90px" height="117px" />
+						</span>
 						<span id="sideviewDelete" style="display:none;" ng-click="vm.deleteImg('sideview');">X</span>
 					</div>
 
@@ -34,7 +38,9 @@
 						<label class="uploadbtn3">
 							<input type="file" name="file" id="fullviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'fullview')" />
 						</label><br>
-						<span id="fullview"></span>
+						<span id="fullview">
+							<img src="http://mewhoelse.in/img/profile/{{vm.technician.user_id}}_full.jpg" width="90px" height="117px" />
+						</span>
 						<span id="fullviewDelete" style="display:none;" ng-click="vm.deleteImg('fullview');">X</span>
 					</div>
 				</div>
@@ -43,7 +49,7 @@
 				<div class="border_bottom">
 				<label>
 					<div>
-						<input type="url" name="videos" placeholder="Profile video(Youtube link)" class="inputbox" ng-model="vm.artist.videos">
+						<input type="url" name="videos" placeholder="Profile video(Youtube link)" class="inputbox" ng-model="vm.technician.videos">
 					</div>
 
 					<div id="profileVideo">
@@ -105,7 +111,7 @@
 					<div class="wrapper" id="dwrapper8">
 						<ul id="languages_list" ng-show="vm.showLanguages">
 							<li ng-repeat="(key, value) in vm.languages">
-								<input type="checkbox" name="selectlanguages[]" value="{{key}}" ng-model="vm.selectedLanguages[key]" />
+								<input type="checkbox" name="selectlanguages[]" value="{{key}}" ng-checked="vm.technician.languages == key ? true : false" ng-model="vm.selectedLanguages[key]" />
 								{{value}}
 							</li>
 						</ul>

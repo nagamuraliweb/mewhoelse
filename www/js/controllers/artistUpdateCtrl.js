@@ -126,7 +126,23 @@
 			vm.showHaircolors = (vm.showHaircolors) ? false : true;
 		}
 
+		vm.deleteImg = function(selector) {
+			$('#'+selector).find('img').remove();
+			angular.element("input[id="+selector+"Field]").val(null);
+			$('#'+selector+'Delete').hide();
+		}
+
 		vm.updateArtistDetails = function() {
+			vm.artist.skills = Object.keys(vm.selectedSkills).join(',');
+			vm.artist.languages = Object.keys(vm.selectedLanguages).join(',');
+			vm.artist.body_type = vm.selectedBodies;
+			vm.artist.hair_type = vm.selectedHairs;
+			vm.artist.skin_color = vm.selectedSkins;
+			vm.artist.hair_color = vm.selectHairColors;
+			vm.artist.gender = $('#gender').val();
+			vm.artist.experince = $('#experience').val();
+			vm.artist.training = $('#training').val();
+			
 			loaderFactory.showLoader();
 
 			artistFactory.saveArtistDetails(vm.artist).then(function(resp) {

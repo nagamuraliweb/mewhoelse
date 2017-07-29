@@ -97,6 +97,11 @@
 		}
 
 		vm.updateTechnicianDetails = function() {
+			vm.technician.languages = Object.keys(vm.selectedLanguages).join(',');
+			vm.technician.gender = $('#gender').val();
+			vm.technician.experince = $('#experience').val();
+			vm.technician.training = $('#training').val();
+			
 			loaderFactory.showLoader();
 			artistFactory.saveTechnicianDetails(vm.technician).then(function(resp) {
 				loaderFactory.hideLoader();

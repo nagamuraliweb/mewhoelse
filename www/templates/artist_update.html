@@ -19,6 +19,7 @@
 						<span id="frontview">
 							<img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_front.jpg" width="90px" height="117px" />
 						</span>
+						<span id="frontviewDelete" style="display:none;" ng-click="vm.deleteImg('frontview');">X</span>
 					</div>
 
 					<div class="col-33 col">
@@ -28,6 +29,7 @@
 						<span id="sideview">
 							<img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_side.jpg" width="90px" height="117px" />
 						</span>
+						<span id="sideviewDelete" style="display:none;" ng-click="vm.deleteImg('sideview');">X</span>
 					</div>
 
 					<div class="col-33 col">
@@ -37,6 +39,7 @@
 						<span id="fullview">
 							<img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_full.jpg" width="90px" height="117px" />
 						</span>
+						<span id="fullviewDelete" style="display:none;" ng-click="vm.deleteImg('fullview');">X</span>
 					</div>
 				</div>
 				</div> 
