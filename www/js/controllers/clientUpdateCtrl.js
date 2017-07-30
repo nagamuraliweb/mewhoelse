@@ -14,7 +14,7 @@
 			vm.form = {};
 			vm.showProjectType = vm.showRollType = vm.showBodies = true;
 			vm.showLanguages = true;
-			vm.selectedLanguages = {};
+			vm.selectedLanguages = [];
 
 			vm.bodies = coreConstant.bodies;
 			vm.experience = coreConstant.experience;
@@ -46,11 +46,16 @@
 				angular.forEach(client_data.user_language_id, function(key) {
 					vm.selectedLanguages.push(key);
 				});
-			});
 
-			jQuery(function ($){
-	           $(".segment-select").Segment();
-	      	});
+				$('#project').val(client_data.user_project);
+				$('#looking_for').val(client_data.user_looking_for);
+				$('#experience').val(client_data.user_experience_id);
+				$('#training').val(client_data.user_is_professional);
+
+				jQuery(function ($){
+					$(".segment-select").Segment();
+				});
+			});
 
 			vm.listProjectType = function() {
 				vm.showProjectType = (vm.showProjectType) ? false : true;
@@ -69,8 +74,17 @@
 			}
 
 			vm.updateClientDetails = function() {
+				if(!validate())
+			 		return;
+				
+				var languages = [];
+				angular.forEach(vm.selectedLanguages, function(key, value) {
+					if (key)
+						languages.push(value);
+				});
+
 				vm.client.project_type = vm.selectedProjectType;
-				vm.client.languages = Object.keys(vm.selectedLanguages).join(',');
+				vm.client.languages = Object.keys(languages).join(',');
 				vm.client.body_type = vm.selectedBodies;
 				vm.client.roll_type = vm.selectedRollType;
 				vm.client.project = $('#project').val();
@@ -91,6 +105,40 @@
 						$state.go('client-profile');
 					}
 				});
+			}
+
+			function validate() {
+				try {
+
+					if (vm.client.projectname === '')
+						throw "Enter Project Name";
+
+					if (!selectedProjectType)
+						throw "Choose Project Type";
+
+					if (!selectedRollType)
+						throw "Choose Roll Type";
+
+					if(vm.client.character_name === '')
+						throw "Enter Character Name";
+					
+					if (vm.client.project_description === '')
+						throw "Enter Project Description";
+					
+					if (!vm.selectedBodies)
+						throw "Choose Body Type";
+
+					if (!vm.selectedLanguages)
+						throw "Choose Languages";
+					
+					if (vm.client.production_housename === '')
+						throw "Enter Production Housename";
+				} catch(e) {
+					loaderFactory.showAlert(e);
+					return false;
+				}
+
+				return true;
 			}
 
 		}

@@ -3,9 +3,9 @@
 	angular.module('meapp.controllers.artistUpdateCtrl', [])
 		.controller('artistUpdateCtrl', artistUpdateCtrl);
 
-	artistUpdateCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant'];
+	artistUpdateCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant', '$filter'];
 
-	function artistUpdateCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant) {
+	function artistUpdateCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $filter) {
 
 		var vm = this;
 		var user_id = window.localStorage.getItem('userID');
@@ -13,7 +13,7 @@
 		vm.form = {};
 		vm.showSkills = vm.showBodies = vm.showHairType = true;
 		vm.showSkins = vm.showHaircolors = vm.showLanguages = true;
-		vm.selectedSkills = [];
+		vm.selectedSkills = vm.selectedLanguages = [];
 
 		vm.skills = coreConstant.skills;
 		vm.bodies = coreConstant.bodies;
@@ -23,10 +23,6 @@
 		vm.skins = coreConstant.skins;
 		vm.genders = coreConstant.genders;
 		vm.languages = coreConstant.languages;
-
-		jQuery(function ($){
-           $(".segment-select").Segment();
-      	});
 
 		dataFactory.getUserDetails(user_id).then(function(resp) {
 			var artist_data = JSON.parse(resp.data.user_details);
@@ -52,15 +48,26 @@
 				others_languages: artist_data.user_language_others
 			};
 
+			angular.forEach(artist_data.user_skills_id.split(','), function(key) {
+				vm.selectedSkills[key] = true;
+			});
+
+			angular.forEach(artist_data.user_language_id.split(','), function(key) {
+				vm.selectedLanguages[key] = true;
+			});
+
+			vm.selectedBodies = artist_data.user_body_id;
+			vm.selectedHairs = artist_data.user_hair_id;
+			vm.selectedSkins = artist_data.user_skin_id;
+			vm.selectHairColors = artist_data.user_hair_color_id;
+
 			$('#gender').val(artist_data.user_gender_id);
 			$('#experience').val(artist_data.user_experience_id);
 			$('#training').val(artist_data.user_is_professional);
 
-			// angular.forEach(artist_data.user_skills_id.split(','), function(key) {
-			// 	vm.selectedSkills.push(key);
-			// });
-
-			// console.log(vm.selectedSkills);
+			jQuery(function ($){
+				$(".segment-select").Segment();
+			});
 		});
 
 		$scope.uploadFile = function(files) {
@@ -139,14 +146,25 @@
 			$('#'+selector+'Delete').hide();
 		}
 
-
 		vm.updateArtistDetails = function() {
 
 			 if(!validate())
 			 	return;
 
-			vm.artist.skills = Object.keys(vm.selectedSkills).join(',');
-			vm.artist.languages = Object.keys(vm.selectedLanguages).join(',');
+			var filterSkills = [];
+			var languages = [];
+			angular.forEach(vm.selectedSkills, function(key, value) {
+				if (key)
+					filterSkills.push(value);
+			});
+
+			angular.forEach(vm.selectedLanguages, function(key, value) {
+				if (key)
+					languages.push(value);
+			});
+
+			vm.artist.skills = Object.values(filterSkills).join(',');
+			vm.artist.languages = Object.keys(languages).join(',');
 			vm.artist.body_type = vm.selectedBodies;
 			vm.artist.hair_type = vm.selectedHairs;
 			vm.artist.skin_color = vm.selectedSkins;

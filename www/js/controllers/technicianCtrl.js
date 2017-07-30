@@ -94,6 +94,10 @@
 		}
 
 		vm.saveTechnicianDetails = function() {
+
+			if(!validate())
+			 	return;
+
 			vm.technician.languages = Object.keys(vm.selectedLanguages).join(',');
 			vm.technician.gender = $('#gender').val();
 			vm.technician.experince = $('#experience').val();
@@ -110,6 +114,41 @@
 					$state.go('technician-profile');
 				}
 			});
+		}
+
+		function validate() {
+			try {
+
+				if ($('#frontview').find('img').length === 0)
+					throw "Upload front view image";
+
+				if ($('#sideview').find('img').length === 0)
+					throw "Upload side view image";
+
+				if ($('#fullview').find('img').length === 0)
+					throw "Upload full view image";
+
+				if(vm.technician.skills === '')
+					throw "Enter skills";
+				
+				if (!vm.technician.dob || typeof vm.technician.dob === 'undefined')
+					throw "Choose DOB";
+
+				if (!vm.selectedLanguages)
+					throw "Choose Languages";
+				
+				if (!vm.technician.city)
+					throw "Enter City";
+
+				if (!vm.technician.other_ethnicity)
+					throw "Enter Ethnicity";
+
+			} catch(e) {
+				loaderFactory.showAlert(e);
+				return false;
+			}
+
+			return true;
 		}
 	}
 })();
