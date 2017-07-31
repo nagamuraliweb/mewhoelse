@@ -46,7 +46,7 @@
 
 					<div id="profileVideo">
 						<label class="uploadbtn4">
-							<input type="file" name="file" onchange="angular.element(this).scope().uploadVideo(this.files)" />
+							<input type="file" id="videoFile" name="file" onchange="angular.element(this).scope().uploadVideo(this.files)" />
 						</label><br>
 						<span id="previewVideo"></span>
 						<span id="previewVideoDelete" style="display:none;" ng-click="vm.deleteVideo();">X</span>

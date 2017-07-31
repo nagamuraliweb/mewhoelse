@@ -8,6 +8,12 @@
 
 		function clientUpdateCtrl(dataFactory, loaderFactory, artistFactory, $state, coreConstant) {
 
+			dataFactory.hasRegistered().then(function(resp) {
+				if(!resp.data.has_registered) {
+					$state.go('client-register');
+				}
+			});
+
 			var vm = this;
 			var user_id = window.localStorage.getItem('userID');
 

@@ -8,6 +8,12 @@
 
 	function technicianCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, $stateParams, coreConstant) {
 
+		dataFactory.hasRegistered().then(function(resp) {
+			if(resp.data.has_registered) {
+				$state.go('technician-profile');
+			}
+		});
+
 		var vm = this;
 		vm.form = {};
 		vm.showLanguages = false;

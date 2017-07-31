@@ -52,9 +52,12 @@
 
 					<div id="profileVideo">
 						<label class="uploadbtn4">
-							<input type="file" name="file" onchange="angular.element(this).scope().uploadVideo(this.files)" />
+							<input type="file" id="videoFile" name="file" onchange="angular.element(this).scope().uploadVideo(this.files)" />
 						</label><br>
-						<span id="profilevideo"></span>
+						<span id="previewVideo">
+							<!--<youtube-video ng-if="vm.artist.video_name" player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="//mewhoelse.in/video/{{vm.artist.video_name}}"></youtube-video>-->
+						</span>
+						<span id="previewVideoDelete" ng-if="vm.artist.video_name" ng-click="vm.deleteVideo();">X</span>
 					</div>
 				</label>
 				</div>

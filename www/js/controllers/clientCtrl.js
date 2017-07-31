@@ -8,6 +8,12 @@
 
 	function clientCtrl(dataFactory, loaderFactory, artistFactory, $state, $scope, coreConstant) {
 
+		dataFactory.hasRegistered().then(function(resp) {
+			if(resp.data.has_registered) {
+				$state.go('client-profile');
+			}
+		});
+
 		var vm = this;
 
 		vm.form = {};

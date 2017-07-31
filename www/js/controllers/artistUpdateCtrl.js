@@ -1,12 +1,19 @@
 (function() {
     'use strict';
-	angular.module('meapp.controllers.artistUpdateCtrl', [])
+	angular.module('meapp.controllers.artistUpdateCtrl', ['youtube-embed'])
 		.controller('artistUpdateCtrl', artistUpdateCtrl);
 
 	artistUpdateCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant', '$filter'];
 
 	function artistUpdateCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $filter) {
 
+		dataFactory.hasRegistered().then(function(resp) { console.log(resp);
+			if(!resp.data.has_registered) {
+				$state.go('artist-register');
+			}
+		});
+		
+		var bestPlayer = null;
 		var vm = this;
 		var user_id = window.localStorage.getItem('userID');
 
@@ -45,7 +52,8 @@
 				hair_color: artist_data.user_hair_color_id,
 				training: artist_data.user_is_professional,
 				languages: artist_data.user_language_id,
-				others_languages: artist_data.user_language_others
+				others_languages: artist_data.user_language_others,
+				video_name: artist_data.video_name
 			};
 
 			angular.forEach(artist_data.user_skills_id.split(','), function(key) {
@@ -112,9 +120,23 @@
 					return;
 				} else {
 					vm.artist.video_name = resp.data.video_name;
+
+					var video = document.createElement('video');
+					video.setAttribute('src', 'http://mewhoelse.in/video/tmp/'+resp.data.video_name);
+					document.getElementById('previewVideo').appendChild(video);
+
+					$('#previewVideoDelete').show();
 				}
 			});
 		};
+
+		vm.deleteVideo = function() {
+			$('#previewVideo').find('video').remove();
+			angular.element("input[id='videoFile']").val(null);
+			$('#previewVideoDelete').hide();
+
+			vm.artist.video_name = '';
+		}
 
 		vm.listSkills = function() {
 			vm.showSkills = (vm.showSkills) ? false : true;
@@ -236,5 +258,13 @@
 
 			return true;
 		}
+
+		$scope.$on('youtube.player.playing', function ($event, player) {
+		    bestPlayer = player;
+		});
+
+		$scope.$on('youtube.player.ended', function ($event, player) {
+		    bestPlayer = '';
+		});
 	}
 })();

@@ -98,9 +98,23 @@ angular.module('meapp.controllers.artistCtrl', [])
 					return;
 				} else {
 					vm.artist.video_name = resp.data.video_name;
+
+					// var video = document.createElement('video');
+					// video.setAttribute('src', 'http://mewhoelse.in/video/tmp/'+resp.data.video_name);
+					// document.getElementById('previewVideo').appendChild(video);
+
+					// $('#previewVideoDelete').show();
 				}
 			});
 		};
+
+		vm.deleteVideo = function() {
+			$('#previewVideo').find('video').remove();
+			angular.element("input[id='videoFile']").val(null);
+			$('#previewVideoDelete').hide();
+
+			vm.artist.video_name = '';
+		}
 
 		vm.listSkills = function() {
 			vm.showSkills = (vm.showSkills) ? false : true;
