@@ -54,9 +54,12 @@
 
 					<div id="profileVideo">
 						<label class="uploadbtn4">
-							<input type="file" name="file" onchange="angular.element(this).scope().uploadVideo(this.files)" />
+							<input type="file" id="videoFile" name="file" onchange="angular.element(this).scope().uploadVideo(this.files)" />
 						</label><br>
-						<span id="profilevideo"></span>
+						<span id="previewVideo">
+							<video ng-if="vm.technician.video_name" width="100%" height="200px" ng-src="{{vm.upload_video('http://mewhoelse.in/video/' + vm.technician.video_name)}}" controls />
+						</span>
+						<span id="previewVideoDelete" ng-if="vm.technician.video_name" ng-click="vm.deleteVideo();">X</span>
 					</div>
 				</label>
 				</div>

@@ -4,9 +4,9 @@
 	angular.module('meapp.controllers.artistProfileCtrl', ['youtube-embed'])                                                                                      
 	.controller('artistProfileCtrl', artistProfileCtrl);
 
-	artistProfileCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant'];
+	artistProfileCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant', '$sce'];
 
-	function artistProfileCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant) {
+	function artistProfileCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $sce) {
 		
 		var bestPlayer = null;
 
@@ -43,9 +43,12 @@
 				languages.push(vm.artist.user_language_others);
 
 			vm.skill = skills.join(', ');
-			vm.lang = languages.join(', ');
-			
+			vm.lang = languages.join(', ');	
 		});
+
+		vm.upload_video = function(src) {
+			return $sce.trustAsResourceUrl(src);
+		};
 
 		$scope.$on('youtube.player.playing', function ($event, player) {
 		    bestPlayer = player;

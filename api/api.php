@@ -306,7 +306,7 @@ class me_api extends db_config {
 				throw new Exception('Enter hair color');
 			}
 
-			if (!ctype_digit($postdata->training)) {
+			if (empty($postdata->training)) {
 				throw new Exception('Choose professional training');
 			}
 
@@ -422,7 +422,7 @@ class me_api extends db_config {
 				throw new Exception('Enter ethnicity');
 			}
 
-			if (!ctype_digit($postdata->training)) {
+			if (empty($postdata->training)) {
 				throw new Exception('Choose professional training');
 			}
 
@@ -534,7 +534,7 @@ class me_api extends db_config {
 				throw new Exception('Choose experince');
 			}
 
-			if (!ctype_digit($postdata->training)) {
+			if (empty($postdata->training)) {
 				throw new Exception('Choose professional training');
 			}
 

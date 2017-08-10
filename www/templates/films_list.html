@@ -7,19 +7,22 @@
   <ion-content class="padding">
 
     <div class="border_bottom filmlist">
-        <select class="segment-select">
-            <option value="1">Feature</option>
-            <option value="0">Ad</option>
-            <option value="0">Short</option>
-            <option value="0">Tv</option>
-        </select>
+        <!--<select class="segment-select">
+            <option ng-click="vm.getFilmsType('1');" value="1">Feature</option>
+            <option ng-click="vm.getFilmsType('2');" value="2">Ad</option>
+            <option ng-click="vm.getFilmsType('3');" value="3">Short</option>
+            <option ng-click="vm.getFilmsType('4');" value="4">Tv</option>
+        </select>-->
+        <div ng-click="vm.getFilmsType('1');">Feature</div>
+        <div ng-click="vm.getFilmsType('2');">Ad</div>
+        <div ng-click="vm.getFilmsType('3');">Short</div>
+        <div ng-click="vm.getFilmsType('4');">Tv</div>
     </div>
     
     <div class="row padding0">
       
       <div class="card col list_tech" ui-sref="film-overview">
           <div class="card-content">
-
               <h3 class="text-center">Add film</h3>
               <p>Looking for Male.</p>
               <p>Character name</p>
@@ -28,25 +31,8 @@
                    View
                  </button>
               </div>
-
           </div>
       </div>
-
-      <div class="card col list_tech" ui-sref="film-overview">
-          <div class="card-content">
-
-              <h3 class="text-center">Add film</h3>
-              <p>Looking for Male.</p>
-              <p>Character name</p>
-              <div>
-                 <button class="button button-outline loginbtn viewbtn">
-                   View
-                 </button>
-              </div>
-
-          </div>
-      </div>
-
     </div>
 
   </ion-content>

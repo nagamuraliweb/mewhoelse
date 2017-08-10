@@ -2,14 +2,16 @@
     'use strict';
 
 	angular.module('meapp.controllers.signupCtrl', [])
-	.controller('signupCtrl', signupCtrl);
+		.controller('signupCtrl', signupCtrl);
 
-	signupCtrl.$inject = ['$scope', 'loginFactory', 'loaderFactory', '$state', 'dataFactory'];
+	signupCtrl.$inject = ['loginFactory', 'loaderFactory', '$state', 'coreConstant'];
 
-	function signupCtrl($scope, loginFactory, loaderFactory, $state, dataFactory) {
+	function signupCtrl(loginFactory, loaderFactory, $state, coreConstant) {
 		
-		$scope.form = {};
-		$scope.user = {
+		var vm = this;
+
+		vm.form = {};
+		vm.user = {
 			name: '',
 			email: '',
 			password: '',
@@ -18,21 +20,24 @@
 			profession: ''
 		};
 
-		dataFactory.getType().then(function(resp) {
-			$scope.profession_types = JSON.parse(resp.data.types);
-		});
+		vm.profession_types = coreConstant.type;
 
-		$scope.signup = function() {
+		vm.signup = function() {
 			loaderFactory.showLoader();
-			loginFactory.signUp($scope.user).then(function(resp) {
+			loginFactory.signUp(vm.user).then(function(resp) {
 				loaderFactory.hideLoader();
 				if(resp.data.error === 1) {
 					loaderFactory.showAlert('Signup', resp.data.msg);
 					return;
 				} else {
 					window.localStorage.setItem('userID', resp.data.user_id);
-					if(resp.data.user_id) {
-						loginFactory.checkLogin(resp.data.user_id);
+
+					if(vm.user.profession === '1') {
+						$state.go('artist-register');
+					} else if(vm.user.profession === '2') {
+						$state.go('technician-register');
+					} else {
+						$state.go('client-register');
 					}
 				}
 

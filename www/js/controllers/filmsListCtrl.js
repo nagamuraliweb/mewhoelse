@@ -9,21 +9,18 @@
 	function filmsListCtrl($scope, dataFactory, $state) {
 		
 		var vm = this;
-		$scope.user_id = window.localStorage.getItem('userID');
-		$scope.version = new Date().getTime();
 
 		jQuery(function ($){
            $(".segment-select").Segment();
       	});
 
-		dataFactory.getProjects().then(function(resp) {
-			vm.projects = JSON.parse(resp.data.projects);
-		});
+		vm.getFilmsType = function(type) {
+			dataFactory.getProjectDetails(type).then(function(resp) {
+				vm.projects = resp.data;
+				console.log(vm.projects);
+			});
+		}
 
-		dataFactory.getUsersDetails().then(function(resp) {
-			$scope.users_details = JSON.parse(resp.data.users_details);
-			console.log($scope.users_details);
-		});
-
+		vm.getFilmsType('1');
 	}
 })();

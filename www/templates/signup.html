@@ -6,36 +6,36 @@
 	</div>    
 
 	<div class="row login_grid">
-		<form name="form.signupForm" novalidate="">
-			<input type="text" name="name" placeholder="Name" class="inputbox" ng-model="user.name" autocomplete="off" required>
-			<div class="error_alert" ng-show="form.signupForm.name.$dirty && form.signupForm.name.$error.required">
+		<form name="vm.form.signupForm" novalidate>
+			<input type="text" name="name" placeholder="Name" class="inputbox" ng-model="vm.user.name" autocomplete="off" required>
+			<div class="error_alert" ng-show="vm.form.signupForm.name.$dirty && vm.form.signupForm.name.$error.required">
 			    <span>Name is required</span>
 			</div>
-			<input type="email" name="email" placeholder="Email" class="inputbox" ng-model="user.email" autocomplete="off" required>
-			<div class="error_alert" ng-show="form.signupForm.email.$dirty && form.signupForm.email.$invalid">
-			    <span ng-show="form.signupForm.email.$error.required">Email is required</span>
-			    <span ng-show="form.signupForm.email.$error.email">Invalid email address</span>
+			<input type="email" name="email" placeholder="Email" class="inputbox" ng-model="vm.user.email" autocomplete="off" required>
+			<div class="error_alert" ng-show="vm.form.signupForm.email.$dirty && vm.form.signupForm.email.$invalid">
+			    <span ng-show="vm.form.signupForm.email.$error.required">Email is required</span>
+			    <span ng-show="vm.form.signupForm.email.$error.email">Invalid email address</span>
 			</div>
-			<input type="password" name="password" placeholder="Password" class="inputbox" ng-model="user.password" autocomplete="off" required>
-			<div class="error_alert" ng-show="form.signupForm.password.$dirty && form.signupForm.password.$error.required">
+			<input type="password" name="password" placeholder="Password" class="inputbox" ng-model="vm.user.password" autocomplete="off" required>
+			<div class="error_alert" ng-show="vm.form.signupForm.password.$dirty && vm.form.signupForm.password.$error.required">
 			    <span>Password is required</span>
 			</div>
-			<input type="password" name="confirm_password" placeholder="Confirm Password" class="inputbox" ng-model="user.confirm_password" autocomplete="off" required>
-			<div class="error_alert" ng-show="form.signupForm.confirm_password.$dirty && form.signupForm.confirm_password.$error.required">
+			<input type="password" name="confirm_password" placeholder="Confirm Password" class="inputbox" ng-model="vm.user.confirm_password" autocomplete="off" required>
+			<div class="error_alert" ng-show="vm.form.signupForm.confirm_password.$dirty && vm.form.signupForm.confirm_password.$error.required">
 			    <span>Confirm Password is required</span>
 			</div>
-			<input type="number" name="mobile" placeholder="Mobile no" class="inputbox" ng-model="user.mobile" autocomplete="off" required>
-			<div class="error_alert" ng-show="form.signupForm.mobile.$dirty && form.signupForm.mobile.$error.required">
+			<input type="number" name="mobile" placeholder="Mobile no" class="inputbox" ng-model="vm.user.mobile" autocomplete="off" required>
+			<div class="error_alert" ng-show="vm.form.signupForm.mobile.$dirty && vm.form.signupForm.mobile.$error.required">
 			    <span>Mobile is required</span>
 			</div>
-			<select name="profession" class="dropdown bottom_30" ng-model="user.profession" autocomplete="off" required>
+			<select name="profession" class="dropdown bottom_30" ng-model="vm.user.profession" autocomplete="off" required>
 				<option value="">Select your profession</option>
-				<option ng-repeat="(key, value) in profession_types" value="{{key}}">{{value}}</option>
+				<option ng-repeat="(key, value) in vm.profession_types" value="{{key}}">{{value}}</option>
 			</select>
-			<div class="error_alert" ng-show="form.signupForm.profession.$dirty && form.signupForm.profession.$error.required">
+			<div class="error_alert" ng-show="vm.form.signupForm.profession.$dirty && vm.form.signupForm.profession.$error.required">
 			    <span>Choose Profession</span>
 			</div>
-			<button class="button button-outline loginbtn" ng-disabled="!form.signupForm.$valid" ng-click="signup()">
+			<button class="button button-outline loginbtn" ng-disabled="!vm.form.signupForm.$valid" ng-click="vm.signup()">
 			  signup
 			</button>
 		</form>

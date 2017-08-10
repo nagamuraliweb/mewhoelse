@@ -1,11 +1,11 @@
 (function() {
     'use strict';
-	angular.module('meapp.controllers.artistUpdateCtrl', ['youtube-embed'])
+	angular.module('meapp.controllers.artistUpdateCtrl', [])
 		.controller('artistUpdateCtrl', artistUpdateCtrl);
 
-	artistUpdateCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant', '$filter'];
+	artistUpdateCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant', '$sce'];
 
-	function artistUpdateCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $filter) {
+	function artistUpdateCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $sce) {
 
 		dataFactory.hasRegistered().then(function(resp) { console.log(resp);
 			if(!resp.data.has_registered) {
@@ -121,6 +121,7 @@
 				} else {
 					vm.artist.video_name = resp.data.video_name;
 
+					$('#previewVideo').empty();
 					var video = document.createElement('video');
 					video.setAttribute('src', 'http://mewhoelse.in/video/tmp/'+resp.data.video_name);
 					document.getElementById('previewVideo').appendChild(video);
@@ -136,6 +137,10 @@
 			$('#previewVideoDelete').hide();
 
 			vm.artist.video_name = '';
+		}
+
+		vm.upload_video = function(src) {
+			return $sce.trustAsResourceUrl(src);
 		}
 
 		vm.listSkills = function() {

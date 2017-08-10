@@ -3,7 +3,8 @@ angular.module('meapp.factories.dataFactory', [])
 
 	return {
 		getUserDetails: getUserDetails,
-		hasRegistered: hasRegistered
+		hasRegistered: hasRegistered,
+		getProjectDetails: getProjectDetails
 	};
 
 	function getUserDetails(user_id) {
@@ -19,6 +20,16 @@ angular.module('meapp.factories.dataFactory', [])
 	function hasRegistered() {
 		var deffered = $q.defer();
 		dataService.hasRegistered().then(function (resp) {
+			deffered.resolve(resp);
+		}, function (error) {
+			console.log(error);
+		});
+		return deffered.promise;
+	}
+
+	function getProjectDetails(project_type) {
+		var deffered = $q.defer();
+		dataService.getProjectDetails(project_type).then(function (resp) {
 			deffered.resolve(resp);
 		}, function (error) {
 			console.log(error);

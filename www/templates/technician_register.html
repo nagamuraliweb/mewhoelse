@@ -43,22 +43,22 @@
 				<div class="border_bottom">
 				<label>
 					<div>
-						<input type="url" name="videos" placeholder="Profile video(Youtube link)" class="inputbox" ng-model="vm.artist.videos">
+						<input type="url" name="videos" placeholder="Profile video(Youtube link)" class="inputbox" ng-model="vm.technician.videos">
 					</div>
 
 					<div id="profileVideo">
 						<label class="uploadbtn4">
-							<input type="file" name="file" onchange="angular.element(this).scope().uploadVideo(this.files)" />
+							<input type="file" id="videoFile" name="file" onchange="angular.element(this).scope().uploadVideo(this.files)" />
 						</label><br>
-						<span id="profilevideo"></span>
+						<span id="previewVideo">
+							<video ng-if="vm.technician.video_name" width="100%" height="200px" ng-src="{{vm.upload_video('http://mewhoelse.in/video/' + vm.technician.video_name)}}" controls />
+						</span>
+						<span id="previewVideoDelete" ng-if="vm.technician.video_name" ng-click="vm.deleteVideo();">X</span>
 					</div>
 				</label>
 				</div>
 
-				<textarea name="skills" class="textareabox" placeholder="Skills" ng-model="vm.technician.skills" required></textarea>
-				<div class="error_alert" ng-show="vm.form.technician.skills.$dirty && vm.form.technician.skills.$error.required">
-				    <span>Skills is required.</span>
-				</div>
+				<textarea name="skills" class="textareabox" placeholder="Skills" ng-model="vm.technician.skills"></textarea>
 
 				<p class="titleColor">Personal details</p>
 
@@ -71,10 +71,7 @@
 				</span></p>
 			  	</div>
 
-				<input type="date" name="dob" ng-model="vm.technician.dob" placeholder="Date of birth" class="inputbox" required>
-				<div class="error_alert" ng-show="vm.form.technician.dob.$dirty && vm.form.technician.dob.$error.required">
-				    <span>Date of birth is required.</span>
-				</div>
+				<input type="date" name="dob" ng-model="vm.technician.dob" placeholder="Date of birth" class="inputbox">
 
 				<div class="border_bottom">
 				<p ng-click="vm.listLanguages();">Languages <span class="pull-right" ng-show="!vm.showLanguages"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showLanguages"><i class="icon ion-ios-arrow-down"></i></span></p>
@@ -99,10 +96,7 @@
 				</span></p>
 			  	</div>
 
-				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="vm.technician.city" required>
-				<div class="error_alert" ng-show="vm.form.technician.city.$dirty && vm.form.technician.city.$error.required">
-				    <span>City is required.</span>
-				</div>
+				<input type="text" name="city" placeholder="City" class="inputbox" ng-model="vm.technician.city" />
 
 				<input type="text" name="other_ethnicity" placeholder="Ethnicity" class="inputbox" ng-model="vm.technician.other_ethnicity" />
 

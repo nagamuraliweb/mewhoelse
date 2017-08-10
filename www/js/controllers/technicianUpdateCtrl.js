@@ -4,9 +4,9 @@
 	angular.module('meapp.controllers.technicianUpdateCtrl', [])
 		.controller('technicianUpdateCtrl', technicianUpdateCtrl);
 
-	technicianUpdateCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant'];
+	technicianUpdateCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant', '$sce'];
 
-	function technicianUpdateCtrl ($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant) {
+	function technicianUpdateCtrl ($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $sce) {
 
 		dataFactory.hasRegistered().then(function(resp) {
 			if(!resp.data.has_registered) {
@@ -101,9 +101,28 @@
 					return;
 				} else {
 					vm.technician.video_name = resp.data.video_name;
+
+					$('#previewVideo').empty();
+					var video = document.createElement('video');
+					video.setAttribute('src', 'http://mewhoelse.in/video/tmp/'+resp.data.video_name);
+					document.getElementById('previewVideo').appendChild(video);
+
+					$('#previewVideoDelete').show();
 				}
 			});
 		};
+
+		vm.deleteVideo = function() {
+			$('#previewVideo').find('video').remove();
+			angular.element("input[id='videoFile']").val(null);
+			$('#previewVideoDelete').hide();
+
+			vm.technician.video_name = '';
+		}
+
+		vm.upload_video = function(src) {
+			return $sce.trustAsResourceUrl(src);
+		}
 
 		vm.deleteImg = function(selector) {
 			$('#'+selector).find('img').remove();

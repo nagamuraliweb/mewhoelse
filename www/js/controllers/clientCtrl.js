@@ -97,10 +97,10 @@
 				if (vm.client.projectname === '')
 					throw "Enter Project Name";
 
-				if (!selectedProjectType)
+				if (!vm.selectedProjectType)
 					throw "Choose Project Type";
 
-				if (!selectedRollType)
+				if (!vm.selectedRollType)
 					throw "Choose Roll Type";
 
 				if(vm.client.character_name === '')

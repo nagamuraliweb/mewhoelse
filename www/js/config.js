@@ -28,6 +28,7 @@ angular.module('meapp.config', [])
     url: '/signup',
     templateUrl: 'templates/signup.html',
     controller: 'signupCtrl',
+    controllerAs: 'vm',
     isAuthorized: false
   })
 
