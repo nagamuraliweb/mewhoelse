@@ -158,7 +158,7 @@ angular.module('meapp.config', [])
 
   // film overview page
   .state('film-overview', {
-    url: '/film-overview',
+    url: '/film-overview/:id',
     templateUrl: 'templates/film_overview.html',
     controller: 'filmOverviewCtrl',
     controllerAs: 'vm',

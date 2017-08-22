@@ -96,7 +96,7 @@
 			$stmt->bindParam(':project_type', $project_type, PDO::PARAM_INT);
 			
 			$stmt->execute();
-			$row = $stmt->fetch(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 			return empty($row) ? [] : $row;
 		}
