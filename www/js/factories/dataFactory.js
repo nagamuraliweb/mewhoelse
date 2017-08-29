@@ -4,7 +4,8 @@ angular.module('meapp.factories.dataFactory', [])
 	return {
 		getUserDetails: getUserDetails,
 		hasRegistered: hasRegistered,
-		getProjectDetails: getProjectDetails
+		getProjectDetails: getProjectDetails,
+		getFilterUsers: getFilterUsers
 	};
 
 	function getUserDetails(user_id) {
@@ -30,6 +31,17 @@ angular.module('meapp.factories.dataFactory', [])
 	function getProjectDetails(project_type) {
 		var deffered = $q.defer();
 		dataService.getProjectDetails(project_type).then(function (resp) {
+			deffered.resolve(resp);
+		}, function (error) {
+			console.log(error);
+		});
+		return deffered.promise;
+	}
+
+	function getFilterUsers(user_type) {
+		var deffered = $q.defer();
+		dataService.getFilterUsers(user_type).then(function (resp) {
+			//console.log(resp);
 			deffered.resolve(resp);
 		}, function (error) {
 			console.log(error);

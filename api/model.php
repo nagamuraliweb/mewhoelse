@@ -67,13 +67,13 @@
 					ud.user_production_house, ud.video_name
 					FROM dr_mem_users as u 
 					INNER JOIN dr_mem_users_details as ud ON ud.user_id = u.user_id 
-					WHERE u.user_type = :user_type';
+					WHERE u.user_type IN (:user_type)';
 
 			$stmt = $DB->prepare($sql);
-			$stmt->bindParam(':user_type', $user_type, PDO::PARAM_INT);
+			$stmt->bindParam(':user_type', $user_type, PDO::PARAM_STR);
 			
 			$stmt->execute();
-			$row = $stmt->fetch(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 			return empty($row) ? [] : $row;
 		}
@@ -119,7 +119,7 @@
 			$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 			
 			$stmt->execute();
-			$row = $stmt->fetch(PDO::FETCH_OBJ);
+			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 			return empty($row) ? [] : $row;
 		}

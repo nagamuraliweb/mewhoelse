@@ -4,15 +4,22 @@
 	angular.module('meapp.controllers.artistListCtrl', [])
 	.controller('artistListCtrl', artistListCtrl);
 
-	artistListCtrl.$inject = ['$scope', 'dataFactory', '$state'];
+	artistListCtrl.$inject = ['dataFactory', 'coreConstant'];
 
-	function artistListCtrl($scope, dataFactory, $state) {
+	function artistListCtrl(dataFactory, coreConstant) {
 
 		var vm = this;
+		var types = '1, 2';
+		vm.has_records = false;
+		vm.type = coreConstant.type;
 
-		dataFactory.getUsersDetails().then(function(resp) {
-			vm.user_details = JSON.parse(resp.data.users_details);
-			console.log(vm.user_details);
+		dataFactory.getFilterUsers(types).then(function(resp) {
+			var result = resp.data;
+
+			if (result.error == 0) {
+				has_records = true;
+				vm.users = result.filter_users;
+			}
 		});
 
 	}

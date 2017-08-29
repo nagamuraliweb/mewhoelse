@@ -5,80 +5,22 @@
   </ion-nav-buttons>
   
   <ion-content class="padding">
-
-    <!-- <div class="card list_artist" ng-repeat="user in users_details" ui-sref="artist-overview({user_id: user.user_id})">
-      <div class="artist_profile" style="background: url('img/artist1.jpg') no-repeat;background-size: 100% 300px;">
-        <div class="padding artist_info">
-        <img src="img/thumnail.png" alt="Thumnail">
-          <h4>{{::user.user_name}}</h4>
-          <p>{{::user.user_city}}</p>
+    <div class="row padding0">
+        <div ng-if="!vm.has_records">
+            No records found
         </div>
-      </div>
-    </div> -->
-
-    <div class="row padding0">
-      
-      <div class="card col list_tech" ui-sref="artist-overview">
+      <div class="card col list_tech" ng-if="vm.has_records" ui-sref="artist-overview" ng-repeat="user in vm.users">
           <div class="card-content">
-
-              <img ng-src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg" alt="profile photo">
-              <h3 class="text-center">Nagamurali</h3>
+              <img ng-src="http://mewhoelse.in/img/profile/{{user.user_id}}_full.jpg" alt="profile photo">
+              <h3 class="text-center">{{::user.user_name}}</h3>
 
               <div class="text-right product-price">
                   <i class="icon ion-pricetag"></i>
-                  <span>Artist</span>
+                  <span>type[{{::user.user_type}}]</span>
               </div>
 
           </div>
       </div>
-
-      <div class="card col list_tech" ui-sref="artist-overview">
-          <div class="card-content">
-
-              <img ng-src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg" src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg">
-              <h3 class="text-center">Magesh</h3>
-
-              <div class="text-right product-price">
-                  <i class="icon ion-pricetag"></i>
-                  <span>Artist</span>
-              </div>
-
-          </div>
-      </div>
-
     </div>
-
-    <div class="row padding0">
-      
-      <div class="card col list_tech" ui-sref="artist-overview">
-          <div class="card-content">
-
-              <img ng-src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg" src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg">
-              <h3 class="text-center">Mani</h3>
-
-              <div class="text-right product-price">
-                  <i class="icon ion-pricetag"></i>
-                  <span>Artist</span>
-              </div>
-
-          </div>
-      </div>
-
-      <div class="card col list_tech" ui-sref="artist-overview">
-          <div class="card-content">
-
-              <img ng-src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg" src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg">
-              <h3 class="text-center">Bala</h3>
-
-              <div class="text-right product-price">
-                  <i class="icon ion-pricetag"></i>
-                  <span>Artist</span>
-              </div>
-
-          </div>
-      </div>
-
-    </div>
-
   </ion-content>
 </ion-view>
