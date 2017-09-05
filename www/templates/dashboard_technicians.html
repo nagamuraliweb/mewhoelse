@@ -5,70 +5,22 @@
   </ion-nav-buttons>
   
   <ion-content class="padding">
-
     <div class="row padding0">
-      
-      <div class="card col list_tech" ui-sref="technician-overview">
-          <div class="card-content">
-
-              <img ng-src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg" src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg">
-              <h3 class="text-center">Nagamurali</h3>
-
-              <div class="text-right product-price">
-                  <i class="icon ion-pricetag"></i>
-                  <span>Technician</span>
-              </div>
-
-          </div>
-      </div>
-
-      <div class="card col list_tech" ui-sref="technician-overview">
-          <div class="card-content">
-
-              <img ng-src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg" src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg">
-              <h3 class="text-center">Magesh</h3>
-
-              <div class="text-right product-price">
-                  <i class="icon ion-pricetag"></i>
-                  <span>Technician</span>
-              </div>
-
-          </div>
-      </div>
-
+    <div ng-if="!vm.has_records">
+        No records found
     </div>
-
-    <div class="row padding0">
-      
-      <div class="card col list_tech" ui-sref="technician-overview">
+      <div class="card col list_tech" ng-if="vm.has_records" ui-sref="technician-overview({{user.user_id}})" ng-repeat="user in vm.users">
           <div class="card-content">
-
-              <img ng-src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg" src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg">
-              <h3 class="text-center">Mani</h3>
+              <img ng-src="http://mewhoelse.in/img/profile/{{user.user_id}}_full.jpg" alt="profile photo">
+              <h3 class="text-center">{{::user.user_name}}</h3>
 
               <div class="text-right product-price">
                   <i class="icon ion-pricetag"></i>
-                  <span>Technician</span>
+                  <span>{{::vm.type[user.user_type]}}</span>
               </div>
 
           </div>
       </div>
-
-      <div class="card col list_tech" ui-sref="technician-overview">
-          <div class="card-content">
-
-              <img ng-src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg" src="http://demo.creatah.com/store/wp-content/uploads/2017/07/pufs.jpg">
-              <h3 class="text-center">Bala</h3>
-
-              <div class="text-right product-price">
-                  <i class="icon ion-pricetag"></i>
-                  <span>Technician</span>
-              </div>
-
-          </div>
-      </div>
-
     </div>
-
   </ion-content>
 </ion-view>

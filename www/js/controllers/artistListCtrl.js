@@ -9,16 +9,17 @@
 	function artistListCtrl(dataFactory, coreConstant) {
 
 		var vm = this;
-		var types = '1, 2';
+		var artist_type = 1;
+
 		vm.has_records = false;
 		vm.type = coreConstant.type;
 
-		dataFactory.getFilterUsers(types).then(function(resp) {
+		dataFactory.getFilterUsers(artist_type).then(function(resp) {
 			var result = resp.data;
 
 			if (result.error == 0) {
-				has_records = true;
-				vm.users = result.filter_users;
+				vm.has_records = true;
+				vm.users = JSON.parse(result.filter_users);
 			}
 		});
 

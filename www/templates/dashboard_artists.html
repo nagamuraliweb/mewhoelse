@@ -6,17 +6,17 @@
   
   <ion-content class="padding">
     <div class="row padding0">
-        <div ng-if="!vm.has_records">
-            No records found
-        </div>
-      <div class="card col list_tech" ng-if="vm.has_records" ui-sref="artist-overview" ng-repeat="user in vm.users">
+    <div ng-if="!vm.has_records">
+        No records found
+    </div>
+      <div class="card col list_tech" ng-if="vm.has_records" ui-sref="artist-overview({{user.user_id}})" ng-repeat="user in vm.users">
           <div class="card-content">
               <img ng-src="http://mewhoelse.in/img/profile/{{user.user_id}}_full.jpg" alt="profile photo">
               <h3 class="text-center">{{::user.user_name}}</h3>
 
               <div class="text-right product-price">
                   <i class="icon ion-pricetag"></i>
-                  <span>type[{{::user.user_type}}]</span>
+                  <span>{{::vm.type[user.user_type]}}</span>
               </div>
 
           </div>
