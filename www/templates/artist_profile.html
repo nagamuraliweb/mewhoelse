@@ -79,11 +79,29 @@
                 <div class="col col-50">: <span ng-if="vm.artist.user_is_professional == 1">Yes</span>
             <span ng-if="vm.artist.user_is_professional == 2">No</span></div>
             </div>
+
+            <p class="titleColor">Profile photos</p>
+
+            <div class="row no_pad">
+                <div class="col col-33">
+                    <img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_front.jpg" width="90px" height="117px" />
+                </div>
+                <div class="col col-33">
+                    <img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_side.jpg" width="90px" height="117px" />
+                </div>
+                <div class="col col-33">
+                    <img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_full.jpg" width="90px" height="117px" />
+                </div>
+            </div>
             
             <p class="titleColor bottom_10">Profile Videos</p>
 
-            <youtube-video ng-if="vm.artist.user_videos" player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="vm.artist.user_videos"></youtube-video>
-            <video ng-if="vm.artist.video_name" width="100%" height="200px" ng-src="{{vm.upload_video('http://mewhoelse.in/video/' + vm.artist.video_name)}}" controls />
+            <div class="bottom_10">
+                <youtube-video ng-if="vm.artist.user_videos" player-width="'100%'" player-height="'200px'" player="bestPlayer" video-url="vm.artist.user_videos"></youtube-video>
+            </div>
+            <div class="bottom_10">
+                <video ng-if="vm.artist.video_name" width="100%" height="200px" ng-src="{{vm.upload_video('http://mewhoelse.in/video/' + vm.artist.video_name)}}" controls />
+            </video>
             <button class="button button-outline loginbtn autowidth" ui-sref="films-list">
               Search for opportunities
             </button>

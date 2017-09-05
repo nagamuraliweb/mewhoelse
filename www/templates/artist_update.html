@@ -12,7 +12,7 @@
 				<div>
 				<p class="titleColor">Profile pictures</p>
 				<div class="row no_pad multipleimage">
-					<div class="col-33 col">
+					<div class="col-33 col imgdiv">
 						<label class="uploadbtn1">
 							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'frontview')" />
 						</label><br>
@@ -22,7 +22,7 @@
 						<span id="frontviewDelete" style="display:none;" ng-click="vm.deleteImg('frontview');">X</span>
 					</div>
 
-					<div class="col-33 col">
+					<div class="col-33 col imgdiv">
 						<label class="uploadbtn2">
 							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'sideview')" />
 						</label><br>
@@ -32,7 +32,7 @@
 						<span id="sideviewDelete" style="display:none;" ng-click="vm.deleteImg('sideview');">X</span>
 					</div>
 
-					<div class="col-33 col">
+					<div class="col-33 col imgdiv">
 						<label class="uploadbtn3">
 							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files, 'fullview')" />
 						</label><br>
