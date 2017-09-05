@@ -49,8 +49,8 @@
 					production_housename: client_data.user_production_house
 				};
 
-				angular.forEach(client_data.user_language_id, function(key) {
-					vm.selectedLanguages.push(key);
+				angular.forEach(client_data.user_language_id.split(','), function(key) {
+					vm.selectedLanguages[key] = true;
 				});
 
 				vm.selectedProjectType = client_data.user_project_id;
@@ -123,10 +123,10 @@
 					if (vm.client.projectname === '')
 						throw "Enter Project Name";
 
-					if (!selectedProjectType)
+					if (!vm.selectedProjectType)
 						throw "Choose Project Type";
 
-					if (!selectedRollType)
+					if (!vm.selectedRollType)
 						throw "Choose Roll Type";
 
 					if(vm.client.character_name === '')
