@@ -4,17 +4,14 @@
 	angular.module('meapp.controllers.filmOverviewCtrl', [])
 	.controller('filmOverviewCtrl', filmOverviewCtrl);
 
-	filmOverviewCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant'];
+	filmOverviewCtrl.$inject = ['dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant', '$stateParams'];
 
-	function filmOverviewCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant) {
+	function filmOverviewCtrl(dataFactory, artistFactory, loaderFactory, $state, coreConstant, $stateParams) {
 
 		var vm = this;
 		var languages = [];
 
-		$scope.user_id = window.localStorage.getItem('userID');
-		$scope.version = new Date().getTime();
-
-		dataFactory.getUserDetails($scope.user_id).then(function(resp) {
+		dataFactory.getUserDetails($stateParams['id']).then(function(resp) {
 			vm.client = JSON.parse(resp.data.user_details);
 
 			vm.body = coreConstant.bodies[vm.client.user_body_id];
