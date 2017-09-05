@@ -8,13 +8,17 @@ angular.module('meapp.controllers.artistCtrl', [])
 
 	function artistCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant) {
 
-		dataFactory.hasRegistered().then(function(resp) {
-			if(resp.data.has_registered) {
-				$state.go('artist-profile');
-			}
-		});
-
 		var vm = this;
+		var user_id = window.localStorage.getItem('userID');
+
+		if (user_id) {
+			dataFactory.hasRegistered(user_id).then(function(resp) {
+				if(resp.data.has_registered) {
+					$state.go('artist-profile');
+				}
+			});
+		}
+
 		vm.form = {};
 		vm.showSkills = vm.showBodies = vm.showHairType = false;
 		vm.showSkins = vm.showHaircolors = vm.showLanguages = false;

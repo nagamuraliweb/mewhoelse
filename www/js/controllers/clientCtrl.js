@@ -8,13 +8,16 @@
 
 	function clientCtrl(dataFactory, loaderFactory, artistFactory, $state, $scope, coreConstant) {
 
-		dataFactory.hasRegistered().then(function(resp) {
-			if(resp.data.has_registered) {
-				$state.go('client-profile');
-			}
-		});
-
 		var vm = this;
+		var user_id = window.localStorage.getItem('userID');
+
+		if(user_id) {
+			dataFactory.hasRegistered(user_id).then(function(resp) {
+				if(resp.data.has_registered) {
+					$state.go('client-profile');
+				}
+			});
+		}
 
 		vm.form = {};
 		vm.showProjectType = vm.showRollType = vm.showBodies = false;
@@ -28,7 +31,7 @@
 		vm.genders = coreConstant.genders;
 
 		vm.client = {
-			user_id: window.localStorage.getItem('userID'),
+			user_id: '',
 			project: '',
 			projectname: '',
 			project_type: '',

@@ -7,15 +7,15 @@
 
 	function artistUpdateCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $sce) {
 
-		dataFactory.hasRegistered().then(function(resp) { console.log(resp);
+		var bestPlayer = null;
+		var vm = this;
+		var user_id = window.localStorage.getItem('userID');
+
+		dataFactory.hasRegistered(user_id).then(function(resp) { console.log(resp);
 			if(!resp.data.has_registered) {
 				$state.go('artist-register');
 			}
 		});
-		
-		var bestPlayer = null;
-		var vm = this;
-		var user_id = window.localStorage.getItem('userID');
 
 		vm.form = {};
 		vm.showSkills = vm.showBodies = vm.showHairType = true;

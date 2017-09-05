@@ -8,14 +8,14 @@
 
 		function clientUpdateCtrl(dataFactory, loaderFactory, artistFactory, $state, coreConstant) {
 
-			dataFactory.hasRegistered().then(function(resp) {
+			var vm = this;
+			var user_id = window.localStorage.getItem('userID');
+
+			dataFactory.hasRegistered(user_id).then(function(resp) {
 				if(!resp.data.has_registered) {
 					$state.go('client-register');
 				}
 			});
-
-			var vm = this;
-			var user_id = window.localStorage.getItem('userID');
 
 			vm.form = {};
 			vm.showProjectType = vm.showRollType = vm.showBodies = true;
@@ -52,6 +52,10 @@
 				angular.forEach(client_data.user_language_id, function(key) {
 					vm.selectedLanguages.push(key);
 				});
+
+				vm.selectedProjectType = client_data.user_project_id;
+				vm.selectedRollType = client_data.user_role_id;
+				vm.selectedBodies = client_data.user_body_id;
 
 				$('#project').val(client_data.user_project);
 				$('#looking_for').val(client_data.user_looking_for);

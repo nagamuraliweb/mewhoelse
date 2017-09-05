@@ -18,9 +18,9 @@ angular.module('meapp.factories.dataFactory', [])
 		return deffered.promise;
 	}
 
-	function hasRegistered() {
+	function hasRegistered(user_id) {
 		var deffered = $q.defer();
-		dataService.hasRegistered().then(function (resp) {
+		dataService.hasRegistered(user_id).then(function (resp) {
 			deffered.resolve(resp);
 		}, function (error) {
 			console.log(error);

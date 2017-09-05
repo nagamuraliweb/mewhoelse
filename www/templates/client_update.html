@@ -29,7 +29,7 @@
 				<div class="wrapper" id="dwrapper2">
 					<ul id="projects_list" ng-show="vm.showProjectType">
 						<li ng-repeat="(key, value) in vm.projects" data-id="{{key}}">
-							<input type="radio" name="selectProjectType" ng-value="{{key}}" ng-checked="vm.client.project_type === key ? true : false" ng-model="vm.selectedProjectType" />
+							<input type="radio" name="selectProjectType" ng-value="{{key}}" ng-model="vm.selectedProjectType" />
 							{{value}}
 						</li>
 					</ul>
@@ -43,7 +43,7 @@
 				<div class="wrapper" id="dwrapper2">
 					<ul id="roles_list" ng-show="vm.showRollType">
 						<li ng-repeat="(key, value) in vm.roles" data-id="{{key}}">
-							<input type="radio" name="selectRollType" ng-checked="vm.client.roll_type === key ? true : false" value="{{key}}" ng-model="vm.selectedRollType" />
+							<input type="radio" name="selectRollType" value="{{key}}" ng-model="vm.selectedRollType" />
 							{{value}}
 						</li>
 					</ul>
@@ -70,7 +70,7 @@
 				<div class="wrapper" id="dwrapper4">
 					<ul id="bodies_list" ng-show="vm.showBodies">
 						<li ng-repeat="(key, value) in vm.bodies">
-							<input type="radio" name="selectBodies" ng-checked="vm.client.body_type === key ? true : false" ng-value="{{key}}" ng-model="vm.selectedBodies" />
+							<input type="radio" name="selectBodies" ng-value="{{key}}" ng-model="vm.selectedBodies" />
 							{{value}}
 						</li>
 					</ul>
@@ -97,14 +97,14 @@
 
 			<div class="border_bottom">
 				<p ng-click="vm.listLanguages();">Languages <span class="pull-right" ng-show="!vm.showLanguages"><i class="icon ion-ios-arrow-forward"></i></span><span class="pull-right" ng-show="vm.showLanguages"><i class="icon ion-ios-arrow-down"></i></span></p>
-					<div class="wrapper" id="dwrapper8">
-						<ul id="languages_list" ng-show="vm.showLanguages">
-							<li ng-repeat="(key, value) in vm.languages">
-								<input type="checkbox" name="selectlanguages[]" value="{{key}}" ng-checked="vm.client.languages[key] ? true : false" ng-model="vm.selectedLanguages[key]" />
-								{{value}}
-							</li>
-						</ul>
-					</div>
+				<div class="wrapper" id="dwrapper8">
+					<ul id="languages_list" ng-show="vm.showLanguages">
+						<li ng-repeat="(key, value) in vm.languages">
+							<input type="checkbox" name="selectlanguages[]" ng-value="{{key}}" ng-model="vm.selectedLanguages[key]" />
+							{{value}}
+						</li>
+					</ul>
+				</div>
 			</div>
 
 			<input type="text" name="others_languages" ng-model="vm.client.others_languages" class="inputbox bottom_30" placeholder="Enter your language">

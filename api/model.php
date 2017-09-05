@@ -372,7 +372,7 @@
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':others_languages', null, PDO::PARAM_NULL);
+				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
 			}
 
 			$stmt->bindParam(':production_housename', $data['production_housename'], PDO::PARAM_STR);
@@ -409,7 +409,7 @@
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':others_languages', null, PDO::PARAM_NULL);
+				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
 			}
 
 			$stmt->bindParam(':production_housename', $data['production_housename'], PDO::PARAM_STR);
