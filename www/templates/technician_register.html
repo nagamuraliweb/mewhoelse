@@ -19,7 +19,7 @@
 							<input type="file" name="file" id="frontviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'frontview')" />
 						</label><br>
 						<span id="frontview"></span>
-						<span id="frontviewDelete" style="display:none;" ng-click="vm.deleteImg('frontview');">X</span>
+						<span id="frontviewDelete" style="display:none;" ng-click="vm.deleteImg('frontview');"><i class="icon ion-close-circled"></i></span>
 					</div>
 
 					<div class="col-33 col imgdiv">
@@ -27,7 +27,7 @@
 							<input type="file" name="file" id="sideviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'sideview')" />
 						</label><br>
 						<span id="sideview"></span>
-						<span id="sideviewDelete" style="display:none;" ng-click="vm.deleteImg('sideview');">X</span>
+						<span id="sideviewDelete" style="display:none;" ng-click="vm.deleteImg('sideview');"><i class="icon ion-close-circled"></i></span>
 					</div>
 
 					<div class="col-33 col imgdiv">
@@ -35,7 +35,7 @@
 							<input type="file" name="file" id="fullviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'fullview')" />
 						</label><br>
 						<span id="fullview"></span>
-						<span id="fullviewDelete" style="display:none;" ng-click="vm.deleteImg('fullview');">X</span>
+						<span id="fullviewDelete" style="display:none;" ng-click="vm.deleteImg('fullview');"><i class="icon ion-close-circled"></i></span>
 					</div>
 				</div>
 				</div> 

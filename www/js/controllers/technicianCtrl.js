@@ -57,10 +57,13 @@
 
 					if (selector === 'frontview') {
 						vm.technician.front_img = resp.data.img_name;
+						$('#frontviewDelete').show();
 					} else if (selector === 'sideview') {
 						vm.technician.side_img = resp.data.img_name;
+						$('#sideviewDelete').show();
 					} else {
 						vm.technician.full_img = resp.data.img_name;
+						$('#fullviewDelete').show();
 					}
 
 					$('#'+selector).empty();
