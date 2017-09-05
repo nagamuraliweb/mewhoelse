@@ -285,3 +285,8 @@ ion-tabs.tabs-color-active-positive .tab-item {
 .wrapper ul li:last-child{margin-bottom: 0px;border: none;padding-bottom: 0px;}
 .bottom_10{margin-bottom: 10px !important;}
 .ion-close-circled{font-size: 20px;}
+.filmlistTab{border-radius: 2px;}
+.filmlistTab div{width: 25%;float: left;background: white;color: rgba(185,134,235);text-align: center;
+line-height: 36px;border-right: 1px solid rgba(185,134,235);cursor: pointer;}
+.filmlistTab div:last-child{border-right: none;}
+.list_all{max-width: 121px;}

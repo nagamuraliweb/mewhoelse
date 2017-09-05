@@ -6,7 +6,7 @@
   
   <ion-content class="padding">
 
-    <div class="border_bottom filmlist">
+    <div class="border_bottom filmlist filmlistTab">
         <!--<select class="segment-select">
             <option ng-click="vm.getFilmsType('1');" value="1">Feature</option>
             <option ng-click="vm.getFilmsType('2');" value="2">Ad</option>
@@ -21,7 +21,7 @@
     
     <div class="row padding0">
       
-      <div class="card col list_tech" ng-repeat="project in vm.projects">
+      <div class="card col list_tech list_all" ng-repeat="project in vm.projects">
           <div class="card-content">
               <h3 class="text-center">{{::vm.project[project.user_project_id]}}</h3>
               <p>Looking for {{::vm.looking[project.user_looking_for]}}.</p>
