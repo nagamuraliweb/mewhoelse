@@ -187,16 +187,16 @@ angular.module('meapp.controllers.artistCtrl', [])
 				if ($('#fullview').find('img').length === 0)
 					throw "Upload full view image";
 
-				if(vm.selectedSkills.length === 0)
+				if(typeof vm.selectedSkills === 'undefined')
 					throw "Choose skills";
-				
+
 				if (!vm.artist.dob || typeof vm.artist.dob === 'undefined')
 					throw "Choose DOB";
 				
 				if (!vm.selectedBodies)
 					throw "Choose Body Type";
 				
-				if (!vm.hair_type)
+				if (!vm.selectedHairs)
 					throw "Choose Hair Type";
 
 				if (!vm.artist.weight)
