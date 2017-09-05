@@ -11,10 +11,11 @@
 		var bestPlayer = null;
 
 		var vm = this;
-		$scope.user_id = $stateParams.user_id;
 		$scope.version = new Date().getTime();
+		var skills = [];
+		var languages = [];
 
-		dataFactory.getUserDetails($scope.user_id).then(function(resp) {
+		dataFactory.getUserDetails($stateParams.id).then(function(resp) {
 			vm.artist = JSON.parse(resp.data.user_details);
 
 			vm.profession = coreConstant.type[vm.artist.user_type];
@@ -25,8 +26,28 @@
 			vm.lang = coreConstant.languages[vm.artist.user_language_id];
 			vm.skin = coreConstant.skins[vm.artist.user_skin_id];
 			vm.gender = coreConstant.genders[vm.artist.user_gender_id];
-			vm.skill = coreConstant.skills[vm.artist.user_skills_id];
+
+			angular.forEach(vm.artist.user_skills_id.split(','), function(key) {
+				skills.push(coreConstant.skills[key]);
+			});
+
+			if(vm.artist.user_skills_others)
+				skills.push(vm.artist.user_skills_others);
+
+			angular.forEach(vm.artist.user_language_id.split(','), function(key) {
+				languages.push(coreConstant.languages[key]);
+			});
+
+			if(vm.artist.user_language_others)
+				languages.push(vm.artist.user_language_others);
+
+			vm.skill = skills.join(', ');
+			vm.lang = languages.join(', ');	
 		});
+
+		vm.upload_video = function(src) {
+			return $sce.trustAsResourceUrl(src);
+		};
 
 		$scope.$on('youtube.player.playing', function ($event, player) {
 		    bestPlayer = player;

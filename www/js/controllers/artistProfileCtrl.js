@@ -18,7 +18,6 @@
 
 		dataFactory.getUserDetails($scope.user_id).then(function(resp) {
 			vm.artist = JSON.parse(resp.data.user_details);
-			console.log(vm.artist);
 
 			vm.profession = coreConstant.type[vm.artist.user_type];
 			vm.body = coreConstant.bodies[vm.artist.user_body_id];
