@@ -19,7 +19,7 @@
 						<span id="frontview">
 							<img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_front.jpg" width="90px" height="117px" />
 						</span>
-						<span id="frontviewDelete" style="display:none;" ng-click="vm.deleteImg('frontview');">X</span>
+						<span id="frontviewDelete" style="display:none;" ng-click="vm.deleteImg('frontview');"><i class="icon ion-close-circled"></i></span>
 					</div>
 
 					<div class="col-33 col imgdiv">
@@ -29,7 +29,7 @@
 						<span id="sideview">
 							<img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_side.jpg" width="90px" height="117px" />
 						</span>
-						<span id="sideviewDelete" style="display:none;" ng-click="vm.deleteImg('sideview');">X</span>
+						<span id="sideviewDelete" style="display:none;" ng-click="vm.deleteImg('sideview');"><i class="icon ion-close-circled"></i></span>
 					</div>
 
 					<div class="col-33 col imgdiv">
@@ -39,7 +39,7 @@
 						<span id="fullview">
 							<img src="http://mewhoelse.in/img/profile/{{vm.artist.user_id}}_full.jpg" width="90px" height="117px" />
 						</span>
-						<span id="fullviewDelete" style="display:none;" ng-click="vm.deleteImg('fullview');">X</span>
+						<span id="fullviewDelete" style="display:none;" ng-click="vm.deleteImg('fullview');"><i class="icon ion-close-circled"></i></span>
 					</div>
 				</div>
 				</div> 
@@ -57,7 +57,7 @@
 						<span id="previewVideo">
 							<video ng-if="vm.artist.video_name" width="100%" height="200px" ng-src="{{vm.upload_video('http://mewhoelse.in/video/' + vm.artist.video_name)}}" controls />
 						</span>
-						<span id="previewVideoDelete" ng-if="vm.artist.video_name" ng-click="vm.deleteVideo();">X</span>
+						<span id="previewVideoDelete" ng-if="vm.artist.video_name" ng-click="vm.deleteVideo();"><i class="icon ion-close-circled"></i></span>
 					</div>
 				</label>
 				</div>
@@ -82,7 +82,7 @@
 
 				<p class="titleColor">Personal details</p>
 
-				<div class="border_bottom">
+				<div class="border_bottom bottom_10">
 				<p>Gender <span class="pull-right">
 					<select class="segment-select" id="gender">
 				      <option value="1">Male</option>
@@ -139,7 +139,7 @@
 
 				<input type="text" name="others_languages" ng-model="vm.artist.others_languages" class="inputbox bottom_30" placeholder="Enter other language" />
 
-				<div class="border_bottom">
+				<div class="border_bottom bottom_10">
 				<p>Experience <span class="pull-right">
 					<select class="segment-select" id="experience">
 				      <option value="1">Fresher</option>
@@ -179,7 +179,7 @@
 					</div>
 				</div>
 
-				<div class="border_bottom">
+				<div class="border_bottom bottom_10">
 				<p>Professional trained <span class="pull-right">
 					<select class="segment-select" id="training">
 				      <option ng-class="{'active': vm.artist.training == 1}" value="1">Yes</option>

@@ -280,7 +280,7 @@ ion-tabs.tabs-color-active-positive .tab-item {
 #fullviewDelete{position: absolute;top: -6px;right: 1px;z-index: 999999;cursor: pointer;color: red;}
 .ion-ios-arrow-down{font-size: 28px;}
 .ion-ios-arrow-forward{font-size: 24px;}
-.wrapper ul{background: rgba(185,134,235,0.2);color: #ffffff;padding: 5px;}
+.wrapper ul{background: rgba(185,134,235,0.2);color: #ffffff;padding: 5px;margin-bottom: 10px;}
 .wrapper ul li{margin-bottom: 5px;border-bottom: 1px solid #4E1B80;padding-bottom: 5px;font-size: 13px;}
 .wrapper ul li:last-child{margin-bottom: 0px;border: none;padding-bottom: 0px;}
 .bottom_10{margin-bottom: 10px !important;}
@@ -290,3 +290,6 @@ ion-tabs.tabs-color-active-positive .tab-item {
 line-height: 36px;border-right: 1px solid rgba(185,134,235);cursor: pointer;}
 .filmlistTab div:last-child{border-right: none;}
 .list_all{max-width: 121px;}
+#profileVideo{position: relative;}
+#previewVideoDelete{position: absolute;right: 0;bottom: 205px;z-index: 100;cursor: pointer;}
+.list_tech1{max-width: 150px;}
