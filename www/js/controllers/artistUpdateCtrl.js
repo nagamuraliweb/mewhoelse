@@ -10,6 +10,7 @@
 		var bestPlayer = null;
 		var vm = this;
 		var user_id = window.localStorage.getItem('userID');
+		vm.version = new Date().getTime();
 
 		dataFactory.hasRegistered(user_id).then(function(resp) {
 			if(!resp.data.has_registered) {
@@ -76,6 +77,10 @@
 			jQuery(function ($){
 				$(".segment-select").Segment();
 			});
+		});
+
+		dataFactory.getProfiles(user_id).then(function(resp) {
+			vm.profiles = JSON.parse(resp.data.images);
 		});
 
 		$scope.uploadFile = function(files) {
@@ -174,10 +179,17 @@
 			vm.showHaircolors = (vm.showHaircolors) ? false : true;
 		}
 
-		vm.deleteImg = function(selector) {
-			$('#'+selector).find('img').remove();
-			angular.element("input[id="+selector+"Field]").val(null);
-			$('#'+selector+'Delete').hide();
+		vm.deleteImg = function(selector, img) {
+			dataFactory.deleteImg(user_id, img).then(function(resp) {
+				if(resp.data.error === 1) {
+					loaderFactory.showAlert(resp.data.msg);
+					return;
+				} else {
+					$('#'+selector).find('img').remove();
+					angular.element("input[id="+selector+"Field]").val(null);
+					$('#'+selector+'Delete').hide();
+				}
+			});
 		}
 
 		vm.updateArtistDetails = function() {

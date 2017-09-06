@@ -85,4 +85,32 @@ angular.module('meapp.services.dataService', [])
         });
     }
 
+    this.deleteImg = function(user_id, img) {
+        var request = {
+            method: 'GET',
+            url: 'http://mewhoelse.in/api/api.php?f=deleteImg&user_id='+user_id+'&img='+img,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        return $http(request).then(function (resp) {
+            return resp;
+        });
+    }
+
+    this.getProfiles = function(user_id) {
+        var request = {
+            method: 'GET',
+            url: 'http://mewhoelse.in/api/api.php?f=getProfiles&user_id='+user_id,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        return $http(request).then(function (resp) {
+            return resp;
+        });
+    }
+
 }]);

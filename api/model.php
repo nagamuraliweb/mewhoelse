@@ -179,13 +179,13 @@
 			if ($data['videos']) {
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_NULL);
+				$stmt->bindValue(':videos', null, PDO::PARAM_NULL);
 			}
 
 			if ($data['video_name']) {
 				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_NULL);
+				$stmt->bindValue(':video_name', null, PDO::PARAM_NULL);
 			}
 
 			$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_STR);
@@ -193,7 +193,7 @@
 			if ($data['otherskills']) {
 				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_NULL);
+				$stmt->bindValue(':otherskills', null, PDO::PARAM_NULL);
 			}
 	
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);
@@ -210,7 +210,7 @@
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
+				$stmt->bindValue(':others_languages', null, PDO::PARAM_NULL);
 			}
 			
 			$stmt->execute();
@@ -235,13 +235,13 @@
 			if ($data['videos']) {
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_NULL);
+				$stmt->bindValue(':videos', null, PDO::PARAM_NULL);
 			}
 
 			if ($data['video_name']) {
 				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_NULL);
+				$stmt->bindValue(':video_name', null, PDO::PARAM_NULL);
 			}
 
 			$stmt->bindParam(':skills', $data['skills'], PDO::PARAM_STR);
@@ -249,7 +249,7 @@
 			if ($data['otherskills']) {
 				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_NULL);
+				$stmt->bindValue(':otherskills', null, PDO::PARAM_NULL);
 			}
 	
 			$stmt->bindParam(':experince', $data['experince'], PDO::PARAM_INT);
@@ -266,7 +266,7 @@
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
+				$stmt->bindValue(':others_languages', null, PDO::PARAM_NULL);
 			}
 			
 			return $stmt->execute();;
@@ -288,7 +288,7 @@
 			if ($data['videos']) {
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_NULL);
+				$stmt->bindValue(':videos', null, PDO::PARAM_NULL);
 			}
 
 			$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
@@ -302,7 +302,7 @@
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
+				$stmt->bindValue(':others_languages', null, PDO::PARAM_NULL);
 			}
 			
 			$stmt->execute();
@@ -325,7 +325,7 @@
 			if ($data['videos']) {
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_NULL);
+				$stmt->bindValue(':videos', null, PDO::PARAM_NULL);
 			}
 			
 			$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
@@ -339,7 +339,7 @@
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
+				$stmt->bindValue(':others_languages', null, PDO::PARAM_NULL);
 			}
 
 			return $stmt->execute();
@@ -372,7 +372,7 @@
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
+				$stmt->bindValue(':others_languages', null, PDO::PARAM_NULL);
 			}
 
 			$stmt->bindParam(':production_housename', $data['production_housename'], PDO::PARAM_STR);
@@ -409,7 +409,7 @@
 			if ($data['others_languages']) {
 				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_STR);
 			} else {
-				$stmt->bindParam(':others_languages', $data['others_languages'], PDO::PARAM_NULL);
+				$stmt->bindValue(':others_languages', null, PDO::PARAM_NULL);
 			}
 
 			$stmt->bindParam(':production_housename', $data['production_housename'], PDO::PARAM_STR);
@@ -423,7 +423,7 @@
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-			$stmt->bindParam(':video_name', null, PDO::PARAM_NULL);
+			$stmt->bindValue(':video_name', null, PDO::PARAM_NULL);
 			
 			return $stmt->execute();
 		}

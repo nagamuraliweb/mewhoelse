@@ -713,6 +713,30 @@ class me_api extends db_config {
 		}
 	}
 
+	public function deleteImg () {
+		try {
+
+			if (empty($_GET['user_id'])) {
+				throw new Exception('Invalid user');
+			}
+
+			if (empty($_GET['img'])) {
+				throw new Exception('Invalid image type');
+			}
+
+			$img_name = $_GET['user_id'].'_'.$_GET['img'].'.jpg';
+
+			unlink('../img/profile/'.$img_name);
+
+			$result = ['error' => 0, 'msg' => 'Successfully deleted'];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
 	public function videoUpload() {
 
 		try {
@@ -771,7 +795,7 @@ class me_api extends db_config {
 				throw new Exception('Invalid user');
 			}
 
-			if ( ! file_exists('../video/profile/'.$_GET['video_name'])) {
+			if (file_exists('../video/profile/'.$_GET['video_name'])) {
 				unlink('../video/profile/'.$_GET['video_name']);
 			}
 
@@ -800,6 +824,40 @@ class me_api extends db_config {
 			$has_registered = empty($user_id) ? false : true;
 
 			$result = ['error' => 0, 'has_registered' => $has_registered];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
+	public function getProfiles () {
+		try {
+
+			if (empty($_GET['user_id'])) {
+				throw new Exception('Invalid user');
+			}
+			
+			$images = [
+				'showFront' => false,
+				'showSide' => false,
+				'showFull' => false
+			];
+
+			if (file_exists('../img/profile/'.$_GET['user_id'].'_front.jpg')) {
+				$images['showFront'] = true;
+			}
+
+			if (file_exists('../img/profile/'.$_GET['user_id'].'_side.jpg')) {
+				$images['showSide'] = true;
+			}
+
+			if (file_exists('../img/profile/'.$_GET['user_id'].'_full.jpg')) {
+				$images['showFull'] = true;
+			}
+
+			$result = ['error' => 0, 'images' => json_encode($images)];
 
 		} catch (Exception $e) {
 			$result = ['error' => 1, 'msg' => $e->getMessage()];

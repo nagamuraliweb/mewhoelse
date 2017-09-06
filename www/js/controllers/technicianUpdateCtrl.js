@@ -59,6 +59,10 @@
 			});
 		});
 
+		dataFactory.getProfiles(user_id).then(function(resp) {
+			vm.profiles = JSON.parse(resp.data.images);
+		});
+
 		$scope.uploadFile = function(files, selector) {
 			var fd = new FormData();
 			fd.append("file", files[0]);
@@ -134,10 +138,17 @@
 			return $sce.trustAsResourceUrl(src);
 		}
 
-		vm.deleteImg = function(selector) {
-			$('#'+selector).find('img').remove();
-			angular.element("input[id="+selector+"Field]").val(null);
-			$('#'+selector+'Delete').hide();
+		vm.deleteImg = function(selector, img) {
+			dataFactory.deleteImg(user_id, img).then(function(resp) {
+				if(resp.data.error === 1) {
+					loaderFactory.showAlert(resp.data.msg);
+					return;
+				} else {
+					$('#'+selector).find('img').remove();
+					angular.element("input[id="+selector+"Field]").val(null);
+					$('#'+selector+'Delete').hide();
+				}
+			});
 		}
 
 		vm.updateTechnicianDetails = function() {
