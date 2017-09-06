@@ -11,7 +11,7 @@
 		var vm = this;
 		var user_id = window.localStorage.getItem('userID');
 
-		dataFactory.hasRegistered(user_id).then(function(resp) { console.log(resp);
+		dataFactory.hasRegistered(user_id).then(function(resp) {
 			if(!resp.data.has_registered) {
 				$state.go('artist-register');
 			}
@@ -135,8 +135,15 @@
 			$('#previewVideo').find('video').remove();
 			angular.element("input[id='videoFile']").val(null);
 			$('#previewVideoDelete').hide();
-
-			vm.artist.video_name = '';
+			
+			dataFactory.deleteVideo(user_id).then(function(resp) {
+				if(resp.data.error === 1) {
+					loaderFactory.showAlert(resp.data.msg);
+					return;
+				} else {
+					vm.artist.video_name = '';
+				}
+			});
 		}
 
 		vm.upload_video = function(src) {

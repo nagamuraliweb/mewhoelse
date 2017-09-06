@@ -5,7 +5,8 @@ angular.module('meapp.factories.dataFactory', [])
 		getUserDetails: getUserDetails,
 		hasRegistered: hasRegistered,
 		getProjectDetails: getProjectDetails,
-		getFilterUsers: getFilterUsers
+		getFilterUsers: getFilterUsers,
+		deleteVideo: deleteVideo
 	};
 
 	function getUserDetails(user_id) {
@@ -49,4 +50,13 @@ angular.module('meapp.factories.dataFactory', [])
 		return deffered.promise;
 	}
 
+	function deleteVideo(user_id) {
+		var deffered = $q.defer();
+		dataService.deleteVideo(user_id).then(function (resp) {
+			deffered.resolve(resp);
+		}, function (error) {
+			console.log(error);
+		});
+		return deffered.promise;
+	}
 }]);

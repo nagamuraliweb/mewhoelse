@@ -71,4 +71,18 @@ angular.module('meapp.services.dataService', [])
         });
     }
 
+    this.deleteVideo = function(user_id) {
+        var request = {
+            method: 'GET',
+            url: 'http://mewhoelse.in/api/api.php?f=deleteUploadedVideo&user_id='+user_id,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        return $http(request).then(function (resp) {
+            return resp;
+        });
+    }
+
 }]);

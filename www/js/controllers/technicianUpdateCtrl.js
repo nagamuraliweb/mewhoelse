@@ -120,7 +120,14 @@
 			angular.element("input[id='videoFile']").val(null);
 			$('#previewVideoDelete').hide();
 
-			vm.technician.video_name = '';
+			dataFactory.deleteVideo(user_id).then(function(resp) {
+				if(resp.data.error === 1) {
+					loaderFactory.showAlert(resp.data.msg);
+					return;
+				} else {
+					vm.technician.video_name = '';
+				}
+			});
 		}
 
 		vm.upload_video = function(src) {

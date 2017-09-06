@@ -764,6 +764,30 @@ class me_api extends db_config {
 		}
 	}
 
+	public function deleteUploadedVideo () {
+		try {
+
+			if (empty($_GET['user_id'])) {
+				throw new Exception('Invalid user');
+			}
+
+			if ( ! file_exists('../video/profile/'.$_GET['video_name'])) {
+				unlink('../video/profile/'.$_GET['video_name']);
+			}
+
+			if(!Model_Admin::deleteUploadedVideo($this->DB, $_GET['user_id'])) {
+				throw new Exception('DB error occured');
+			}
+
+			$result = ['error' => 0, 'msg' => 'Successfully deleted'];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
 	public function hasRegistered () {
 		try {
 

@@ -416,5 +416,16 @@
 			
 			return $stmt->execute();
 		}
+
+		public function deleteUploadedVideo ($DB, $user_id) {
+
+			$sql = 'UPDATE dr_mem_users_details SET video_name = :video_name WHERE user_id = :user_id';
+
+			$stmt = $DB->prepare($sql);
+			$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+			$stmt->bindParam(':video_name', null, PDO::PARAM_NULL);
+			
+			return $stmt->execute();
+		}
 	}
 ?>
