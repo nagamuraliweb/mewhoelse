@@ -8,13 +8,18 @@
 
 	function technicianCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, $stateParams, coreConstant, $sce) {
 
-		dataFactory.hasRegistered().then(function(resp) {
-			if(resp.data.has_registered) {
-				$state.go('technician-profile');
-			}
-		});
-
 		var vm = this;
+		var user_id = window.localStorage.getItem('userID');
+
+		if(user_id) {
+			dataFactory.hasRegistered(user_id).then(function(resp) {
+				if(resp.data.has_registered) {
+					$state.go('technician-profile');
+				}
+			});
+		}
+
+		
 		vm.form = {};
 		vm.showLanguages = false;
 
@@ -23,7 +28,7 @@
 		vm.genders = coreConstant.genders;
 
 		vm.technician = {
-			user_id: '',
+			user_id: user_id,
 			gender: '',
 			dob: '',
 			videos: '',
@@ -36,8 +41,6 @@
 			others_languages: '',
 			video_name: ''
 		};
-
-		vm.technician.user_id = window.localStorage.getItem('userID');
 
 		vm.listLanguages = function() {
 			vm.showLanguages = (vm.showLanguages) ? false : true;

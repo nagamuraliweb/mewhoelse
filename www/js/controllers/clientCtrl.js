@@ -31,7 +31,7 @@
 		vm.genders = coreConstant.genders;
 
 		vm.client = {
-			user_id: '',
+			user_id: user_id,
 			project: '',
 			projectname: '',
 			project_type: '',

@@ -8,14 +8,14 @@
 
 	function technicianUpdateCtrl ($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $sce) {
 
-		dataFactory.hasRegistered().then(function(resp) {
+		var vm = this;
+		var user_id = window.localStorage.getItem('userID');
+
+		dataFactory.hasRegistered(user_id).then(function(resp) {
 			if(!resp.data.has_registered) {
 				$state.go('technician-register');
 			}
 		});
-
-		var vm = this;
-		var user_id = window.localStorage.getItem('userID');
 
 		vm.form = {};
 		vm.showLanguages = true;

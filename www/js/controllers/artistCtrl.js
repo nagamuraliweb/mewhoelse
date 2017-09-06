@@ -37,7 +37,7 @@ angular.module('meapp.controllers.artistCtrl', [])
       	});
 
 		vm.artist = {
-			user_id: '',
+			user_id: user_id,
 			gender: '',
 			dob: '',
 			videos: '',
@@ -57,8 +57,6 @@ angular.module('meapp.controllers.artistCtrl', [])
 			others_languages: '',
 			video_name: ''
 		};
-
-		vm.artist.user_id = window.localStorage.getItem('userID');
 
 		$scope.uploadFile = function(files, selector) {
 			var fd = new FormData();
