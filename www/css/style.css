@@ -258,7 +258,8 @@ ion-tabs.tabs-color-active-positive .tab-item {
 }
 .list_tech{margin:10px 5px 10px 5px !important;background: rgba(255, 255, 255, 0.2);}
 .list_tech img{max-width: 100%;box-sizing: border-box;}
-.list_tech h3{margin-top: 0;color: #ffae20 !important;font-size: 16px;text-transform: capitalize;}
+.list_tech h3{margin-top: 0;color: #ffae20 !important;font-size: 16px;text-transform: capitalize;
+margin-bottom: 5px;}
 .list_tech p{color: #ffffff;font-size: 12px;text-align: center;}
 .padding0{padding: 0px !important;}
 .list_tech span{font-size: 12px;}
@@ -266,7 +267,7 @@ ion-tabs.tabs-color-active-positive .tab-item {
 .viewbtn{background: rgba(185,134,235) !important;}
 .filmlist .ui-segment{border-radius: 2px !important;}
 .filmlist .ui-segment span.option{padding-left: 10px !important;padding-right: 10px !important;}
-.product-price{color: #ffffff;}
+.product-price{color: #ffffff;margin-bottom: 5px;}
 .wrapper{width: 100% !important;float: left !important;}
 .imgdiv{position: relative;}
 #frontview{position: absolute;top: 0;left: 0;z-index: 100;}
