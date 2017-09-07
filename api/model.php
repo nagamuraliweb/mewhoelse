@@ -276,9 +276,9 @@
 
 			$sql = 'INSERT INTO dr_mem_users_details (user_id, user_gender_id, user_dob, user_videos,
 					user_skills_others, user_experience_id, user_city, user_ethinicity, user_is_professional,
-					user_language_id, user_language_others) 
+					user_language_id, user_language_others, video_name) 
 						VALUES (:user_id, :gender, :dob, :videos, :otherskills, :experince, 
-					:city, :other_ethnicity, :training, :languages, :others_languages)';
+					:city, :other_ethnicity, :training, :languages, :others_languages, :video_name)';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_id', $data['user_id'], PDO::PARAM_INT);
@@ -289,6 +289,12 @@
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 			} else {
 				$stmt->bindValue(':videos', null, PDO::PARAM_NULL);
+			}
+
+			if ($data['video_name']) {
+				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindValue(':video_name', null, PDO::PARAM_NULL);
 			}
 
 			$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);
@@ -314,7 +320,7 @@
 
 			$sql = 'UPDATE dr_mem_users_details SET user_gender_id = :gender, user_dob = :dob, user_videos = :videos, user_skills_others = :otherskills, 
 				user_experience_id = :experince, user_city = :city, user_ethinicity = :other_ethnicity, 
-				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages
+				user_is_professional = :training, user_language_id = :languages, user_language_others = :others_languages, video_name = :video_name
 				WHERE user_id = :user_id';
 
 			$stmt = $DB->prepare($sql);
@@ -326,6 +332,12 @@
 				$stmt->bindParam(':videos', $data['videos'], PDO::PARAM_STR);
 			} else {
 				$stmt->bindValue(':videos', null, PDO::PARAM_NULL);
+			}
+
+			if ($data['video_name']) {
+				$stmt->bindParam(':video_name', $data['video_name'], PDO::PARAM_STR);
+			} else {
+				$stmt->bindValue(':video_name', null, PDO::PARAM_NULL);
 			}
 			
 			$stmt->bindParam(':otherskills', $data['otherskills'], PDO::PARAM_STR);

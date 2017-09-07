@@ -447,7 +447,8 @@ class me_api extends db_config {
 				'other_ethnicity' => $postdata->other_ethnicity,
 				'training' => $postdata->training,
 				'languages' => $postdata->languages,
-				'others_languages' => $postdata->others_languages ? $postdata->others_languages : null
+				'others_languages' => $postdata->others_languages ? $postdata->others_languages : null,
+				'video_name' => $postdata->video_name ? $postdata->video_name : null
 			];
 
 			$user_id = Model_Admin::isUserRegisteredAlready($this->DB, $postdata->user_id);
@@ -465,6 +466,10 @@ class me_api extends db_config {
 					throw new Exception('Upload full view image');
 				}
 
+				if ($postdata->video_name) {
+					$this->saveUploadedVideo($postdata->video_name, $postdata->user_id);
+				}
+
 				$this->saveUploadedImage($postdata);
 
 				if(!Model_Admin::saveTechnicianDetails($this->DB, $data)) {
@@ -473,6 +478,10 @@ class me_api extends db_config {
 			} else {
 				if ($postdata->front_img || $postdata->side_img || $postdata->full_img) {
 					$this->saveUploadedImage($postdata);
+				}
+
+				if ($postdata->video_name) {
+					$this->saveUploadedVideo($postdata->video_name, $postdata->user_id);
 				}
 
 				if(!Model_Admin::updateTechnicianDetails($this->DB, $data)) {

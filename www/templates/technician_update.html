@@ -19,7 +19,7 @@
 							<input type="file" name="file" id="frontviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'frontview')" />
 						</label><br>
 						<span id="frontview" ng-if="vm.profiles.showFront">
-							<img src="http://mewhoelse.in/img/profile/{{vm.technician.user_id}}_front.jpg" width="90px" height="117px" />
+							<img ng-src="http://mewhoelse.in/img/profile/{{vm.technician.user_id}}_front.jpg" width="90px" height="117px" />
 						</span>
 						<span ng-if="vm.profiles.showFront" id="frontviewDelete" ng-click="vm.deleteImg('frontview');"><i class="icon ion-close-circled"></i></span>
 					</div>
@@ -29,7 +29,7 @@
 							<input type="file" name="file" id="sideviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'sideview')" />
 						</label><br>
 						<span id="sideview" ng-if="vm.profiles.showSide">
-							<img src="http://mewhoelse.in/img/profile/{{vm.technician.user_id}}_side.jpg" width="90px" height="117px" />
+							<img ng-src="http://mewhoelse.in/img/profile/{{vm.technician.user_id}}_side.jpg" width="90px" height="117px" />
 						</span>
 						<span ng-if="vm.profiles.showSide" id="sideviewDelete" ng-click="vm.deleteImg('sideview');"><i class="icon ion-close-circled"></i></span>
 					</div>
@@ -39,7 +39,7 @@
 							<input type="file" name="file" id="fullviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'fullview')" />
 						</label><br>
 						<span id="fullview" ng-if="vm.profiles.showFull">
-							<img src="http://mewhoelse.in/img/profile/{{vm.technician.user_id}}_full.jpg" width="90px" height="117px" />
+							<img ng-src="http://mewhoelse.in/img/profile/{{vm.technician.user_id}}_full.jpg" width="90px" height="117px" />
 						</span>
 						<span ng-if="vm.profiles.showFull" id="fullviewDelete" ng-click="vm.deleteImg('fullview');"><i class="icon ion-close-circled"></i></span>
 					</div>

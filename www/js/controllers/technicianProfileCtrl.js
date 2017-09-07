@@ -4,9 +4,9 @@
 	angular.module('meapp.controllers.technicianProfileCtrl', [])
 		.controller('technicianProfileCtrl', technicianProfileCtrl);
 
-	technicianProfileCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant'];
+	technicianProfileCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant', '$sce'];
 
-	function technicianProfileCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant) {
+	function technicianProfileCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $sce) {
 
 		var vm = this;
 		vm.user_id = window.localStorage.getItem('userID');
@@ -33,6 +33,10 @@
 
 			vm.lang = languages.join(', ');
 		});
+
+		vm.upload_video = function(src) {
+			return $sce.trustAsResourceUrl(src);
+		}
 
 		$scope.$on('youtube.player.playing', function ($event, player) {
 			bestPlayer = player;

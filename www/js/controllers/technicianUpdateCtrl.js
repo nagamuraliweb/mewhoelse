@@ -43,7 +43,8 @@
 				other_ethnicity: tech_data.user_ethinicity,
 				training: tech_data.user_is_professional,
 				languages: tech_data.user_language_id,
-				others_languages: tech_data.user_language_others
+				others_languages: tech_data.user_language_others,
+				video_name: tech_data.video_name
 			};
 
 			angular.forEach(tech_data.user_language_id.split(','), function(key) {
@@ -90,8 +91,8 @@
 
 					var img = document.createElement('img');
 					img.setAttribute('src', 'http://mewhoelse.in/img/tmp/'+resp.data.img_name);
-					img.setAttribute('width', '90px');
-					img.setAttribute('height', '117px');
+					img.setAttribute('width', '100%');
+					img.setAttribute('height', '200px');
 					document.getElementById(selector).appendChild(img);
 				}
 			});
@@ -134,7 +135,7 @@
 			});
 		}
 
-		vm.upload_video = function(src) {
+		vm.upload_video = function(src) { console.log(src);
 			return $sce.trustAsResourceUrl(src);
 		}
 

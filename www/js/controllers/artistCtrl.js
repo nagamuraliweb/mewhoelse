@@ -101,11 +101,12 @@ angular.module('meapp.controllers.artistCtrl', [])
 				} else {
 					vm.artist.video_name = resp.data.video_name;
 
-					// var video = document.createElement('video');
-					// video.setAttribute('src', 'http://mewhoelse.in/video/tmp/'+resp.data.video_name);
-					// document.getElementById('previewVideo').appendChild(video);
+					$('#previewVideo').empty();
+					var video = document.createElement('video');
+					video.setAttribute('src', 'http://mewhoelse.in/video/tmp/'+resp.data.video_name);
+					document.getElementById('previewVideo').appendChild(video);
 
-					// $('#previewVideoDelete').show();
+					$('#previewVideoDelete').show();
 				}
 			});
 		};
