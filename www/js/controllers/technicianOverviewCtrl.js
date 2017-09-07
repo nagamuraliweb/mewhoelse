@@ -4,9 +4,9 @@
 	angular.module('meapp.controllers.technicianOverviewCtrl', [])
 	.controller('technicianOverviewCtrl', technicianOverviewCtrl);
 
-	technicianOverviewCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant', '$stateParams'];
+	technicianOverviewCtrl.$inject = ['$scope', 'dataFactory', 'artistFactory', 'loaderFactory', '$state', 'coreConstant', '$stateParams', '$sce'];
 
-	function technicianOverviewCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $stateParams) {
+	function technicianOverviewCtrl($scope, dataFactory, artistFactory, loaderFactory, $state, coreConstant, $stateParams, $sce) {
 		var vm = this;
 		vm.version = new Date().getTime();
 		var languages = [];
@@ -31,6 +31,10 @@
 
 			vm.lang = languages.join(', ');
 		});
+
+		vm.upload_video = function(src) {
+			return $sce.trustAsResourceUrl(src);
+		}
 
 		$scope.$on('youtube.player.playing', function ($event, player) {
 			bestPlayer = player;
