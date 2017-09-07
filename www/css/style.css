@@ -272,13 +272,13 @@ margin-bottom: 5px;}
 .imgdiv{position: relative;}
 #frontview{position: absolute;top: 0;left: 0;z-index: 100;}
 #frontview img{margin: 4px 0 0 5px;}
-#frontviewDelete{position: absolute;top: -6px;right: 1px;z-index: 999999;cursor: pointer;color: red;}
+#frontviewDelete{position: absolute;top: -6px;left: 90px;z-index: 999999;cursor: pointer;color: red;}
 #sideview{position: absolute;top: 0;left: 0;z-index: 100;}
 #sideview img{margin: 4px 0 0 5px;}
-#sideviewDelete{position: absolute;top: -6px;right: 1px;z-index: 999999;cursor: pointer;color: red;}
+#sideviewDelete{position: absolute;top: -6px;left: 90px;z-index: 999999;cursor: pointer;color: red;}
 #fullview{position: absolute;top: 0;left: 0;z-index: 100;}
 #fullview img{margin: 4px 0 0 5px;}
-#fullviewDelete{position: absolute;top: -6px;right: 1px;z-index: 999999;cursor: pointer;color: red;}
+#fullviewDelete{position: absolute;top: -6px;left: 90px;z-index: 999999;cursor: pointer;color: red;}
 .ion-ios-arrow-down{font-size: 28px;}
 .ion-ios-arrow-forward{font-size: 24px;}
 .wrapper ul{background: rgba(185,134,235,0.2);color: #ffffff;padding: 5px;margin-bottom: 10px;}
@@ -294,3 +294,11 @@ line-height: 36px;border-right: 1px solid rgba(185,134,235);cursor: pointer;}
 #profileVideo{position: relative;}
 #previewVideoDelete{position: absolute;right: 0;bottom: 205px;z-index: 100;cursor: pointer;}
 .list_tech1{max-width: 150px;}
+.techbg{
+    width: 100%;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 5px;
+    border-radius: 2px;
+}

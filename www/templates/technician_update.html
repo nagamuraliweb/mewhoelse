@@ -14,7 +14,7 @@
 				<div>
 				<p class="titleColor">Profile pictures</p>
 				<div class="row no_pad multipleimage">
-					<div class="col-33 col">
+					<div class="col-33 col imgdiv">
 						<label class="uploadbtn1">
 							<input type="file" name="file" id="frontviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'frontview')" />
 						</label><br>
@@ -24,7 +24,7 @@
 						<span ng-if="vm.profiles.showFront" id="frontviewDelete" ng-click="vm.deleteImg('frontview');"><i class="icon ion-close-circled"></i></span>
 					</div>
 
-					<div class="col-33 col">
+					<div class="col-33 col imgdiv">
 						<label class="uploadbtn2">
 							<input type="file" name="file" id="sideviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'sideview')" />
 						</label><br>
@@ -34,7 +34,7 @@
 						<span ng-if="vm.profiles.showSide" id="sideviewDelete" ng-click="vm.deleteImg('sideview');"><i class="icon ion-close-circled"></i></span>
 					</div>
 
-					<div class="col-33 col">
+					<div class="col-33 col imgdiv">
 						<label class="uploadbtn3">
 							<input type="file" name="file" id="fullviewField" onchange="angular.element(this).scope().uploadFile(this.files, 'fullview')" />
 						</label><br>
@@ -123,10 +123,9 @@
 				  	</select>
 				</span></p>
 			  	</div>
-				
 
 				<button class="button button-outline loginbtn createportfolio" ng-click="vm.updateTechnicianDetails()">
-				  create portfolio
+				  update portfolio
 				</button>
 			</div>
 
