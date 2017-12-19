@@ -148,6 +148,18 @@
 			return empty($row) ? [] : $row;
 		}
 
+		public function getUsersList ($DB) {
+
+			$sql = 'SELECT * FROM dr_mem_users';
+
+			$stmt = $DB->prepare($sql);
+			
+			$stmt->execute();
+			$row = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+			return empty($row) ? [] : $row;
+		}
+
 		public function isUserRegisteredAlready ($DB, $user_id) {
 
 			$sql = 'SELECT user_id FROM dr_mem_users_details WHERE user_id = :user_id';

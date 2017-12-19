@@ -7,7 +7,8 @@ angular.module('meapp.factories.loginFactory', [])
 		forgotPassword: forgotPassword,
 		redirectRegister: redirectRegister,
 		hasRegistered: hasRegistered,
-		redirectProfile: redirectProfile
+		redirectProfile: redirectProfile,
+		getUsersList: getUsersList
 	}
 
 	function userLogin(user_email, user_password) {
@@ -80,6 +81,16 @@ angular.module('meapp.factories.loginFactory', [])
 				default: console.log('Login');
 			}
 		});
+	}
+
+	function getUsersList() {
+		var deffered = $q.defer();
+		loginService.getUsersList().then(function(resp) {
+			deffered.resolve(resp);
+		}, function(error) {
+			console.log(error);
+		});
+		return deffered.promise;
 	}
 
 }]);

@@ -74,4 +74,18 @@ angular.module('meapp.services.loginService', [])
         });
     }
 
+    this.getUsersList = function() {
+        var request = {
+            method: 'GET',
+            url: 'http://mewhoelse.in/api/api.php?f=getUsersList',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        return $http(request).then(function (resp) {
+            return resp;
+        });
+    }
+
 }]);

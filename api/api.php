@@ -155,6 +155,25 @@ class me_api extends db_config {
 		echo json_encode($result);
 	}
 
+	public function getUsersList() {
+		
+		try {
+
+			$users_list = Model_Admin::getUsersList($this->DB);
+
+			if (empty($users_list)) {
+				throw new Exception('No records found');
+			}
+
+			$result = ['error' => 0, 'users_list' => json_encode($users_list)];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
 	public function getUserDetails() {
 
 		try {
