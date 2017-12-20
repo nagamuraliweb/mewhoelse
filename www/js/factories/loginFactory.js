@@ -8,7 +8,8 @@ angular.module('meapp.factories.loginFactory', [])
 		redirectRegister: redirectRegister,
 		hasRegistered: hasRegistered,
 		redirectProfile: redirectProfile,
-		getUsersList: getUsersList
+		getUsersList: getUsersList,
+		updateUserStatus: updateUserStatus
 	}
 
 	function userLogin(user_email, user_password) {
@@ -88,6 +89,16 @@ angular.module('meapp.factories.loginFactory', [])
 		loginService.getUsersList().then(function(resp) {
 			deffered.resolve(resp);
 		}, function(error) {
+			console.log(error);
+		});
+		return deffered.promise;
+	}
+
+	function updateUserStatus(user_id) {
+		var deffered = $q.defer();
+		loginService.updateUserStatus(client).then(function (resp) {
+			deffered.resolve(resp);
+		}, function (error) {
 			console.log(error);
 		});
 		return deffered.promise;

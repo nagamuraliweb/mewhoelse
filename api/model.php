@@ -5,7 +5,7 @@
 		public function userLogin ($DB, $data) {
 
 			$sql = 'SELECT user_id FROM dr_mem_users 
-						WHERE user_email = :user_email AND user_password = :user_password';
+						WHERE user_email = :user_email AND user_password = :user_password AND status = 1';
 
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_email', $data['email'], PDO::PARAM_STR);
@@ -150,7 +150,9 @@
 
 		public function getUsersList ($DB) {
 
-			$sql = 'SELECT * FROM dr_mem_users';
+			$sql = 'SELECT u.user_id, u.user_name, u.user_email, u.user_mobile, t.type as user_type 
+					FROM dr_mem_users as u 
+					INNER JOIN dr_mem_type as t ON u.user_type = t.id_type';
 
 			$stmt = $DB->prepare($sql);
 			
@@ -448,6 +450,16 @@
 			$stmt = $DB->prepare($sql);
 			$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 			$stmt->bindValue(':video_name', null, PDO::PARAM_NULL);
+			
+			return $stmt->execute();
+		}
+
+		public function updateUserStatus ($DB, $user_id) {
+			
+			$sql = 'UPDATE dr_mem_users SET status = 0 WHERE user_id = :user_id';
+
+			$stmt = $DB->prepare($sql);
+			$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 			
 			return $stmt->execute();
 		}

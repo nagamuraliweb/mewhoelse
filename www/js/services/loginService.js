@@ -88,4 +88,18 @@ angular.module('meapp.services.loginService', [])
         });
     }
 
+    this.updateUserStatus = function(user_id) {
+        var request = {
+            method: 'GET',
+            url: 'http://mewhoelse.in/api/api.php?f=updateUserStatus&user_id='+user_id,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        return $http(request).then(function (resp) {
+            return resp;
+        });
+    }
+
 }]);

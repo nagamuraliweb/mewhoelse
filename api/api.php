@@ -266,6 +266,27 @@ class me_api extends db_config {
 		echo json_encode($result);
 	}
 
+	public function updateUserStatus() {
+		
+		try {
+
+			if (empty($_GET['user_id'])) {
+				throw new Exception('Invalid user');
+			}
+
+			if(!Model_Admin::updateUserStatus($this->DB, $_GET['user_id'])) {
+				throw new Exception('Error occured');
+			}
+
+			$result = ['error' => 0, 'msg' => 'Successfully updated'];
+
+		} catch (Exception $e) {
+			$result = ['error' => 1, 'msg' => $e->getMessage()];
+		}
+
+		echo json_encode($result);
+	}
+
 	public function saveArtistDetails() {
 
 		try {
